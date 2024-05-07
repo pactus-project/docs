@@ -1,17 +1,17 @@
 ---
-title: PacViewer Documentation Home
+title: Pactus Blockchain Documentation Home
 layout: hextra-home
 ---
 
 <div class="hx-mt-6 hx-mb-6">
 {{< hextra/hero-headline >}}
-  Welcome to the PacViewer APIs documentation 🚀
+  Welcome to the Pactus Blockchain documentation 🚀
 {{< /hextra/hero-headline >}}
 </div>
 
 <div class="hx-mb-12">
 {{< hextra/hero-subtitle >}}
-  PacViewer is the leading blockchain explorer, search, API&nbsp;<br class="sm:hx-block hx-hidden" />and analytics platform for Pactus Blockchain.
+  Pactus is a community-run blockchain technology with a revolutionary, secure, Solid State Proof of Stake Consensus. Come join us and build a decentralized future together!
 {{< /hextra/hero-subtitle >}}
 </div>
 
@@ -25,43 +25,66 @@ layout: hextra-home
 
 {{< hextra/feature-grid >}}
   {{< hextra/feature-card
-    title="Blockchain Data Querying"
-      icon="search"
-    subtitle="Allow users to query blockchain data, such as transactions, blocks, and addresses, via your API. This feature enables businesses to retrieve specific data they need from the blockchain efficiently."
+    title="Solid State Proof of Stake (SSPoS) Consensus"
+    icon="shield-check"
+    subtitle="Pactus employs SSPoS, a revolutionary consensus mechanism that ensures fast and secure block creation without relying on delegation or miners. SSPoS, based on the concept of solid state, prioritizes validators and their stakes, enabling consensus in seconds while maintaining fairness and inclusivity."
+    class="hx-aspect-auto md:hx-aspect-[1.1/1] max-md:hx-min-h-[340px]"
+    style="background: radial-gradient(ellipse at 50% 80%,rgba(43, 245, 39, 0.32),hsla(0,0%,100%,0));"
   >}}
   {{< hextra/feature-card
-    title="Real-Time Transaction Monitoring"
-      icon="search"
-    subtitle="Provide real-time updates on transactions as they occur on the blockchain. This feature is essential for businesses that require instant notification of transactions relevant to their operations."
+    title="Accessible Node Operation"
+      icon="chip"
+    subtitle="With a simple GUI application, Pactus enables anyone to easily run a node and engage with the platform. The intuitive interface requires no technical expertise, allowing users to effortlessly manage wallets, execute transactions, deploy smart contracts, and participate in consensus with just a few clicks."
+    class="hx-aspect-auto md:hx-aspect-[1.1/1] max-md:hx-min-h-[340px]"
+    style="background: radial-gradient(ellipse at 50% 80%,rgba(194,97,254,0.15),hsla(0,0%,100%,0));"
   >}}
   {{< hextra/feature-card
     title="Address Balances and Transaction History"
-    icon="currency-dollar"
+    icon="credit-card"
     subtitle="Enable users to check the balance of any address on the blockchain and retrieve its transaction history. This feature is beneficial for businesses managing multiple addresses and monitoring their transaction activities."
+    class="hx-aspect-auto md:hx-aspect-[1.1/1] max-md:hx-min-h-[340px]"
+    style="background: radial-gradient(ellipse at 50% 80%,rgba(198, 245, 39, 0.32),hsla(0,0%,100%,0));"
   >}}
   {{< hextra/feature-card
-    title="Block Information Retrieval"
+    title="Fair and Predictable Fee Structure"
     icon="collection"
-    subtitle="Offer detailed information about individual blocks on the blockchain, including timestamps, block height, and the number of transactions. This feature helps businesses track the progress of the blockchain and analyze its performance."
+    subtitle="Pactus implements a percentage-based fee model to ensure fairness and predictability in transaction costs. By calculating fees based on a percentage with defined minimum and maximum thresholds, Pactus prevents overpaying or underpaying, while ensuring proportional distribution among validators and the treasury fund."
+    class="hx-aspect-auto md:hx-aspect-[1.1/1] max-md:hx-min-h-[340px]"
+    style="background: radial-gradient(ellipse at 50% 80%,rgba(142, 39, 245, 0.32),hsla(0,0%,100%,0));"
   >}}
   {{< hextra/feature-card
-    title="API Rate Limiting"
-    icon="ban"
-    subtitle="Implement rate limiting to ensure fair usage of the API by limiting the number of requests users can make within a specified time frame. This feature prevents abuse of the API resources and ensures its availability for all users."
+    title="Community-Driven Fee Adjustment"
+    icon="chevron-double-right"
+    subtitle="Through consensus among validators, Pactus facilitates the adjustment of its fee model, ensuring responsiveness to market conditions and user preferences. This democratic approach empowers stakeholders to fine-tune fee structures, fostering a dynamic and adaptive platform."
+    class="hx-aspect-auto md:hx-aspect-[1.1/1] max-md:hx-min-h-[340px]"
+    style="background: radial-gradient(ellipse at 50% 80%,rgba(245, 39, 82, 0.32),hsla(0,0%,100%,0));"
   >}}
   {{< hextra/feature-card
-    title="Security and Authentication"
-    icon="shield-check"
-    subtitle="Implement robust security measures, including API key authentication, to ensure that only authorized users can access the API. This feature helps protect sensitive blockchain data and prevents unauthorized access."
+    title="Inclusive Participation"
+    icon="emoji-happy"
+    subtitle="With a minimum stake requirement of just 1 PAC coin, Pactus ensures that anyone can become a validator and participate in the consensus process. This inclusive approach prevents centralization and manipulation, fostering a diverse and resilient ecosystem."
+    class="hx-aspect-auto md:hx-aspect-[1.1/1] max-md:hx-min-h-[340px]"
+    style="background: radial-gradient(ellipse at 50% 80%,rgba(39, 211, 245, 0.32),hsla(0,0%,100%,0));"
   >}}
     {{< hextra/feature-card
-    title="Documentation and Support"
-    icon="support"
-    subtitle="Provide comprehensive documentation for the API, including usage examples and code snippets, to help users integrate it into their applications easily. Additionally, offer responsive customer support to assist users with any issues or questions they may have."
+    title="Efficient Resource Utilization"
+    icon="server"
+    subtitle="Pactus optimizes resource utilization by eliminating the need for energy-intensive mining or delegation processes. Through SSPoS, the platform achieves consensus efficiently, minimizing resource waste and environmental impact."
+    class="hx-aspect-auto md:hx-aspect-[1.1/1] max-md:hx-min-h-[340px]"
+    style="background: radial-gradient(ellipse at 50% 80%,rgba(39, 108, 245, 0.32),hsla(0,0%,100%,0));"
   >}}
    {{< hextra/feature-card
-    title="Customizable Data Filters"
-    icon="adjustments"
-    subtitle="Extend support for multiple blockchains, allowing users to access data from different blockchain networks through a single API. This feature enables businesses to work with various blockchain platforms without needing to integrate separate APIs for each."
+    title="Transparent Governance"
+    icon="light-bulb"
+    subtitle="Pactus promotes transparent governance, allowing stakeholders to actively participate in decision-making processes. Through consensus mechanisms, users can influence platform development, ensuring alignment with community values and goals."
+    class="hx-aspect-auto md:hx-aspect-[1.1/1] max-md:hx-min-h-[340px]"
+    style="background: radial-gradient(ellipse at 50% 80%,rgba(245, 108, 39, 0.32),hsla(0,0%,100%,0));"
+  >}}
+   {{< hextra/feature-card
+    title="Interoperability and Scalability"
+    icon="lightning-bolt"
+    subtitle="Pactus prioritizes interoperability and scalability, facilitating seamless interaction with other blockchain networks and protocols. By leveraging innovative solutions, Pactus ensures scalability without compromising decentralization or security, laying the foundation for future growth and expansion."
+    class="hx-aspect-auto md:hx-aspect-[1.1/1] max-md:hx-min-h-[340px]"
+    style="background: radial-gradient(ellipse at 50% 80%,rgba(245, 39, 39, 0.32),hsla(0,0%,100%,0));"
   >}}
 {{< /hextra/feature-grid >}}
