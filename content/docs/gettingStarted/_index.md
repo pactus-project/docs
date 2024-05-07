@@ -7,7 +7,7 @@ sidebar:
   open: true
 ---
 
-Explore the following sections to create account, API key and see endpoints:
+Explore the following sections to become a validator, specification:
 
 <!--more-->
 

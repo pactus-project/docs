@@ -21,12 +21,12 @@ This guide is designed for individuals and organizations interested in becoming 
 ## Step 1: How to become a validator?
 
 First need to download and install [Pactus GUI
-or CLI]( {{ site.baseurl }}/download/ ){:target="\_blank"} for initlize your node
+or CLI](https://pactus.org/download/ ) for initlize your node
 
 ### How to initilize Pactus GUI node?
 
 - Please download the appropriate Pactus GUI for your operating system and specific
-  architecture by visiting the [download page]( {{ site.baseurl }}/download/#gui ){:target="\_blank"}.
+  architecture by visiting the [download page](https://pactus.org/download/#gui).
 
 - Extract the file named "pactus-gui*{latest_version}{os}{architecture}.tar.gz"
   or, if you're using Windows, run the installer
@@ -37,43 +37,44 @@ or CLI]( {{ site.baseurl }}/download/ ){:target="\_blank"} for initlize your nod
 - If you run the node for the first time, you will see a wizard page to initialize your node.
   The first page is the 'Initialize Mode' where you can select to create or restore a wallet using a seed phrase.
 
-![Initlize mode]({{ site.url }}/user-guides/become-a-validator/wizard-welcome.png)
+![Initlize mode](/images/topic/become-a-validator/wizard-welcome.png)
 
 - After selecting "Create new wallet from scratch" the next page will generate
   a new seed phrase. It is crucial to back up these seed words either by writing them down or storing them in a secure document.
 
-  {% alert_start warning %}
+  {{< callout type="warning" >}}
   Do not share your seed words with other users, as they grant access to your wallet.
   Keeping your seed phrase private is essential for the security of your funds.
-  {% alert_end %}
+  {{< /callout >}}
 
-  ![Generated Seed words]({{ site.url }}/user-guides/become-a-validator/generated-seed.png)
+
+  ![Generated Seed words](/images/topic/become-a-validator/generated-seed.png)
 
 - You will need to confirm your seed words by typing them into the input box provided.
 
-![Confirm Seed words]({{ site.url }}/user-guides/become-a-validator/confirm-seed.png)
+![Confirm Seed words](/images/topic/become-a-validator/confirm-seed.png)
 
 - You can set a password for wallet security. This password for any
   interactions with the wallet, such as creating transactions.
 
-![Wallet Password]({{ site.url }}/user-guides/become-a-validator/wallet-password.png)
+![Wallet Password](/images/topic/become-a-validator/wallet-password.png)
 
 - You can select the number of validators on your node for staking.
   You can choose between 7 and 32 validators for each node.
 
-![Number of validators]({{ site.url }}/user-guides/become-a-validator/number-of-validators.png)
+![Number of validators](/images/topic/become-a-validator/number-of-validators.png)
 
 - The wizard is finished, and your node is initialized. You can now view your node information.
 
-{% alert_start info %}
-Your node configuration is located at "{user home}/pactus".
-{% alert_end %}
+{{< callout type="info" >}}
+  Your node configuration is located at "{user home}/pactus".
+{{< /callout >}}
 
-![Finished Wizard]({{ site.url }}/user-guides/become-a-validator/finish-wizard.png)
+![Finished Wizard](/images/topic/become-a-validator/finish-wizard.png)
 
 - Now that your node is initialized, you need to keep it running on your system to synchronize with the blockchain
 
-![Node information]({{ site.url }}/user-guides/become-a-validator/node-info.png)
+![Node information](/images/topic/become-a-validator/node-info.png)
 
 1. Working directory: The path to the Pactus node configuration directory.
 2. Network: The current network your node is connected to (default is mainnet).
@@ -93,7 +94,7 @@ Your node configuration is located at "{user home}/pactus".
 
 - On this page, you can view your validators and rewards addresses
 
-![wallets]({{ site.url }}/user-guides/become-a-validator/wallets.png)
+![wallets](/images/topic/become-a-validator/wallets.png)
 
 1. Address: Here you can view the validators and rewards addresses.
 2. Label: This field allows you to set or change the address label.
@@ -104,7 +105,7 @@ Your node configuration is located at "{user home}/pactus".
 ### How to initilize Pactus CLI node?
 
 - Please download the appropriate Pactus CLI for your operating system and specific
-  architecture by visiting the [download page]( {{ site.baseurl }}/download/#cli ){:target="\_blank"}.
+  architecture by visiting the [download page](https://pactus.org/download/#cli).
 
 - Extract the file named "pactus-cli\_{latest_version}{os}{architecture}.tar.gz.
 
@@ -130,10 +131,10 @@ Do you want to continue? [y/N] y
 
 ```
 
-{% alert_start warning %}
-Do not share your seed words with other users, as they grant access to your wallet.
-Keeping your seed phrase private is essential for the security of your funds.
-{% alert_end %}
+  {{< callout type="warning" >}}
+  Do not share your seed words with other users, as they grant access to your wallet.
+  Keeping your seed phrase private is essential for the security of your funds.
+  {{< /callout >}}
 
 - You can set a password for wallet security. This password for any interactions
   with the wallet, such as creating transactions.
@@ -204,16 +205,16 @@ subscribing to the newsletter. Receive important news, updates, and announcement
 directly to your email inbox. Don't miss out on crucial information that could impact
 your involvement with Pactus blockchain. Sign up now to stay connected and informed.
 
-{% alert_start warning %}
+{{< callout type="warning" >}}
 It's required to subscribe to "Pactus Update News" channel news.
-{% alert_end %}
+{{< /callout >}}
 
 <form method="post" action="https://pacmail.org/subscription/form" class="listmonk-form">
   <div>
     <input type="hidden" name="nonce" />
     <p>
       <input type="email" name="email" required placeholder="E-mail" />
-      <input type="submit" value="Subscribe" />
+      <input type="submit" class="btn" role="button" value="Subscribe" />
     </p>
     <p></p>
     <div class="short">
@@ -227,19 +228,19 @@ It's required to subscribe to "Pactus Update News" channel news.
       to ensure you receive our emails in your inbox.
     </div>
 
-    <div class="captcha">
-      <div class="h-captcha" data-sitekey="898156d4-1b49-4bb4-a3d9-f4c2214b9908"></div>
-      <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
-    </div>
+  <div class="captcha">
+    <div class="h-captcha" data-sitekey="898156d4-1b49-4bb4-a3d9-f4c2214b9908"></div>
+    <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
+  </div>
 
-    <p>
-      <input id="90cc6" type="checkbox" name="l" checked value="90cc6b4e-c631-45f3-b1d5-c5027b379c7e" />
-      <label for="90cc6">Pactus Announcements</label>
-    </p>
-    <p>
-      <input id="647b6" type="checkbox" name="l" checked value="647b6294-eced-4887-9298-3ae6f79f12a6" />
-      <label for="647b6">Pactus Update News</label>
-    </p>
+  <p>
+    <input id="90cc6" type="checkbox" name="l" checked value="90cc6b4e-c631-45f3-b1d5-c5027b379c7e" />
+    <label for="90cc6">Pactus Announcements</label>
+  </p>
+  <p>
+    <input id="647b6" type="checkbox" name="l" checked value="647b6294-eced-4887-9298-3ae6f79f12a6" />
+    <label for="647b6">Pactus Update News</label>
+  </p>
   </div>
 </form>
 
@@ -251,81 +252,76 @@ you'll have the resources needed to stake on your validators, contributing to th
 and earning rewards in return. Take this step to actively engage with the Pactus blockchain and
 play a vital role in its ecosystem.
 
-<a class="btn btn-fixed btn-secondary" href="https://xeggex.com/asset/PACTUS" rel="nofollow  noreferrer"
-target="_blank" role="button">Purchase coins</a>
+</br>
+{{< hextra/hero-button text="Purchase coins" link="[docs](https://xeggex.com/asset/PACTUS)" >}}
+
 
 ## Step 4: Join the Pactus Blockchain Community on Social Networks
 
 <ul class="list-unstyled community">
   <li>
     <a href="https://discord.gg/H5vZkNnXCu">
-      <img alt="Discord" src="{{ site.url }}/assets/images/social-discord.svg" width="32">
-      {% t dict.community.discord %}
+      <img alt="Discord" src="/images/social/social-discord.svg" width="32">
+     Discord
     </a>
   </li>
   <li>
     <a href="https://x.com/pactuschain/">
-      <img alt="Discord" src="{{ site.url }}/assets/images/social-twitter.svg" width="32">
-      {% t dict.community.twitter %}
+      <img alt="Discord" src="/images/social/social-twitter.svg" width="32">
+      Twitter
     </a>
   </li>
   <li>
     <a href="https://t.me/pactusblockchain">
-      <img alt="Discord" src="{{ site.url }}/assets/images/social-telegram.svg" width="32">
-      {% t dict.community.telegram %}
+      <img alt="Discord" src="/images/social/social-telegram.svg" width="32">
+      Telegram
     </a>
   </li>
   <li>
     <a href="https://linkedin.com/company/pactus-blockchain">
-      <img alt="Discord" src="{{ site.url }}/assets/images/social-linkedin.svg" width="32">
-      {% t dict.community.linkedin %}
+      <img alt="Discord" src="/images/social/social-linkedin.svg" width="32">
+      Linkedin
     </a>
   </li>
   <li>
     <a href="https://bitcointalk.org/index.php?topic=5480867.0">
-      <img alt="Discord" src="{{ site.url }}/assets/images/social-bitcoin-talk.svg" width="32">
-      {% t dict.community.bitcoin_talk %}
+      <img alt="Discord" src="/images/social/social-bitcoin-talk.svg" width="32">
+      BitcoinTalk
     </a>
   </li>
 </ul>
 
-{% t dict.community.community_ran %}
+To explore the communities managed by members of the community, you can follow the links below.
 
 <ul class="list-unstyled community_ran">
   <li>
     <a href="https://t.me/pactuschat">
-      <img alt="Discord" src="https://pactus.org/assets/images/social-telegram.svg" width="32">
+      <img alt="Discord" src="/images/social/social-telegram.svg" width="32">
       Telegram
     </a>
   </li>
   <li>
     <a href="https://twitter.com/PactusNaija">
-      <img alt="Discord" src="https://pactus.org/assets/images/social-twitter.svg" width="32">
-      {% t dict.community.nigeria %}
+      <img alt="Discord" src="/images/social/social-twitter.svg" width="32">
+      Nigeria
     </a>
   </li>
   <li>
     <a href="https://www.facebook.com/PactusChain">
-      <img alt="Facebook" src="https://pactus.org/assets/images/social-facebook.svg" width="32">
+      <img alt="Facebook" src="/images/social/social-facebook.svg" width="32">
       Facebook
     </a>
   </li>
   <li>
     <a href="https://t.me/nodesync_top">
-      <img alt="Discord" src="https://pactus.org/assets/images/social-telegram.svg" width="32">
-      {% t dict.community.nodesync %}
-    </a>
-  </li>
-  <li>
-    <a href="https://discord.gg/H5vZkNnXCu">
-      <img alt="Wechat" src="https://pactus.org/assets/images/social-wechat.svg" width="32">
-      {% t dict.community.wechat %}
+      <img alt="Discord" src="/images/social/social-telegram.svg" width="32">
+      NodeSync
     </a>
   </li>
 </ul>
 
 ## Step 5: Expand Your Knowledge with Pactus Tutorials
 
-- [What is Pactus?](https://pactus.org/about/what-is-pactus/ ){:target="\_blank"}
-- [Roadmap](https://pactus.org/about/roadmap/ ){:target="\_blank"}
-- [FAQs](https://pactus.org/about/faq/ ){:target="\_blank"}
+- [What is Pactus?](https://pactus.org/about/what-is-pactus/ )
+- [Roadmap](https://pactus.org/about/roadmap/ )
+- [FAQs](https://pactus.org/about/faq/ )
