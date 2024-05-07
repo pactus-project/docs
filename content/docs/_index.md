@@ -23,7 +23,5 @@ This guide is designed for individuals and organizations interested in becoming 
  the field, this article will provide you with the necessary insights and tools to embark on your
  journey as a Pactus validator. Join us in securing the network and shaping the future of decentralized technology.
 
-<br>
- <button onclick="window.open('gettingstarted/become-a-validator/')">
-  Become a validator
-</button>
+</br>
+{{< hextra/hero-button text="Become a validator" link="/docs/gettingstarted/become-a-validator/" >}}
