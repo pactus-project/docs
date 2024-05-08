@@ -1,6 +1,7 @@
 ---
 title: State Hash
 weight: 4
+math: true
 ---
 
 The State Hash is used to ensure the integrity of the data in the Pactus blockchain.
