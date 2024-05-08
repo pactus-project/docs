@@ -74,18 +74,4 @@ layout: hextra-home
     class="hx-aspect-auto md:hx-aspect-[1.1/1] max-md:hx-min-h-[340px]"
     style="background: radial-gradient(ellipse at 50% 80%,rgba(39, 108, 245, 0.32),hsla(0,0%,100%,0));"
   >}}
-   {{< hextra/feature-card
-    title="Transparent Governance"
-    icon="light-bulb"
-    subtitle="Pactus promotes transparent governance, allowing stakeholders to actively participate in decision-making processes. Through consensus mechanisms, users can influence platform development, ensuring alignment with community values and goals."
-    class="hx-aspect-auto md:hx-aspect-[1.1/1] max-md:hx-min-h-[340px]"
-    style="background: radial-gradient(ellipse at 50% 80%,rgba(245, 108, 39, 0.32),hsla(0,0%,100%,0));"
-  >}}
-   {{< hextra/feature-card
-    title="Interoperability and Scalability"
-    icon="lightning-bolt"
-    subtitle="Pactus prioritizes interoperability and scalability, facilitating seamless interaction with other blockchain networks and protocols. By leveraging innovative solutions, Pactus ensures scalability without compromising decentralization or security, laying the foundation for future growth and expansion."
-    class="hx-aspect-auto md:hx-aspect-[1.1/1] max-md:hx-min-h-[340px]"
-    style="background: radial-gradient(ellipse at 50% 80%,rgba(245, 39, 39, 0.32),hsla(0,0%,100%,0));"
-  >}}
 {{< /hextra/feature-grid >}}
