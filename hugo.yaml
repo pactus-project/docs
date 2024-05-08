@@ -37,21 +37,21 @@ enableInlineShortcodes: true
 
 menu:
   main:
-    - identifier: home
-      name:   ↗ Pactus
-      url: "https://pactus.org"
-      weight: 1
-    - identifier: explorer
-      name:   ↗ Block Explorer
-      url: "https://pacviewer.com/"
-      weight: 2
-    - identifier: whitepaper
-      name:   ↗ Whitepaper
-      url: "https://github.com/pactus-project/Whitepaper/releases/latest/download/pactus_whitepaper.pdf"
-      weight: 3
     - identifier: documentation
       name: 📑 Documentation
       pageRef: /docs
+      weight: 1
+    - identifier: home
+      name:   ↗ Pactus
+      url: "https://pactus.org"
+      weight: 2
+    - identifier: explorer
+      name:   ↗ Block Explorer
+      url: "https://pacviewer.com/"
+      weight: 3
+    - identifier: whitepaper
+      name:   ↗ Whitepaper
+      url: "https://github.com/pactus-project/Whitepaper/releases/latest/download/pactus_whitepaper.pdf"
       weight: 4
     - name: Search
       weight: 5
