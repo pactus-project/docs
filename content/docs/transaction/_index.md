@@ -4,7 +4,7 @@ weight: 5
 prev: /docs/consensus/parameters
 next: /docs/transaction/format
 sidebar:
-  open: true
+  open: false
 ---
 
 {{< cards >}}

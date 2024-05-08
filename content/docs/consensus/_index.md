@@ -4,7 +4,7 @@ weight: 4
 prev: /docs/blockchain/serialization
 next: /docs/consensus/proof-of-stake
 sidebar:
-  open: true
+  open: false
 ---
 
 {{< cards >}}
