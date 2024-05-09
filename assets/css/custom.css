@@ -58,3 +58,11 @@
     color: #000 !important;
     background-color: #18ddd6 !important;
 }
+
+table {
+    text-indent: 0;
+    border-color: inherit;
+    border-collapse: collapse;
+    width: fit-content;
+    margin: 20px auto;
+}
