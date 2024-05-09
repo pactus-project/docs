@@ -214,7 +214,8 @@ It's required to subscribe to "Pactus Update News" channel news.
     <input type="hidden" name="nonce" />
     <p>
       <input type="email" name="email" required placeholder="E-mail" />
-      <input type="submit" class="btn" role="button" value="Subscribe" />
+      <p></p>
+      <input type="submit" class="custom-button" role="button" value="Subscribe" />  
     </p>
     <p></p>
     <div class="short">
@@ -227,6 +228,7 @@ It's required to subscribe to "Pactus Update News" channel news.
       <br />
       to ensure you receive our emails in your inbox.
     </div>
+    <p></p>
 
   <div class="captcha">
     <div class="h-captcha" data-sitekey="898156d4-1b49-4bb4-a3d9-f4c2214b9908"></div>
