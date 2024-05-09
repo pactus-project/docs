@@ -21,11 +21,11 @@ Transactions in Pactus consists the following fields:
   a different layout, and the current transaction version is set to 1.
 - **Lock Time** specifies the block number at which the transaction can be unlocked.
 - **Fee** contains the fee paid by the sender to the network for processing the transaction.
-  The fee is calculated based on the [percentage fee](/docs/transaction/fee/) model.
+  The fee is calculated based on the [percentage fee](/docs/concepts/transaction/fee/) model.
 - **Memo** is an optional message that can be included in the transaction.
   The message can be used to provide additional information about the transaction or to communicate with the recipient.
   The maximum size of the memo is 64 characters that is defined in the
-  [consensus parameters](/docs/consensus/parameters/)
+  [consensus parameters](/docs/concepts/consensus/parameters/)
 - **Payload Type** specifies the type of the transaction payload.
   Depending on the payload type, the payload data field is decoded differently.
 - **Payload Data** contains the actual data payload of the transaction.
@@ -42,11 +42,11 @@ The payload type field determines the format of the payload data field in the tr
 Different payload types have different formats for the payload data.
 The following are the supported transactions in Pactus blockchain:
 
-1. [Transfer transaction](/docs/transaction/transfer)
-2. [Bond transaction](/docs/transaction/bond)
-3. [Sortition transaction](/docs/transaction/sortition)
-4. [Unbond transaction](/docs/transaction/unbond)
-5. [Withdraw transaction](/docs/transaction/withdraw)
+1. [Transfer transaction](/docs/concepts/transaction/transfer)
+2. [Bond transaction](/docs/concepts/transaction/bond)
+3. [Sortition transaction](/docs/concepts/transaction/sortition)
+4. [Unbond transaction](/docs/concepts/transaction/unbond)
+5. [Withdraw transaction](/docs/concepts/transaction/withdraw)
 
 ## Transaction ID
 

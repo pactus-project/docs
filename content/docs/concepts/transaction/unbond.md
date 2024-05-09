@@ -4,9 +4,9 @@ weight: 6
 math: false
 ---
 
-Unbond transaction is used to unbond a [validator](/docs/blockchain/validator/).
+Unbond transaction is used to unbond a [validator](/docs/concepts/blockchain/validator/).
 An unbonded validator cannot participate in the sortition algorithm anymore, and after 21 days, the stake can be withdrawn.
-This is called the "unbond interval" and is defined in the [consensus parameter]({/docs/consensus/parameters/).
+This is called the "unbond interval" and is defined in the [consensus parameter]({/docs/concepts/consensus/parameters/).
 
 ## Payload Structure
 

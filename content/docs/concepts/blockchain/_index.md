@@ -2,7 +2,7 @@
 title: 🔗 Blockchain
 weight: 3
 prev: /docs/concepts
-next: /docs/blockchain/block
+next: /docs/concepts/blockchain/block
 sidebar:
   open: false
 ---

@@ -4,11 +4,11 @@ weight: 5
 math: false
 ---
 
-Sortition transaction is used to enter a [validator](/docs/blockchain/validator/)
-in the [committee](/docs/consensus/committee/).
+Sortition transaction is used to enter a [validator](/docs/concepts/blockchain/validator/)
+in the [committee](/docs/concepts/consensus/committee/).
 By committing a sortition transaction, the validator will enter the committee.
 Sortition transactions are valid for 7 blocks, which is defined as "sortition interval" in the
-[consensus parameters](/docs/consensus/parameters/).
+[consensus parameters](/docs/concepts/consensus/parameters/).
 
 ## Payload Structure
 

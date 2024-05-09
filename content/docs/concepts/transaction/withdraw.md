@@ -5,7 +5,7 @@ math: false
 ---
 
 Withdraw transaction is used to withdraw the staked coins from an unbonded
-[validator](/docs/blockchain/validator/)
+[validator](/docs/concepts/blockchain/validator/)
 
 ## Payload Structure
 
@@ -18,5 +18,5 @@ The withdraw transaction has a payload consists the following fields:
 | Variant  | Amount           |
 
 - **Sender address** is the address of the sender validator.
-- **Receiver address** is the address of the receiver [account](/docs/blockchain/account/).
+- **Receiver address** is the address of the receiver [account](/docs/concepts/blockchain/account/).
 - **Amount** is the amount of coins that should be withdrawn

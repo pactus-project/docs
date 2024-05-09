@@ -1,8 +1,8 @@
 ---
 title: 🧬 Consensus
 weight: 4
-prev: /docs/blockchain/serialization
-next: /docs/consensus/proof-of-stake
+prev: /docs/concepts/blockchain/serialization
+next: /docs/concepts/consensus/proof-of-stake
 sidebar:
   open: false
 ---

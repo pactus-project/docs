@@ -1,8 +1,8 @@
 ---
 title: 🪪 Transaction
 weight: 5
-prev: /docs/consensus/parameters
-next: /docs/transaction/format
+prev: /docs/concepts/consensus/parameters
+next: /docs/concepts/transaction/format
 sidebar:
   open: false
 ---

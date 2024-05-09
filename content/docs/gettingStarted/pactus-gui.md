@@ -132,12 +132,12 @@ In the "Default Wallet" tab, you can view your account details, including your b
 address information such as the **validator and reward addresses**.
 Your computer acts as a node and is recognized by the validator address in the Pactus network.
 The reward address is the account address where you collect the
-[rewards](/docs/blockchain/incentive/) earned by participating in
+[rewards](/docs/concepts/blockchain/incentive/) earned by participating in
 the consensus algorithm and proposing new blocks.
 
 To become a validator and participate in the
 consensus algorithm to earn rewards, you first need to
-[stake](/docs/consensus/proof-of-stake/) some coins. In the next
+[stake](/docs/concepts/consensus/proof-of-stake/) some coins. In the next
 [tutorial](/docs/gettingStarted/send-transactions-gui/),
 we will explain how to send a Bond transaction to become a validator.
 
