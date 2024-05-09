@@ -1,7 +1,7 @@
 ---
 title: 🔗 Blockchain
 weight: 3
-prev: /docs/getting-started/become-a-validator
+prev: /docs/concepts
 next: /docs/blockchain/block
 sidebar:
   open: false

@@ -57,7 +57,7 @@ jobs:
         run: |
           hugo \
             --gc --minify \
-            --baseURL "https://docs.pacviewer.com/"
+            --baseURL "https://docs.pactus.com/"
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
