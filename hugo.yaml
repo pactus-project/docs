@@ -45,10 +45,6 @@ menu:
       name:   ↗ Pactus
       url: "https://pactus.org"
       weight: 2
-    - identifier: explorer
-      name:   ↗ Block Explorer
-      url: "https://pacviewer.com/"
-      weight: 3
     - identifier: whitepaper
       name:   ↗ Whitepaper
       url: "https://github.com/pactus-project/Whitepaper/releases/latest/download/pactus_whitepaper.pdf"
