@@ -36,7 +36,7 @@ the resiliency of the algorithm is optimal if we have at least 3 non-faulty
 validators. So the minimum number of validators should be $3+1=4$.
 
 We denote a message as $\langle m \rangle$ tuple and a signed message by node $i$ as
-$\langle m \rangle_{\sigma_i}$.
+$$\langle m \rangle_{\sigma_i}$$.
 
 Pactus consensus algorithms has two phases: Block creation phase and change proposer phase.
 
@@ -53,7 +53,7 @@ The proposer $p$ collects transactions and creates a proposal block $B$. It sign
 broadcasts a proposal message with the **proposed** block piggybacked to all the validators.
 Propose message has this form:
 
-$\langle \langle \text{PROPOSE},h,r \rangle_{\sigma_p}, B \rangle$
+$$\langle \langle \text{PROPOSE},h,r \rangle_{\sigma_p}, B \rangle$$
 
 where:
 
@@ -67,7 +67,7 @@ If validator $i$ accepts the proposal, it enters _prepare_ step and signs and
 broadcasts _prepare_ message to all other validators. Otherwise, it does nothing.
 The prepare message has this form:
 
-$\langle \text{PREPARE},h,r,d \rangle_{\sigma_i}$
+$$\langle \text{PREPARE},h,r,d \rangle_{\sigma_i}$$
 
 where:
 
@@ -93,7 +93,7 @@ Each validator that receives a valid proposal and with $2f+1$ precommit messages
 validators (including its own), can create a block-announce messages and broadcasts it to the network.
 The block-announce message has this form:
 
-$\langle \text{BLOCK-ANNOUNCE} ,h ,r ,B, C \rangle$
+$$\langle \text{BLOCK-ANNOUNCE} ,h ,r ,B, C \rangle$$
 
 where:
 
@@ -132,7 +132,7 @@ In Pre-vote step each validator casts a pre-vote for a value $b \in \{0, 1\}$
 and broadcasts pre-vote message to the network.
 The pre-vote message has this form:
 
-$\langle\langle \text{CP:PRE-VOTE},h,r,r_{cp},b \rangle_{\sigma_i}, justification\rangle$
+$$\langle\langle \text{CP:PRE-VOTE},h,r,r_{cp},b \rangle_{\sigma_i}, justification\rangle$$
 
 The first round is a special round and each validator starts with an initial value.
 If the validator's timer has expired in the prepare step, its initial value is zero,
@@ -171,7 +171,7 @@ After collecting $2f+1$ valid and justified pre-votes, each validator casts a ma
 and broadcasts main-vote message to the network.
 The main-vote message has this form:
 
-$\langle\langle \text{CP:MAIN-VOTE},h,r,r_{cp},v \rangle_{\sigma_i}, justification\rangle$
+$$\langle\langle \text{CP:MAIN-VOTE},h,r,r_{cp},v \rangle_{\sigma_i}, justification\rangle$$
 
 The main-vote value $v$ determine as below:
 
