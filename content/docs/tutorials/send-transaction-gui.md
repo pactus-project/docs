@@ -1,6 +1,6 @@
 ---
 title: How to send transactions in Graphic Mode?
-weight: 1
+weight: 2
 ---
 
 ## Preface
