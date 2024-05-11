@@ -55,7 +55,7 @@ jobs:
           HUGO_ENVIRONMENT: production
           HUGO_ENV: production
         run: |
-          hugo \
+          cat ./hugo.yaml && hugo \
             --gc --minify \
             --baseURL "https://docs.pactus.com/"
       - name: Upload artifact
