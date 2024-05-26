@@ -171,6 +171,26 @@ docker run -it --rm -v %USERPROFILE%\pactus:/root/pactus pactus-wallet address a
       {{< /tab >}}
 {{< /tabs >}}
 
-By running a Pactus node, you contribute to the decentralization and security of the Pactus blockchain network.
+## Example docker compose
 
-Thank you for your participation!
+Here is example docker compose for run pactus node.
+
+```yaml
+version: '3'
+
+services:
+  pactus:
+    hostname: pactus
+    container_name: pactus
+    image: pactus/pactus:latest
+    command: pactus-daemon start -w /pactus
+    restart: always
+    volumes:
+      - ./pactus:/pactus
+    ports:
+      - 21888:21888 # required: p2p port
+      - 50051:50051 # optional: access to port grpc on host
+      - 8080:8080 # optional: access to port grpc gateway on host
+      - 8545:8545 # optional: access to port json rpc on host
+      - 8081:80 # optional: access to port http on host
+```
