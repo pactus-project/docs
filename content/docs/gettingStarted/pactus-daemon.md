@@ -109,6 +109,7 @@ Now you can start the node and sync with the network. Run the following command 
 ```bash
 ./pactus-daemon start
 ```
+
   {{< /tab >}}
   {{< tab >}}
 ```powershell
@@ -116,6 +117,8 @@ pactus-daemon.exe start
 ```
   {{< /tab >}}
 {{< /tabs >}}
+
+{{< hextra/hero-button text="How to run Pactus with systemd linux?" link="/docs/tutorials/linux-systemd/" >}}
 
 When the Pactus node starts running, it begins syncing with the network.
 This process may take some time, as your node needs to download and verify the entire blockchain history.

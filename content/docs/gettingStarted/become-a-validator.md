@@ -255,7 +255,7 @@ and earning rewards in return. Take this step to actively engage with the Pactus
 play a vital role in its ecosystem.
 
 </br>
-{{< hextra/hero-button text="Purchase coins" link="[docs](https://xeggex.com/asset/PACTUS)" >}}
+{{< hextra/hero-button text="Purchase coins" link="https://xeggex.com/asset/PACTUS" >}}
 
 
 ## Step 4: Join the Pactus Blockchain Community on Social Networks
