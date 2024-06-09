@@ -6,16 +6,16 @@ math: false
 
 Transactions in Pactus consists the following fields:
 
-| Size     | Field        |
-| -------- | ------------ |
-| 1 byte   | Version      |
-| 4 bytes  | Lock Time    |
-| Variant  | Fee          |
-| Variant  | Memo         |
-| 1 byte   | Payload Type |
-| Variant  | Payload Data |
-| 48 bytes | Signature    |
-| 96 bytes | Public Key   |
+| Field        | Size     |
+| ------------ | -------- |
+| Version      | 1 byte   |
+| Lock Time    | 4 bytes  |
+| Fee          | Variant  |
+| Memo         | Variant  |
+| Payload Type | 1 byte   |
+| Payload Data | Variant  |
+| Signature    | 48 bytes |
+| Public Key   | 96 bytes |
 
 - **Version** is the version of the transaction format. Different versions may have different fields or
   a different layout, and the current transaction version is set to 1.

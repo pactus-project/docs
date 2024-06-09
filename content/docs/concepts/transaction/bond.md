@@ -15,12 +15,12 @@ This is called the "bond interval" and is defined in the
 
 The bond transaction has a payload consists the following fields:
 
-| Size                | Field            |
-| ------------------- | ---------------- |
-| 21 bytes            | Sender address   |
-| 21 bytes            | Receiver address |
-| 96 bytes (optional) | Public key       |
-| Variant             | Amount           |
+| Field                 | Size     |
+| --------------------- | -------- |
+| Sender address        | 21 bytes |
+| Receiver address      | 21 bytes |
+| Public key (optional) | 96 bytes |
+| Amount                | Variant  |
 
 - **Sender address** is the address of the sender [account](/docs/concepts/blockchain/account/).
 - **Receiver address** is the address of the receiver validator.

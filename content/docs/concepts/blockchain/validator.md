@@ -12,14 +12,14 @@ The amount of stake held by validators determines their power in the consensus.
 
 The Validator structure is 120 bytes long and consists the following fields:
 
-| Size     | Field               |
-| -------- | ------------------- |
-| 96 bytes | Public Key          |
-| 4 bytes  | Number              |
-| 8 bytes  | Stake               |
-| 4 bytes  | Last Bonding Height |
-| 4 bytes  | Unbonding Height    |
-| 4 bytes  | Last Joined Height  |
+| Field               | Size     |
+| ------------------- | -------- |
+| Public Key          | 96 bytes |
+| Number              | 4 bytes  |
+| Stake               | 8 bytes  |
+| Last Bonding Height | 4 bytes  |
+| Unbonding Height    | 4 bytes  |
+| Last Joined Height  | 4 bytes  |
 
 - **Public Key** is the Validator's public key.
 - **Number** is a sequential and unique number assigned to each validator when it is created for the first time.

@@ -11,11 +11,11 @@ If the receiver account does not exist, it will be created.
 
 The transfer transaction has a payload consists the following fields:
 
-| Size     | Field            |
-| -------- | ---------------- |
-| 21 bytes | Sender address   |
-| 21 bytes | Receiver address |
-| Variant  | Amount           |
+| Field            | Size     |
+| ---------------- | -------- |
+| Sender address   | 21 bytes |
+| Receiver address | 21 bytes |
+| Amount           | Variant  |
 
 - **Sender address** is the account address that transfers the amount
 - **Receiver address** is the account address that receives the amount

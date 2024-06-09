@@ -12,8 +12,8 @@ This is called the "unbond interval" and is defined in the [consensus parameter]
 
 The unbond transaction has a payload consists the following field:
 
-| Size     | Field             |
-| -------- | ----------------- |
-| 21 bytes | Validator address |
+| Field             | Size     |
+| ----------------- | -------- |
+| Validator address | 21 bytes |
 
 - **Validator address** is the address of validator that is unbonded.
