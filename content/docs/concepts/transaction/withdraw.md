@@ -11,11 +11,11 @@ Withdraw transaction is used to withdraw the staked coins from an unbonded
 
 The withdraw transaction has a payload consists the following fields:
 
-| Size     | Field            |
-| -------- | ---------------- |
-| 21 bytes | Sender address   |
-| 21 bytes | Receiver address |
-| Variant  | Amount           |
+| Field            | Size     |
+| ---------------- | -------- |
+| Sender address   | 21 bytes |
+| Receiver address | 21 bytes |
+| Amount           | Variant  |
 
 - **Sender address** is the address of the sender validator.
 - **Receiver address** is the address of the receiver [account](/docs/concepts/blockchain/account/).

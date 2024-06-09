@@ -10,10 +10,10 @@ which can send transactions on the blockchain.
 
 The account structure is 12 bytes long and consists the following fields:
 
-| Size    | Field   |
+| Field   | Size    |
 | ------- | ------- |
-| 4 bytes | Number  |
-| 8 bytes | Balance |
+| Number  | 4 bytes |
+| Balance | 8 bytes |
 
 - **Number** is a sequential and unique number assigned to each account when it is created for the first time.
   The account number is used to calculate the [state hash](/docs/concepts/blockchain/state-hash) of the blockchain.

@@ -14,10 +14,10 @@ Sortition transactions are valid for 7 blocks, which is defined as "sortition in
 
 The sortition transaction has a payload consists the following fields:
 
-| Size     | Field           |
-| -------- | --------------- |
-| 21 bytes | Address         |
-| 48 bytes | Sortition Proof |
+| Field           | Size     |
+| --------------- | -------- |
+| Address         | 21 bytes |
+| Sortition Proof | 48 bytes |
 
 - **Address** is the address of the validator that evaluated the sortition
 - **Sortition Proof** is the proof of evaluating the sortition

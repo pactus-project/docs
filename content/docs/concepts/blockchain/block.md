@@ -18,14 +18,14 @@ the block.
 
 The block header is 138 bytes long and consists the following fields:
 
-| Size     | Field               |
-| -------- | ------------------- |
-| 1 byte   | Version             |
-| 4 bytes  | Timestamp           |
-| 32 bytes | Previous Block Hash |
-| 32 bytes | State Hash          |
-| 48 bytes | Sortition Seed      |
-| 21 bytes | Proposer Address    |
+| Field               | Size     |
+| ------------------- | -------- |
+| Version             | 1 byte   |
+| Timestamp           | 4 bytes  |
+| Previous Block Hash | 32 bytes |
+| State Hash          | 32 bytes |
+| Sortition Seed      | 48 bytes |
+| Proposer Address    | 21 bytes |
 
 - **Version** is used to track the software or protocol upgrade, and the current block version is set to 1.
 - **Timestamp** is the time of the block as the number of seconds since January 1, 1970 (Unix Epoch).
@@ -43,13 +43,13 @@ It is the result of the Pactus consensus algorithm and ensures that the block ha
 
 The block certificate consists the following fields:
 
-| Size     | Field      |
-| -------- | ---------- |
-| 4 bytes  | Height     |
-| 2 bytes  | Round      |
-| Variant  | Committers |
-| Variant  | Absentees  |
-| 48 bytes | Signature  |
+| Field      | Size     |
+| ---------- | -------- |
+| Height     | 4 bytes  |
+| Round      | 2 bytes  |
+| Committers | Variant  |
+| Absentees  | Variant  |
+| Signature  | 48 bytes |
 
 - **Height** is the height of the certified block.
 - **Round** is the consensus round in which this certificate was issued.
