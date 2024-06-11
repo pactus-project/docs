@@ -47,7 +47,7 @@ or CLI](https://pactus.org/download/ ) for initlize your node
   Keeping your seed phrase private is essential for the security of your funds.
   {{< /callout >}}
 
-  ![Generated Seed words](/images/topic/become-a-validator/generated-seed.png)
+![Generated Seed words](/images/topic/become-a-validator/generated-seed.png)
 
 - You will need to confirm your seed words by typing them into the input box provided.
 
@@ -252,9 +252,6 @@ Staking is essential for securing the network and participating in consensus. By
 you'll have the resources needed to stake on your validators, contributing to the network's security
 and earning rewards in return. Take this step to actively engage with the Pactus blockchain and
 play a vital role in its ecosystem.
-
-</br>
-{{< hextra/hero-button text="Purchase coins" link="https://xeggex.com/asset/PACTUS" >}}
 
 ## Step 4: Join the Pactus Blockchain Community on Social Networks
 

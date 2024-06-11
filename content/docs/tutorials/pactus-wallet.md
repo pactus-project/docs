@@ -36,7 +36,6 @@ If you wish to select or specify a different wallet, use the `--path` option.
 To create a new wallet, run the following command:
 
 {{< tabs items="Linux-mac,windows" >}}
-
   {{< tab >}}
 
 ```shell
@@ -45,7 +44,6 @@ To create a new wallet, run the following command:
 
 
   {{< /tab >}}
-
    {{< tab >}}
 
 ```shell
@@ -61,9 +59,7 @@ Replace `<PATH-To-NEW-WALLET>` with the file path where you want to create the w
 
 If you lose your wallet or forget your password, you can recover it by running this command:
 
-
 {{< tabs items="Linux-mac,windows" >}}
-
   {{< tab >}}
 
 ```shell
@@ -71,7 +67,6 @@ If you lose your wallet or forget your password, you can recover it by running t
 ```
 
   {{< /tab >}}
-
    {{< tab >}}
 
 ```shell
@@ -88,7 +83,6 @@ Replace `<PATH-To-NEW-WALLET>` with the file path where you want to restore the 
 You can change the wallet password by running this command:
 
 {{< tabs items="Linux-mac,windows" >}}
-
   {{< tab >}}
 
 ```shell
@@ -96,7 +90,6 @@ You can change the wallet password by running this command:
 ```
 
   {{< /tab >}}
-
    {{< tab >}}
 
 ```shell
@@ -113,7 +106,6 @@ This command changes the password for the `default_wallet` if there is one, or s
 You can obtain the wallet seed by running this command:
 
 {{< tabs items="Linux-mac,windows" >}}
-
   {{< tab >}}
 
 ```shell
@@ -121,7 +113,6 @@ You can obtain the wallet seed by running this command:
 ```
 
   {{< /tab >}}
-
    {{< tab >}}
 
 ```shell
@@ -143,7 +134,6 @@ In this section, we'll cover address commands that help you manage your wallet a
 You can create a new address by running this command:
 
 {{< tabs items="Linux-mac,windows" >}}
-
   {{< tab >}}
 
 ```shell
@@ -151,7 +141,6 @@ You can create a new address by running this command:
 ```
 
   {{< /tab >}}
-
    {{< tab >}}
 
 ```shell
@@ -166,7 +155,6 @@ By default, the above command creates an account address.
 If you want to create a validator address instead, you can use the `--type validator` option with the command like this:
 
 {{< tabs items="Linux-mac,windows" >}}
-
   {{< tab >}}
 
 ```shell
@@ -174,7 +162,6 @@ If you want to create a validator address instead, you can use the `--type valid
 ```
 
   {{< /tab >}}
-
    {{< tab >}}
 
 ```shell
@@ -191,7 +178,6 @@ You can also assign a label to your address to better organize your address book
 To view the list of wallet addresses, use this command:
 
 {{< tabs items="Linux-mac,windows" >}}
-
   {{< tab >}}
 
 ```shell
@@ -199,7 +185,6 @@ To view the list of wallet addresses, use this command:
 ```
 
   {{< /tab >}}
-
    {{< tab >}}
 
 ```shell
@@ -214,7 +199,6 @@ pactus-wallet.exe address all
 To obtain the public key for a specific address, run this command:
 
 {{< tabs items="Linux-mac,windows" >}}
-
   {{< tab >}}
 
 ```shell
@@ -222,7 +206,6 @@ To obtain the public key for a specific address, run this command:
 ```
 
   {{< /tab >}}
-
    {{< tab >}}
 
 ```shell
@@ -239,7 +222,6 @@ Replace `<ADDRESS>` with the address for which you want to retrieve its public k
 You can get the private key of your address by this command:
 
 {{< tabs items="Linux-mac,windows" >}}
-
   {{< tab >}}
 
 ```shell
@@ -247,7 +229,6 @@ You can get the private key of your address by this command:
 ```
 
   {{< /tab >}}
-
    {{< tab >}}
 
 ```shell
@@ -266,7 +247,6 @@ they will have full control over that address.
 You can get the balance of your address by this command:
 
 {{< tabs items="Linux-mac,windows" >}}
-
   {{< tab >}}
 
 ```shell
@@ -274,7 +254,6 @@ You can get the balance of your address by this command:
 ```
 
   {{< /tab >}}
-
    {{< tab >}}
 
 ```shell
@@ -301,7 +280,6 @@ To create, sign, and broadcast a
 [Transfer transaction](/docs/concepts/transaction/transfer/), use the following command:
 
 {{< tabs items="Linux-mac,windows" >}}
-
   {{< tab >}}
 
 ```shell
@@ -309,7 +287,6 @@ To create, sign, and broadcast a
 ```
 
   {{< /tab >}}
-
    {{< tab >}}
 
 ```shell
@@ -328,7 +305,6 @@ To create, sign, and broadcast a
 [Bond transaction](/docs/concepts/transaction/bond/), use the following command:
 
 {{< tabs items="Linux-mac,windows" >}}
-
   {{< tab >}}
 
 ```shell
@@ -336,7 +312,6 @@ To create, sign, and broadcast a
 ```
 
   {{< /tab >}}
-
    {{< tab >}}
 
 ```shell
@@ -353,7 +328,6 @@ If the validator associated with this address does not exist yet,
 you need to provide the public key to create it:
 
 {{< tabs items="Linux-mac,windows" >}}
-
   {{< tab >}}
 
 ```shell
@@ -361,7 +335,6 @@ you need to provide the public key to create it:
 ```
 
   {{< /tab >}}
-
    {{< tab >}}
 
 ```shell
@@ -380,7 +353,6 @@ To create, sign, and broadcast a
 [Unbond transaction](/docs/concepts/transaction/unbond/), use the following command:
 
 {{< tabs items="Linux-mac,windows" >}}
-
   {{< tab >}}
 
 
@@ -389,7 +361,6 @@ To create, sign, and broadcast a
 ```
 
   {{< /tab >}}
-
    {{< tab >}}
 
 
@@ -408,7 +379,6 @@ To create, sign, and broadcast a
 [Withdraw transaction](/docs/concepts/transaction/withdraw/), use the following command:
 
 {{< tabs items="Linux-mac,windows" >}}
-
   {{< tab >}}
 
 ```shell
@@ -416,7 +386,6 @@ To create, sign, and broadcast a
 ```
 
   {{< /tab >}}
-
    {{< tab >}}
 
 ```shell

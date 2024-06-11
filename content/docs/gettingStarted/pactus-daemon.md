@@ -28,7 +28,6 @@ A working directory is a place where you save blockchain data and wallets.
 Open the Terminal and run the following command:
 
 {{< tabs items="Linux-mac,windows" >}}
-
   {{< tab >}}
 
 ```bash
@@ -79,7 +78,6 @@ If you ever need to restore your node, for instance on a new device,
 you can use the `--restore` option followed by your mnemonic:
 
 {{< tabs items="Linux-mac,windows" >}}
-
   {{< tab >}}
 
 ```bash
@@ -105,7 +103,6 @@ This command will restore your wallet in the `C:\Users\<USER_NAME>\pactus` direc
 Now you can start the node and sync with the network. Run the following command in the Terminal:
 
 {{< tabs items="Linux-mac,windows" >}}
-
   {{< tab >}}
 
 ```bash

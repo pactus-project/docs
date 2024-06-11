@@ -34,23 +34,24 @@ A working directory is a place where you save blockchain data and wallets.
 Open the Terminal and run the following command:
 
 {{< tabs items="Linux-mac,windows" >}}
-
   {{< tab >}}
+
 ```bash
 docker run -it --rm -v ~/pactus:/root/pactus pactus/pactus pactus-daemon init
 ```
 
 This command creates your wallet and setup the working working directory at `~/pactus`.
 
-    {{< /tab >}}
+  {{< /tab >}}
+  {{< tab >}}
 
-      {{< tab >}}
 ```powershell
 docker run -it --rm -v %USERPROFILE%\pactus:/root/pactus pactus/pactus pactus-daemon init
 ```
 
 This command creates your wallet and setup the working working directory at `C:\Users\<USER_NAME>\pactus`.
-    {{< /tab >}}
+
+  {{< /tab >}}
 {{< /tabs >}}
 
 Here's an explanation of the Docker flags:
@@ -71,7 +72,6 @@ Here's an explanation of the Docker flags:
 Now you can start the node and sync with the network. Run the following command in the Terminal:
 
 {{< tabs items="Linux-mac,windows" >}}
-
   {{< tab >}}
 
 ```bash
@@ -79,7 +79,6 @@ docker run -it -d -v ~/pactus:/root/pactus -p 21888:21888 -p 21888:21888/udp -p 
 ```
 
   {{< /tab >}}
-
   {{< tab >}}
 
 ```powershell
@@ -160,14 +159,12 @@ You can use Pactus Docker to manage the wallet.
 For example, you can check the balance of your wallet as shown below:
 
 {{< tabs items="Linux-mac,windows" >}}
-
   {{< tab >}}
   ```bash
 docker run -it --rm -v ~/pactus:/root/pactus pactus/pactus pactus-wallet address all --balance --stake
 
 ```
       {{< /tab >}}
-
         {{< tab >}}
         ```powershell
 docker run -it --rm -v %USERPROFILE%\pactus:/root/pactus pactus-wallet address all --balance --stake
