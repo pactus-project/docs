@@ -1,0 +1,27 @@
+<div id="{{ .Get 0 }}"></div>
+<script>
+  (function() {
+    var hexString = "{{ .Get 1 }}".toUpperCase();
+    var id = "{{ .Get 0 }}";
+    var formattedHex = formatHexDump(hexString);
+    document.getElementById(id).innerHTML = "<pre><code class=\"language-shell\">" + formattedHex + "</code></pre>";
+
+    function formatHexDump(hex) {
+      var result = "";
+      var len = hex.length / 2;
+      for (var i = 0; i < len; i += 16) {
+        var offset = (i * 2).toString(16).toUpperCase().padStart(6, '0');
+        var rowHex = "";
+        var rowChars = "";
+        for (var j = 0; j < 16 && (i + j) < len; j++) {
+          var byte = hex.substr((i + j) * 2, 2);
+          rowHex += byte + " ";
+          var char = String.fromCharCode(parseInt(byte, 16));
+          rowChars += (char.match(/[ -~]/) ? char : '.');
+        }
+        result += offset + "   " + rowHex.padEnd(48, ' ') + " " + rowChars + "\n";
+      }
+      return result;
+    }
+  })();
+</script>
