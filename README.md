@@ -1,30 +1,51 @@
-Pactus Blockchain documentation
+# Pactus Documentation
 
-## How to run on local?
+This repository contains all the content for the https://docs.pactus.org website.
 
-1. First install gohugo extended from https://gohugo.io/installation/.
-2. Clone docs repository `git clone git@github.com:pactus-project/docs.git`.
-3. Go to path docs `cd docs`.
-4. Run on local by using command `hugo server`.
+## Contributing to Documentation
 
-```shell
-hugo v0.125.6+extended linux/amd64 BuildDate=unknown
+Contributions to the website, including fixing typos or grammatical errors, are always welcome.
+To contribute, simply edit the relevant page or open a pull request.
 
+## Running Locally
 
-                   | EN   
--------------------+------
-  Pages            |  62  
-  Paginator pages  |   0  
-  Non-page files   |   0  
-  Static files     | 110  
-  Processed images |   0  
-  Aliases          |   0  
-  Cleaned          |   0  
+To get started, install [Hugo](https://gohugo.io/installation/), first.
+Now, clone this repository and run it locally using the following commands:
 
-Built in 352 ms
-Environment: "development"
-Serving pages from disk
-Running in Fast Render Mode. For full rebuilds on change: hugo server --disableFastRender
-Web Server is available at http://localhost:1313/ (bind address 127.0.0.1) 
-Press Ctrl+C to stop
+```zsh
+git clone https://github.com/pactus-project/docs.git
+cd docs
+hugo server
 ```
+
+## Markdown
+
+Markdown is a lightweight markup language that uses plain text formatting syntax to convert text into HTML,
+making it easy to read and write for web content.
+
+### Linting
+
+Markdown linting helps ensure consistent style and formatting, detects syntax errors, improves readability,
+and maintains best practices in Markdown documents.
+
+To lint Markdown files, you can use the `mdl` ([MarkdownLint](https://github.com/DavidAnson/markdownlint)) command-line tool.
+This tool checks your Markdown files against a set of rules and provides feedback on any issues found.
+
+To install `mdl`, first you need to install [Ruby](https://www.ruby-lang.org/en/documentation/installation/).
+Once you ensure Ruby installed on your system, you can install `mdl` by running:
+
+```sh
+gem install mdl
+```
+
+Then you can lint your Markdown files with the following command:
+
+```sh
+mdl --style=.mdlrc.rb ./content
+```
+
+This command will check all documents in the `content` folder for any linting issues and output them in the terminal.
+
+## Deployment
+
+Updating the main branch will automatically deploy this repository through [deploy](.github/workflows/deploy.yml) Github action.
