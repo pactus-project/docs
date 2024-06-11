@@ -11,33 +11,16 @@ The percentage, minimum fee, and maximum fee parameters are part of the blockcha
 
 The formula to calculate the transaction fee is as follows:
 
-<!--
 $$
 \begin{align*}
-& \textbf{function} \ calculateFee(amount, percentage, fee_{min}, fee_{max}) \\
-& \qquad fee \gets amount \times percentage \\
-& \\
-& \qquad \textbf{if} \ fee < fee_{min} \ \textbf{then} \\
-& \qquad \qquad \textbf{return} \ fee_{min} \\
-& \\
-& \qquad \textbf{if} \ fee > fee_{max} \ \textbf{then} \\
-& \qquad \qquad \textbf{return} \ fee_{max} \\
-& \\
-& \qquad \textbf{return} \ fee \\
-& \textbf{end function}
-\end{align*}
-$$ -->
-
-$$
-\begin{align*}
-fee = amount \times percentage \\
-\\
+fee = amount \times percentage \newline
+\newline
 fee =
 \begin{cases}
- & fee_{min} & \textbf{ if } \ fee < fee_{min} \\
-  & \\
- & fee_{max} & \textbf{ if } \ fee > fee_{max} \\
- & \\
+ & fee_{min} & \textbf{ if } \ fee < fee_{min} \newline
+  & \newline
+ & fee_{max} & \textbf{ if } \ fee > fee_{max} \newline
+ & \newline
  & fee & \textbf{otherwise}
  \end{cases}
 \end{align*}

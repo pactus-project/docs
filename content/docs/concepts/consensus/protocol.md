@@ -140,7 +140,7 @@ and if the validator's timer has expired in the precommit step, its initial valu
 
 $$
 b = \begin{cases}
-1 & \text{if timer expired in prepare step,} \\
+1 & \text{if timer expired in prepare step,} \newline
 0 & \text{if timer expired in precommit step.}
 \end{cases}
 $$
@@ -149,8 +149,8 @@ In the next rounds, each validator select $2f+1$ properly justified main-votes f
 
 $$
 b = \begin{cases}
-0 & \text{if there is a main-vote for 0,} \\
-1 & \text{if there is a main-vote for 1,} \\
+0 & \text{if there is a main-vote for 0,} \newline
+1 & \text{if there is a main-vote for 1,} \newline
 0 (biased) & \text{if all main-votes are abstain.}
 \end{cases}
 $$
@@ -177,8 +177,8 @@ The main-vote value $v$ determine as below:
 
 $$
 v = \begin{cases}
-0 & \text{if there are 2f+1 pre-vote for 0,} \\
-1 & \text{if there are 2f+1 pre-vote for 1,} \\
+0 & \text{if there are 2f+1 pre-vote for 0,} \newline
+1 & \text{if there are 2f+1 pre-vote for 1,} \newline
 abstain & \text{if there are pre-votes for 0 and 1.}
 \end{cases}
 $$

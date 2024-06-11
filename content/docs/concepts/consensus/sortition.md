@@ -38,13 +38,13 @@ The pseudocode below demonstrates the evaluation of the VRF for the sortition al
 
 $$
 \begin{align*}
-& \textbf{function} \ VRF(sk, seed, total\_stake) \\
-& \qquad pk \gets P_{BLS}(sk) \\
-& \qquad proof \gets S_{BLS}(sk, seed \| pk) \\
-& \qquad rnd \gets H(proof) \\
-& \qquad index \gets \frac{(rnd \times total\_stake)}{2^{256}} \\
-& \qquad \\
-& \qquad \textbf{return} \ index, proof \\
+& \textbf{function} \ VRF(sk, seed, total\_stake) \newline
+& \qquad pk \gets P_{BLS}(sk) \newline
+& \qquad proof \gets S_{BLS}(sk, seed \| pk) \newline
+& \qquad rnd \gets H(proof) \newline
+& \qquad index \gets \frac{(rnd \times total\_stake)}{2^{256}} \newline
+& \qquad \newline
+& \qquad \textbf{return} \ index, proof \newline
 & \textbf{end function}
 \end{align*}
 $$
@@ -63,15 +63,15 @@ To verify a sortition proof, both the validator's public key and stake are requi
 
 $$
 \begin{align*}
-& \textbf{function} \ verifyVRF(pk, seed, proof, stake, total\_stake) \\
-& \qquad \textbf{if} \ V_{BLS}(pk, seed \| pk, proof) = True \ \textbf{then} \\
-& \qquad \qquad rnd \gets H(proof) \\
-& \qquad \qquad index \gets \frac{(rnd \times total\_stake)}{2^{256}} \\
-& \qquad \\
-& \qquad  \qquad \textbf{return} \ index \leqslant stake \\
-& \qquad  \textbf{else} \\
-& \qquad  \qquad \textbf{return} \ False \\
-& \qquad  \textbf{end if} \\
+& \textbf{function} \ verifyVRF(pk, seed, proof, stake, total\_stake) \newline
+& \qquad \textbf{if} \ V_{BLS}(pk, seed \| pk, proof) = True \ \textbf{then} \newline
+& \qquad \qquad rnd \gets H(proof) \newline
+& \qquad \qquad index \gets \frac{(rnd \times total\_stake)}{2^{256}} \newline
+& \qquad \newline
+& \qquad  \qquad \textbf{return} \ index \leqslant stake \newline
+& \qquad  \textbf{else} \newline
+& \qquad  \qquad \textbf{return} \ False \newline
+& \qquad  \textbf{end if} \newline
 & \textbf{end function}
 \end{align*}
 $$
@@ -94,8 +94,8 @@ In each block, the block proposer generates a new sortition seed based on the pr
 
 $$
 \begin{align*}
-& \textbf{function} \ generateSeed(sk, prev\_seed) \\
-& \qquad \textbf{return} \ S_{BLS}(sk, H(prev\_seed)) \\
+& \textbf{function} \ generateSeed(sk, prev\_seed) \newline
+& \qquad \textbf{return} \ S_{BLS}(sk, H(prev\_seed)) \newline
 & \textbf{end function}
 \end{align*}
 $$
@@ -106,8 +106,8 @@ The verification function is as follows:
 
 $$
 \begin{align*}
-& \textbf{function} \ verifySeed(pk, prev\_seed, seed) \\
-& \qquad \textbf{return} \ V_{BLS}(pk, H(prev\_seed), seed) \\
+& \textbf{function} \ verifySeed(pk, prev\_seed, seed) \newline
+& \qquad \textbf{return} \ V_{BLS}(pk, H(prev\_seed), seed) \newline
 & \textbf{end function}
 \end{align*}
 $$
