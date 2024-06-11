@@ -13,7 +13,7 @@ rule 'MD026', :punctuation => '.,;:'
 rule 'MD029', :style => "ordered"
 
 # # https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md#md024
-# rule 'MD024', :allow_different_nesting => true
+rule 'MD024', :allow_different_nesting => true
 
 # First header should be a top level header
 exclude_rule 'MD002'

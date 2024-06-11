@@ -38,15 +38,20 @@ To create a new wallet, run the following command:
 {{< tabs items="Linux-mac,windows" >}}
 
   {{< tab >}}
+
 ```shell
 ./pactus-wallet --path <PATH-To-NEW-WALLET> create
 ```
+
+
   {{< /tab >}}
 
    {{< tab >}}
+
 ```shell
 pactus-wallet.exe --path <PATH-To-NEW-WALLET> create
 ```
+
   {{< /tab >}}
 {{< /tabs >}}
 
@@ -60,15 +65,19 @@ If you lose your wallet or forget your password, you can recover it by running t
 {{< tabs items="Linux-mac,windows" >}}
 
   {{< tab >}}
+
 ```shell
 ./pactus-wallet --path <PATH-To-NEW-WALLET> recover
 ```
+
   {{< /tab >}}
 
    {{< tab >}}
+
 ```shell
 pactus-wallet.exe --path <PATH-To-NEW-WALLET> recover
 ```
+
   {{< /tab >}}
 {{< /tabs >}}
 
@@ -81,15 +90,19 @@ You can change the wallet password by running this command:
 {{< tabs items="Linux-mac,windows" >}}
 
   {{< tab >}}
+
 ```shell
 ./pactus-wallet password
 ```
+
   {{< /tab >}}
 
    {{< tab >}}
+
 ```shell
 pactus-wallet.exe password
 ```
+
   {{< /tab >}}
 {{< /tabs >}}
 
@@ -102,15 +115,19 @@ You can obtain the wallet seed by running this command:
 {{< tabs items="Linux-mac,windows" >}}
 
   {{< tab >}}
+
 ```shell
 ./pactus-wallet seed
 ```
+
   {{< /tab >}}
 
    {{< tab >}}
+
 ```shell
 pactus-wallet.exe seed
 ```
+
   {{< /tab >}}
 {{< /tabs >}}
 
@@ -128,15 +145,19 @@ You can create a new address by running this command:
 {{< tabs items="Linux-mac,windows" >}}
 
   {{< tab >}}
+
 ```shell
 ./pactus-wallet address new
 ```
+
   {{< /tab >}}
 
    {{< tab >}}
+
 ```shell
 pactus-wallet.exe address new
 ```
+
   {{< /tab >}}
 {{< /tabs >}}
 
@@ -147,15 +168,19 @@ If you want to create a validator address instead, you can use the `--type valid
 {{< tabs items="Linux-mac,windows" >}}
 
   {{< tab >}}
+
 ```shell
 ./pactus-wallet address new --type validator
 ```
+
   {{< /tab >}}
 
    {{< tab >}}
+
 ```shell
 pactus-wallet.exe address new --type validator
 ```
+
   {{< /tab >}}
 {{< /tabs >}}
 
@@ -168,15 +193,19 @@ To view the list of wallet addresses, use this command:
 {{< tabs items="Linux-mac,windows" >}}
 
   {{< tab >}}
+
 ```shell
 ./pactus-wallet address all
 ```
+
   {{< /tab >}}
 
    {{< tab >}}
+
 ```shell
 pactus-wallet.exe address all
 ```
+
   {{< /tab >}}
 {{< /tabs >}}
 
@@ -187,15 +216,19 @@ To obtain the public key for a specific address, run this command:
 {{< tabs items="Linux-mac,windows" >}}
 
   {{< tab >}}
+
 ```shell
 ./pactus-wallet address pub <ADDRESS>
 ```
+
   {{< /tab >}}
 
    {{< tab >}}
+
 ```shell
 pactus-wallet.exe address pub <ADDRESS>
 ```
+
   {{< /tab >}}
 {{< /tabs >}}
 
@@ -208,15 +241,19 @@ You can get the private key of your address by this command:
 {{< tabs items="Linux-mac,windows" >}}
 
   {{< tab >}}
+
 ```shell
 ./pactus-wallet address priv <ADDRESS>
 ```
+
   {{< /tab >}}
 
    {{< tab >}}
+
 ```shell
 pactus-wallet.exe address priv <ADDRESS>
 ```
+
   {{< /tab >}}
 {{< /tabs >}}
 
@@ -231,15 +268,19 @@ You can get the balance of your address by this command:
 {{< tabs items="Linux-mac,windows" >}}
 
   {{< tab >}}
+
 ```shell
 ./pactus-wallet address balance <ADDRESS>
 ```
+
   {{< /tab >}}
 
    {{< tab >}}
+
 ```shell
 pactus-wallet.exe address balance <ADDRESS>
 ```
+
   {{< /tab >}}
 {{< /tabs >}}
 
@@ -262,15 +303,19 @@ To create, sign, and broadcast a
 {{< tabs items="Linux-mac,windows" >}}
 
   {{< tab >}}
+
 ```shell
 ./pactus-wallet tx transfer <FROM> <TO> <AMOUNT>
 ```
+
   {{< /tab >}}
 
    {{< tab >}}
+
 ```shell
 pactus-wallet.exe tx transfer <FROM> <TO> <AMOUNT>
 ```
+
   {{< /tab >}}
 {{< /tabs >}}
 
@@ -285,15 +330,19 @@ To create, sign, and broadcast a
 {{< tabs items="Linux-mac,windows" >}}
 
   {{< tab >}}
+
 ```shell
 ./pactus-wallet tx bond <FROM> <TO> <AMOUNT>
 ```
+
   {{< /tab >}}
 
    {{< tab >}}
+
 ```shell
 pactus-wallet.exe tx bond <FROM> <TO> <AMOUNT>
 ```
+
   {{< /tab >}}
 {{< /tabs >}}
 
@@ -306,15 +355,19 @@ you need to provide the public key to create it:
 {{< tabs items="Linux-mac,windows" >}}
 
   {{< tab >}}
+
 ```shell
 ./pactus-wallet tx bond --pub <PUBLIC_KEY> <FROM> <TO> <AMOUNT>
 ```
+
   {{< /tab >}}
 
    {{< tab >}}
+
 ```shell
 pactus-wallet.exe tx bond --pub <PUBLIC_KEY> <FROM> <TO> <AMOUNT>
 ```
+
   {{< /tab >}}
 {{< /tabs >}}
 
@@ -330,16 +383,20 @@ To create, sign, and broadcast a
 
   {{< tab >}}
 
+
 ```shell
 ./pactus-wallet tx unbond <ADDRESS>
 ```
+
   {{< /tab >}}
 
    {{< tab >}}
 
+
 ```shell
 pactus-wallet.exe tx unbond <ADDRESS>
 ```
+
   {{< /tab >}}
 {{< /tabs >}}
 
@@ -353,14 +410,18 @@ To create, sign, and broadcast a
 {{< tabs items="Linux-mac,windows" >}}
 
   {{< tab >}}
+
 ```shell
 ./pactus-wallet tx withdraw <FROM> <TO> <AMOUNT>
 ```
+
   {{< /tab >}}
 
    {{< tab >}}
+
 ```shell
 pactus-wallet.exe tx withdraw <FROM> <TO> <AMOUNT>
 ```
+
   {{< /tab >}}
 {{< /tabs >}}

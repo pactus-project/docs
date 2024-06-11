@@ -38,7 +38,8 @@ Open the Terminal and run the following command:
 This command creates your wallet and setup the working working directory at `~/pactus`.
   {{< /tab >}}
   {{< tab >}}
-  ```powershell
+
+```powershell
 pactus-daemon.exe init
 ```
 
@@ -62,7 +63,6 @@ If you wish to select or specify a different path, use the `--working-dir` optio
       Keep your wallet seed phrase private and secure.
       If someone else gains access to your seed phrase, they can control your wallet and funds.
 {{< /callout >}}
-
 
 The working directory contains:
 
@@ -90,6 +90,7 @@ Replace `<your-mnemonic>` with your previously noted mnemonic phrase.
 This command will restore your wallet in the `~/pactus` directory.
   {{< /tab >}}
   {{< tab >}}
+
 ```powershell
 pactus-daemon.exe init --restore "<your-mnemonic>"
 ```
@@ -106,12 +107,14 @@ Now you can start the node and sync with the network. Run the following command 
 {{< tabs items="Linux-mac,windows" >}}
 
   {{< tab >}}
+
 ```bash
 ./pactus-daemon start
 ```
 
   {{< /tab >}}
   {{< tab >}}
+
 ```powershell
 pactus-daemon.exe start
 ```

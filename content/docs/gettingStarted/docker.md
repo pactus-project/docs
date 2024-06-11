@@ -73,16 +73,20 @@ Now you can start the node and sync with the network. Run the following command 
 {{< tabs items="Linux-mac,windows" >}}
 
   {{< tab >}}
-  ```bash
+
+```bash
 docker run -it -d -v ~/pactus:/root/pactus -p 21888:21888 -p 21888:21888/udp -p 50051:50051 -p 8080:8080 --name pactus pactus/pactus pactus-daemon start --password <WALLET_PASSWORD>
 ```
-      {{< /tab >}}
 
-       {{< tab >}}
-       ```powershell
+  {{< /tab >}}
+
+  {{< tab >}}
+
+```powershell
 docker run -it -d -v %USERPROFILE%\pactus:/root/pactus -p 21888:21888 -p 21888:21888/udp -p 50051:50051 -p 8080:8080 --name pactus pactus/pactus pactus-daemon start  --password {WALLET_PASSWORD}
 ```
-      {{< /tab >}}
+
+  {{< /tab >}}
 {{< /tabs >}}
 
 This command creates and runs a Docker container named "pactus".
@@ -96,10 +100,10 @@ Here's an explanation of the Docker flags:
 
 The default network ports in Pactus are defined as follows. It is recommended not to change these default ports:
 
-  - [P2P](https://libp2p.io/) port is set to 21888. P2P supports both UDP and TCP protocols.
-  - [gRPC](https://grpc.io/) port is set to 50051. The gRPC module is enabled by default for localhost.
-  - [gRPC-gateway](https://grpc-ecosystem.github.io/grpc-gateway/) is set to 8080. gRPC-gateway is disabled by default.
-  - [Nanomsg](https://nanomsg.org/) port is set to 40899. The Nanomsg service is disabled by default.
+- [P2P](https://libp2p.io/) port is set to 21888. P2P supports both UDP and TCP protocols.
+- [gRPC](https://grpc.io/) port is set to 50051. The gRPC module is enabled by default for localhost.
+- [gRPC-gateway](https://grpc-ecosystem.github.io/grpc-gateway/) is set to 8080. gRPC-gateway is disabled by default.
+- [Nanomsg](https://nanomsg.org/) port is set to 40899. The Nanomsg service is disabled by default.
 
 ### Essential Commands
 
