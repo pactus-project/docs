@@ -25,14 +25,17 @@ w32tm /query /status
 If this command result is `The following error occurred: The service has not been started. (0x80070426)`, follow step 3 for enable and sync ntp.
 
 3. Unregister w32time with `w32tm /unregister`
+
 ```shell
 W32Time successfully unregistered.
 ```
 4. Then register w32time again `w32tm /register`
+
 ```shell
 W32Time successfully registered.
 ```
 5. Now start w32time service `net start w32time`
+
 ```shell
 The Windows Time service is starting.
 The Windows Time service was started successfully.

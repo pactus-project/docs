@@ -30,7 +30,7 @@ Open the Terminal and run the following command:
 {{< tabs items="Linux-mac,windows" >}}
 
   {{< tab >}}
-  
+
 ```bash
 ./pactus-daemon init
 ```
@@ -81,7 +81,7 @@ you can use the `--restore` option followed by your mnemonic:
 {{< tabs items="Linux-mac,windows" >}}
 
   {{< tab >}}
-  
+
 ```bash
 ./pactus-daemon init --restore "<your-mnemonic>"
 ```
@@ -128,10 +128,10 @@ Please be patient while your node syncs.
 
 The default network ports in Pactus are defined as follows. It is recommended not to change these default ports:
 
-   - [P2P](https://libp2p.io/) port is set to 21888. P2P supports both UDP and TCP protocols.
-   - [gRPC](https://grpc.io/) port is set to 50051. The gRPC module is enabled by default for localhost.
-   - [gRPC-gateway](https://grpc-ecosystem.github.io/grpc-gateway/) is set to 8080. gRPC-gateway is disabled by default.
-   - [Nanomsg](https://nanomsg.org/) port is set to 40899. The Nanomsg service is disabled by default.
+  - [P2P](https://libp2p.io/) port is set to 21888. P2P supports both UDP and TCP protocols.
+  - [gRPC](https://grpc.io/) port is set to 50051. The gRPC module is enabled by default for localhost.
+  - [gRPC-gateway](https://grpc-ecosystem.github.io/grpc-gateway/) is set to 8080. gRPC-gateway is disabled by default.
+  - [Nanomsg](https://nanomsg.org/) port is set to 40899. The Nanomsg service is disabled by default.
 
 ## Running Pactus in the Background
 

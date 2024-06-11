@@ -3,7 +3,6 @@ title: Data Serialization
 weight: 9
 ---
 
-
 Data serialization is the process of converting data into a format that can be easily stored or transmitted over a network.
 It typically involves encoding data into a sequence of bytes, which can later be decoded to
 reconstruct the original data structure.
@@ -99,7 +98,7 @@ Here is an example of a vote message that encoded using [CBOR](https://cbor.me/?
 000020   B2 26 E8 BA D1 A9 85 91  72 AB 96 05 55 01 5D A8  ²&èºÑ©..r«..U.]¨
 000030   F5 E1 96 D6 E9 61 60 9A  E4 15 28 C4 EC 73 68 97  õá.Öéa`.ä.(Äìsh.
 000040   59 37 06 58 30 B0 47 D5  C2 C0 72 29 92 84 35 5F  Y7.X0°GÕÂÀr)..5_
-000050   5B 50 14 B5 BF 77 F1 70  2B C0 8B 36 06 1D DB A0  [P.µ¿wñp+À.6..Û 
+000050   5B 50 14 B5 BF 77 F1 70  2B C0 8B 36 06 1D DB A0  [P.µ¿wñp+À.6..Û
 000060   8E 41 BE BF 51 AB 04 16  D2 65 97 31 90 D2 6C BB  .A¾¿Q«..Òe.1.Òl»
 000070   79 14 46 81 E7                                    y.F.ç
 ```

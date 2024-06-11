@@ -21,7 +21,7 @@ Once you have downloaded and extracted the Pactus CLI file, you can proceed to t
 In this section, we will explore various wallet commands that help you create, manage,
 and recover your Pactus wallet.
 
-<callout type="info">
+{{< callout type="info" >}}
 
 <b>Wallet Path</b>
 <br><br>
@@ -29,7 +29,7 @@ By default, the node's wallet is stored at `~/pactus/wallets/default_wallet` on 
 On Windows, you can find it at `C:\Users\<USER_NAME>\pactus\wallets\default_wallet`.
 <br><br>
 If you wish to select or specify a different wallet, use the `--path` option.
-</callout>
+{{< /callout >}}
 
 ### Create a Wallet
 
