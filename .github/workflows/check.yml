@@ -70,7 +70,21 @@ jobs:
       #   with:
       #     root: public/
 
-      - name: Check HTML
-        uses: chabad360/htmlproofer@master
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
         with:
-          directory: "./public"
+          ruby-version: '3.0'
+
+      - name: Install html-proofer
+        run: |
+          gem install html-proofer -v 4.3
+
+      ##
+      ## Status code 429: https://http.dev/429
+      ## Status code 999: https://http.dev/999#linkedin
+      ## Status code 403: https://http.dev/403
+      ## Status code 0: https://github.com/gjtorikian/html-proofer/issues/716#issuecomment-1162052155
+      ##
+      ## By swap-urls, we don't get error if we rename or move a document.
+      - name: Check for broken links
+        run: htmlproofer --swap-urls 'https\://pactus.org:' --ignore-status-codes "999,429,403,0" --ignore-urls=/github.com/,/cdn./,/discord.gg/,/t.me/,/tools.ietf.org/ ./_site
