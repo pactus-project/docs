@@ -47,13 +47,14 @@ WantedBy=multi-user.target
 Before running the service, you need to initialize the Pactus service by using `pactus-daemon init`.
 {{< /callout >}}
 
-3. After creating or modifying the service file, you need to reload the systemd manager configuration to recognize the new service.
+3. After creating or modifying the service file,
+  you need to reload the systemd manager configuration to recognize the new service.
 
 ```shell
 sudo systemctl daemon-reload
 ```
 
-4. To start the service immediately and enable it to start on boot, use the following commands:
+1. To start the service immediately and enable it to start on boot, use the following commands:
 
 ```shell
 sudo systemctl start pactus

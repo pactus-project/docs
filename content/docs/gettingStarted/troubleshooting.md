@@ -17,8 +17,8 @@ reduce your `availability score`, preventing you from receiving rewards.
 Therefore, make sure to check that your system or server clock is fully synchronized and that NTP is enabled.
 
 {{< tabs items="Windows,Linux-Mac" >}}
-
 {{< tab >}}
+
 1. Run `cmd` with run as administrator.
 2. Check NTP is enable
 
@@ -26,27 +26,28 @@ Therefore, make sure to check that your system or server clock is fully synchron
 w32tm /query /status
 ```
 
-If this command result is `The following error occurred: The service has not been started. (0x80070426)`, follow step 3 for enable and sync ntp.
+If this command result is `The following error occurred: The service has not been started. (0x80070426)`,
+follow step 3 for enable and sync ntp.
 
 3. Unregister w32time with `w32tm /unregister`
-
 
 ```shell
 W32Time successfully unregistered.
 ```
-4. Then register w32time again `w32tm /register`
 
+4. Then register w32time again `w32tm /register`
 
 ```shell
 W32Time successfully registered.
 ```
-5. Now start w32time service `net start w32time`
 
+5. Now start w32time service `net start w32time`
 
 ```shell
 The Windows Time service is starting.
 The Windows Time service was started successfully.
 ```
+
 6. Check NTP status `w32tm /query /status`
 
 ```shell
@@ -97,8 +98,8 @@ Poll Interval: 10 (1024s)
 ```
 
 {{< /tab >}}
-
 {{< tab >}}
+
 1. Run `terminal`.
 2. Check NTP status by `timedatectl status`
 
@@ -116,9 +117,12 @@ If `NTP service` is not active and `System clock synchronized` is no please foll
 
 3. Enable NTP using `ntpq`, `chrony` or `systemd-timesyncd`.
 
-- <a href="https://timetoolsltd.com/ntp/how-to-install-and-configure-ntp-on-linux/" rel="nofollow noindex noreferrer" target="_blank">How to enable NTP service by ntpq</a>
-- <a href="https://ubuntu.com/server/docs/how-to-serve-the-network-time-protocol-with-chrony" rel="nofollow noindex noreferrer" target="_blank">How to enable NTP service by chrony</a>
-- <a href="https://groups.google.com/g/public-ntp-discuss/c/VhXAirp-28c" rel="nofollow noindex noreferrer" target="_blank">How to enable NTP service by systemd-timesyncd</a>
+- <a href="https://timetoolsltd.com/ntp/how-to-install-and-configure-ntp-on-linux/" rel="nofollow noindex noreferrer"
+  target="_blank">How to enable NTP service by ntpq</a>
+- <a href="https://ubuntu.com/server/docs/how-to-serve-the-network-time-protocol-with-chrony"
+  rel="nofollow noindex noreferrer" target="_blank">How to enable NTP service by chrony</a>
+- <a href="https://groups.google.com/g/public-ntp-discuss/c/VhXAirp-28c" rel="nofollow noindex noreferrer" target="_blank">
+  How to enable NTP service by systemd-timesyncd</a>
 
 {{< /tab >}}
 
@@ -126,18 +130,22 @@ If `NTP service` is not active and `System clock synchronized` is no please foll
 
 ## Port P2P is open in local machine or server
 
-One of the most important factors that causes interference with the node's communication is the P2P input and output ports not being open. If you have a firewall, you should check this.
+One of the most important factors that causes interference with the node's communication is the P2P input and
+output ports not being open.
+If you have a firewall, you should check this.
 
 - Default Port for mainnet is: `21888`
 - Default Port for testnet is: `21777`
 
-You can check by <a href="https://portchecker.co/" rel="nofollow noindex noreferrer" target="_blank">online service</a> for this port is open or close.
+You can check by <a href="https://portchecker.co/" rel="nofollow noindex noreferrer" target="_blank">online service</a>
+for this port is open or close.
 
 ![Open port in firewall](/images/open-port.jpg)
 
 ## Avoid running node with the same validators on different machines
 
-Do not attempt to run node with same validators on different machines, as this will reduce the `availability score` of your validators.
+Do not attempt to run node with same validators on different machines,
+as this will reduce the `availability score` of your validators.
 
 ## Using UDP instead relay for sync
 

@@ -55,7 +55,6 @@ For Windows it is set to `C:\Users\<USER_NAME>\pactus`.
 If you wish to select or specify a different path, use the `--working-dir` option.
 {{< /callout >}}
 
-
 {{< callout type="warning" >}}
 <b>Wallet seed is important</b>
       <br><br>
@@ -115,6 +114,7 @@ Now you can start the node and sync with the network. Run the following command 
 ```powershell
 pactus-daemon.exe start
 ```
+
   {{< /tab >}}
 {{< /tabs >}}
 
@@ -128,10 +128,10 @@ Please be patient while your node syncs.
 
 The default network ports in Pactus are defined as follows. It is recommended not to change these default ports:
 
-  - [P2P](https://libp2p.io/) port is set to 21888. P2P supports both UDP and TCP protocols.
-  - [gRPC](https://grpc.io/) port is set to 50051. The gRPC module is enabled by default for localhost.
-  - [gRPC-gateway](https://grpc-ecosystem.github.io/grpc-gateway/) is set to 8080. gRPC-gateway is disabled by default.
-  - [Nanomsg](https://nanomsg.org/) port is set to 40899. The Nanomsg service is disabled by default.
+- [P2P](https://libp2p.io/) port is set to 21888. P2P supports both UDP and TCP protocols.
+- [gRPC](https://grpc.io/) port is set to 50051. The gRPC module is enabled by default for localhost.
+- [gRPC-gateway](https://grpc-ecosystem.github.io/grpc-gateway/) is set to 8080. gRPC-gateway is disabled by default.
+- [Nanomsg](https://nanomsg.org/) port is set to 40899. The Nanomsg service is disabled by default.
 
 ## Running Pactus in the Background
 

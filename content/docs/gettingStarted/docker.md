@@ -160,16 +160,20 @@ For example, you can check the balance of your wallet as shown below:
 
 {{< tabs items="Linux-mac,windows" >}}
   {{< tab >}}
-  ```bash
+
+``` bash
 docker run -it --rm -v ~/pactus:/root/pactus pactus/pactus pactus-wallet address all --balance --stake
 
 ```
-      {{< /tab >}}
-        {{< tab >}}
-        ```powershell
+
+  {{< /tab >}}
+  {{< tab >}}
+
+``` powershell
 docker run -it --rm -v %USERPROFILE%\pactus:/root/pactus pactus-wallet address all --balance --stake
 ```
-      {{< /tab >}}
+
+  {{< /tab >}}
 {{< /tabs >}}
 
 ## Example docker compose

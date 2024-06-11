@@ -22,7 +22,6 @@ In this section, we will explore various wallet commands that help you create, m
 and recover your Pactus wallet.
 
 {{< callout type="info" >}}
-
 <b>Wallet Path</b>
 <br><br>
 By default, the node's wallet is stored at `~/pactus/wallets/default_wallet` on Unix-like systems.
@@ -42,9 +41,8 @@ To create a new wallet, run the following command:
 ./pactus-wallet --path <PATH-To-NEW-WALLET> create
 ```
 
-
   {{< /tab >}}
-   {{< tab >}}
+  {{< tab >}}
 
 ```shell
 pactus-wallet.exe --path <PATH-To-NEW-WALLET> create
@@ -67,7 +65,7 @@ If you lose your wallet or forget your password, you can recover it by running t
 ```
 
   {{< /tab >}}
-   {{< tab >}}
+  {{< tab >}}
 
 ```shell
 pactus-wallet.exe --path <PATH-To-NEW-WALLET> recover
@@ -90,7 +88,7 @@ You can change the wallet password by running this command:
 ```
 
   {{< /tab >}}
-   {{< tab >}}
+  {{< tab >}}
 
 ```shell
 pactus-wallet.exe password
@@ -113,7 +111,7 @@ You can obtain the wallet seed by running this command:
 ```
 
   {{< /tab >}}
-   {{< tab >}}
+  {{< tab >}}
 
 ```shell
 pactus-wallet.exe seed
@@ -141,7 +139,7 @@ You can create a new address by running this command:
 ```
 
   {{< /tab >}}
-   {{< tab >}}
+  {{< tab >}}
 
 ```shell
 pactus-wallet.exe address new
@@ -162,7 +160,7 @@ If you want to create a validator address instead, you can use the `--type valid
 ```
 
   {{< /tab >}}
-   {{< tab >}}
+  {{< tab >}}
 
 ```shell
 pactus-wallet.exe address new --type validator
@@ -185,7 +183,7 @@ To view the list of wallet addresses, use this command:
 ```
 
   {{< /tab >}}
-   {{< tab >}}
+  {{< tab >}}
 
 ```shell
 pactus-wallet.exe address all
@@ -206,7 +204,7 @@ To obtain the public key for a specific address, run this command:
 ```
 
   {{< /tab >}}
-   {{< tab >}}
+  {{< tab >}}
 
 ```shell
 pactus-wallet.exe address pub <ADDRESS>
@@ -229,7 +227,7 @@ You can get the private key of your address by this command:
 ```
 
   {{< /tab >}}
-   {{< tab >}}
+  {{< tab >}}
 
 ```shell
 pactus-wallet.exe address priv <ADDRESS>
@@ -254,7 +252,7 @@ You can get the balance of your address by this command:
 ```
 
   {{< /tab >}}
-   {{< tab >}}
+  {{< tab >}}
 
 ```shell
 pactus-wallet.exe address balance <ADDRESS>
@@ -287,7 +285,7 @@ To create, sign, and broadcast a
 ```
 
   {{< /tab >}}
-   {{< tab >}}
+  {{< tab >}}
 
 ```shell
 pactus-wallet.exe tx transfer <FROM> <TO> <AMOUNT>
@@ -312,7 +310,7 @@ To create, sign, and broadcast a
 ```
 
   {{< /tab >}}
-   {{< tab >}}
+  {{< tab >}}
 
 ```shell
 pactus-wallet.exe tx bond <FROM> <TO> <AMOUNT>
@@ -335,7 +333,7 @@ you need to provide the public key to create it:
 ```
 
   {{< /tab >}}
-   {{< tab >}}
+  {{< tab >}}
 
 ```shell
 pactus-wallet.exe tx bond --pub <PUBLIC_KEY> <FROM> <TO> <AMOUNT>
@@ -355,14 +353,12 @@ To create, sign, and broadcast a
 {{< tabs items="Linux-mac,windows" >}}
   {{< tab >}}
 
-
 ```shell
 ./pactus-wallet tx unbond <ADDRESS>
 ```
 
   {{< /tab >}}
-   {{< tab >}}
-
+  {{< tab >}}
 
 ```shell
 pactus-wallet.exe tx unbond <ADDRESS>
@@ -386,7 +382,7 @@ To create, sign, and broadcast a
 ```
 
   {{< /tab >}}
-   {{< tab >}}
+  {{< tab >}}
 
 ```shell
 pactus-wallet.exe tx withdraw <FROM> <TO> <AMOUNT>
