@@ -9,6 +9,9 @@ rule 'MD013', :line_length => 120, :ignore_code_blocks => true, :tables => false
 # Trailing punctuation in header
 rule 'MD026', :punctuation => '.,;:'
 
+# Ordered list
+rule 'MD029', :style => "ordered"
+
 # # https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md#md024
 # rule 'MD024', :allow_different_nesting => true
 

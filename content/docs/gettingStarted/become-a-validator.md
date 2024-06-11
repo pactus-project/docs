@@ -47,7 +47,6 @@ or CLI](https://pactus.org/download/ ) for initlize your node
   Keeping your seed phrase private is essential for the security of your funds.
   {{< /callout >}}
 
-
   ![Generated Seed words](/images/topic/become-a-validator/generated-seed.png)
 
 - You will need to confirm your seed words by typing them into the input box provided.
@@ -215,7 +214,7 @@ It's required to subscribe to "Pactus Update News" channel news.
     <p>
       <input type="email" name="email" required placeholder="E-mail" />
       <p></p>
-      <input type="submit" class="custom-button" role="button" value="Subscribe" />  
+      <input type="submit" class="custom-button" role="button" value="Subscribe" />
     </p>
     <p></p>
     <div class="short">
@@ -256,7 +255,6 @@ play a vital role in its ecosystem.
 
 </br>
 {{< hextra/hero-button text="Purchase coins" link="https://xeggex.com/asset/PACTUS" >}}
-
 
 ## Step 4: Join the Pactus Blockchain Community on Social Networks
 

@@ -12,7 +12,7 @@ This tutorial will guide you through the steps to run Pactus in CLI on android d
 - termux: https://f-droid.org/en/packages/com.termux/
 - wget-nano: `pkg intall wget nano`
 
-## How to initlize pactus node on android?
+## How to initialize Pactus node on android?
 
 1. First need download termux.
 2. Then download [pactus-cli_{version}_android_arm64.tar.gz](https://github.com/pactus-project/pactus/releases/latest)
