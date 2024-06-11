@@ -1,6 +1,6 @@
 # Configuration
 baseURL: "https://docs.pactus.org/"
-title: "Pactus Blockchain Documentation"
+title: "Pactus Documentation"
 
 enableRobotsTXT: true
 enableGitInfo: true
@@ -20,7 +20,7 @@ languages:
   en:
     languageName: English
     weight: 1
-    title: Pactus Blockchain Documentation
+    title: Pactus Documentation
 
 module:
   imports:
@@ -51,24 +51,20 @@ enableInlineShortcodes: true
 
 menu:
   main:
-    - identifier: documentation
-      name: 📑 Documentation
-      pageRef: /docs
-      weight: 1
     - identifier: home
       name:   ↗ Pactus
       url: "https://pactus.org"
-      weight: 2
+      weight: 1
     - identifier: whitepaper
       name:   ↗ Whitepaper
       url: "https://github.com/pactus-project/Whitepaper/releases/latest/download/pactus_whitepaper.pdf"
-      weight: 4
+      weight: 2y
     - name: Search
-      weight: 5
+      weight: 3
       params:
         type: search
     - name: GitHub
-      weight: 6
+      weight: 4
       url: "https://github.com/pactus-project"
       params:
         icon: github
