@@ -1,5 +1,5 @@
 ---
-title: How to run Pactus using Docker?
+title: Run Pactus using Docker
 weight: 4
 ---
 

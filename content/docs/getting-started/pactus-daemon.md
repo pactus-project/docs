@@ -1,5 +1,5 @@
 ---
-title: How to run Pactus in Command Line Mode?
+title: Run Pactus in Command Line Mode
 weight: 3
 ---
 
