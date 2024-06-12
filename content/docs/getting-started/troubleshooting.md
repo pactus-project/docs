@@ -1,6 +1,6 @@
 ---
 title: Troubleshooting Pactus Node
-weight: 7
+weight: 5
 ---
 
 Below, we have identified a series of issues that might interfere with the node's execution process.
