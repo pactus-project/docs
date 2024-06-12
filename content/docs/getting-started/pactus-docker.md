@@ -40,7 +40,7 @@ Open the Terminal and run the following command:
 docker run -it --rm -v ~/pactus:/root/pactus pactus/pactus pactus-daemon init
 ```
 
-This command creates your wallet and setup the working working directory at `~/pactus`.
+This command creates your wallet and setup the working directory at `~/pactus`.
 
   {{< /tab >}}
   {{< tab >}}
@@ -49,7 +49,7 @@ This command creates your wallet and setup the working working directory at `~/p
 docker run -it --rm -v %USERPROFILE%\pactus:/root/pactus pactus/pactus pactus-daemon init
 ```
 
-This command creates your wallet and setup the working working directory at `C:\Users\<USER_NAME>\pactus`.
+This command creates your wallet and setup the working directory at `C:\Users\<USER_NAME>\pactus`.
 
   {{< /tab >}}
 {{< /tabs >}}
@@ -99,10 +99,11 @@ Here's an explanation of the Docker flags:
 
 The default network ports in Pactus are defined as follows. It is recommended not to change these default ports:
 
-- [P2P](https://libp2p.io/) port is set to 21888. P2P supports both UDP and TCP protocols.
-- [gRPC](https://grpc.io/) port is set to 50051. The gRPC module is enabled by default for localhost.
-- [gRPC-gateway](https://grpc-ecosystem.github.io/grpc-gateway/) is set to 8080. gRPC-gateway is disabled by default.
-- [Nanomsg](https://nanomsg.org/) port is set to 40899. The Nanomsg service is disabled by default.
+- [P2P](https://libp2p.io/) port is `21888`. P2P supports both UDP and TCP protocols.
+- [gRPC](https://grpc.io/) port is `50051`. The gRPC module is enabled by default for localhost.
+- [gRPC-gateway](https://grpc-ecosystem.github.io/grpc-gateway/) port is `8080`. The gRPC-gateway is disabled by default.
+- [JSON-RPC](https://www.jsonrpc.org/) port is `8545`. The JSON-RPC service is disabled by default.
+- [Nanomsg](https://nanomsg.org/) port is `40899`. The Nanomsg service is disabled by default.
 
 ### Essential Commands
 
