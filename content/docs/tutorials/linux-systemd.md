@@ -3,18 +3,23 @@ title: How to run Pactus with systemd linux?
 weight: 8
 ---
 
-Systemd is a system and service manager for Linux operating systems. It is designed to provide better efficiency, performance, and manageability over the traditional SysV init system. systemd is a suite of basic building blocks for a Linux system that provides a system and service manager that runs as PID 1 and starts the rest of the system.
+Systemd is a system and service manager for Linux operating systems.
+It is designed to provide better efficiency, performance, and manageability over the traditional SysV init system.
+systemd is a suite of basic building blocks for a Linux system that provides a system and service manager that
+runs as PID 1 and starts the rest of the system.
 
 ## Prerequisites
 
 - Download the latest version of Pactus CLI for your Linux system from [here](https://pactus.org/download/#cli).
-- Systemd: This guide assumes that systemd is installed and running on your Linux distribution. Most modern Linux distributions use systemd by default.
+- Systemd: This guide assumes that systemd is installed and running on your Linux distribution.
+- Most modern Linux distributions use systemd by default.
 
 ## How to create systemd service?
 
 First, create a systemd service file for `pactus-daemon` file. This file will tell systemd how to manage your service.
 
-1. Open a terminal and create a new service file in the `/etc/systemd/system/` directory. You will need superuser permissions to do this.
+1. Open a terminal and create a new service file in the `/etc/systemd/system/` directory.
+2. You will need superuser permissions to do this.
 
 ```shell
 sudo nano /etc/systemd/system/pactus.service
@@ -42,13 +47,14 @@ WantedBy=multi-user.target
 Before running the service, you need to initialize the Pactus service by using `pactus-daemon init`.
 {{< /callout >}}
 
-3. After creating or modifying the service file, you need to reload the systemd manager configuration to recognize the new service.
+3. After creating or modifying the service file,
+  you need to reload the systemd manager configuration to recognize the new service.
 
 ```shell
 sudo systemctl daemon-reload
 ```
 
-4. To start the service immediately and enable it to start on boot, use the following commands:
+1. To start the service immediately and enable it to start on boot, use the following commands:
 
 ```shell
 sudo systemctl start pactus

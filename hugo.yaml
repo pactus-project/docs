@@ -6,9 +6,9 @@ enableRobotsTXT: true
 enableGitInfo: true
 hasCJKLanguage: true
 
-services:
-  googleAnalytics:
-    ID: G-58DDE02X9B
+# services:
+#   googleAnalytics:
+#     ID: G-58DDE02X9B
 
 outputs:
   home: [HTML]
@@ -72,38 +72,6 @@ menu:
       url: "https://github.com/pactus-project"
       params:
         icon: github
-
-  # currently we don't need to more section in side bar
-  # sidebar:
-  #   - identifier: more
-  #     name: More
-  #     params:
-  #       type: separator
-  #     weight: 1
-  #   - identifier: pactus
-  #     name: "Pactus ↗"
-  #     url: "https://pactus.org"
-  #     weight: 2
-  #   - identifier: blog
-  #     name: "Blog ↗"
-  #     url: "https://pactus.org/blog/"
-  #     weight: 3
-  #   - identifier: community
-  #     name: "Community ↗"
-  #     url: "https://pactus.org/community/"
-  #     weight: 4
-  #   - identifier: pips
-  #     name: "PIPs ↗"
-  #     url: "https://pips.pactus.org/"
-  #     weight: 5
-  #   - identifier: faqs
-  #     name: "FAQs ↗"
-  #     url: "https://pactus.org/about/faq/"
-  #     weight: 6
-  #   - identifier: about
-  #     name: "About Us ↗"
-  #     url: "https://pactus.org/about/what-is-pactus/"
-  #     weight: 7
 
 params:
   navbar:
