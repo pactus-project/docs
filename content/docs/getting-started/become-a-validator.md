@@ -111,23 +111,19 @@ or CLI](https://pactus.org/download/ ) for initlize your node
 - Run file "pactus-daemon" with init command for initlization.
 
 ```shell
-
 ./pactus-daemon init
-
 ```
 
 - Generate new seed words and press "y" for continue, It is crucial to back up these
   seed words either by writing them down or storing them in a secure document.
 
 ```shell
-
 Your wallet seed is:
    hundred excuse lady weird impulse vendor please penalty wish rally blanket mansion
 
 Write down this seed on a piece of paper to recover your validator key in the future.
 
 Do you want to continue? [y/N] y
-
 ```
 
   {{< callout type="warning" >}}
@@ -139,23 +135,19 @@ Do you want to continue? [y/N] y
   with the wallet, such as creating transactions.
 
 ```shell
-
 Enter a password for wallet
 Password: *******
 Confirm password: *******
-
 ```
 
 - You can select the number of validators on your node for staking. You can choose
   between 7 and 32 validators for each node.
 
 ```shell
-
 How many validators do you want to create?
 Each node can run up to 32 validators, and each validator can hold up to 1000 staked coins.
 You can define validators based on the amount of coins you want to stake.
 ✔ Number of Validators: |7
-
 ```
 
 - After select number of validators your inilized and you can start your node with command `./pactus-daemon start -w /home/{user}/pactus`,

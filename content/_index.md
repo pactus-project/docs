@@ -28,6 +28,7 @@ layout: hextra-home
 {{< hextra/feature-grid >}}
   {{< hextra/feature-card
     title="Solid State Proof of Stake (SSPoS) Consensus"
+    link="#"
     icon="shield-check"
     subtitle=`Pactus employs SSPoS, a revolutionary consensus mechanism that ensures fast and
     secure block creation without relying on delegation or miners.
@@ -38,7 +39,8 @@ layout: hextra-home
   >}}
   {{< hextra/feature-card
     title="Accessible Node Operation"
-      icon="chip"
+    link="#"
+    icon="chip"
     subtitle=`With a simple GUI application, Pactus enables anyone to easily run a node and engage with the platform.
     The intuitive interface requires no technical expertise, allowing users to effortlessly manage wallets,
     execute transactions, deploy smart contracts, and participate in consensus with just a few clicks.`
@@ -47,6 +49,7 @@ layout: hextra-home
   >}}
   {{< hextra/feature-card
     title="Address Balances and Transaction History"
+    link="#"
     icon="credit-card"
     subtitle=`Enable users to check the balance of any address on the blockchain and retrieve its transaction history.
     This feature is beneficial for businesses managing multiple addresses and monitoring their transaction activities.`
@@ -55,6 +58,7 @@ layout: hextra-home
   >}}
   {{< hextra/feature-card
     title="Fair and Predictable Fee Structure"
+    link="#"
     icon="collection"
     subtitle=`Pactus implements a percentage-based fee model to ensure fairness and predictability in transaction costs.
     By calculating fees based on a percentage with defined minimum and maximum thresholds,
@@ -65,6 +69,7 @@ layout: hextra-home
   >}}
   {{< hextra/feature-card
     title="Community-Driven Fee Adjustment"
+    link="#"
     icon="chevron-double-right"
     subtitle=`Through consensus among validators, Pactus facilitates the adjustment of its fee model,
     ensuring responsiveness to market conditions and user preferences.
@@ -74,6 +79,7 @@ layout: hextra-home
   >}}
   {{< hextra/feature-card
     title="Inclusive Participation"
+    link="#"
     icon="emoji-happy"
     subtitle=`With a minimum stake requirement of just 1 PAC coin, Pactus ensures that anyone can become a validator and
     participate in the consensus process.
@@ -83,6 +89,7 @@ layout: hextra-home
   >}}
     {{< hextra/feature-card
     title="Efficient Resource Utilization"
+    link="#"
     icon="server"
     subtitle=`Pactus optimizes resource utilization by eliminating the need for energy-intensive mining or delegation processes.
     Through SSPoS, the platform achieves consensus efficiently, minimizing resource waste and environmental impact.`
