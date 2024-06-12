@@ -1,5 +1,5 @@
 ---
-title: How to run Pactus in Graphic Mode?
+title: Run Pactus in Graphic Mode
 weight: 2
 ---
 

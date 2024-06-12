@@ -1,5 +1,5 @@
 ---
-title: How to run Pactus in Command Line Mode?
+title: Run Pactus in Command Line Mode
 weight: 3
 ---
 
@@ -34,7 +34,7 @@ Open the Terminal and run the following command:
 ./pactus-daemon init
 ```
 
-This command creates your wallet and setup the working working directory at `~/pactus`.
+This command creates your wallet and setup the working directory at `~/pactus`.
   {{< /tab >}}
   {{< tab >}}
 
@@ -42,15 +42,15 @@ This command creates your wallet and setup the working working directory at `~/p
 pactus-daemon.exe init
 ```
 
-This command creates your wallet and setup the working working directory at `C:\Users\<USER_NAME>\pactus`.
+This command creates your wallet and setup the working directory at `C:\Users\<USER_NAME>\pactus`.
   {{< /tab >}}
 {{< /tabs >}}
 
 {{< callout type="info" >}}
 <b>Working director</b>
 <br><br>
-By default the working directory that store the blockchain data is set to `~/pactus` in Unix-like systems.
-For Windows it is set to `C:\Users\<USER_NAME>\pactus`.
+By default the working directory that store the blockchain data stores in `~/pactus` in Unix-like systems.
+For Windows it stores in `C:\Users\<USER_NAME>\pactus`.
 <br><br>
 If you wish to select or specify a different path, use the `--working-dir` option.
 {{< /callout >}}
@@ -85,6 +85,7 @@ you can use the `--restore` option followed by your mnemonic:
 
 Replace `<your-mnemonic>` with your previously noted mnemonic phrase.
 This command will restore your wallet in the `~/pactus` directory.
+
   {{< /tab >}}
   {{< tab >}}
 
@@ -126,12 +127,14 @@ Please be patient while your node syncs.
 
 ### Default Ports
 
-The default network ports in Pactus are defined as follows. It is recommended not to change these default ports:
+The default network ports in Pactus are defined as follows.
+It is not recommended to change these default ports:
 
-- [P2P](https://libp2p.io/) port is set to 21888. P2P supports both UDP and TCP protocols.
-- [gRPC](https://grpc.io/) port is set to 50051. The gRPC module is enabled by default for localhost.
-- [gRPC-gateway](https://grpc-ecosystem.github.io/grpc-gateway/) is set to 8080. gRPC-gateway is disabled by default.
-- [Nanomsg](https://nanomsg.org/) port is set to 40899. The Nanomsg service is disabled by default.
+- [P2P](https://libp2p.io/) port is `21888`. P2P supports both UDP and TCP protocols.
+- [gRPC](https://grpc.io/) port is `50051`. The gRPC module is enabled by default for localhost.
+- [gRPC-gateway](https://grpc-ecosystem.github.io/grpc-gateway/) port is `8080`. The gRPC-gateway is disabled by default.
+- [JSON-RPC](https://www.jsonrpc.org/) port is `8545`. The JSON-RPC service is disabled by default.
+- [Nanomsg](https://nanomsg.org/) port is `40899`. The Nanomsg service is disabled by default.
 
 ## Running Pactus in the Background
 
