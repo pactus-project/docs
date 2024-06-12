@@ -12,7 +12,5 @@ sidebar:
   {{< card link="pactus-gui" title="How to run Pactus in Graphic Mode?">}}
   {{< card link="pactus-daemon" title="How to run Pactus in Command Line Mode?">}}
   {{< card link="docker" title="How to run Pactus using Docker?">}}
-  {{< card link="android" title="How to run Pactus in android device?">}}
-  {{< card link="configuration" title="Pactus Node Configuration">}}
   {{< card link="troubleshooting" title="Troubleshooting Pactus Node">}}
 {{< /cards >}}
