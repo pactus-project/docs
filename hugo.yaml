@@ -58,7 +58,7 @@ menu:
     - identifier: whitepaper
       name:   ↗ Whitepaper
       url: "https://github.com/pactus-project/Whitepaper/releases/latest/download/pactus_whitepaper.pdf"
-      weight: 2y
+      weight: 2
     - name: Search
       weight: 3
       params:
