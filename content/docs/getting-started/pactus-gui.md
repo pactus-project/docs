@@ -138,7 +138,7 @@ the consensus algorithm and proposing new blocks.
 To become a validator and participate in the
 consensus algorithm to earn rewards, you first need to
 [stake](/docs/concepts/consensus/proof-of-stake/) some coins. In the next
-[tutorial](/docs/gettingStarted/send-transactions-gui/),
+[tutorial](/docs/tutorials/send-transaction-gui/),
 we will explain how to send a Bond transaction to become a validator.
 
 By running a Pactus node, you contribute to the decentralization and security of the Pactus blockchain network.
