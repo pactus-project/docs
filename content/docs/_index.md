@@ -2,7 +2,7 @@
 linkTitle: "Documentation"
 title: Introduction
 prev: /
-next: getting-started
+next: get-started
 ---
 
 👋 Hello! Welcome to the Pactus Blockchain documentation!
@@ -34,4 +34,4 @@ This guide is designed for individuals and organizations interested in becoming 
  journey as a Pactus validator. Join us in securing the network and shaping the future of decentralized technology.
 
 </br>
-{{< hextra/hero-button text="Become a validator" link="/docs/getting-started/become-a-validator/" >}}
+{{< hextra/hero-button text="Become a validator" link="/docs/get-started/become-a-validator/" >}}
