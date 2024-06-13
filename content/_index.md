@@ -18,9 +18,10 @@ layout: hextra-home
 
 </br>
 <div>
-{{< hextra/hero-button text="Get Started" link="docs/get-started/become-a-validator" >}}
-{{< hextra/hero-button style="background-color:#e84b1c;margin-left:10px" text="Learn More"
-link="docs/concepts/blockchain/block/" >}}
+{{< hextra/hero-button style="margin-top:10px;margin-bottom:10px"
+text="Get Started" link="docs/get-started/become-a-validator" >}}
+{{< hextra/hero-button style="background-color:#e84b1c;margin-left:10px;margin-top:10px;margin-bottom:10px"
+text="Learn More" link="docs/concepts/blockchain/block/" >}}
 </div>
 
 <div class="hx-mt-6"></div>
