@@ -1,10 +1,10 @@
 ---
-title: 🏃 Getting Started
+title: 🏃 Get Started
 weight: 2
 prev: /docs
-next: /docs/getting-started/become-a-validator
+next: /docs/get-started/become-a-validator
 sidebar:
-  open: true
+  open: false
 ---
 
 {{< cards >}}

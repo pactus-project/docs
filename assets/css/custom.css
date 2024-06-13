@@ -112,3 +112,7 @@ input[type="password"]:focus {
   .hexdump .ascii {
     color: #696969;
   }
+
+  .sidebar-container {
+      width: 20rem;
+  }

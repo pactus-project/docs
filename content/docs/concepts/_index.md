@@ -1,10 +1,10 @@
 ---
 title: 📔 Concepts
 weight: 2
-prev: /docs/getting-started/become-a-validator
+prev: /docs/get-started/become-a-validator
 next: /docs/concepts/blockchain/block
 sidebar:
-  open: true
+  open: false
 ---
 
 Pactus is a groundbreaking blockchain platform founded on the core principle that true fairness and
