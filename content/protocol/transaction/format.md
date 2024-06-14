@@ -24,7 +24,7 @@ Transactions in Pactus consists the following fields:
 - **Memo** is an optional message that can be included in the transaction.
   The message can be used to provide additional information about the transaction or to communicate with the recipient.
   The maximum size of the memo is 64 characters that is defined in the
-  [consensus parameters](/concepts/consensus/parameters/)
+  [consensus parameters](/protocol/consensus/parameters/)
 - **Payload Type** specifies the type of the transaction payload.
   Depending on the payload type, the payload data field is decoded differently.
 - **Payload Data** contains the actual data payload of the transaction.
@@ -41,11 +41,11 @@ The payload type field determines the format of the payload data field in the tr
 Different payload types have different formats for the payload data.
 The following are the supported transactions in Pactus blockchain:
 
-1. [Transfer transaction](/concepts/transaction/transfer)
-2. [Bond transaction](/concepts/transaction/bond)
-3. [Sortition transaction](/concepts/transaction/sortition)
-4. [Unbond transaction](/concepts/transaction/unbond)
-5. [Withdraw transaction](/concepts/transaction/withdraw)
+1. [Transfer transaction](/protocol/transaction/transfer)
+2. [Bond transaction](/protocol/transaction/bond)
+3. [Sortition transaction](/protocol/transaction/sortition)
+4. [Unbond transaction](/protocol/transaction/unbond)
+5. [Withdraw transaction](/protocol/transaction/withdraw)
 
 ## Transaction ID
 

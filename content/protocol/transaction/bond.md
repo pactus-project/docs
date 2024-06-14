@@ -4,12 +4,12 @@ weight: 4
 math: false
 ---
 
-Bond transaction is used to bond stake to a [validator](/concepts/blockchain/validator/).
+Bond transaction is used to bond stake to a [validator](/protocol/blockchain/validator/).
 If the validator does not exist, it will be created.
 Once a bond transaction committed, the validator cannot participate in the
-[sortition algorithm](/concepts/consensus/sortition/) for 1 hour.
+[sortition algorithm](/protocol/consensus/sortition/) for 1 hour.
 This is called the "bond interval" and is defined in the
-[consensus parameter](/concepts/consensus/parameters/).
+[consensus parameter](/protocol/consensus/parameters/).
 
 ## Payload Structure
 
@@ -22,7 +22,7 @@ The bond transaction has a payload consists the following fields:
 | Public key (optional) | 96 bytes |
 | Amount                | Variant  |
 
-- **Sender address** is the address of the sender [account](/concepts/blockchain/account/).
+- **Sender address** is the address of the sender [account](/protocol/blockchain/account/).
 - **Receiver address** is the address of the receiver validator.
 - **Public key** is the validator's public key. If the validator does not exist yet,
   the public key should be set, otherwise it should left empty.

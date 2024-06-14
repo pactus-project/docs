@@ -17,10 +17,10 @@ You can find detailed instructions on how to do this in the following [tutorial]
 
 ## Sending a Transfer Transaction
 
-To send a [transfer transaction](/concepts/transaction/transfer/), click on the "Transaction" menu and
+To send a [transfer transaction](/protocol/transaction/transfer/), click on the "Transaction" menu and
 select "Transfer".
 A new window will appear where you can select the
-[account](/concepts/blockchain/account/) address from which you wish to send the "transfer" transaction,
+[account](/protocol/blockchain/account/) address from which you wish to send the "transfer" transaction,
 as well as the recipient's account address and the amount you wish to send.
 
 After reviewing the transaction details and ensuring that they are correct,
@@ -33,10 +33,10 @@ it is important to use a memo to ensure the transaction is attributed to the int
 
 ## Sending a Bond Transaction
 
-To send a [bond transaction](/concepts/transaction/bond/), click on the "Transaction" menu
+To send a [bond transaction](/protocol/transaction/bond/), click on the "Transaction" menu
 and select "Bond".
 A new window will appear where you can select the account address from which you wish to send the "bond" transaction,
-as well as the recipient's [validator](/concepts/blockchain/validator/) address and
+as well as the recipient's [validator](/protocol/blockchain/validator/) address and
 the amount you wish to stake.
 
 ![Bond Transaction Dialog](/images/bond-transaction-dialog.png)

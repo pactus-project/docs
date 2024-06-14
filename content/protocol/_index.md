@@ -1,8 +1,8 @@
 ---
-title: 📔 Concepts
+title: 📔 protocol
 weight: 2
 prev: /get-started/become-a-validator
-next: /concepts/blockchain/block
+next: /protocol/blockchain/block
 sidebar:
   open: false
 ---

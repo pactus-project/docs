@@ -1,8 +1,8 @@
 ---
 title: 🔗 Blockchain
 weight: 3
-prev: /concepts
-next: /concepts/blockchain/block
+prev: /protocol
+next: /protocol/blockchain/block
 sidebar:
   open: false
 ---
