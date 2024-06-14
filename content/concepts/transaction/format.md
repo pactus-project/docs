@@ -21,7 +21,6 @@ Transactions in Pactus consists the following fields:
   a different layout, and the current transaction version is set to 1.
 - **Lock Time** specifies the block number at which the transaction can be unlocked.
 - **Fee** contains the fee paid by the sender to the network for processing the transaction.
-  The fee is calculated based on the [percentage fee](/concepts/transaction/fee/) model.
 - **Memo** is an optional message that can be included in the transaction.
   The message can be used to provide additional information about the transaction or to communicate with the recipient.
   The maximum size of the memo is 64 characters that is defined in the
