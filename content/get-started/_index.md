@@ -4,7 +4,7 @@ weight: 2
 prev: /
 next: /get-started/become-a-validator
 sidebar:
-  open: true
+  open: false
 ---
 
 {{< cards >}}
