@@ -86,7 +86,7 @@ or CLI](https://pactus.org/download/ ) for initlize your node
 8. Last block time: The timestamp of the last block synced on your node.
 9. Number of blocks left: The remaining number of blocks to be synced by your node.
 10. Sync Progress: A progress bar indicating the synchronization progress of blocks.
-11. [Committee](/concepts/consensus/committee/ ) size:
+11. [Committee](/protocol/consensus/committee/ ) size:
   The number of committee validators responsible for validating or proposing blocks.
 12. In committee now: Indicates whether your node is currently part of the committee. If yes,
   please keep your node running to earn rewards by proposing blocks.

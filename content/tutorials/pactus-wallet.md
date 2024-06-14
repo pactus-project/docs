@@ -275,7 +275,7 @@ Please note that once a transaction is broadcasted, it cannot be reversed.
 ### Sending Transfer Transaction
 
 To create, sign, and broadcast a
-[Transfer transaction](/concepts/transaction/transfer/), use the following command:
+[Transfer transaction](/protocol/transaction/transfer/), use the following command:
 
 {{< tabs items="Linux-mac,windows" >}}
   {{< tab >}}
@@ -300,7 +300,7 @@ and `<TO>` is the receiver address.
 ### Sending Bond Transaction
 
 To create, sign, and broadcast a
-[Bond transaction](/concepts/transaction/bond/), use the following command:
+[Bond transaction](/protocol/transaction/bond/), use the following command:
 
 {{< tabs items="Linux-mac,windows" >}}
   {{< tab >}}
@@ -348,7 +348,7 @@ which is the public key of the `<TO>` address.
 ### Sending Unbond Transaction
 
 To create, sign, and broadcast a
-[Unbond transaction](/concepts/transaction/unbond/), use the following command:
+[Unbond transaction](/protocol/transaction/unbond/), use the following command:
 
 {{< tabs items="Linux-mac,windows" >}}
   {{< tab >}}
@@ -372,7 +372,7 @@ In this command, `<ADDRESS>` is the address of the validator that you want to un
 ### Sending Withdraw Transaction
 
 To create, sign, and broadcast a
-[Withdraw transaction](/concepts/transaction/withdraw/), use the following command:
+[Withdraw transaction](/protocol/transaction/withdraw/), use the following command:
 
 {{< tabs items="Linux-mac,windows" >}}
   {{< tab >}}
