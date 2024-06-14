@@ -28,9 +28,6 @@ click on the "Send" button to sign and broadcast the transaction to the Pactus b
 
 ![Transfer Transaction Dialog](/images/transfer-transaction-dialog.png)
 
-It's important to note that the [transaction fee](/concepts/transaction/fee/)
-will be calculated based on the amount you're sending.
-
 When sending or receiving a transaction from either exchange or another person that's not you,
 it is important to use a memo to ensure the transaction is attributed to the intended recipient.
 
@@ -48,9 +45,6 @@ If a validator does not yet exist, the public key of the validator should be set
 For an existing validator, a public key is not required.
 Also, note that if the public key is not set, the system tries to search for it inside the wallet.
 Therefore, if you want to stake on your own validators, you don't need to set the public key here.
-
-It's important to note that the [transaction fee](/concepts/transaction/fee/)
-will be calculated based on the amount you're sending.
 
 ## Unbond
 
