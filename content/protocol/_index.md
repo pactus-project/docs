@@ -1,7 +1,7 @@
 ---
-title: 📔 protocol
+title: 📔 Protocol
 weight: 2
-prev: /get-started/become-a-validator
+prev: /get-started/troubleshooting
 next: /protocol/blockchain/block
 sidebar:
   open: false
