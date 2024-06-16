@@ -84,11 +84,11 @@ params:
 
   theme:
     # light | dark | system
-    default: system
+    default: light
     displayToggle: true
 
   footer:
-    enable: true
+    enable: false
     displayCopyright: false
     displayPoweredBy: false
     width: normal
