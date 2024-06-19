@@ -1,1005 +1,2657 @@
 ---
-title: JsonRPC API Reference
-weight: 3
+title: JSON-RPC API Reference
+weight: 2
 ---
 
-Each node in the Pactus network can
- be configured to use the [JSON-RPC 2.0](https://www.jsonrpc.org/specification) protocol for communication.
-Here you can find the list of all JSON-RPC methods and messages.
-
-All the amounts and values in JSON-RPC endpoints are in
-NanoPAC units, which are atomic and the smallest unit in the Pactus blockchain.
-Each PAC is equivalent to
-1,000,000,000 or 10<sup>9</sup> NanoPACs.
-
-<h2>Methods</h2>
-
-<a href="#pactus.transaction.get_transaction">pactus.transaction.get_transaction</a>
-
-<a href="#pactus.transaction.calculate_fee">pactus.transaction.calculate_fee</a>
-
-<a href="#pactus.transaction.broadcast_transaction">pactus.transaction.broadcast_transaction</a>
-
-<a href="#pactus.transaction.get_raw_transfer_transaction">pactus.transaction.get_raw_transfer_transaction</a>
-
-<a href="#pactus.transaction.get_raw_bond_transaction">pactus.transaction.get_raw_bond_transaction</a>
-
-<a href="#pactus.transaction.get_raw_unbond_transaction">pactus.transaction.get_raw_unbond_transaction</a>
-
-<a href="#pactus.transaction.get_raw_withdraw_transaction">pactus.transaction.get_raw_withdraw_transaction</a>
-
-<a href="#pactus.blockchain.get_block">pactus.blockchain.get_block</a>
-
-<a href="#pactus.blockchain.get_block_hash">pactus.blockchain.get_block_hash</a>
-
-<a href="#pactus.blockchain.get_block_height">pactus.blockchain.get_block_height</a>
-
-<a href="#pactus.blockchain.get_blockchain_info">pactus.blockchain.get_blockchain_info</a>
-
-<a href="#pactus.blockchain.get_consensus_info">pactus.blockchain.get_consensus_info</a>
-
-<a href="#pactus.blockchain.get_account">pactus.blockchain.get_account</a>
-
-<a href="#pactus.blockchain.get_validator">pactus.blockchain.get_validator</a>
-
-<a href="#pactus.blockchain.get_validator_by_number">pactus.blockchain.get_validator_by_number</a>
-
-<a href="#pactus.blockchain.get_validator_addresses">pactus.blockchain.get_validator_addresses</a>
-
-<a href="#pactus.blockchain.get_public_key">pactus.blockchain.get_public_key</a>
-
-<a href="#pactus.network.get_network_info">pactus.network.get_network_info</a>
-
-<a href="#pactus.network.get_node_info">pactus.network.get_node_info</a>
-
-<a href="#pactus.wallet.create_wallet">pactus.wallet.create_wallet</a>
-
-<a href="#pactus.wallet.load_wallet">pactus.wallet.load_wallet</a>
-
-<a href="#pactus.wallet.unload_wallet">pactus.wallet.unload_wallet</a>
-
-<a href="#pactus.wallet.lock_wallet">pactus.wallet.lock_wallet</a>
-
-<a href="#pactus.wallet.unlock_wallet">pactus.wallet.unlock_wallet</a>
-
-<a href="#pactus.wallet.get_total_balance">pactus.wallet.get_total_balance</a>
-
-<a href="#pactus.wallet.sign_raw_transaction">pactus.wallet.sign_raw_transaction</a>
-
-<a href="#pactus.wallet.get_validator_address">pactus.wallet.get_validator_address</a>
-
-<a href="#pactus.wallet.get_new_address">pactus.wallet.get_new_address</a>
-
-<a href="#pactus.wallet.get_address_history">pactus.wallet.get_address_history</a>
-
-<hr/>
-
-<p id="pactus.transaction.get_transaction"></p>
-<h3>pactus.transaction.get_transaction <span class="badge text-bg-primary fs-6 align-top">Method</span></h3>
-
-pactus.transaction.get_transaction retrieves transaction details based on the provided request
-parameters.
-
-<h3>Parameters</h3>
-<pre>
-<code>
-{
- "id": "str", // (string) Transaction ID.
- "verbosity": "TRANSACTION_DATA or TRANSACTION_INFO" // (string) Verbosity level for transaction details.
-}
-</code>
-</pre>
-
-<h3>Result</h3>
-<pre>
-{
- "block_height": n, // (numeric) Height of the block containing the transaction.
- "block_time": n, // (numeric) Time of the block containing the transaction.
- "transaction": { // (json object) Information about the transaction.
-  "bond": { // (json object) Bond payload.
-   "receiver": "str", // (string) Receiver's address.
-   "sender": "str", // (string) Sender's address.
-   "stake": n // (numeric) Stake amount in NanoPAC.
-  },
-  "data": "str", // (string) Transaction data.
-  "fee": n, // (numeric) Transaction fee in NanoPAC.
-  "id": "str", // (string) Transaction ID.
-  "lock_time": n, // (numeric) Lock time for the transaction.
-  "memo": "str", // (string) Transaction memo.
-  "payload_type": "UNKNOWN or TRANSFER_PAYLOAD or BOND_PAYLOAD
-  or SORTITION_PAYLOAD or UNBOND_PAYLOAD or WITHDRAW_PAYLOAD", // (string) Type of transaction payload.
-  "public_key": "str", // (string) Public key associated with the transaction.
-  "signature": "str", // (string) Transaction signature.
-  "sortition": { // (json object) Sortition payload.
-   "address": "str", // (string) Address associated with the sortition.
-   "proof": "str" // (string) Proof for the sortition.
-  },
-  "transfer": { // (json object) Transfer payload.
-   "amount": n, // (numeric) Transaction amount in NanoPAC.
-   "receiver": "str", // (string) Receiver's address.
-   "sender": "str" // (string) Sender's address.
-  },
-  "unbond": { // (json object) Unbond payload.
-   "validator": "str" // (string) Address of the validator to unbond from.
-  },
-  "value": n, // (numeric) Transaction value in NanoPAC.
-  "version": n, // (numeric) Transaction version.
-  "withdraw": { // (json object) Withdraw payload.
-   "amount": n, // (numeric) Withdrawal amount in NanoPAC.
-   "from": "str", // (string) Address to withdraw from.
-   "to": "str" // (string) Address to withdraw to.
-  }
- }
-}
-</pre>
-<hr/>
-
-<p id="pactus.transaction.calculate_fee"></p>
-<h3>pactus.transaction.calculate_fee <span class="badge text-bg-primary fs-6 align-top">Method</span></h3>
-
-pactus.transaction.calculate_fee calculates the transaction fee based on the specified amount
-and payload type.
-
-<h3>Parameters</h3>
-<pre>
-<code>
-{
- "amount": n, // (numeric) Transaction amount in NanoPAC.
- "fixed_amount": true|false, // (boolean) Indicates
- that amount should be fixed and includes the fee.
- "payload_type": "UNKNOWN or TRANSFER_PAYLOAD or
-  BOND_PAYLOAD or SORTITION_PAYLOAD or UNBOND_PAYLOAD or WITHDRAW_PAYLOAD" // (string) Type of transaction payload.
-}
-</code>
-</pre>
-
-<h3>Result</h3>
-<pre>
-{
- "amount": n, // (numeric) Calculated amount in NanoPAC.
- "fee": n // (numeric) Calculated transaction fee in NanoPAC.
-}
-</pre>
-<hr/>
-
-<p id="pactus.transaction.broadcast_transaction"></p>
-<h3>pactus.transaction.broadcast_transaction <span class="badge text-bg-primary fs-6 align-top">Method</span></h3>
-
-pactus.transaction.broadcast_transaction broadcasts a signed transaction to the network.
-
-<h3>Parameters</h3>
-<pre>
-<code>
-{
- "signed_raw_transaction": "str" // (string) Signed raw transaction data.
-}
-</code>
-</pre>
-
-<h3>Result</h3>
-<pre>
-{
- "id": "str" // (string) Transaction ID.
-}
-</pre>
-<hr/>
-
-<p id="pactus.transaction.get_raw_transfer_transaction"></p>
-<h3>pactus.transaction.get_raw_transfer_transaction <span class="badge text-bg-primary fs-6 align-top">Method</span></h3>
-
-pactus.transaction.get_raw_transfer_transaction retrieves raw details of a transfer transaction.
-
-<h3>Parameters</h3>
-<pre>
-<code>
-{
- "amount": n, // (numeric) Transfer amount in NanoPAC.\nIt should be greater than 0.
- "fee": n, // (numeric) Transaction fee in NanoPAC.\nIf not explicitly set, it is calculated based on the amount.
- "lock_time": n, // (numeric) Lock time for the transaction.\nIf not explicitly set, it sets to the last block height.
- "memo": "str", // (string) Transaction memo.
- "receiver": "str", // (string) Receiver's account address.
- "sender": "str" // (string) Sender's account address.
-}
-</code>
-</pre>
-
-<h3>Result</h3>
-<pre>
-{
- "raw_transaction": "str" // (string) Raw transaction data.
-}
-</pre>
-<hr/>
-
-<p id="pactus.transaction.get_raw_bond_transaction"></p>
-<h3>pactus.transaction.get_raw_bond_transaction <span class="badge text-bg-primary fs-6 align-top">Method</span></h3>
-
-pactus.transaction.get_raw_bond_transaction retrieves raw details of a bond transaction.
-
-<h3>Parameters</h3>
-<pre>
-<code>
-{
- "fee": n, // (numeric) Transaction fee in NanoPAC.\nIf not explicitly set, it is calculated based on the stake.
- "lock_time": n, // (numeric) Lock time for the transaction.\nIf not explicitly set, it sets to the last block height.
- "memo": "str", // (string) Transaction memo.
- "public_key": "str", // (string) Public key of the validator.
- "receiver": "str", // (string) Receiver's validator address.
- "sender": "str", // (string) Sender's account address.
- "stake": n // (numeric) Stake amount in NanoPAC.\nIt should be greater than 0.
-}
-</code>
-</pre>
-
-<h3>Result</h3>
-<pre>
-{
- "raw_transaction": "str" // (string) Raw transaction data.
-}
-</pre>
-<hr/>
-
-<p id="pactus.transaction.get_raw_unbond_transaction"></p>
-<h3>pactus.transaction.get_raw_unbond_transaction <span class="badge text-bg-primary fs-6 align-top">Method</span></h3>
-
-pactus.transaction.get_raw_unbond_transaction retrieves raw details of an unbond transaction.
-
-<h3>Parameters</h3>
-<pre>
-<code>
-{
- "lock_time": n, // (numeric) Lock time for the transaction.\nIf not explicitly set, it sets to the last block height.
- "memo": "str", // (string) Transaction memo.
- "validator_address": "str" // (string) Address of the validator to unbond from.
-}
-</code>
-</pre>
-
-<h3>Result</h3>
-<pre>
-{
- "raw_transaction": "str" // (string) Raw transaction data.
-}
-</pre>
-<hr/>
-
-<p id="pactus.transaction.get_raw_withdraw_transaction"></p>
-<h3>pactus.transaction.get_raw_withdraw_transaction <span class="badge text-bg-primary fs-6 align-top">Method</span></h3>
-
-pactus.transaction.get_raw_withdraw_transaction retrieves raw details of a withdraw transaction.
-
-<h3>Parameters</h3>
-<pre>
-<code>
-{
- "account_address": "str", // (string) Address of the account to withdraw to.
- "amount": n, // (numeric) Withdrawal amount in NanoPAC.\nIt should be greater than 0.
- "fee": n, // (numeric) Transaction fee in NanoPAC.\nIf not explicitly set, it is calculated based on the amount.
- "lock_time": n, // (numeric) Lock time for the transaction.\nIf not explicitly set, it sets to the last block height.
- "memo": "str", // (string) Transaction memo.
- "validator_address": "str" // (string) Address of the validator to withdraw from.
-}
-</code>
-</pre>
-
-<h3>Result</h3>
-<pre>
-{
- "raw_transaction": "str" // (string) Raw transaction data.
-}
-</pre>
-<hr/>
-
-<p id="pactus.blockchain.get_block"></p>
-<h3>pactus.blockchain.get_block <span class="badge text-bg-primary fs-6 align-top">Method</span></h3>
-
-pactus.blockchain.get_block retrieves information about a block based on the provided request
-parameters.
-
-<h3>Parameters</h3>
-<pre>
-<code>
-{
- "height": n, // (numeric) Height of the block.
- "verbosity": "BLOCK_DATA or BLOCK_INFO or BLOCK_TRANSACTIONS" // (string) Verbosity level for block information.
-}
-</code>
-</pre>
-
-<h3>Result</h3>
-<pre>
-{
- "block_time": n, // (numeric) Block timestamp.
- "data": "str", // (string) Block data, only available if the verbosity level is set to BLOCK_DATA.
- "hash": "str", // (string) Hash of the block.
- "header": { // (json object) Block header information.
-  "prev_block_hash": "str", // (string) Hash of the previous block.
-  "proposer_address": "str", // (string) Address of the proposer of the block.
-  "sortition_seed": "str", // (string) Sortition seed of the block.
-  "state_root": "str", // (string) State root of the block.
-  "version": n // (numeric) Block version.
- },
- "height": n, // (numeric) Height of the block.
- "prev_cert": { // (json object) Certificate information of the previous block.
-  "absentees": [ // (json array) List of absentees in the certificate.
-   n,
-   ...
-  ],
-  "committers": [ // (json array) List of committers in the certificate.
-   n,
-   ...
-  ],
-  "hash": "str", // (string) Hash of the certificate.
-  "round": n, // (numeric) Round of the certificate.
-  "signature": "str" // (string) Certificate signature.
- },
- "txs": [ // (json array) List of transactions
- in the block.\nTransaction information is available when the verbosity level is set to BLOCK_TRANSACTIONS.
-  {
-   "bond": { // (json object) Bond payload.
-    "receiver": "str", // (string) Receiver's address.
-    "sender": "str", // (string) Sender's address.
-    "stake": n // (numeric) Stake amount in NanoPAC.
-   },
-   "data": "str", // (string) Transaction data.
-   "fee": n, // (numeric) Transaction fee in NanoPAC.
-   "id": "str", // (string) Transaction ID.
-   "lock_time": n, // (numeric) Lock time for the transaction.
-   "memo": "str", // (string) Transaction memo.
-   "payload_type": "UNKNOWN or TRANSFER_PAYLOAD
-    or BOND_PAYLOAD or SORTITION_PAYLOAD or UNBOND_PAYLOAD or WITHDRAW_PAYLOAD", // (string) Type of transaction payload.
-   "public_key": "str", // (string) Public key associated with the transaction.
-   "signature": "str", // (string) Transaction signature.
-   "sortition": { // (json object) Sortition payload.
-    "address": "str", // (string) Address associated with the sortition.
-    "proof": "str" // (string) Proof for the sortition.
-   },
-   "transfer": { // (json object) Transfer payload.
-    "amount": n, // (numeric) Transaction amount in NanoPAC.
-    "receiver": "str", // (string) Receiver's address.
-    "sender": "str" // (string) Sender's address.
-   },
-   "unbond": { // (json object) Unbond payload.
-    "validator": "str" // (string) Address of the validator to unbond from.
-   },
-   "value": n, // (numeric) Transaction value in NanoPAC.
-   "version": n, // (numeric) Transaction version.
-   "withdraw": { // (json object) Withdraw payload.
-    "amount": n, // (numeric) Withdrawal amount in NanoPAC.
-    "from": "str", // (string) Address to withdraw from.
-    "to": "str" // (string) Address to withdraw to.
-   }
-  },
-  ...
- ]
-}
-</pre>
-<hr/>
-
-<p id="pactus.blockchain.get_block_hash"></p>
-<h3>pactus.blockchain.get_block_hash <span class="badge text-bg-primary fs-6 align-top">Method</span></h3>
-
-pactus.blockchain.get_block_hash retrieves the hash of a block at the specified height.
-
-<h3>Parameters</h3>
-<pre>
-<code>
-{
- "height": n // (numeric) Height of the block.
-}
-</code>
-</pre>
-
-<h3>Result</h3>
-<pre>
-{
- "hash": "str" // (string) Hash of the block.
-}
-</pre>
-<hr/>
-
-<p id="pactus.blockchain.get_block_height"></p>
-<h3>pactus.blockchain.get_block_height <span class="badge text-bg-primary fs-6 align-top">Method</span></h3>
-
-pactus.blockchain.get_block_height retrieves the height of a block with the specified hash.
-
-<h3>Parameters</h3>
-<pre>
-<code>
-{
- "hash": "str" // (string) Hash of the block.
-}
-</code>
-</pre>
-
-<h3>Result</h3>
-<pre>
-{
- "height": n // (numeric) Height of the block.
-}
-</pre>
-<hr/>
-
-<p id="pactus.blockchain.get_blockchain_info"></p>
-<h3>pactus.blockchain.get_blockchain_info <span class="badge text-bg-primary fs-6 align-top">Method</span></h3>
-
-pactus.blockchain.get_blockchain_info retrieves general information about the blockchain.
-
-<h3>Parameters</h3>
-<pre>
-<code>
-{}
-</code>
-</pre>
-
-<h3>Result</h3>
-<pre>
-{
- "committee_power": n, // (numeric) Power of the committee.
- "committee_validators": [ // (json array) List of committee validators.
-  {
-   "address": "str", // (string) Address of the validator.
-   "availability_score": n, // (numeric) Availability score of the validator.
-   "data": "str", // (string) Validator data.
-   "hash": "str", // (string) Hash of the validator.
-   "last_bonding_height": n, // (numeric) Last bonding height.
-   "last_sortition_height": n, // (numeric) Last sortition height.
-   "number": n, // (numeric) Validator number.
-   "public_key": "str", // (string) Public key of the validator.
-   "stake": n, // (numeric) Validator stake in NanoPAC.
-   "unbonding_height": n // (numeric) Unbonding height.
-  },
-  ...
- ],
- "last_block_hash": "str", // (string) Hash of the last block.
- "last_block_height": n, // (numeric) Height of the last block.
- "total_accounts": n, // (numeric) Total number of accounts.
- "total_power": n, // (numeric) Total power in the blockchain.
- "total_validators": n // (numeric) Total number of validators.
-}
-</pre>
-<hr/>
-
-<p id="pactus.blockchain.get_consensus_info"></p>
-<h3>pactus.blockchain.get_consensus_info <span class="badge text-bg-primary fs-6 align-top">Method</span></h3>
-
-pactus.blockchain.get_consensus_info retrieves information about the consensus instances.
-
-<h3>Parameters</h3>
-<pre>
-<code>
-{}
-</code>
-</pre>
-
-<h3>Result</h3>
-<pre>
-{
- "instances": [ // (json array) List of consensus instances.
-  {
-   "Active": true|false, // (boolean) Whether the consensus instance is active.
-   "address": "str", // (string) Address of the consensus instance.
-   "height": n, // (numeric) Height of the consensus instance.
-   "round": n, // (numeric) Round of the consensus instance.
-   "votes": [ // (json array) List of votes in the consensus instance.
-    {
-     "block_hash": "str", // (string) Hash of the block being voted on.
-     "cp_round": n, // (numeric) Consensus round of the vote.
-     "cp_value": n, // (numeric) Consensus value of the vote.
-     "round": n, // (numeric) Round of the vote.
-     "type": "VOTE_UNKNOWN or VOTE_PREPARE or VOTE_PRECOMMIT or VOTE_CHANGE_PROPOSER", // (string) Type of the vote.
-     "voter": "str" // (string) Voter's address.
-    },
-    ...
-   ]
-  },
-  ...
- ]
-}
-</pre>
-<hr/>
-
-<p id="pactus.blockchain.get_account"></p>
-<h3>pactus.blockchain.get_account <span class="badge text-bg-primary fs-6 align-top">Method</span></h3>
-
-pactus.blockchain.get_account retrieves information about an account based on the provided
-address.
-
-<h3>Parameters</h3>
-<pre>
-<code>
-{
- "address": "str" // (string) Address of the account.
-}
-</code>
-</pre>
-
-<h3>Result</h3>
-<pre>
-{
- "account": { // (json object) Account information.
-  "address": "str", // (string) Address of the account.
-  "balance": n, // (numeric) Account balance in NanoPAC.
-  "data": "str", // (string) Account data.
-  "hash": "str", // (string) Hash of the account.
-  "number": n // (numeric) Account number.
- }
-}
-</pre>
-<hr/>
-
-<p id="pactus.blockchain.get_validator"></p>
-<h3>pactus.blockchain.get_validator <span class="badge text-bg-primary fs-6 align-top">Method</span></h3>
-
-pactus.blockchain.get_validator retrieves information about a validator based on the provided
-address.
-
-<h3>Parameters</h3>
-<pre>
-<code>
-{
- "address": "str" // (string) Address of the validator.
-}
-</code>
-</pre>
-
-<h3>Result</h3>
-<pre>
-{
- "validator": { // (json object) Validator information.
-  "address": "str", // (string) Address of the validator.
-  "availability_score": n, // (numeric) Availability score of the validator.
-  "data": "str", // (string) Validator data.
-  "hash": "str", // (string) Hash of the validator.
-  "last_bonding_height": n, // (numeric) Last bonding height.
-  "last_sortition_height": n, // (numeric) Last sortition height.
-  "number": n, // (numeric) Validator number.
-  "public_key": "str", // (string) Public key of the validator.
-  "stake": n, // (numeric) Validator stake in NanoPAC.
-  "unbonding_height": n // (numeric) Unbonding height.
- }
-}
-</pre>
-<hr/>
-
-<p id="pactus.blockchain.get_validator_by_number"></p>
-<h3>pactus.blockchain.get_validator_by_number <span class="badge text-bg-primary fs-6 align-top">Method</span></h3>
-
-pactus.blockchain.get_validator_by_number retrieves information about a validator based on the
-provided number.
-
-<h3>Parameters</h3>
-<pre>
-<code>
-{
- "number": n // (numeric) Validator number.
-}
-</code>
-</pre>
-
-<h3>Result</h3>
-<pre>
-{
- "validator": { // (json object) Validator information.
-  "address": "str", // (string) Address of the validator.
-  "availability_score": n, // (numeric) Availability score of the validator.
-  "data": "str", // (string) Validator data.
-  "hash": "str", // (string) Hash of the validator.
-  "last_bonding_height": n, // (numeric) Last bonding height.
-  "last_sortition_height": n, // (numeric) Last sortition height.
-  "number": n, // (numeric) Validator number.
-  "public_key": "str", // (string) Public key of the validator.
-  "stake": n, // (numeric) Validator stake in NanoPAC.
-  "unbonding_height": n // (numeric) Unbonding height.
- }
-}
-</pre>
-<hr/>
-
-<p id="pactus.blockchain.get_validator_addresses"></p>
-<h3>pactus.blockchain.get_validator_addresses <span class="badge text-bg-primary fs-6 align-top">Method</span></h3>
-
-pactus.blockchain.get_validator_addresses retrieves a list of all validator addresses.
-
-<h3>Parameters</h3>
-<pre>
-<code>
-{}
-</code>
-</pre>
-
-<h3>Result</h3>
-<pre>
-{
- "addresses": [ // (json array) List of validator addresses.
-  "str",
-  ...
- ]
-}
-</pre>
-<hr/>
-
-<p id="pactus.blockchain.get_public_key"></p>
-<h3>pactus.blockchain.get_public_key <span class="badge text-bg-primary fs-6 align-top">Method</span></h3>
-
-pactus.blockchain.get_public_key retrieves the public key of an account based on the provided
-address.
-
-<h3>Parameters</h3>
-<pre>
-<code>
-{
- "address": "str" // (string) Address for which public key is requested.
-}
-</code>
-</pre>
-
-<h3>Result</h3>
-<pre>
-{
- "public_key": "str" // (string) Public key of the account.
-}
-</pre>
-<hr/>
-
-<p id="pactus.network.get_network_info"></p>
-<h3>pactus.network.get_network_info <span class="badge text-bg-primary fs-6 align-top">Method</span></h3>
-
-pactus.network.get_network_info retrieves information about the overall network.
-
-<h3>Parameters</h3>
-<pre>
-<code>
-{}
-</code>
-</pre>
-
-<h3>Result</h3>
-<pre>
-{
- "connected_peers": [ // (json array) List of connected peers.
-  {
-   "address": "str", // (string) Network address of the peer.
-   "agent": "str", // (string) Agent information of the peer.
-   "completed_sessions": n, // (numeric) Completed sessions with the peer.
-   "consensus_address": [ // (json array) Consensus address of the peer.
-    "str",
-    ...
-   ],
-   "consensus_keys": [ // (json array) Consensus keys used by the peer.
-    "str",
-    ...
-   ],
-   "direction": "str", // (string) Direction of connection with the peer.
-   "height": n, // (numeric) Height of the peer in the blockchain.
-   "invalid_messages": n, // (numeric) Count of invalid messages received.
-   "last_block_hash": "str", // (string) Hash of the last block the peer knows.
-   "last_received": n, // (numeric) Timestamp of the last received message.
-   "last_sent": n, // (numeric) Timestamp of the last sent message.
-   "moniker": "str", // (string) Moniker of the peer.
-   "peer_id": "str", // (string) Peer ID of the peer.
-   "protocols": [ // (json array) List of protocols supported by the peer.
-    "str",
-    ...
-   ],
-   "received_bytes": { // (key:value json object) Bytes received per message type.
-    ...: ...,
-    n: n
-   },
-   "received_messages": n, // (numeric) Count of received messages.
-   "sent_bytes": { // (key:value json object) Bytes sent per message type.
-    ...: ...,
-    n: n
-   },
-   "services": n, // (numeric) Services provided by the peer.
-   "status": n, // (numeric) Status of the peer.
-   "total_sessions": n // (numeric) Total sessions with the peer.
-  },
-  ...
- ],
- "connected_peers_count": n, // (numeric) Number of connected peers.
- "network_name": "str", // (string) Name of the network.
- "received_bytes": { // (key:value json object) Bytes received per peer ID.
-  ...: ...,
-  n: n
- },
- "sent_bytes": { // (key:value json object) Bytes sent per peer ID.
-  ...: ...,
-  n: n
- },
- "total_received_bytes": n, // (numeric) Total bytes received across the network.
- "total_sent_bytes": n // (numeric) Total bytes sent across the network.
-}
-</pre>
-<hr/>
-
-<p id="pactus.network.get_node_info"></p>
-<h3>pactus.network.get_node_info <span class="badge text-bg-primary fs-6 align-top">Method</span></h3>
-
-pactus.network.get_node_info retrieves information about a specific node in the network.
-
-<h3>Parameters</h3>
-<pre>
-<code>
-{}
-</code>
-</pre>
-
-<h3>Result</h3>
-<pre>
-{
- "addrs": [ // (json array) List of addresses associated with the node.
-  "str",
-  ...
- ],
- "agent": "str", // (string) Agent information of the node.
- "moniker": "str", // (string) Moniker of the node.
- "peer_id": "str", // (string) Peer ID of the node.
- "protocols": [ // (json array) List of protocols supported by the node.
-  "str",
-  ...
- ],
- "reachability": "str", // (string) Reachability status of the node.
- "services": [ // (json array) List of services provided by the node.
-  n,
-  ...
- ],
- "services_names": [ // (json array) Names of services provided by the node.
-  "str",
-  ...
- ],
- "started_at": n // (numeric) Timestamp when the node started.
-}
-</pre>
-<hr/>
-
-<p id="pactus.wallet.create_wallet"></p>
-<h3>pactus.wallet.create_wallet <span class="badge text-bg-primary fs-6 align-top">Method</span></h3>
-
-pactus.wallet.create_wallet creates a new wallet with the specified parameters.
-
-<h3>Parameters</h3>
-<pre>
-<code>
-{
- "language": "str", // (string) Language for the mnemonic.
- "mnemonic": "str", // (string) Mnemonic for wallet recovery.
- "password": "str", // (string) Password for securing the wallet.
- "wallet_name": "str" // (string) Name of the new wallet.
-}
-</code>
-</pre>
-
-<h3>Result</h3>
-<pre>
-{
- "wallet_name": "str" // (string) Name of the created wallet.
-}
-</pre>
-<hr/>
-
-<p id="pactus.wallet.load_wallet"></p>
-<h3>pactus.wallet.load_wallet <span class="badge text-bg-primary fs-6 align-top">Method</span></h3>
-
-pactus.wallet.load_wallet loads an existing wallet with the given name.
-
-<h3>Parameters</h3>
-<pre>
-<code>
-{
- "wallet_name": "str" // (string) Name of the wallet to load.
-}
-</code>
-</pre>
-
-<h3>Result</h3>
-<pre>
-{
- "wallet_name": "str" // (string) Name of the loaded wallet.
-}
-</pre>
-<hr/>
-
-<p id="pactus.wallet.unload_wallet"></p>
-<h3>pactus.wallet.unload_wallet <span class="badge text-bg-primary fs-6 align-top">Method</span></h3>
-
-pactus.wallet.unload_wallet unloads a currently loaded wallet with the specified name.
-
-<h3>Parameters</h3>
-<pre>
-<code>
-{
- "wallet_name": "str" // (string) Name of the wallet to unload.
-}
-</code>
-</pre>
-
-<h3>Result</h3>
-<pre>
-{
- "wallet_name": "str" // (string) Name of the unloaded wallet.
-}
-</pre>
-<hr/>
-
-<p id="pactus.wallet.lock_wallet"></p>
-<h3>pactus.wallet.lock_wallet <span class="badge text-bg-primary fs-6 align-top">Method</span></h3>
-
-pactus.wallet.lock_wallet locks a currently loaded wallet with the provided password and
-timeout.
-
-<h3>Parameters</h3>
-<pre>
-<code>
-{
- "wallet_name": "str" // (string) Name of the wallet to lock.
-}
-</code>
-</pre>
-
-<h3>Result</h3>
-<pre>
-{
- "wallet_name": "str" // (string) Name of the locked wallet.
-}
-</pre>
-<hr/>
-
-<p id="pactus.wallet.unlock_wallet"></p>
-<h3>pactus.wallet.unlock_wallet <span class="badge text-bg-primary fs-6 align-top">Method</span></h3>
-
-pactus.wallet.unlock_wallet unlocks a locked wallet with the provided password and
-timeout.
-
-<h3>Parameters</h3>
-<pre>
-<code>
-{
- "password": "str", // (string) Password for unlocking the wallet.
- "timeout": n, // (numeric) Timeout duration for the unlocked state.
- "wallet_name": "str" // (string) Name of the wallet to unlock.
-}
-</code>
-</pre>
-
-<h3>Result</h3>
-<pre>
-{
- "wallet_name": "str" // (string) Name of the unlocked wallet.
-}
-</pre>
-<hr/>
-
-<p id="pactus.wallet.get_total_balance"></p>
-<h3>pactus.wallet.get_total_balance <span class="badge text-bg-primary fs-6 align-top">Method</span></h3>
-
-pactus.wallet.get_total_balance returns the total available balance of the wallet.
-
-<h3>Parameters</h3>
-<pre>
-<code>
-{
- "wallet_name": "str" // (string) Name of the wallet.
-}
-</code>
-</pre>
-
-<h3>Result</h3>
-<pre>
-{
- "total_balance": n, // (numeric) The total balance of the wallet in NanoPAC.
- "wallet_name": "str" // (string) Name of the wallet.
-}
-</pre>
-<hr/>
-
-<p id="pactus.wallet.sign_raw_transaction"></p>
-<h3>pactus.wallet.sign_raw_transaction <span class="badge text-bg-primary fs-6 align-top">Method</span></h3>
-
-pactus.wallet.sign_raw_transaction signs a raw transaction for a specified wallet.
-
-<h3>Parameters</h3>
-<pre>
-<code>
-{
- "password": "str", // (string) Password for unlocking the wallet for signing.
- "raw_transaction": "str", // (string) Raw transaction data to be signed.
- "wallet_name": "str" // (string) Name of the wallet used for signing.
-}
-</code>
-</pre>
-
-<h3>Result</h3>
-<pre>
-{
- "signed_raw_transaction": "str", // (string) Signed raw transaction data.
- "transaction_id": "str" // (string) ID of the signed transaction.
-}
-</pre>
-<hr/>
-
-<p id="pactus.wallet.get_validator_address"></p>
-<h3>pactus.wallet.get_validator_address <span class="badge text-bg-primary fs-6 align-top">Method</span></h3>
-
-pactus.wallet.get_validator_address retrieves the validator address associated with a
-public key.
-
-<h3>Parameters</h3>
-<pre>
-<code>
-{
- "public_key": "str" // (string) Public key for which the validator address is requested.
-}
-</code>
-</pre>
-
-<h3>Result</h3>
-<pre>
-{
- "address": "str" // (string) Validator address associated with the public key.
-}
-</pre>
-<hr/>
-
-<p id="pactus.wallet.get_new_address"></p>
-<h3>pactus.wallet.get_new_address <span class="badge text-bg-primary fs-6 align-top">Method</span></h3>
-
-pactus.wallet.get_new_address generates a new address for the specified wallet.
-
-<h3>Parameters</h3>
-<pre>
-<code>
-{
- "address_type": "ADDRESS_TYPE_TREASURY or
- ADDRESS_TYPE_VALIDATOR or ADDRESS_TYPE_BLS_ACCOUNT", // (string) Address type for the new address.
- "label": "str", // (string) Label for the new address.
- "wallet_name": "str" // (string) Name of the wallet for which the new address is requested.
-}
-</code>
-</pre>
-
-<h3>Result</h3>
-<pre>
-{
- "address_info": { // (json object) Address information.
-  "address": "str", // (string)
-  "label": "str", // (string)
-  "path": "str", // (string)
-  "public_key": "str" // (string)
- },
- "wallet_name": "str" // (string) Name of the wallet.
-}
-</pre>
-<hr/>
-
-<p id="pactus.wallet.get_address_history"></p>
-<h3>pactus.wallet.get_address_history <span class="badge text-bg-primary fs-6 align-top">Method</span></h3>
-
-pactus.wallet.get_address_history retrieve transaction history of an address.
-
-<h3>Parameters</h3>
-<pre>
-<code>
-{
- "address": "str", // (string) Address to get the transaction history of it.
- "wallet_name": "str" // (string) Name of the wallet.
-}
-</code>
-</pre>
-
-<h3>Result</h3>
-<pre>
-{
- "history_info": [ // (json array) Array of address history and activities.
-  {
-   "amount": n, // (numeric) amount of transaction.
-   "description": "str", // (string) description of transaction.
-   "payload_type": "str", // (string) payload type of transaction.
-   "time": n, // (numeric) transaction timestamp.
-   "transaction_id": "str" // (string) Hash of transaction.
-  },
-  ...
- ]
-}
-</pre>
-<hr/>
+Each node in the Pactus network can be configured to use the [gRPC](https://grpc.io/) protocol for communication.
+Here, you can find the list of all gRPC methods and messages.
+
+All the amounts and values in gRPC endpoints are in NanoPAC units,
+which are atomic and the smallest unit in the Pactus blockchain.
+Each PAC is equivalent to 1,000,000,000 or 10<sup>9</sup> NanoPACs.
+
+All binary data, including hash and transaction data,
+are encoded using the [base64](https://en.wikipedia.org/wiki/Base64) decoder.
+
+<h2>JSON-RPC Services</h2>
+
+<div id="toc-container">
+  <ul class="">
+  <li> Transaction Service
+      <ul>
+        <li>
+          <a href="#pactus.transaction.get_transaction">
+          <span class="rpc-badge"></span> pactus.transaction.get_transaction</a>
+        </li>
+        <li>
+          <a href="#pactus.transaction.calculate_fee">
+          <span class="rpc-badge"></span> pactus.transaction.calculate_fee</a>
+        </li>
+        <li>
+          <a href="#pactus.transaction.broadcast_transaction">
+          <span class="rpc-badge"></span> pactus.transaction.broadcast_transaction</a>
+        </li>
+        <li>
+          <a href="#pactus.transaction.get_raw_transfer_transaction">
+          <span class="rpc-badge"></span> pactus.transaction.get_raw_transfer_transaction</a>
+        </li>
+        <li>
+          <a href="#pactus.transaction.get_raw_bond_transaction">
+          <span class="rpc-badge"></span> pactus.transaction.get_raw_bond_transaction</a>
+        </li>
+        <li>
+          <a href="#pactus.transaction.get_raw_unbond_transaction">
+          <span class="rpc-badge"></span> pactus.transaction.get_raw_unbond_transaction</a>
+        </li>
+        <li>
+          <a href="#pactus.transaction.get_raw_withdraw_transaction">
+          <span class="rpc-badge"></span> pactus.transaction.get_raw_withdraw_transaction</a>
+        </li>
+        </ul>
+    </li>
+    <li> Blockchain Service
+      <ul>
+        <li>
+          <a href="#pactus.blockchain.get_block">
+          <span class="rpc-badge"></span> pactus.blockchain.get_block</a>
+        </li>
+        <li>
+          <a href="#pactus.blockchain.get_block_hash">
+          <span class="rpc-badge"></span> pactus.blockchain.get_block_hash</a>
+        </li>
+        <li>
+          <a href="#pactus.blockchain.get_block_height">
+          <span class="rpc-badge"></span> pactus.blockchain.get_block_height</a>
+        </li>
+        <li>
+          <a href="#pactus.blockchain.get_blockchain_info">
+          <span class="rpc-badge"></span> pactus.blockchain.get_blockchain_info</a>
+        </li>
+        <li>
+          <a href="#pactus.blockchain.get_consensus_info">
+          <span class="rpc-badge"></span> pactus.blockchain.get_consensus_info</a>
+        </li>
+        <li>
+          <a href="#pactus.blockchain.get_account">
+          <span class="rpc-badge"></span> pactus.blockchain.get_account</a>
+        </li>
+        <li>
+          <a href="#pactus.blockchain.get_validator">
+          <span class="rpc-badge"></span> pactus.blockchain.get_validator</a>
+        </li>
+        <li>
+          <a href="#pactus.blockchain.get_validator_by_number">
+          <span class="rpc-badge"></span> pactus.blockchain.get_validator_by_number</a>
+        </li>
+        <li>
+          <a href="#pactus.blockchain.get_validator_addresses">
+          <span class="rpc-badge"></span> pactus.blockchain.get_validator_addresses</a>
+        </li>
+        <li>
+          <a href="#pactus.blockchain.get_public_key">
+          <span class="rpc-badge"></span> pactus.blockchain.get_public_key</a>
+        </li>
+        </ul>
+    </li>
+    <li> Network Service
+      <ul>
+        <li>
+          <a href="#pactus.network.get_network_info">
+          <span class="rpc-badge"></span> pactus.network.get_network_info</a>
+        </li>
+        <li>
+          <a href="#pactus.network.get_node_info">
+          <span class="rpc-badge"></span> pactus.network.get_node_info</a>
+        </li>
+        </ul>
+    </li>
+    <li> Wallet Service
+      <ul>
+        <li>
+          <a href="#pactus.wallet.create_wallet">
+          <span class="rpc-badge"></span> pactus.wallet.create_wallet</a>
+        </li>
+        <li>
+          <a href="#pactus.wallet.restore_wallet">
+          <span class="rpc-badge"></span> pactus.wallet.restore_wallet</a>
+        </li>
+        <li>
+          <a href="#pactus.wallet.load_wallet">
+          <span class="rpc-badge"></span> pactus.wallet.load_wallet</a>
+        </li>
+        <li>
+          <a href="#pactus.wallet.unload_wallet">
+          <span class="rpc-badge"></span> pactus.wallet.unload_wallet</a>
+        </li>
+        <li>
+          <a href="#pactus.wallet.get_total_balance">
+          <span class="rpc-badge"></span> pactus.wallet.get_total_balance</a>
+        </li>
+        <li>
+          <a href="#pactus.wallet.sign_raw_transaction">
+          <span class="rpc-badge"></span> pactus.wallet.sign_raw_transaction</a>
+        </li>
+        <li>
+          <a href="#pactus.wallet.get_validator_address">
+          <span class="rpc-badge"></span> pactus.wallet.get_validator_address</a>
+        </li>
+        <li>
+          <a href="#pactus.wallet.get_new_address">
+          <span class="rpc-badge"></span> pactus.wallet.get_new_address</a>
+        </li>
+        <li>
+          <a href="#pactus.wallet.get_address_history">
+          <span class="rpc-badge"></span> pactus.wallet.get_address_history</a>
+        </li>
+        </ul>
+    </li>
+    </ul>
+</div>
+
+<div class="api-doc">
+
+## Transaction Service
+
+<p>Transaction service defines various RPC methods for interacting with
+transactions.</p>
+
+### pactus.transaction.get_transaction <span id="pactus.transaction.get_transaction" class="rpc-badge"></span>
+
+<p>GetTransaction retrieves transaction details based on the provided request
+parameters.</p>
+
+<h4>Parameters</h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">id</td>
+    <td> string</td>
+    <td>
+    Transaction ID.
+    </td>
+  </tr>
+  <tr>
+    <td class="fw-bold">verbosity</td>
+    <td> string</td>
+    <td>
+    (Enum) Verbosity level for transaction details.
+    <br>Available values:<ul>
+      <li>TRANSACTION_DATA = Request transaction data only.</li>
+      <li>TRANSACTION_INFO = Request transaction details.</li>
+      </ul>
+    </td>
+  </tr>
+  </tbody>
+</table>
+  <h4>Result</h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">block_height</td>
+    <td> numeric</td>
+    <td>
+    Height of the block containing the transaction.
+    </td>
+  </tr>
+     <tr>
+    <td class="fw-bold">block_time</td>
+    <td> numeric</td>
+    <td>
+    Time of the block containing the transaction.
+    </td>
+  </tr>
+     <tr>
+    <td class="fw-bold">transaction</td>
+    <td> object</td>
+    <td>
+    Information about the transaction.
+    </td>
+  </tr>
+     <tr>
+        <td class="fw-bold">transaction.id</td>
+        <td> string</td>
+        <td>
+        Transaction ID.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">transaction.data</td>
+        <td> string</td>
+        <td>
+        Transaction data.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">transaction.version</td>
+        <td> numeric</td>
+        <td>
+        Transaction version.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">transaction.lock_time</td>
+        <td> numeric</td>
+        <td>
+        Lock time for the transaction.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">transaction.value</td>
+        <td> numeric</td>
+        <td>
+        Transaction value in NanoPAC.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">transaction.fee</td>
+        <td> numeric</td>
+        <td>
+        Transaction fee in NanoPAC.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">transaction.payload_type</td>
+        <td> string</td>
+        <td>
+        (Enum) Type of transaction payload.
+        <br>Available values:<ul>
+          <li>UNKNOWN = Unknown payload type.</li>
+          <li>TRANSFER_PAYLOAD = Transfer payload type.</li>
+          <li>BOND_PAYLOAD = Bond payload type.</li>
+          <li>SORTITION_PAYLOAD = Sortition payload type.</li>
+          <li>UNBOND_PAYLOAD = Unbond payload type.</li>
+          <li>WITHDRAW_PAYLOAD = Withdraw payload type.</li>
+          </ul>
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">transaction.transfer</td>
+        <td> object</td>
+        <td>
+        (OneOf) Transfer payload.
+        </td>
+      </tr>
+         <tr>
+            <td class="fw-bold">transaction.transfer.sender</td>
+            <td> string</td>
+            <td>
+            Sender's address.
+            </td>
+          </tr>
+          <tr>
+            <td class="fw-bold">transaction.transfer.receiver</td>
+            <td> string</td>
+            <td>
+            Receiver's address.
+            </td>
+          </tr>
+          <tr>
+            <td class="fw-bold">transaction.transfer.amount</td>
+            <td> numeric</td>
+            <td>
+            Transaction amount in NanoPAC.
+            </td>
+          </tr>
+          <tr>
+        <td class="fw-bold">transaction.bond</td>
+        <td> object</td>
+        <td>
+        (OneOf) Bond payload.
+        </td>
+      </tr>
+         <tr>
+            <td class="fw-bold">transaction.bond.sender</td>
+            <td> string</td>
+            <td>
+            Sender's address.
+            </td>
+          </tr>
+          <tr>
+            <td class="fw-bold">transaction.bond.receiver</td>
+            <td> string</td>
+            <td>
+            Receiver's address.
+            </td>
+          </tr>
+          <tr>
+            <td class="fw-bold">transaction.bond.stake</td>
+            <td> numeric</td>
+            <td>
+            Stake amount in NanoPAC.
+            </td>
+          </tr>
+          <tr>
+        <td class="fw-bold">transaction.sortition</td>
+        <td> object</td>
+        <td>
+        (OneOf) Sortition payload.
+        </td>
+      </tr>
+         <tr>
+            <td class="fw-bold">transaction.sortition.address</td>
+            <td> string</td>
+            <td>
+            Address associated with the sortition.
+            </td>
+          </tr>
+          <tr>
+            <td class="fw-bold">transaction.sortition.proof</td>
+            <td> string</td>
+            <td>
+            Proof for the sortition.
+            </td>
+          </tr>
+          <tr>
+        <td class="fw-bold">transaction.unbond</td>
+        <td> object</td>
+        <td>
+        (OneOf) Unbond payload.
+        </td>
+      </tr>
+         <tr>
+            <td class="fw-bold">transaction.unbond.validator</td>
+            <td> string</td>
+            <td>
+            Address of the validator to unbond from.
+            </td>
+          </tr>
+          <tr>
+        <td class="fw-bold">transaction.withdraw</td>
+        <td> object</td>
+        <td>
+        (OneOf) Withdraw payload.
+        </td>
+      </tr>
+         <tr>
+            <td class="fw-bold">transaction.withdraw.from</td>
+            <td> string</td>
+            <td>
+            Address to withdraw from.
+            </td>
+          </tr>
+          <tr>
+            <td class="fw-bold">transaction.withdraw.to</td>
+            <td> string</td>
+            <td>
+            Address to withdraw to.
+            </td>
+          </tr>
+          <tr>
+            <td class="fw-bold">transaction.withdraw.amount</td>
+            <td> numeric</td>
+            <td>
+            Withdrawal amount in NanoPAC.
+            </td>
+          </tr>
+          <tr>
+        <td class="fw-bold">transaction.memo</td>
+        <td> string</td>
+        <td>
+        Transaction memo.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">transaction.public_key</td>
+        <td> string</td>
+        <td>
+        Public key associated with the transaction.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">transaction.signature</td>
+        <td> string</td>
+        <td>
+        Transaction signature.
+        </td>
+      </tr>
+         </tbody>
+</table>
+
+### pactus.transaction.calculate_fee <span id="pactus.transaction.calculate_fee" class="rpc-badge"></span>
+
+<p>CalculateFee calculates the transaction fee based on the specified amount
+and payload type.</p>
+
+<h4>Parameters</h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">amount</td>
+    <td> numeric</td>
+    <td>
+    Transaction amount in NanoPAC.
+    </td>
+  </tr>
+  <tr>
+    <td class="fw-bold">payload_type</td>
+    <td> string</td>
+    <td>
+    (Enum) Type of transaction payload.
+    <br>Available values:<ul>
+      <li>UNKNOWN = Unknown payload type.</li>
+      <li>TRANSFER_PAYLOAD = Transfer payload type.</li>
+      <li>BOND_PAYLOAD = Bond payload type.</li>
+      <li>SORTITION_PAYLOAD = Sortition payload type.</li>
+      <li>UNBOND_PAYLOAD = Unbond payload type.</li>
+      <li>WITHDRAW_PAYLOAD = Withdraw payload type.</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td class="fw-bold">fixed_amount</td>
+    <td> boolean</td>
+    <td>
+    Indicates that amount should be fixed and includes the fee.
+    </td>
+  </tr>
+  </tbody>
+</table>
+  <h4>Result</h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">amount</td>
+    <td> numeric</td>
+    <td>
+    Calculated amount in NanoPAC.
+    </td>
+  </tr>
+     <tr>
+    <td class="fw-bold">fee</td>
+    <td> numeric</td>
+    <td>
+    Calculated transaction fee in NanoPAC.
+    </td>
+  </tr>
+     </tbody>
+</table>
+
+### pactus.transaction.broadcast_transaction <span id="pactus.transaction.broadcast_transaction" class="rpc-badge"></span>
+
+<p>BroadcastTransaction broadcasts a signed transaction to the network.</p>
+
+<h4>Parameters</h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">signed_raw_transaction</td>
+    <td> string</td>
+    <td>
+    Signed raw transaction data.
+    </td>
+  </tr>
+  </tbody>
+</table>
+  <h4>Result</h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">id</td>
+    <td> string</td>
+    <td>
+    Transaction ID.
+    </td>
+  </tr>
+     </tbody>
+</table>
+
+### pactus.transaction.get_raw_transfer_transaction <span id="pactus.transaction.get_raw_transfer_transaction" class="rpc-badge"></span>
+
+<p>GetRawTransferTransaction retrieves raw details of a transfer transaction.</p>
+
+<h4>Parameters</h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">lock_time</td>
+    <td> numeric</td>
+    <td>
+    Lock time for the transaction.
+If not explicitly set, it sets to the last block height.
+    </td>
+  </tr>
+  <tr>
+    <td class="fw-bold">sender</td>
+    <td> string</td>
+    <td>
+    Sender's account address.
+    </td>
+  </tr>
+  <tr>
+    <td class="fw-bold">receiver</td>
+    <td> string</td>
+    <td>
+    Receiver's account address.
+    </td>
+  </tr>
+  <tr>
+    <td class="fw-bold">amount</td>
+    <td> numeric</td>
+    <td>
+    Transfer amount in NanoPAC.
+It should be greater than 0.
+    </td>
+  </tr>
+  <tr>
+    <td class="fw-bold">fee</td>
+    <td> numeric</td>
+    <td>
+    Transaction fee in NanoPAC.
+If not explicitly set, it is calculated based on the amount.
+    </td>
+  </tr>
+  <tr>
+    <td class="fw-bold">memo</td>
+    <td> string</td>
+    <td>
+    Transaction memo.
+    </td>
+  </tr>
+  </tbody>
+</table>
+  <h4>Result</h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">raw_transaction</td>
+    <td> string</td>
+    <td>
+    Raw transaction data.
+    </td>
+  </tr>
+     </tbody>
+</table>
+
+### pactus.transaction.get_raw_bond_transaction <span id="pactus.transaction.get_raw_bond_transaction" class="rpc-badge"></span>
+
+<p>GetRawBondTransaction retrieves raw details of a bond transaction.</p>
+
+<h4>Parameters</h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">lock_time</td>
+    <td> numeric</td>
+    <td>
+    Lock time for the transaction.
+If not explicitly set, it sets to the last block height.
+    </td>
+  </tr>
+  <tr>
+    <td class="fw-bold">sender</td>
+    <td> string</td>
+    <td>
+    Sender's account address.
+    </td>
+  </tr>
+  <tr>
+    <td class="fw-bold">receiver</td>
+    <td> string</td>
+    <td>
+    Receiver's validator address.
+    </td>
+  </tr>
+  <tr>
+    <td class="fw-bold">stake</td>
+    <td> numeric</td>
+    <td>
+    Stake amount in NanoPAC.
+It should be greater than 0.
+    </td>
+  </tr>
+  <tr>
+    <td class="fw-bold">public_key</td>
+    <td> string</td>
+    <td>
+    Public key of the validator.
+    </td>
+  </tr>
+  <tr>
+    <td class="fw-bold">fee</td>
+    <td> numeric</td>
+    <td>
+    Transaction fee in NanoPAC.
+If not explicitly set, it is calculated based on the stake.
+    </td>
+  </tr>
+  <tr>
+    <td class="fw-bold">memo</td>
+    <td> string</td>
+    <td>
+    Transaction memo.
+    </td>
+  </tr>
+  </tbody>
+</table>
+  <h4>Result</h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">raw_transaction</td>
+    <td> string</td>
+    <td>
+    Raw transaction data.
+    </td>
+  </tr>
+     </tbody>
+</table>
+
+### pactus.transaction.get_raw_unbond_transaction <span id="pactus.transaction.get_raw_unbond_transaction" class="rpc-badge"></span>
+
+<p>GetRawUnbondTransaction retrieves raw details of an unbond transaction.</p>
+
+<h4>Parameters</h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">lock_time</td>
+    <td> numeric</td>
+    <td>
+    Lock time for the transaction.
+If not explicitly set, it sets to the last block height.
+    </td>
+  </tr>
+  <tr>
+    <td class="fw-bold">validator_address</td>
+    <td> string</td>
+    <td>
+    Address of the validator to unbond from.
+    </td>
+  </tr>
+  <tr>
+    <td class="fw-bold">memo</td>
+    <td> string</td>
+    <td>
+    Transaction memo.
+    </td>
+  </tr>
+  </tbody>
+</table>
+  <h4>Result</h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">raw_transaction</td>
+    <td> string</td>
+    <td>
+    Raw transaction data.
+    </td>
+  </tr>
+     </tbody>
+</table>
+
+### pactus.transaction.get_raw_withdraw_transaction <span id="pactus.transaction.get_raw_withdraw_transaction" class="rpc-badge"></span>
+
+<p>GetRawWithdrawTransaction retrieves raw details of a withdraw transaction.</p>
+
+<h4>Parameters</h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">lock_time</td>
+    <td> numeric</td>
+    <td>
+    Lock time for the transaction.
+If not explicitly set, it sets to the last block height.
+    </td>
+  </tr>
+  <tr>
+    <td class="fw-bold">validator_address</td>
+    <td> string</td>
+    <td>
+    Address of the validator to withdraw from.
+    </td>
+  </tr>
+  <tr>
+    <td class="fw-bold">account_address</td>
+    <td> string</td>
+    <td>
+    Address of the account to withdraw to.
+    </td>
+  </tr>
+  <tr>
+    <td class="fw-bold">amount</td>
+    <td> numeric</td>
+    <td>
+    Withdrawal amount in NanoPAC.
+It should be greater than 0.
+    </td>
+  </tr>
+  <tr>
+    <td class="fw-bold">fee</td>
+    <td> numeric</td>
+    <td>
+    Transaction fee in NanoPAC.
+If not explicitly set, it is calculated based on the amount.
+    </td>
+  </tr>
+  <tr>
+    <td class="fw-bold">memo</td>
+    <td> string</td>
+    <td>
+    Transaction memo.
+    </td>
+  </tr>
+  </tbody>
+</table>
+  <h4>Result</h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">raw_transaction</td>
+    <td> string</td>
+    <td>
+    Raw transaction data.
+    </td>
+  </tr>
+     </tbody>
+</table>
+
+## Blockchain Service
+
+<p>Blockchain service defines RPC methods for interacting with the blockchain.</p>
+
+### pactus.blockchain.get_block <span id="pactus.blockchain.get_block" class="rpc-badge"></span>
+
+<p>GetBlock retrieves information about a block based on the provided request
+parameters.</p>
+
+<h4>Parameters</h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">height</td>
+    <td> numeric</td>
+    <td>
+    Height of the block.
+    </td>
+  </tr>
+  <tr>
+    <td class="fw-bold">verbosity</td>
+    <td> string</td>
+    <td>
+    (Enum) Verbosity level for block information.
+    <br>Available values:<ul>
+      <li>BLOCK_DATA = Request block data only.</li>
+      <li>BLOCK_INFO = Request block information and transaction IDs.</li>
+      <li>BLOCK_TRANSACTIONS = Request block information and transaction details.</li>
+      </ul>
+    </td>
+  </tr>
+  </tbody>
+</table>
+  <h4>Result</h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">height</td>
+    <td> numeric</td>
+    <td>
+    Height of the block.
+    </td>
+  </tr>
+     <tr>
+    <td class="fw-bold">hash</td>
+    <td> string</td>
+    <td>
+    Hash of the block.
+    </td>
+  </tr>
+     <tr>
+    <td class="fw-bold">data</td>
+    <td> string</td>
+    <td>
+    Block data, only available if the verbosity level is set to BLOCK_DATA.
+    </td>
+  </tr>
+     <tr>
+    <td class="fw-bold">block_time</td>
+    <td> numeric</td>
+    <td>
+    Block timestamp.
+    </td>
+  </tr>
+     <tr>
+    <td class="fw-bold">header</td>
+    <td> object</td>
+    <td>
+    Block header information.
+    </td>
+  </tr>
+     <tr>
+        <td class="fw-bold">header.version</td>
+        <td> numeric</td>
+        <td>
+        Block version.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">header.prev_block_hash</td>
+        <td> string</td>
+        <td>
+        Hash of the previous block.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">header.state_root</td>
+        <td> string</td>
+        <td>
+        State root of the block.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">header.sortition_seed</td>
+        <td> string</td>
+        <td>
+        Sortition seed of the block.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">header.proposer_address</td>
+        <td> string</td>
+        <td>
+        Address of the proposer of the block.
+        </td>
+      </tr>
+         <tr>
+    <td class="fw-bold">prev_cert</td>
+    <td> object</td>
+    <td>
+    Certificate information of the previous block.
+    </td>
+  </tr>
+     <tr>
+        <td class="fw-bold">prev_cert.hash</td>
+        <td> string</td>
+        <td>
+        Hash of the certificate.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">prev_cert.round</td>
+        <td> numeric</td>
+        <td>
+        Round of the certificate.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">prev_cert.committers</td>
+        <td>repeated numeric</td>
+        <td>
+        List of committers in the certificate.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">prev_cert.absentees</td>
+        <td>repeated numeric</td>
+        <td>
+        List of absentees in the certificate.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">prev_cert.signature</td>
+        <td> string</td>
+        <td>
+        Certificate signature.
+        </td>
+      </tr>
+         <tr>
+    <td class="fw-bold">txs</td>
+    <td>repeated object</td>
+    <td>
+    List of transactions in the block.
+Transaction information is available when the verbosity level is set to BLOCK_TRANSACTIONS.
+    </td>
+  </tr>
+     <tr>
+        <td class="fw-bold">txs[].id</td>
+        <td> string</td>
+        <td>
+        Transaction ID.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">txs[].data</td>
+        <td> string</td>
+        <td>
+        Transaction data.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">txs[].version</td>
+        <td> numeric</td>
+        <td>
+        Transaction version.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">txs[].lock_time</td>
+        <td> numeric</td>
+        <td>
+        Lock time for the transaction.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">txs[].value</td>
+        <td> numeric</td>
+        <td>
+        Transaction value in NanoPAC.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">txs[].fee</td>
+        <td> numeric</td>
+        <td>
+        Transaction fee in NanoPAC.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">txs[].payload_type</td>
+        <td> string</td>
+        <td>
+        (Enum) Type of transaction payload.
+        <br>Available values:<ul>
+          <li>UNKNOWN = Unknown payload type.</li>
+          <li>TRANSFER_PAYLOAD = Transfer payload type.</li>
+          <li>BOND_PAYLOAD = Bond payload type.</li>
+          <li>SORTITION_PAYLOAD = Sortition payload type.</li>
+          <li>UNBOND_PAYLOAD = Unbond payload type.</li>
+          <li>WITHDRAW_PAYLOAD = Withdraw payload type.</li>
+          </ul>
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">txs[].transfer</td>
+        <td> object</td>
+        <td>
+        (OneOf) Transfer payload.
+        </td>
+      </tr>
+         <tr>
+            <td class="fw-bold">txs[].transfer.sender</td>
+            <td> string</td>
+            <td>
+            Sender's address.
+            </td>
+          </tr>
+          <tr>
+            <td class="fw-bold">txs[].transfer.receiver</td>
+            <td> string</td>
+            <td>
+            Receiver's address.
+            </td>
+          </tr>
+          <tr>
+            <td class="fw-bold">txs[].transfer.amount</td>
+            <td> numeric</td>
+            <td>
+            Transaction amount in NanoPAC.
+            </td>
+          </tr>
+          <tr>
+        <td class="fw-bold">txs[].bond</td>
+        <td> object</td>
+        <td>
+        (OneOf) Bond payload.
+        </td>
+      </tr>
+         <tr>
+            <td class="fw-bold">txs[].bond.sender</td>
+            <td> string</td>
+            <td>
+            Sender's address.
+            </td>
+          </tr>
+          <tr>
+            <td class="fw-bold">txs[].bond.receiver</td>
+            <td> string</td>
+            <td>
+            Receiver's address.
+            </td>
+          </tr>
+          <tr>
+            <td class="fw-bold">txs[].bond.stake</td>
+            <td> numeric</td>
+            <td>
+            Stake amount in NanoPAC.
+            </td>
+          </tr>
+          <tr>
+        <td class="fw-bold">txs[].sortition</td>
+        <td> object</td>
+        <td>
+        (OneOf) Sortition payload.
+        </td>
+      </tr>
+         <tr>
+            <td class="fw-bold">txs[].sortition.address</td>
+            <td> string</td>
+            <td>
+            Address associated with the sortition.
+            </td>
+          </tr>
+          <tr>
+            <td class="fw-bold">txs[].sortition.proof</td>
+            <td> string</td>
+            <td>
+            Proof for the sortition.
+            </td>
+          </tr>
+          <tr>
+        <td class="fw-bold">txs[].unbond</td>
+        <td> object</td>
+        <td>
+        (OneOf) Unbond payload.
+        </td>
+      </tr>
+         <tr>
+            <td class="fw-bold">txs[].unbond.validator</td>
+            <td> string</td>
+            <td>
+            Address of the validator to unbond from.
+            </td>
+          </tr>
+          <tr>
+        <td class="fw-bold">txs[].withdraw</td>
+        <td> object</td>
+        <td>
+        (OneOf) Withdraw payload.
+        </td>
+      </tr>
+         <tr>
+            <td class="fw-bold">txs[].withdraw.from</td>
+            <td> string</td>
+            <td>
+            Address to withdraw from.
+            </td>
+          </tr>
+          <tr>
+            <td class="fw-bold">txs[].withdraw.to</td>
+            <td> string</td>
+            <td>
+            Address to withdraw to.
+            </td>
+          </tr>
+          <tr>
+            <td class="fw-bold">txs[].withdraw.amount</td>
+            <td> numeric</td>
+            <td>
+            Withdrawal amount in NanoPAC.
+            </td>
+          </tr>
+          <tr>
+        <td class="fw-bold">txs[].memo</td>
+        <td> string</td>
+        <td>
+        Transaction memo.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">txs[].public_key</td>
+        <td> string</td>
+        <td>
+        Public key associated with the transaction.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">txs[].signature</td>
+        <td> string</td>
+        <td>
+        Transaction signature.
+        </td>
+      </tr>
+         </tbody>
+</table>
+
+### pactus.blockchain.get_block_hash <span id="pactus.blockchain.get_block_hash" class="rpc-badge"></span>
+
+<p>GetBlockHash retrieves the hash of a block at the specified height.</p>
+
+<h4>Parameters</h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">height</td>
+    <td> numeric</td>
+    <td>
+    Height of the block.
+    </td>
+  </tr>
+  </tbody>
+</table>
+  <h4>Result</h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">hash</td>
+    <td> string</td>
+    <td>
+    Hash of the block.
+    </td>
+  </tr>
+     </tbody>
+</table>
+
+### pactus.blockchain.get_block_height <span id="pactus.blockchain.get_block_height" class="rpc-badge"></span>
+
+<p>GetBlockHeight retrieves the height of a block with the specified hash.</p>
+
+<h4>Parameters</h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">hash</td>
+    <td> string</td>
+    <td>
+    Hash of the block.
+    </td>
+  </tr>
+  </tbody>
+</table>
+  <h4>Result</h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">height</td>
+    <td> numeric</td>
+    <td>
+    Height of the block.
+    </td>
+  </tr>
+     </tbody>
+</table>
+
+### pactus.blockchain.get_blockchain_info <span id="pactus.blockchain.get_blockchain_info" class="rpc-badge"></span>
+
+<p>GetBlockchainInfo retrieves general information about the blockchain.</p>
+
+<h4>Parameters</h4>
+
+Parameters has no fields.
+  <h4>Result</h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">last_block_height</td>
+    <td> numeric</td>
+    <td>
+    Height of the last block.
+    </td>
+  </tr>
+     <tr>
+    <td class="fw-bold">last_block_hash</td>
+    <td> string</td>
+    <td>
+    Hash of the last block.
+    </td>
+  </tr>
+     <tr>
+    <td class="fw-bold">total_accounts</td>
+    <td> numeric</td>
+    <td>
+    Total number of accounts.
+    </td>
+  </tr>
+     <tr>
+    <td class="fw-bold">total_validators</td>
+    <td> numeric</td>
+    <td>
+    Total number of validators.
+    </td>
+  </tr>
+     <tr>
+    <td class="fw-bold">total_power</td>
+    <td> numeric</td>
+    <td>
+    Total power in the blockchain.
+    </td>
+  </tr>
+     <tr>
+    <td class="fw-bold">committee_power</td>
+    <td> numeric</td>
+    <td>
+    Power of the committee.
+    </td>
+  </tr>
+     <tr>
+    <td class="fw-bold">committee_validators</td>
+    <td>repeated object</td>
+    <td>
+    List of committee validators.
+    </td>
+  </tr>
+     <tr>
+        <td class="fw-bold">committee_validators[].hash</td>
+        <td> string</td>
+        <td>
+        Hash of the validator.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">committee_validators[].data</td>
+        <td> string</td>
+        <td>
+        Validator data.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">committee_validators[].public_key</td>
+        <td> string</td>
+        <td>
+        Public key of the validator.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">committee_validators[].number</td>
+        <td> numeric</td>
+        <td>
+        Validator number.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">committee_validators[].stake</td>
+        <td> numeric</td>
+        <td>
+        Validator stake in NanoPAC.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">committee_validators[].last_bonding_height</td>
+        <td> numeric</td>
+        <td>
+        Last bonding height.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">committee_validators[].last_sortition_height</td>
+        <td> numeric</td>
+        <td>
+        Last sortition height.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">committee_validators[].unbonding_height</td>
+        <td> numeric</td>
+        <td>
+        Unbonding height.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">committee_validators[].address</td>
+        <td> string</td>
+        <td>
+        Address of the validator.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">committee_validators[].availability_score</td>
+        <td> numeric</td>
+        <td>
+        Availability score of the validator.
+        </td>
+      </tr>
+         </tbody>
+</table>
+
+### pactus.blockchain.get_consensus_info <span id="pactus.blockchain.get_consensus_info" class="rpc-badge"></span>
+
+<p>GetConsensusInfo retrieves information about the consensus instances.</p>
+
+<h4>Parameters</h4>
+
+Parameters has no fields.
+  <h4>Result</h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">instances</td>
+    <td>repeated object</td>
+    <td>
+    List of consensus instances.
+    </td>
+  </tr>
+     <tr>
+        <td class="fw-bold">instances[].address</td>
+        <td> string</td>
+        <td>
+        Address of the consensus instance.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">instances[].Active</td>
+        <td> boolean</td>
+        <td>
+        Whether the consensus instance is active.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">instances[].height</td>
+        <td> numeric</td>
+        <td>
+        Height of the consensus instance.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">instances[].round</td>
+        <td> numeric</td>
+        <td>
+        Round of the consensus instance.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">instances[].votes</td>
+        <td>repeated object</td>
+        <td>
+        List of votes in the consensus instance.
+        </td>
+      </tr>
+         <tr>
+            <td class="fw-bold">instances[].votes[].type</td>
+            <td> string</td>
+            <td>
+            (Enum) Type of the vote.
+            <br>Available values:<ul>
+              <li>VOTE_UNKNOWN = Unknown vote type.</li>
+              <li>VOTE_PREPARE = Prepare vote type.</li>
+              <li>VOTE_PRECOMMIT = Precommit vote type.</li>
+              <li>VOTE_CHANGE_PROPOSER = Change proposer vote type.</li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td class="fw-bold">instances[].votes[].voter</td>
+            <td> string</td>
+            <td>
+            Voter's address.
+            </td>
+          </tr>
+          <tr>
+            <td class="fw-bold">instances[].votes[].block_hash</td>
+            <td> string</td>
+            <td>
+            Hash of the block being voted on.
+            </td>
+          </tr>
+          <tr>
+            <td class="fw-bold">instances[].votes[].round</td>
+            <td> numeric</td>
+            <td>
+            Round of the vote.
+            </td>
+          </tr>
+          <tr>
+            <td class="fw-bold">instances[].votes[].cp_round</td>
+            <td> numeric</td>
+            <td>
+            Consensus round of the vote.
+            </td>
+          </tr>
+          <tr>
+            <td class="fw-bold">instances[].votes[].cp_value</td>
+            <td> numeric</td>
+            <td>
+            Consensus value of the vote.
+            </td>
+          </tr>
+          </tbody>
+</table>
+
+### pactus.blockchain.get_account <span id="pactus.blockchain.get_account" class="rpc-badge"></span>
+
+<p>GetAccount retrieves information about an account based on the provided
+address.</p>
+
+<h4>Parameters</h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">address</td>
+    <td> string</td>
+    <td>
+    Address of the account.
+    </td>
+  </tr>
+  </tbody>
+</table>
+  <h4>Result</h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">account</td>
+    <td> object</td>
+    <td>
+    Account information.
+    </td>
+  </tr>
+     <tr>
+        <td class="fw-bold">account.hash</td>
+        <td> string</td>
+        <td>
+        Hash of the account.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">account.data</td>
+        <td> string</td>
+        <td>
+        Account data.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">account.number</td>
+        <td> numeric</td>
+        <td>
+        Account number.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">account.balance</td>
+        <td> numeric</td>
+        <td>
+        Account balance in NanoPAC.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">account.address</td>
+        <td> string</td>
+        <td>
+        Address of the account.
+        </td>
+      </tr>
+         </tbody>
+</table>
+
+### pactus.blockchain.get_validator <span id="pactus.blockchain.get_validator" class="rpc-badge"></span>
+
+<p>GetValidator retrieves information about a validator based on the provided
+address.</p>
+
+<h4>Parameters</h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">address</td>
+    <td> string</td>
+    <td>
+    Address of the validator.
+    </td>
+  </tr>
+  </tbody>
+</table>
+  <h4>Result</h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">validator</td>
+    <td> object</td>
+    <td>
+    Validator information.
+    </td>
+  </tr>
+     <tr>
+        <td class="fw-bold">validator.hash</td>
+        <td> string</td>
+        <td>
+        Hash of the validator.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">validator.data</td>
+        <td> string</td>
+        <td>
+        Validator data.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">validator.public_key</td>
+        <td> string</td>
+        <td>
+        Public key of the validator.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">validator.number</td>
+        <td> numeric</td>
+        <td>
+        Validator number.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">validator.stake</td>
+        <td> numeric</td>
+        <td>
+        Validator stake in NanoPAC.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">validator.last_bonding_height</td>
+        <td> numeric</td>
+        <td>
+        Last bonding height.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">validator.last_sortition_height</td>
+        <td> numeric</td>
+        <td>
+        Last sortition height.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">validator.unbonding_height</td>
+        <td> numeric</td>
+        <td>
+        Unbonding height.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">validator.address</td>
+        <td> string</td>
+        <td>
+        Address of the validator.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">validator.availability_score</td>
+        <td> numeric</td>
+        <td>
+        Availability score of the validator.
+        </td>
+      </tr>
+         </tbody>
+</table>
+
+### pactus.blockchain.get_validator_by_number <span id="pactus.blockchain.get_validator_by_number" class="rpc-badge"></span>
+
+<p>GetValidatorByNumber retrieves information about a validator based on the
+provided number.</p>
+
+<h4>Parameters</h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">number</td>
+    <td> numeric</td>
+    <td>
+    Validator number.
+    </td>
+  </tr>
+  </tbody>
+</table>
+  <h4>Result</h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">validator</td>
+    <td> object</td>
+    <td>
+    Validator information.
+    </td>
+  </tr>
+     <tr>
+        <td class="fw-bold">validator.hash</td>
+        <td> string</td>
+        <td>
+        Hash of the validator.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">validator.data</td>
+        <td> string</td>
+        <td>
+        Validator data.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">validator.public_key</td>
+        <td> string</td>
+        <td>
+        Public key of the validator.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">validator.number</td>
+        <td> numeric</td>
+        <td>
+        Validator number.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">validator.stake</td>
+        <td> numeric</td>
+        <td>
+        Validator stake in NanoPAC.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">validator.last_bonding_height</td>
+        <td> numeric</td>
+        <td>
+        Last bonding height.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">validator.last_sortition_height</td>
+        <td> numeric</td>
+        <td>
+        Last sortition height.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">validator.unbonding_height</td>
+        <td> numeric</td>
+        <td>
+        Unbonding height.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">validator.address</td>
+        <td> string</td>
+        <td>
+        Address of the validator.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">validator.availability_score</td>
+        <td> numeric</td>
+        <td>
+        Availability score of the validator.
+        </td>
+      </tr>
+         </tbody>
+</table>
+
+### pactus.blockchain.get_validator_addresses <span id="pactus.blockchain.get_validator_addresses" class="rpc-badge"></span>
+
+<p>GetValidatorAddresses retrieves a list of all validator addresses.</p>
+
+<h4>Parameters</h4>
+
+Parameters has no fields.
+  <h4>Result</h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">addresses</td>
+    <td>repeated string</td>
+    <td>
+    List of validator addresses.
+    </td>
+  </tr>
+     </tbody>
+</table>
+
+### pactus.blockchain.get_public_key <span id="pactus.blockchain.get_public_key" class="rpc-badge"></span>
+
+<p>GetPublicKey retrieves the public key of an account based on the provided
+address.</p>
+
+<h4>Parameters</h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">address</td>
+    <td> string</td>
+    <td>
+    Address for which public key is requested.
+    </td>
+  </tr>
+  </tbody>
+</table>
+  <h4>Result</h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">public_key</td>
+    <td> string</td>
+    <td>
+    Public key of the account.
+    </td>
+  </tr>
+     </tbody>
+</table>
+
+## Network Service
+
+<p>Network service provides RPCs for retrieving information about the network.</p>
+
+### pactus.network.get_network_info <span id="pactus.network.get_network_info" class="rpc-badge"></span>
+
+<p>GetNetworkInfo retrieves information about the overall network.</p>
+
+<h4>Parameters</h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">only_connected</td>
+    <td> boolean</td>
+    <td>
+    Only returns the peers with connected status
+    </td>
+  </tr>
+  </tbody>
+</table>
+  <h4>Result</h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">network_name</td>
+    <td> string</td>
+    <td>
+    Name of the network.
+    </td>
+  </tr>
+     <tr>
+    <td class="fw-bold">total_sent_bytes</td>
+    <td> numeric</td>
+    <td>
+    Total bytes sent across the network.
+    </td>
+  </tr>
+     <tr>
+    <td class="fw-bold">total_received_bytes</td>
+    <td> numeric</td>
+    <td>
+    Total bytes received across the network.
+    </td>
+  </tr>
+     <tr>
+    <td class="fw-bold">connected_peers_count</td>
+    <td> numeric</td>
+    <td>
+    Number of connected peers.
+    </td>
+  </tr>
+     <tr>
+    <td class="fw-bold">connected_peers</td>
+    <td>repeated object</td>
+    <td>
+    List of connected peers.
+    </td>
+  </tr>
+     <tr>
+        <td class="fw-bold">connected_peers[].status</td>
+        <td> numeric</td>
+        <td>
+        Status of the peer.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">connected_peers[].moniker</td>
+        <td> string</td>
+        <td>
+        Moniker of the peer.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">connected_peers[].agent</td>
+        <td> string</td>
+        <td>
+        Agent information of the peer.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">connected_peers[].peer_id</td>
+        <td> string</td>
+        <td>
+        Peer ID of the peer.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">connected_peers[].consensus_keys</td>
+        <td>repeated string</td>
+        <td>
+        Consensus keys used by the peer.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">connected_peers[].consensus_address</td>
+        <td>repeated string</td>
+        <td>
+        Consensus address of the peer.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">connected_peers[].services</td>
+        <td> numeric</td>
+        <td>
+        Services provided by the peer.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">connected_peers[].last_block_hash</td>
+        <td> string</td>
+        <td>
+        Hash of the last block the peer knows.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">connected_peers[].height</td>
+        <td> numeric</td>
+        <td>
+        Height of the peer in the blockchain.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">connected_peers[].received_bundles</td>
+        <td> numeric</td>
+        <td>
+        Count of received bundles.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">connected_peers[].invalid_bundles</td>
+        <td> numeric</td>
+        <td>
+        Count of invalid bundles received.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">connected_peers[].last_sent</td>
+        <td> numeric</td>
+        <td>
+        Timestamp of the last sent bundle.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">connected_peers[].last_received</td>
+        <td> numeric</td>
+        <td>
+        Timestamp of the last received bundle.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">connected_peers[].sent_bytes</td>
+        <td> object</td>
+        <td>
+        Bytes sent per message type.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">connected_peers[].received_bytes</td>
+        <td> object</td>
+        <td>
+        Bytes received per message type.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">connected_peers[].address</td>
+        <td> string</td>
+        <td>
+        Network address of the peer.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">connected_peers[].direction</td>
+        <td> string</td>
+        <td>
+        Direction of connection with the peer.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">connected_peers[].protocols</td>
+        <td>repeated string</td>
+        <td>
+        List of protocols supported by the peer.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">connected_peers[].total_sessions</td>
+        <td> numeric</td>
+        <td>
+        Total sessions with the peer.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">connected_peers[].completed_sessions</td>
+        <td> numeric</td>
+        <td>
+        Completed sessions with the peer.
+        </td>
+      </tr>
+         <tr>
+    <td class="fw-bold">sent_bytes</td>
+    <td> object</td>
+    <td>
+    Bytes sent per peer ID.
+    </td>
+  </tr>
+     <tr>
+    <td class="fw-bold">received_bytes</td>
+    <td> object</td>
+    <td>
+    Bytes received per peer ID.
+    </td>
+  </tr>
+     </tbody>
+</table>
+
+### pactus.network.get_node_info <span id="pactus.network.get_node_info" class="rpc-badge"></span>
+
+<p>GetNodeInfo retrieves information about a specific node in the network.</p>
+
+<h4>Parameters</h4>
+
+Parameters has no fields.
+  <h4>Result</h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">moniker</td>
+    <td> string</td>
+    <td>
+    Moniker of the node.
+    </td>
+  </tr>
+     <tr>
+    <td class="fw-bold">agent</td>
+    <td> string</td>
+    <td>
+    Agent information of the node.
+    </td>
+  </tr>
+     <tr>
+    <td class="fw-bold">peer_id</td>
+    <td> string</td>
+    <td>
+    Peer ID of the node.
+    </td>
+  </tr>
+     <tr>
+    <td class="fw-bold">started_at</td>
+    <td> numeric</td>
+    <td>
+    Timestamp when the node started.
+    </td>
+  </tr>
+     <tr>
+    <td class="fw-bold">reachability</td>
+    <td> string</td>
+    <td>
+    Reachability status of the node.
+    </td>
+  </tr>
+     <tr>
+    <td class="fw-bold">services</td>
+    <td>repeated numeric</td>
+    <td>
+    List of services provided by the node.
+    </td>
+  </tr>
+     <tr>
+    <td class="fw-bold">services_names</td>
+    <td>repeated string</td>
+    <td>
+    Names of services provided by the node.
+    </td>
+  </tr>
+     <tr>
+    <td class="fw-bold">local_addrs</td>
+    <td>repeated string</td>
+    <td>
+    List of addresses associated with the node.
+    </td>
+  </tr>
+     <tr>
+    <td class="fw-bold">protocols</td>
+    <td>repeated string</td>
+    <td>
+    List of protocols supported by the node.
+    </td>
+  </tr>
+     <tr>
+    <td class="fw-bold">clock_offset</td>
+    <td> numeric</td>
+    <td>
+    Clock offset
+    </td>
+  </tr>
+     <tr>
+    <td class="fw-bold">connection_info</td>
+    <td> object</td>
+    <td>
+    Connection information
+    </td>
+  </tr>
+     <tr>
+        <td class="fw-bold">connection_info.connections</td>
+        <td> numeric</td>
+        <td>
+        Total number of the connection.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">connection_info.inbound_connections</td>
+        <td> numeric</td>
+        <td>
+        Number of inbound connections.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">connection_info.outbound_connections</td>
+        <td> numeric</td>
+        <td>
+        Number of outbound connections.
+        </td>
+      </tr>
+         </tbody>
+</table>
+
+## Wallet Service
+
+<p>Define the Wallet service with various RPC methods for wallet management.</p>
+
+### pactus.wallet.create_wallet <span id="pactus.wallet.create_wallet" class="rpc-badge"></span>
+
+<p>CreateWallet creates a new wallet with the specified parameters.</p>
+
+<h4>Parameters</h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">wallet_name</td>
+    <td> string</td>
+    <td>
+    Name of the new wallet.
+    </td>
+  </tr>
+  <tr>
+    <td class="fw-bold">password</td>
+    <td> string</td>
+    <td>
+    Password for securing the wallet.
+    </td>
+  </tr>
+  </tbody>
+</table>
+  <h4>Result</h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">mnemonic</td>
+    <td> string</td>
+    <td>
+    Menomic for wallet recovery.
+    </td>
+  </tr>
+     </tbody>
+</table>
+
+### pactus.wallet.restore_wallet <span id="pactus.wallet.restore_wallet" class="rpc-badge"></span>
+
+<p>RestoreWallet restores an existing wallet with the given mnemonic.</p>
+
+<h4>Parameters</h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">wallet_name</td>
+    <td> string</td>
+    <td>
+    Name of the wallet to restore.
+    </td>
+  </tr>
+  <tr>
+    <td class="fw-bold">mnemonic</td>
+    <td> string</td>
+    <td>
+    Menomic for wallet recovery.
+    </td>
+  </tr>
+  <tr>
+    <td class="fw-bold">password</td>
+    <td> string</td>
+    <td>
+    Password for securing the wallet.
+    </td>
+  </tr>
+  </tbody>
+</table>
+  <h4>Result</h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">wallet_name</td>
+    <td> string</td>
+    <td>
+    Name of the restored wallet.
+    </td>
+  </tr>
+     </tbody>
+</table>
+
+### pactus.wallet.load_wallet <span id="pactus.wallet.load_wallet" class="rpc-badge"></span>
+
+<p>LoadWallet loads an existing wallet with the given name.</p>
+
+<h4>Parameters</h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">wallet_name</td>
+    <td> string</td>
+    <td>
+    Name of the wallet to load.
+    </td>
+  </tr>
+  </tbody>
+</table>
+  <h4>Result</h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">wallet_name</td>
+    <td> string</td>
+    <td>
+    Name of the loaded wallet.
+    </td>
+  </tr>
+     </tbody>
+</table>
+
+### pactus.wallet.unload_wallet <span id="pactus.wallet.unload_wallet" class="rpc-badge"></span>
+
+<p>UnloadWallet unloads a currently loaded wallet with the specified name.</p>
+
+<h4>Parameters</h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">wallet_name</td>
+    <td> string</td>
+    <td>
+    Name of the wallet to unload.
+    </td>
+  </tr>
+  </tbody>
+</table>
+  <h4>Result</h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">wallet_name</td>
+    <td> string</td>
+    <td>
+    Name of the unloaded wallet.
+    </td>
+  </tr>
+     </tbody>
+</table>
+
+### pactus.wallet.get_total_balance <span id="pactus.wallet.get_total_balance" class="rpc-badge"></span>
+
+<p>GetTotalBalance returns the total available balance of the wallet.</p>
+
+<h4>Parameters</h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">wallet_name</td>
+    <td> string</td>
+    <td>
+    Name of the wallet.
+    </td>
+  </tr>
+  </tbody>
+</table>
+  <h4>Result</h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">wallet_name</td>
+    <td> string</td>
+    <td>
+    Name of the wallet.
+    </td>
+  </tr>
+     <tr>
+    <td class="fw-bold">total_balance</td>
+    <td> numeric</td>
+    <td>
+    The total balance of the wallet in NanoPAC.
+    </td>
+  </tr>
+     </tbody>
+</table>
+
+### pactus.wallet.sign_raw_transaction <span id="pactus.wallet.sign_raw_transaction" class="rpc-badge"></span>
+
+<p>SignRawTransaction signs a raw transaction for a specified wallet.</p>
+
+<h4>Parameters</h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">wallet_name</td>
+    <td> string</td>
+    <td>
+    Name of the wallet used for signing.
+    </td>
+  </tr>
+  <tr>
+    <td class="fw-bold">raw_transaction</td>
+    <td> string</td>
+    <td>
+    Raw transaction data to be signed.
+    </td>
+  </tr>
+  <tr>
+    <td class="fw-bold">password</td>
+    <td> string</td>
+    <td>
+    Password for unlocking the wallet for signing.
+    </td>
+  </tr>
+  </tbody>
+</table>
+  <h4>Result</h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">transaction_id</td>
+    <td> string</td>
+    <td>
+    ID of the signed transaction.
+    </td>
+  </tr>
+     <tr>
+    <td class="fw-bold">signed_raw_transaction</td>
+    <td> string</td>
+    <td>
+    Signed raw transaction data.
+    </td>
+  </tr>
+     </tbody>
+</table>
+
+### pactus.wallet.get_validator_address <span id="pactus.wallet.get_validator_address" class="rpc-badge"></span>
+
+<p>GetValidatorAddress retrieves the validator address associated with a
+public key.</p>
+
+<h4>Parameters</h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">public_key</td>
+    <td> string</td>
+    <td>
+    Public key for which the validator address is requested.
+    </td>
+  </tr>
+  </tbody>
+</table>
+  <h4>Result</h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">address</td>
+    <td> string</td>
+    <td>
+    Validator address associated with the public key.
+    </td>
+  </tr>
+     </tbody>
+</table>
+
+### pactus.wallet.get_new_address <span id="pactus.wallet.get_new_address" class="rpc-badge"></span>
+
+<p>GetNewAddress generates a new address for the specified wallet.</p>
+
+<h4>Parameters</h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">wallet_name</td>
+    <td> string</td>
+    <td>
+    The name of the wallet for which the new address is requested.
+    </td>
+  </tr>
+  <tr>
+    <td class="fw-bold">address_type</td>
+    <td> string</td>
+    <td>
+    (Enum) The type of the new address.
+    <br>Available values:<ul>
+      <li>ADDRESS_TYPE_TREASURY = </li>
+      <li>ADDRESS_TYPE_VALIDATOR = </li>
+      <li>ADDRESS_TYPE_BLS_ACCOUNT = </li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td class="fw-bold">label</td>
+    <td> string</td>
+    <td>
+    The label for the new address.
+    </td>
+  </tr>
+  </tbody>
+</table>
+  <h4>Result</h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">wallet_name</td>
+    <td> string</td>
+    <td>
+    The name of the wallet from which the address is created.
+    </td>
+  </tr>
+     <tr>
+    <td class="fw-bold">address_info</td>
+    <td> object</td>
+    <td>
+    Information about the new address.
+    </td>
+  </tr>
+     <tr>
+        <td class="fw-bold">address_info.address</td>
+        <td> string</td>
+        <td>
+        The string representing the address.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">address_info.public_key</td>
+        <td> string</td>
+        <td>
+        The public key that the address is derived from.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">address_info.label</td>
+        <td> string</td>
+        <td>
+        The label that is associated with the address.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">address_info.path</td>
+        <td> string</td>
+        <td>
+        The Hierarchical Deterministic path of the address within the wallet.
+        </td>
+      </tr>
+         </tbody>
+</table>
+
+### pactus.wallet.get_address_history <span id="pactus.wallet.get_address_history" class="rpc-badge"></span>
+
+<p>GetAddressHistory retrieve transaction history of an address.</p>
+
+<h4>Parameters</h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">wallet_name</td>
+    <td> string</td>
+    <td>
+    Name of the wallet.
+    </td>
+  </tr>
+  <tr>
+    <td class="fw-bold">address</td>
+    <td> string</td>
+    <td>
+    Address to get the transaction history of it.
+    </td>
+  </tr>
+  </tbody>
+</table>
+  <h4>Result</h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">history_info</td>
+    <td>repeated object</td>
+    <td>
+    Array of address history and activities.
+    </td>
+  </tr>
+     <tr>
+        <td class="fw-bold">history_info[].transaction_id</td>
+        <td> string</td>
+        <td>
+        Hash of transaction.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">history_info[].time</td>
+        <td> numeric</td>
+        <td>
+        Transaction timestamp.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">history_info[].payload_type</td>
+        <td> string</td>
+        <td>
+        Type of transaction payload.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">history_info[].description</td>
+        <td> string</td>
+        <td>
+        Description of transaction.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">history_info[].amount</td>
+        <td> numeric</td>
+        <td>
+        Amount of transaction.
+        </td>
+      </tr>
+         </tbody>
+</table>

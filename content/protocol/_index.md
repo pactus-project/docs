@@ -3,8 +3,6 @@ title: 📔 Protocol
 weight: 2
 prev: /get-started/troubleshooting
 next: /protocol/blockchain/block
-sidebar:
-  open: false
 ---
 
 Pactus is a groundbreaking blockchain platform founded on the core principle that true fairness and
