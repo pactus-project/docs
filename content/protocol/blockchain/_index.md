@@ -3,8 +3,6 @@ title: 🔗 Blockchain
 weight: 3
 prev: /protocol
 next: /protocol/blockchain/block
-sidebar:
-  open: false
 ---
 
 {{< cards >}}

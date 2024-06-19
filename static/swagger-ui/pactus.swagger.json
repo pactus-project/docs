@@ -3,7 +3,16 @@
   "info": {
     "title": "Pactus APIs",
     "description": "Each node in the Pactus network can be configured to use the [gRPC](https://grpc.io/) protocol for communication.\nHere you can find the list of all gRPC methods and messages.\n\nAll the amounts and values in gRPC endpoints are in NanoPAC units, which are atomic and the smallest unit in the Pactus blockchain.\nEach PAC is equivalent to 1,000,000,000 or 10\u003csup\u003e9\u003c/sup\u003e NanoPACs.\n",
-    "version": "1.1"
+    "version": "1.1",
+    "contact": {
+      "name": "Pactus Blockchain",
+      "url": "https://pactus.org",
+      "email": "info@pactus.org"
+    },
+    "license": {
+      "name": "MIT License",
+      "url": "https://github.com/pactus-project/pactus/blob/main/LICENSE"
+    }
   },
   "host": "bootstrap1.pactus.org:8080",
   "tags": [
@@ -21,6 +30,7 @@
     }
   ],
   "schemes": [
+    "http",
     "https"
   ],
   "consumes": [
@@ -335,6 +345,15 @@
             }
           }
         },
+        "parameters": [
+          {
+            "name": "onlyConnected",
+            "description": "Only returns the peers with connected status",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          }
+        ],
         "tags": [
           "Network"
         ]
@@ -788,20 +807,6 @@
             "type": "string"
           },
           {
-            "name": "mnemonic",
-            "description": "Mnemonic for wallet recovery.",
-            "in": "query",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "language",
-            "description": "Language for the mnemonic.",
-            "in": "query",
-            "required": false,
-            "type": "string"
-          },
-          {
             "name": "password",
             "description": "Password for securing the wallet.",
             "in": "query",
@@ -835,14 +840,14 @@
         "parameters": [
           {
             "name": "walletName",
-            "description": "Name of the wallet for which the new address is requested.",
+            "description": "The name of the wallet for which the new address is requested.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "addressType",
-            "description": "Address type for the new address.",
+            "description": "The type of the new address.",
             "in": "query",
             "required": false,
             "type": "string",
@@ -855,7 +860,7 @@
           },
           {
             "name": "label",
-            "description": "Label for the new address.",
+            "description": "The label for the new address.",
             "in": "query",
             "required": false,
             "type": "string"
@@ -962,15 +967,15 @@
         ]
       }
     },
-    "/pactus/wallet/lock_wallet": {
+    "/pactus/wallet/restore_wallet": {
       "get": {
-        "summary": "LockWallet locks a currently loaded wallet with the provided password and\ntimeout.",
-        "operationId": "Wallet_LockWallet",
+        "summary": "RestoreWallet restores an existing wallet with the given mnemonic.",
+        "operationId": "Wallet_RestoreWallet",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/pactusLockWalletResponse"
+              "$ref": "#/definitions/pactusRestoreWalletResponse"
             }
           },
           "default": {
@@ -983,7 +988,21 @@
         "parameters": [
           {
             "name": "walletName",
-            "description": "Name of the wallet to lock.",
+            "description": "Name of the wallet to restore.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "mnemonic",
+            "description": "Menomic for wallet recovery.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "password",
+            "description": "Password for securing the wallet.",
             "in": "query",
             "required": false,
             "type": "string"
@@ -1072,53 +1091,6 @@
           "Wallet"
         ]
       }
-    },
-    "/pactus/wallet/unlock_wallet": {
-      "get": {
-        "summary": "UnlockWallet unlocks a locked wallet with the provided password and\ntimeout.",
-        "operationId": "Wallet_UnlockWallet",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/pactusUnlockWalletResponse"
-            }
-          },
-          "default": {
-            "description": "An unexpected error response.",
-            "schema": {
-              "$ref": "#/definitions/rpcStatus"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "walletName",
-            "description": "Name of the wallet to unlock.",
-            "in": "query",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "password",
-            "description": "Password for unlocking the wallet.",
-            "in": "query",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "timeout",
-            "description": "Timeout duration for the unlocked state.",
-            "in": "query",
-            "required": false,
-            "type": "integer",
-            "format": "int32"
-          }
-        ],
-        "tags": [
-          "Wallet"
-        ]
-      }
     }
   },
   "definitions": {
@@ -1156,16 +1128,20 @@
       "type": "object",
       "properties": {
         "address": {
-          "type": "string"
+          "type": "string",
+          "description": "The string representing the address."
         },
         "publicKey": {
-          "type": "string"
+          "type": "string",
+          "description": "The public key that the address is derived from."
         },
         "label": {
-          "type": "string"
+          "type": "string",
+          "description": "The label that is associated with the address."
         },
         "path": {
-          "type": "string"
+          "type": "string",
+          "description": "The Hierarchical Deterministic path of the address within the wallet."
         }
       },
       "description": "Message of address information."
@@ -1284,6 +1260,27 @@
       },
       "description": "Message containing information about a certificate."
     },
+    "pactusConnectionInfo": {
+      "type": "object",
+      "properties": {
+        "connections": {
+          "type": "string",
+          "format": "uint64",
+          "description": "Total number of the connection."
+        },
+        "inboundConnections": {
+          "type": "string",
+          "format": "uint64",
+          "description": "Number of inbound connections."
+        },
+        "outboundConnections": {
+          "type": "string",
+          "format": "uint64",
+          "description": "Number of outbound connections."
+        }
+      },
+      "description": "Response message containing information about the overall network."
+    },
     "pactusConsensusInfo": {
       "type": "object",
       "properties": {
@@ -1319,9 +1316,9 @@
     "pactusCreateWalletResponse": {
       "type": "object",
       "properties": {
-        "walletName": {
+        "mnemonic": {
           "type": "string",
-          "description": "Name of the created wallet."
+          "description": "Menomic for wallet recovery."
         }
       },
       "description": "Response message containing the name of the created wallet."
@@ -1480,12 +1477,12 @@
           "description": "Name of the network."
         },
         "totalSentBytes": {
-          "type": "integer",
+          "type": "string",
           "format": "int64",
           "description": "Total bytes sent across the network."
         },
         "totalReceivedBytes": {
-          "type": "integer",
+          "type": "string",
           "format": "int64",
           "description": "Total bytes received across the network."
         },
@@ -1506,7 +1503,7 @@
           "type": "object",
           "additionalProperties": {
             "type": "string",
-            "format": "uint64"
+            "format": "int64"
           },
           "description": "Bytes sent per peer ID."
         },
@@ -1514,7 +1511,7 @@
           "type": "object",
           "additionalProperties": {
             "type": "string",
-            "format": "uint64"
+            "format": "int64"
           },
           "description": "Bytes received per peer ID."
         }
@@ -1526,11 +1523,11 @@
       "properties": {
         "walletName": {
           "type": "string",
-          "description": "Name of the wallet."
+          "description": "The name of the wallet from which the address is created."
         },
         "addressInfo": {
           "$ref": "#/definitions/pactusAddressInfo",
-          "description": "Address information."
+          "description": "Information about the new address."
         }
       },
       "description": "Response message containing the new address."
@@ -1575,7 +1572,7 @@
           },
           "description": "Names of services provided by the node."
         },
-        "addrs": {
+        "localAddrs": {
           "type": "array",
           "items": {
             "type": "string"
@@ -1588,6 +1585,15 @@
             "type": "string"
           },
           "description": "List of protocols supported by the node."
+        },
+        "clockOffset": {
+          "type": "number",
+          "format": "double",
+          "title": "Clock offset"
+        },
+        "connectionInfo": {
+          "$ref": "#/definitions/pactusConnectionInfo",
+          "title": "Connection information"
         }
       },
       "description": "Response message containing information about a specific node in the network."
@@ -1691,20 +1697,20 @@
         "time": {
           "type": "integer",
           "format": "int64",
-          "description": "transaction timestamp."
+          "description": "Transaction timestamp."
         },
         "payloadType": {
           "type": "string",
-          "description": "payload type of transaction."
+          "description": "Type of transaction payload."
         },
         "description": {
           "type": "string",
-          "description": "description of transaction."
+          "description": "Description of transaction."
         },
         "amount": {
           "type": "string",
           "format": "int64",
-          "description": "amount of transaction."
+          "description": "Amount of transaction."
         }
       },
       "description": "Message of address history information."
@@ -1718,16 +1724,6 @@
         }
       },
       "description": "Response message containing the name of the loaded wallet."
-    },
-    "pactusLockWalletResponse": {
-      "type": "object",
-      "properties": {
-        "walletName": {
-          "type": "string",
-          "description": "Name of the locked wallet."
-        }
-      },
-      "description": "Response message containing the name of the locked wallet."
     },
     "pactusPayloadBond": {
       "type": "object",
@@ -1793,7 +1789,7 @@
         "WITHDRAW_PAYLOAD"
       ],
       "default": "UNKNOWN",
-      "description": "Enumeration for different types of transaction payloads.\n\n - UNKNOWN: Unknown payload type.\n - TRANSFER_PAYLOAD: Transfer payload type.\n - BOND_PAYLOAD: Bond payload type.\n - SORTITION_PAYLOAD: Sortition payload type.\n - UNBOND_PAYLOAD: Unbond payload type.\n - WITHDRAW_PAYLOAD: Withdraw payload type."
+      "description": "Enumeration for different types of transaction payload.\n\n - UNKNOWN: Unknown payload type.\n - TRANSFER_PAYLOAD: Transfer payload type.\n - BOND_PAYLOAD: Bond payload type.\n - SORTITION_PAYLOAD: Sortition payload type.\n - UNBOND_PAYLOAD: Unbond payload type.\n - WITHDRAW_PAYLOAD: Withdraw payload type."
     },
     "pactusPayloadUnbond": {
       "type": "object",
@@ -1874,25 +1870,25 @@
           "format": "int64",
           "description": "Height of the peer in the blockchain."
         },
-        "receivedMessages": {
+        "receivedBundles": {
           "type": "integer",
           "format": "int32",
-          "description": "Count of received messages."
+          "description": "Count of received bundles."
         },
-        "invalidMessages": {
+        "invalidBundles": {
           "type": "integer",
           "format": "int32",
-          "description": "Count of invalid messages received."
+          "description": "Count of invalid bundles received."
         },
         "lastSent": {
           "type": "string",
           "format": "int64",
-          "description": "Timestamp of the last sent message."
+          "description": "Timestamp of the last sent bundle."
         },
         "lastReceived": {
           "type": "string",
           "format": "int64",
-          "description": "Timestamp of the last received message."
+          "description": "Timestamp of the last received bundle."
         },
         "sentBytes": {
           "type": "object",
@@ -1937,6 +1933,16 @@
         }
       },
       "description": "Information about a peer in the network."
+    },
+    "pactusRestoreWalletResponse": {
+      "type": "object",
+      "properties": {
+        "walletName": {
+          "type": "string",
+          "description": "Name of the restored wallet."
+        }
+      },
+      "description": "Response message containing the name of the restored wallet."
     },
     "pactusSignRawTransactionResponse": {
       "type": "object",
@@ -2045,16 +2051,6 @@
         }
       },
       "description": "Response message containing the name of the unloaded wallet."
-    },
-    "pactusUnlockWalletResponse": {
-      "type": "object",
-      "properties": {
-        "walletName": {
-          "type": "string",
-          "description": "Name of the unlocked wallet."
-        }
-      },
-      "description": "Response message containing the name of the unlocked wallet."
     },
     "pactusValidatorInfo": {
       "type": "object",

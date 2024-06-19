@@ -1,118 +1,70 @@
 .community {
-    img {
-        margin: 4px;
-    }
-    }
-
-    .community_ran {
-    img {
-        margin: 4px;
-    }
-    }
-
-.text-bg-primary {
-    color: #fff !important;
-    background-color: #150e42 !important;
+  img {
+    margin: 4px;
+  }
 }
 
-.text-bg-secondary {
-    color: #fff !important;
-    background-color: #294ff8 !important;
-}
-
-.badge {
-    --pa-badge-padding-x: 0.65em;
-    --pa-badge-padding-y: 0.35em;
-    --pa-badge-font-size: 0.75em;
-    --pa-badge-font-weight: 700;
-    --pa-badge-color: #fff;
-    --pa-badge-border-radius: var(--pa-border-radius);
-    display: inline-block;
-    padding: var(--pa-badge-padding-y) var(--pa-badge-padding-x);
-    font-size: var(--pa-badge-font-size);
-    font-weight: var(--pa-badge-font-weight);
-    line-height: 1;
-    color: var(--pa-badge-color);
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: baseline;
-    border-radius: var(--pa-badge-border-radius);
-}
-
-.text-bg-warning {
-    color: #000 !important;
-    background-color: #ed8f14 !important;
-}
-
-.align-top {
-    vertical-align: top !important;
-}
-
-.fs-6 {
-    font-size: 1rem !important;
-}
-
-.text-bg-info {
-    color: #000 !important;
-    background-color: #18ddd6 !important;
-}
-
-table {
-    text-indent: 0;
-    border-color: inherit;
-    border-collapse: collapse;
-    width: fit-content;
-    margin: 20px auto;
+.community_ran {
+  img {
+    margin: 4px;
+  }
 }
 
 input[type="text"],
 input[type="email"],
 input[type="password"] {
-  border: 2px solid #ccc; /* Default border color */
-  border-radius: 5px; /* Rounded border */
-  padding: 8px; /* Add padding */
-  width: 100%; /* Full width */
-  box-sizing: border-box; /* Include padding and border in element's total width */
+    border: 2px solid #ccc;
+    /* Default border color */
+    border-radius: 5px;
+    /* Rounded border */
+    padding: 8px;
+    /* Add padding */
+    width: 100%;
+    /* Full width */
+    box-sizing: border-box;
+    /* Include padding and border in element's total width */
 }
 
 /* CSS for focused input fields */
 input[type="text"]:focus,
 input[type="email"]:focus,
 input[type="password"]:focus {
-  border-color: #007bff; /* Change border color when focused */
-  outline: none; /* Remove default outline */
+    border-color: #007bff;
+    /* Change border color when focused */
+    outline: none;
+    /* Remove default outline */
 }
 
 /* CSS for custom button */
 .custom-button {
-    background-color: #007bff; /* Button background color */
-    color: #fff; /* Text color */
-    border: none; /* Remove border */
-    border-radius: 5px; /* Rounded border */
-    padding: 10px 20px; /* Add padding */
-    cursor: pointer; /* Add pointer cursor */
-    transition: background-color 0.3s ease; /* Smooth transition for background color */
-  }
+    background-color: #007bff;
+    /* Button background color */
+    color: #fff;
+    /* Text color */
+    border: none;
+    /* Remove border */
+    border-radius: 5px;
+    /* Rounded border */
+    padding: 10px 20px;
+    /* Add padding */
+    cursor: pointer;
+    /* Add pointer cursor */
+    transition: background-color 0.3s ease;
+    /* Smooth transition for background color */
+}
 
-  /* CSS for custom button hover effect */
-  .custom-button:hover {
-    background-color: #0056b3; /* Darker background color on hover */
-  }
+/* CSS for custom button hover effect */
+.custom-button:hover {
+    background-color: #0056b3;
+    /* Darker background color on hover */
+}
 
-  .hexdump {
-    font-family: monospace;
-    font-size: 12px;
-    padding-bottom: 1rem;
-  }
-
-  .hexdump .offset {
-    border-right: 2px solid #708090;
-    color: #778899;
-  }
-  .hexdump .ascii {
-    color: #696969;
-  }
-
-  .sidebar-container {
-      width: 20rem;
-  }
+/* make sure the long text are not wrapped */
+.hextra-scrollbar ul li a {
+  overflow-wrap: unset;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.hextra-scrollbar ul  {
+  overflow-x:auto;
+}

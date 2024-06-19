@@ -3,8 +3,6 @@ title: 📚 Tutorials
 weight: 3
 prev: /protocol/transaction/withdraw
 next: /tutorials/pactus-wallet
-sidebar:
-  open: false
 ---
 
 {{< cards >}}
