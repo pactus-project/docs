@@ -1,5 +1,5 @@
 ---
-title: How to sign transaction using gRPC?
+title: How to Sign Transactions Using gRPC
 weight: 3
 ---
 
@@ -27,7 +27,8 @@ To follow along with this tutorial, you'll first need to set up and run a localn
 This command initializes a Pactus blockchain as a localnet.
 The purpose of this network is for testing.
 The above command actually restores a node from the given mnemonic.
-This helps you to create the same wallet with this tutorial. The first two addresses in this wallet are:
+This helps you create the same wallet for this tutorial.
+The first two addresses in this wallet are:
 
 ```text
 tpc1zhv2hq30rnu9lkjusgwqk4f5qfdr72sd2mndnn6
@@ -36,7 +37,7 @@ tpc1zsrvuvn0j80vc3we5q44apjrv8j7ta5807z7xc7
 
 We are going to transfer 1 PAC from the first account to the second one.
 
-### Run the node
+### Run the Node
 
 Now you can run the node simply with this command:
 
@@ -50,7 +51,7 @@ By running the node, you will see that it starts creating blocks, and
 therefore the reward account address will be rewarded locally.
 We can use this balance for testing purposes.
 
-### Interact with the node
+### Interact with the Node
 
 Open another terminal and run the following command:
 
@@ -60,14 +61,18 @@ Open another terminal and run the following command:
 ```
 
 It should print information about the localnet blockchain.
-The `pactus-shell` application uses gRPC to interact with the blockchain.
-In this tutorial, we use `pactus-shell` to interact with the blockchain.
-You can either use gRPC-gateway REST APIs or make direct gRPC calls to interact with the node.
+The [Pactus Shell](https://docs.pactus.org/tutorials/pactus-shell/)
+application uses gRPC to interact with the blockchain.
+In this tutorial, we use Pactus Shell to interact with the blockchain.
+You can either use
+[JSON-RPC](https://docs.pactus.org/api/json-rpc/)
+or make direct
+[gRPC](https://docs.pactus.org/api/grpc/) API calls to interact with the node.
 They are more or less similar and all interact with the node using gRPC endpoints.
 
-## Signing Transitions
+## Signing Transactions
 
-### Create raw transaction
+### Create the Raw Transaction
 
 To sign a transaction, we first need to create a raw transaction and then sign it.
 We can use the `get_raw_transfer_transaction` method to create a raw transfer transaction.
@@ -79,28 +84,18 @@ Similar methods can be used to create raw bond, unbond, and withdraw transaction
     --sender tpc1zhv2hq30rnu9lkjusgwqk4f5qfdr72sd2mndnn6 \
     --receiver tpc1zsrvuvn0j80vc3we5q44apjrv8j7ta5807z7xc7 \
     --amount 1
-{
-  "rawTransaction":  "AgGWBQAA6AcAAQK7FXBF458L+0uQQ4FqpoBLR+VBqgKA2cZN8jvZiLs0BWvQyGw8vL7Q7wE="
-}
 ```
 
 The sender account is the first reward address in the wallet, therefore it should have some coins in its account.
 
-<i class="fa-solid fa-triangle-exclamation"></i> Please note that the amount here is in atomic units.
-There is a Working-In-Progress PR to accept and return all amounts in PAC units (10^9).
+### Sign the Raw Transaction
 
-### Sign transaction
-
-Now you can sign this raw transaction. To sign a transaction, first, we need to load a wallet.
-At the time of writing this document, Pactus only supports the "default_wallet".
-Soon, creating wallets through gRPC and loading them will be supported.
+Now you can sign this raw transaction. To sign a transaction,
+first, we need to load the "default_wallet" wallet:
 
 ```bash
 ./pactus-shell --server-addr localhost:50052 \
   wallet load-wallet --wallet-name "default_wallet"
-{
-  "walletName":  "default_wallet"
-}
 ```
 
 Now that the "default_wallet" is loaded, we can proceed to sign the raw transaction:
@@ -110,26 +105,19 @@ Now that the "default_wallet" is loaded, we can proceed to sign the raw transact
   wallet sign-raw-transaction \
     --wallet-name "default_wallet" \
     --password "super-secret-password" \
-    --raw-transaction "AgGWBQAA6AcAAQK7FXBF458L+0uQQ4FqpoBLR+VBqgKA2cZN8jvZiLs0BWvQyGw8vL7Q7wE="
-{
-  "transactionId": "JZqOnVq87eWBd67LvF1bYIYiXjy/orru/vSmrir9iGA=",
-  "signedRawTransaction": "AAGWBQAA6AcAAQK7FXBF458L+0uQQ4FqpoBLR+VBqgKA2cZN8jvZiLs0BWvQyGw8vL7Q7wG0VVIZZ6CfW7J91B0lcw8Ji7+hgRbB88uT8pWyxf9cTqWGLL3sIbnNA1zQol+GtO6C645tYQYi6FWxtOcgYuurrsTapgSa911ZBuToQxJ8D5hj/BPqBiAtfMFwSWlXXbUKr4CGOCCPsA+IEAY0zVpxFa/bl3VMcZF4mgeAoJLZ3hcjz2leLJG9oVvNdwqvu0U="
-}
+    --raw-transaction "..."
 ```
 
 Transaction successfully signed.
 
-## Broadcast signed transaction
+## Broadcast the Signed Transaction
 
 Now you can broadcast the signed transaction:
 
 ```bash
 ./pactus-shell --server-addr localhost:50052 \
   transaction broadcast-transaction \
-    --signed-raw-transaction "AAGWBQAA6AcAAQK7FXBF458L+0uQQ4FqpoBLR+VBqgKA2cZN8jvZiLs0BWvQyGw8vL7Q7wG0VVIZZ6CfW7J91B0lcw8Ji7+hgRbB88uT8pWyxf9cTqWGLL3sIbnNA1zQol+GtO6C645tYQYi6FWxtOcgYuurrsTapgSa911ZBuToQxJ8D5hj/BPqBiAtfMFwSWlXXbUKr4CGOCCPsA+IEAY0zVpxFa/bl3VMcZF4mgeAoJLZ3hcjz2leLJG9oVvNdwqvu0U="
-{
-  "id": "JZqOnVq87eWBd67LvF1bYIYiXjy/orru/vSmrir9iGA="
-}
+    --signed-raw-transaction "..."
 ```
 
 Transaction successfully broadcasted.
@@ -147,4 +135,4 @@ Ensure that it is called on localhost for safety.
 If you intend to call it on a remote server, there are several security measures to consider:
 
 - Ensure SSL is installed using Nginx to secure the connections.
-- Secure the API using a password (currently under development; see here: [PIP-20](https://pips.pactus.org/PIPs/pip-20)).
+- Secure the gRPC communication using Basic Authentication.
