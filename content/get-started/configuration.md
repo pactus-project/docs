@@ -11,14 +11,14 @@ Your node configuration can be found at the following path:
 {{< tabs items="Linux-mac,windows" >}}
   {{< tab >}}
 
-```
+```none
 /home/{user}/pactus/config.toml
 ```
 
   {{< /tab >}}
   {{< tab >}}
 
-```
+```none
 C:\Users\{user}\pactus\config.toml
 ```
 
