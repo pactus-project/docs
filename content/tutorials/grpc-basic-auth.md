@@ -1,57 +1,58 @@
 ---
-title: How to secure gRPC using basic authentication?
+title: How to Secure gRPC Using Basic Authentication
 weight: 4
 ---
 
 ## Preface
 
-The Pactus Blockchain offers a gRPC interface, enabling users to interact with both the blockchain
+The Pactus Blockchain offers a gRPC interface, enabling users to interact with the blockchain
 and its native wallet. To enhance the security of gRPC APIs, we have implemented a Basic Authentication
-mechanism. This approach aims to provide a straightforward yet effective means for authenticating clients accessing the APIs.
+mechanism based on [bcrypt](https://en.wikipedia.org/wiki/Bcrypt) password hashing.
+This approach aims to provide a straightforward yet effective means for authenticating clients accessing the APIs.
 
-**Note:** This mechanism secures gRPC, gRPC gateway, and HTTP communications.
+**Note:** This mechanism secures gRPC, gRPC gateway, JSON-RPC, and HTTP communications.
 
-## Generate Basic Auth
+## Basic Auth Format
 
-To enable basic authentication, you need to generate basic authentication credentials using an online
-tool or a predefined utility.
+Basic Authentication is a string of the form `username:password_hash`.
+For example, if the username is "user" and the password is "pass", the Authorization header would be:
 
-Example Format:
-
-```shell
-username: foo
-password: bar
-
-result: foo:$2a$10$nl6VKEzSENIK5dmzoADgKeTFtCusQxeVCZiXkRzzbyfG.bLpHtrda
+```text
+user:$2a$10$nl6VKEzSENIK5dmzoADgKeTFtCusQxeVCZiXkRzzbyfG.bLpHtrda
 ```
 
-### Generate by using htpasswd tool
+## Generate Password Hash
 
-1. Install the `htpasswd` tool from [Apache](https://httpd.apache.org/docs/2.4/programs/htpasswd.html).
-2. Use the `htpasswd` command-line tool to generate a bcrypt-hashed password. Here's the general syntax:
+You can generate a bcrypt-hashed password using the following methods:
+
+### Using Apache htpasswd
+
+The [Apache htpasswd](https://httpd.apache.org/docs/2.4/programs/htpasswd.html)
+is a simple application for generating password hashes.
+Here is the general syntax:
 
 ```shell
-htpasswd -bnBC 10 <username> <password>
+htpasswd -bnB <username> <password>
 ```
 
-- `-b`: Use the command line to provide the password.
-- `-n`: Output the hashed password to the console rather than updating a file.
-- `-B`: Force the use of the bcrypt encryption algorithm.
-- `-C cost`: Set the cost factor for the bcrypt algorithm. Higher values result in slower hashing but are more secure.
-- `username`: The username for which you are generating the password.
-- `password`: The password you wish to hash.
+- `b`: Use batch mode to retrieve the password from the command line rather than prompting for it.
+- `n`: Display the results on standard output.
+- `B`: Force the use of the bcrypt algorithm.
+- `username`: The username for which the password is being generated.
+- `password`: The password to be hashed.
 
 Example:
 
 ```shell
-htpasswd -bnBC 10 user pass
+htpasswd -bnB user pass
 ```
 
 This process results in a bcrypt-hashed password that can be used for basic authentication.
 
-### Generate With Online tool
+### Using Online tool
 
-To generate basic authentication credentials, you can use the following form to create a hashed credential.
+To generate basic authentication credentials, you can use this online tool here.
+For additional security, you can save the web page locally and run it on an offline computer.
 
 {{<basic-auth>}}
 
@@ -71,19 +72,17 @@ To generate basic authentication credentials, you can use the following form to 
 
 ## Enable Basic Auth in the Config
 
-1. Open the `config.toml` file in your Pactus directory.
+To enable Basic Authentication in your Pactus Blockchain configuration, follow these steps:
 
-- Windows:`C:\Users\{user}\pactus`
-- Linux and Mac: `/home/{user}/pactus`
-
-2. Insert the generated user with the hashed password into the `basic_auth_credential` field in the config file.
+1. Open the [configuration](https://docs.pactus.org/get-started/configuration/) file in your Pactus directory.
+2. Insert the generated user with the hashed password into the `basic_auth` field in the `grpc` section:
 
 ```toml
 [grpc]
 enable = true
 enable_wallet = false
 listen = "127.0.0.1:50051"
-basic_auth_credential = "foo:$2a$10$nl6VKEzSENIK5dmzoADgKeTFtCusQxeVCZiXkRzzbyfG.bLpHtrda"
+basic_auth = "user:$2a$10$nl6VKEzSENIK5dmzoADgKeTFtCusQxeVCZiXkRzzbyfG.bLpHtrda"
 ```
 
 3. Restart or run the node to apply this configuration.
