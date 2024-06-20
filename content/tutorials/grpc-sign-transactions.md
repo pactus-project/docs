@@ -132,7 +132,6 @@ You can enable the wallet service in the configuration file.
 When signing transactions in production, you need to prioritize the security of the wallet.
 Make sure you have set a strong password for the native wallet.
 Ensure that it is called on localhost for safety.
-If you intend to call it on a remote server, there are several security measures to consider:
-
-- Ensure SSL is installed using Nginx to secure the connections.
-- Secure the gRPC communication using Basic Authentication.
+You can make the gRPC communication more secure in some ways.
+For instance, [set a password](/tutorials/grpc-basic-auth/) for the gRPC service,
+or use [NGINX](https://www.nginx.com/blog/nginx-1-13-10-grpc/) to enable TLS/SSL for your node.
