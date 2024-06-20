@@ -3,8 +3,25 @@ title: Pactus Node Configuration
 weight: 6
 ---
 
-This configuration specifies [configurations](https://github.com/pactus-project/pactus/blob/main/config/example_config.toml)
-for running a Pactus node.
+The Pactus node can be configured via a TOML file. You can find an example configuration in the
+[configurations](https://github.com/pactus-project/pactus/blob/main/config/example_config.toml) section.
+
+Your node configuration can be found at the following path:
+
+{{< tabs items="Linux-mac,windows" >}}
+  {{< tab >}}
+```
+/home/{user}/pactus/config.toml
+```
+  {{< /tab >}}
+  {{< tab >}}
+```
+C:\Users\{user}\pactus\config.toml
+```
+  {{< /tab >}}
+{{< /tabs >}}
+
+### Example Configuration
 
 <pre><code id="config-code" class="toml">Loading configuration...</code></pre>
 
