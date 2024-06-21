@@ -36,6 +36,6 @@ For instance, if you want to connect to a remote server, you can execute:
 ## Security consideration
 
 When connecting to a remote node, it's important to think about security.
-You can make the node more secure in a few ways.
+You can make the gRPC communication more secure in some ways.
 For instance, [set a password](/tutorials/grpc-basic-auth/) for the gRPC service,
 or use [NGINX](https://www.nginx.com/blog/nginx-1-13-10-grpc/) to enable TLS/SSL for your node.
