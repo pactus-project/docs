@@ -10,6 +10,8 @@ Once a bond transaction committed, the validator cannot participate in the
 [sortition algorithm](/protocol/consensus/sortition/) for 1 hour.
 This is called the "bond interval" and is defined in the
 [consensus parameter](/protocol/consensus/parameters/).
+Validators within the committee cannot increase their stake.
+Therefore, bond transactions will be processed only when the validators are not in the committee.
 
 ## Payload Structure
 
