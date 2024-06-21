@@ -12,7 +12,7 @@ This guide will explore effective ways to reduce networking usage for a Pactus n
 ### Reducing the number of connection
 
 By default, Pactus attempts to maintain 64 open connections with other nodes,
-split into 32 inbound and 32 outbound connections.
+with 1/4 of these as outbound connections and the remaining as inbound connections.
 To reduce networking usage, you can decrease this maximum number of connections.
 However, it's important to remember that more connections with
 peers usually enable the node to function more effectively and securely.
