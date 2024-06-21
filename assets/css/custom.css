@@ -68,3 +68,8 @@ input[type="password"]:focus {
 .hextra-scrollbar ul  {
   overflow-x:auto;
 }
+
+/* Prevent breaking code blocks */
+code {
+  white-space: nowrap;
+}
