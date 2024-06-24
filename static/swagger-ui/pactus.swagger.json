@@ -14,7 +14,7 @@
       "url": "https://github.com/pactus-project/pactus/blob/main/LICENSE"
     }
   },
-  "host": "https://bootstrap1.pactus.org:8080",
+  "host": "bootstrap1.pactus.org:8080",
   "tags": [
     {
       "name": "Transaction"
