@@ -4,10 +4,6 @@ weight: 2
 math: true
 ---
 
-{{< callout type="warning" >}}
-This post is obsolete. check <a href="https://pips.pactus.org/PIPs/pip-10">here</a> for more information.
-{{< /callout >}}
-
 Pactus consensus algorithm is a [state machine](https://en.wikipedia.org/wiki/Finite-state_machine)
 replication with [Byzantine fault](https://en.wikipedia.org/wiki/Byzantine_fault) tolerance.
 The Pactus consensus algorithm starts with the block creation phase.
