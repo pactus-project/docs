@@ -6,9 +6,9 @@ enableRobotsTXT: true
 enableGitInfo: true
 hasCJKLanguage: true
 
-# services:
-#   googleAnalytics:
-#     ID: G-58DDE02X9B
+services:
+   googleAnalytics:
+     ID: G-R59Q8JVQJ5
 
 outputs:
   home: [HTML]
