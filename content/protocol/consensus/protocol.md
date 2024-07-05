@@ -245,5 +245,6 @@ This ensures that each round can begin with a new proposal.
 </tbody>
 </table>
 
-[^1]: In [Practical Byzantine Fault Tolerance](https://pmg.csail.mit.edu/papers/osdi99.pdf) these steps are: pre-prepare, prepare and commit
+[^1]: In [Practical Byzantine Fault Tolerance](https://pmg.csail.mit.edu/papers/osdi99.pdf)
+  these steps are: pre-prepare, prepare and commit
 [^2]: [Random Oracles in Constantinople: Practical Asynchronous Byzantine Agreement Using Cryptography](https://link.springer.com/article/10.1007/s00145-005-0318-0)
