@@ -1,6 +1,6 @@
 ---
-title: How to use wallet in Command Line Mode?
-weight: 1
+title: How to use Pactus Wallet?
+weight: 2
 ---
 
 ## Preface

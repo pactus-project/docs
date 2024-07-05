@@ -1,6 +1,6 @@
 ---
 title: How to Sign Transactions Using gRPC?
-weight: 3
+weight: 4
 ---
 
 ## Preface

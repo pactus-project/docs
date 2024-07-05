@@ -16,13 +16,13 @@ maintain the security and integrity of the network.
 To better understand the incentive model in Pactus, let's compare it with the Bitcoin reward model.
 This comparison will help to understand how the incentive model works in Pactus.
 
-| Pactus                                           | Bitcoin                                      |
-| ------------------------------------------------ | -------------------------------------------- |
-| Consensus engine is Proof of Stake               | Consensus engine is Proof of Work            |
-| _Exactly_ every 10 seconds one block is _minted_ | Around every 10 minutes one block is _mined_ |
-| Total supply is 42,000,000 coin                  | Total supply is 21,000,000 coin              |
-| Always one coin per block                        | Initial block reward is 50 coin              |
-| No halving                                       | Halving happens every 4 years                |
+| Pactus                                 | Bitcoin                                      |
+| -------------------------------------- | -------------------------------------------- |
+| Consensus engine is Proof of Stake     | Consensus engine is Proof of Work            |
+| every 10 seconds one block is _minted_ | Around every 10 minutes one block is _mined_ |
+| Total supply is 42,000,000 coins       | Total supply is 21,000,000 coins             |
+| Always one coin per block              | Initial block reward is 50 coins             |
+| No halving                             | Halving happens every 4 years                |
 
 The halving mechanism in Bitcoin rewards early contributors more significantly.
 However, in a Proof-of-Stake blockchain, this mechanism can lead to wealth centralization,

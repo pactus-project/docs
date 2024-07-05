@@ -1,6 +1,6 @@
 ---
 title: How to Secure gRPC Using Basic Authentication
-weight: 4
+weight: 5
 ---
 
 ## Preface

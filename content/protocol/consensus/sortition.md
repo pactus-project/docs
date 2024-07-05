@@ -38,11 +38,11 @@ The pseudocode below demonstrates the evaluation of the VRF for the sortition al
 
 $$
 \begin{align*}
-& \textbf{function} \ VRF(sk, seed, total\_stake) \newline
+& \textbf{function} \ generateVRF(sk, seed, stake_{total}) \newline
 & \qquad pk \gets P_{BLS}(sk) \newline
 & \qquad proof \gets S_{BLS}(sk, seed \| pk) \newline
 & \qquad rnd \gets H(proof) \newline
-& \qquad index \gets \frac{(rnd \times total\_stake)}{2^{256}} \newline
+& \qquad index \gets \frac{(rnd \times stake_{total})}{2^{256}} \newline
 & \qquad \newline
 & \qquad \textbf{return} \ index, proof \newline
 & \textbf{end function}
@@ -53,22 +53,22 @@ where:
 
 - $sk$ is the secret key of the validator
 - $seed$ is the sortition seed
-- $total\_stake$ is the total stake of the blockchain
+- $stake_{total}$ is the total stake of the blockchain
 - $P_{BLS}$ is a cryptographic function that derives the public key from the secret key for the BLS signature
-- $S_{BLS}$ is a cryptographic function that signs a message with the secret key for the BLS signature.
-- $H$ is a cryptographic hash function that generates a number between $0$to $2 ^{256}$
+- $S_{BLS}$ is a cryptographic function that signs a message with the secret key for the BLS signature
+- $H$ is a cryptographic hash function that generates a number between $0$ to $2 ^{256}$
 - $\|$ denotes the concatenation of two values
 
 To verify a sortition proof, both the validator's public key and stake are required:
 
 $$
 \begin{align*}
-& \textbf{function} \ verifyVRF(pk, seed, proof, stake, total\_stake) \newline
+& \textbf{function} \ verifyVRF(pk, seed, proof, stake, stake_{total}) \newline
 & \qquad \textbf{if} \ V_{BLS}(pk, seed \| pk, proof) = True \ \textbf{then} \newline
 & \qquad \qquad rnd \gets H(proof) \newline
-& \qquad \qquad index \gets \frac{(rnd \times total\_stake)}{2^{256}} \newline
+& \qquad \qquad index \gets \frac{(rnd \times stake_{total})}{2^{256}} \newline
 & \qquad \newline
-& \qquad  \qquad \textbf{return} \ index \leqslant stake \newline
+& \qquad  \qquad \textbf{return} \ index < stake \newline
 & \qquad  \textbf{else} \newline
 & \qquad  \qquad \textbf{return} \ False \newline
 & \qquad  \textbf{end if} \newline
@@ -79,6 +79,7 @@ $$
 where:
 
 - $V_{BLS}$ is a cryptographic function used to verify a signed message using the BLS signature scheme
+- $stake$ is the validator's stake in the blockchain
 
 There is no need to send $index$ alongside $proof$ because the
 result should be less than the validator's stake, and the validator's stake is known at each block.
@@ -94,8 +95,8 @@ In each block, the block proposer generates a new sortition seed based on the pr
 
 $$
 \begin{align*}
-& \textbf{function} \ generateSeed(sk, prev\_seed) \newline
-& \qquad \textbf{return} \ S_{BLS}(sk, H(prev\_seed)) \newline
+& \textbf{function} \ generateSeed(sk, seed_{prev}) \newline
+& \qquad \textbf{return} \ S_{BLS}(sk, H(seed_{prev})) \newline
 & \textbf{end function}
 \end{align*}
 $$
@@ -106,8 +107,8 @@ The verification function is as follows:
 
 $$
 \begin{align*}
-& \textbf{function} \ verifySeed(pk, prev\_seed, seed) \newline
-& \qquad \textbf{return} \ V_{BLS}(pk, H(prev\_seed), seed) \newline
+& \textbf{function} \ verifySeed(pk, seed_{prev}, seed) \newline
+& \qquad \textbf{return} \ V_{BLS}(pk, H(seed_{prev}), seed) \newline
 & \textbf{end function}
 \end{align*}
 $$
@@ -158,6 +159,6 @@ An active validator is a validator that has not yet [unbonded](/protocol/transac
 
 The height at which the validator joined the committee is recorded as the "Last Joined Height" field in
 the [validator](/protocol/blockchain/validator/) structure.
-The validator with the lowest "Last Joined Height" is considered the oldest.
+The validator with the lowest "Last Joined Height" in the committee is considered the oldest.
 
 [^first]: [Verifiable Random Function](https://people.csail.mit.edu/silvio/Selected%20Scientific%20Papers/Pseudo%20Randomness/Verifiable_Random_Functions.pdf)

@@ -9,6 +9,7 @@ in the [committee](/protocol/consensus/committee/).
 By committing a sortition transaction, the validator will enter the committee.
 Sortition transactions are valid for 7 blocks, which is defined as "sortition interval" in the
 [consensus parameters](/protocol/consensus/parameters/).
+Sortition is free. This means there are no fees associated with the process of sortition transaction.
 
 ## Payload Structure
 
