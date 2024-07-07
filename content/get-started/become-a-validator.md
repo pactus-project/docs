@@ -181,7 +181,7 @@ You can start the node by running this command:
 
 ### Use the latest offline data for fast synchronization to the latest blocks in the chain
 
-1. Download the file `data.zip` from [https://data.pacviewer.com](https://data.pacviewer.com/pactus-data/).
+1. Download the file `data.zip` from [https://data.pacviewer.com](https://data.pacviewer.com).
 2. Verify the checksum hash file with `SHA256SUMS`.
 3. Stop the running node before updating the data.
 4. Extract the file `data.zip` and overwrite the "data" folder at the following locations:
