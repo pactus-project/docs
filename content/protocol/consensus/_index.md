@@ -6,7 +6,7 @@ next: /protocol/consensus/proof-of-stake
 ---
 
 {{< cards >}}
-  {{< card link="proof-of-stake" title="Solid State Proof of Stake">}}
+    {{< card link="solid-state-proof-of-stake" title="Solid State Proof of Stake">}}
     {{< card link="protocol" title="Consensus Protocol">}}
     {{< card link="specification" title="Consensus Specification">}}
     {{< card link="sortition" title="Sortition Algorithm">}}

@@ -135,11 +135,5 @@ The reward address is the account address where you collect the
 [rewards](/protocol/blockchain/incentive/) earned by participating in
 the consensus algorithm and proposing new blocks.
 
-To become a validator and participate in the
-consensus algorithm to earn rewards, you first need to
-[stake](/protocol/consensus/proof-of-stake/) some coins. In the next
-[tutorial](/tutorials/send-transaction-gui/),
-we will explain how to send a Bond transaction to become a validator.
-
 By running a Pactus node, you contribute to the decentralization and security of the Pactus blockchain network.
 Thank you for your participation!

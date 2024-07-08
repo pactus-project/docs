@@ -1,6 +1,6 @@
 ---
 title: How to send transactions in Graphic Mode?
-weight: 2
+weight: 1
 ---
 
 ## Preface
@@ -48,12 +48,17 @@ Therefore, if you want to stake on your own validators, you don't need to set th
 
 ## Unbond
 
-**Unbonding**: Unbonding is free. This means there are no fees associated with the process of unbonding your Pactus coins.
+To send a [unbond transaction](/protocol/transaction/unbond/), click on the "Transaction" menu
+and select "Unbond".
+A new window will appear where you can select the validator address from which you wish to "unbond".
 
 ![Unbond Transaction Dialog](/images/unbond-transaction-dialog.png)
 
 ## Withdraw
 
-**Withdrawals**: After you've unbonded your Pactus coins from staking, it will take 21 days before your coins can be withdrawn.
+To send a [withdraw transaction](/protocol/transaction/withdraw/), click on the "Transaction" menu
+and select "Withdraw".
+A new window will appear where you can select the validator address from which you wish to withdraw their stake,
+as well as the recipient's account address and the amount you wish to withdraw.
 
 ![Withdraw Transaction Dialog](/images/withdraw-transaction-dialog.png)

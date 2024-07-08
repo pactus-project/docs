@@ -1,6 +1,6 @@
 ---
 title: How to use Pactus Shell?
-weight: 5
+weight: 3
 ---
 
 Pactus Shell is a command-line tool designed for interacting with the Pactus blockchain.

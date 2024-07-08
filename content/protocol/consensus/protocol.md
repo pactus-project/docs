@@ -32,13 +32,13 @@ the resiliency of the algorithm is optimal if we have at least 3 non-faulty
 validators. So the minimum number of validators should be $3+1=4$.
 
 We denote a message as $\langle m \rangle$ tuple and a signed message by node $i$ as
-$$\langle m \rangle_{\sigma_i}$$.
+$\langle m \rangle_{\sigma_i}$.
 
 Pactus consensus algorithms has two phases: Block creation phase and change proposer phase.
 
 ### Block Creation
 
-The block creation phase in Pactus consensus algorithm includes these three steps[^1]:
+The block creation phase in Pactus consensus algorithm includes these three steps [^1]:
 **Propose**, **Prepare** and **Precommit**.
 The protocol proceeds in rounds $r = 0, 1, 2, \ldots$.
 
@@ -244,3 +244,7 @@ This ensures that each round can begin with a new proposal.
   </tr>
 </tbody>
 </table>
+
+[^1]: In [Practical Byzantine Fault Tolerance](https://pmg.csail.mit.edu/papers/osdi99.pdf)
+  these steps are: pre-prepare, prepare and commit
+[^2]: [Random Oracles in Constantinople: Practical Asynchronous Byzantine Agreement Using Cryptography](https://link.springer.com/article/10.1007/s00145-005-0318-0)
