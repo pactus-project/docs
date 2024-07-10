@@ -54,7 +54,7 @@ jobs:
         run: |
             hugo \
             --gc --minify \
-            --baseURL "https://docs.pactus.com/"
+            --baseURL "https://docs.pactus.org/"
 
       - name: Optimizing PNG images
         run: find "./public" -type f -name "*.png" -exec pngquant --verbose --force --ext .png {} \;

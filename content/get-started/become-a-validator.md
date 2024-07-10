@@ -179,16 +179,6 @@ You can start the node by running this command:
 ./pactus-daemon start -w /home/{user}/pactus
 ```
 
-### Use the latest offline data for fast synchronization to the latest blocks in the chain
-
-1. Download the file `data.zip` from [https://data.pacviewer.com](https://data.pacviewer.com).
-2. Verify the checksum hash file with `SHA256SUMS`.
-3. Stop the running node before updating the data.
-4. Extract the file `data.zip` and overwrite the "data" folder at the following locations:
-   - For Linux and Mac: `/home/{user}/pactus/data`
-   - For Windows: `C:\Users\{user}\pactus\data`
-5. Restart the node.
-
 ## Step 2: Subscribe to the Pactus Newsletter for Important Updates
 
 Stay informed and up-to-date with the latest developments in the Pactus ecosystem by

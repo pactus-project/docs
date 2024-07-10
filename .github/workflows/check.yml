@@ -62,7 +62,7 @@ jobs:
         run: |
             hugo \
             --gc --minify \
-            --baseURL "https://docs.pactus.com/"
+            --baseURL "https://docs.pactus.org/"
 
       # TODO: Disabled for now to fix the HTML issues
       # - name: HTML5Validator
