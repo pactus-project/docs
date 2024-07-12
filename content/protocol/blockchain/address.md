@@ -19,7 +19,7 @@ An address in the Pactus blockchain is made up of 21 bytes and it is derived fro
 The first byte of the address specifies the address type,
 while the remaining 20 bytes represent the hash of the public key.
 The hash function used is [RIPEMD-160](https://en.wikipedia.org/wiki/RIPEMD#RIPEMD-160_hashes),
-which is applied after [Blake2b]({{ site.baseurl }}/learn/blockchain/cryptography/#hashing-algorithm)):
+which is applied after [Blake2b](/protocol/blockchain/cryptography/#hashing-algorithm)):
 The resulting byte array is then converted into a bech32m[^first] string.
 
 ![Pactus address structure](/images/pactus-address.png)

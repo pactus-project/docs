@@ -18,7 +18,7 @@ Before proceeding with the steps below, ensure that you have the following:
 ## Download
 
 To get started, download and extract the Pactus CLI file from
-[here]({{ site.baseurl }}/download/#cli).
+[here](https://pactus.org/download/#cli).
 Once you have downloaded and extracted the Pactus CLI file, you can proceed to the next step.
 
 ## Initializing the Node
