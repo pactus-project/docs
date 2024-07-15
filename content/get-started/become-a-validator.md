@@ -30,12 +30,14 @@ After thorough testing on multiple machines, we can conclude that
 the recommended minimum hardware requirements are as follows:
 
 **Personal Computer:**
+
 - CPU's: 2 physical cores / 4vCPU
 - RAM: 4 GB Ram
 - Storage (SSD): 64 GB SSD Drive
 - Network: stable internet connection with over 15 MBps speed
 
 **Private server:**
+
 - CPU's: 1/2 physical core / 1vCPU
 - RAM: 1 GB Ram
 - Storage (SSD): 20 GB NVMe Drive
