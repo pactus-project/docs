@@ -4,7 +4,7 @@ weight: 1
 ---
 
 The Pactus blockchain is empowered by the
-[Solid State Proof-of-Stake](../protocol/consensus/proof-of-stake.md) mechanism.
+[Solid State Proof-of-Stake](/protocol/consensus/proof-of-stake.md) mechanism.
 This ensures security and stability, with network validators playing a crucial role.
 There are no restrictions on the number of validators on the Pactus blockchain,
 allowing anyone to participate and earn PAC coin rewards while enhancing network security.
