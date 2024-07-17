@@ -31,8 +31,13 @@ number of validators that may be faulty or byzantine. For example, if there is o
 the resiliency of the algorithm is optimal if we have at least 3 non-faulty
 validators. So the minimum number of validators should be $3+1=4$.
 
-We denote a message as $\langle m \rangle$ tuple and a signed message by node $i$ as
-$\langle m \rangle_{\sigma_i}$.
+Messages are denoted as $\langle m \rangle$ tuples,
+and a message signed by node $i$ is represented as $\langle m \rangle_{\sigma_i}$.
+We use <i>aggregate signature scheme</i> for signing the message that allow each
+party to justify its vote for a particular value by a single aggregated signature
+generated from $n$ signatures for the same message $m$.
+
+$${\sigma_{agg}} = Agg({\sigma_1}, {\sigma_2}, \dots, {\sigma_n})$$
 
 Pactus consensus algorithms has two phases: Block creation phase and change proposer phase.
 
@@ -78,9 +83,9 @@ In _precommit_ step, validator $i$ signs and broadcasts precommit message to
 the other validators.
 The precommit message has this form:
 
-$\langle \text{PRECOMMIT},h,r,d \rangle_{\sigma_i}$
+$$\langle \text{PRECOMMIT},h,r,d \rangle_{\sigma_i}$$
 
-Each validator executes and commits block $b$ after receiving
+Each validator executes and commits block $B$ after receiving
 $2f+1$ precommit messages (including its own) and becomes **committed**.
 
 #### Block Announcement
@@ -156,7 +161,7 @@ For the first round, if the validator's timer has expired in the prepare step, t
 and if the validator's timer expired in the precommit step,
 the justification is the proper quorum certificate for the prepare step at round $r$.
 
-In the next rounds, a pre-vote for $b$ may be justified in two ways:
+In the next rounds, a pre-vote for $B$ may be justified in two ways:
 
 - **Hard**: that is the quorum certificate for $\langle \text{CP:PRE-VOTE},h,r,r_{cp}-1,b \rangle$
 - **Soft**: that is the quorum certificate for $\langle \text{CP:MAIN-VOTE},h,r,r_{cp}-1,abstain \rangle$
@@ -187,11 +192,15 @@ A main-vote for $v$ may be justified in two ways:
 
 #### Decide Step
 
-After collecting $2f+1$ valid and justified main-votes, each validator examines these votes. If all
-votes are for a value $b \in \{0, 1\}$, then the validator decides $b$, but continues to
-participate in the protocol for one more round. Otherwise, the validator proceeds to the next round.
+After collecting $2f+1$ valid and justified main-votes, each validator examines these votes.
+If all votes are for a value $b \in \{0, 1\}$, then the validator decides $b$ and
+broadcasts decided message to the network.
+Otherwise, it moves to next round.
+The decided message has this form:
 
-$$r_{cp}+1$$
+$$\langle\langle \text{CP:DECIDED},h,r,r_{cp},b \rangle, justification\rangle$$
+
+The justification in the decided message is a combination of all main-vote signatures for the value $b$.
 
 ### Comparison
 
