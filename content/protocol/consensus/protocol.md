@@ -161,7 +161,7 @@ For the first round, if the validator's timer has expired in the prepare step, t
 and if the validator's timer expired in the precommit step,
 the justification is the proper quorum certificate for the prepare step at round $r$.
 
-In the next rounds, a pre-vote for $B$ may be justified in two ways:
+In the next rounds, a pre-vote for $b$ may be justified in two ways:
 
 - **Hard**: that is the quorum certificate for $\langle \text{CP:PRE-VOTE},h,r,r_{cp}-1,b \rangle$
 - **Soft**: that is the quorum certificate for $\langle \text{CP:MAIN-VOTE},h,r,r_{cp}-1,abstain \rangle$
