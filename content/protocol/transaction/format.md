@@ -4,10 +4,11 @@ weight: 1
 math: false
 ---
 
-Transactions in Pactus consists the following fields:
+Transactions in Pactus consist of the following fields:
 
 | Field        | Size     |
 | ------------ | -------- |
+| Flags        | 1 byte   |
 | Version      | 1 byte   |
 | Lock Time    | 4 bytes  |
 | Fee          | Variant  |
@@ -17,6 +18,8 @@ Transactions in Pactus consists the following fields:
 | Signature    | 48 bytes |
 | Public Key   | 96 bytes |
 
+- **Flags** field is one byte, and if the first bit of the Flags is set to 1, it indicates that the
+  [public key is known](https://pips.pactus.org/PIPs/pip-4) and excluded from the transaction.
 - **Version** is the version of the transaction format. Different versions may have different fields or
   a different layout, and the current transaction version is set to 1.
 - **Lock Time** specifies the block number at which the transaction can be unlocked.
@@ -39,7 +42,7 @@ Transactions in Pactus consists the following fields:
 
 The payload type field determines the format of the payload data field in the transaction.
 Different payload types have different formats for the payload data.
-The following are the supported transactions in Pactus blockchain:
+The following are the supported transactions in the Pactus blockchain:
 
 1. [Transfer transaction](/protocol/transaction/transfer)
 2. [Bond transaction](/protocol/transaction/bond)
