@@ -140,7 +140,7 @@ If you have a firewall, you should check this.
 You can check by <a href="https://portchecker.co/" rel="nofollow noindex noreferrer" target="_blank">online service</a>
 for this port is open or close.
 
-![Open port in firewall](/images/open-port.jpg)
+![Open port in firewall](/images/open-port.png)
 
 ## Avoid running node with the same validators on different machines
 
