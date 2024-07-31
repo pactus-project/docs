@@ -33,8 +33,8 @@ Now you need to create a wallet and setup a working directory for your node.
 A working directory is a place where you save blockchain data and wallets.
 Open the Terminal and run the following command:
 
-{{< tabs items="Linux-mac,windows" >}}
-  {{< tab >}}
+{{< os_tabs items="unix,windows" >}}
+  {{< os_tab >}}
 
 ```bash
 docker run -it --rm -v ~/pactus:/root/pactus pactus/pactus pactus-daemon init
@@ -42,17 +42,17 @@ docker run -it --rm -v ~/pactus:/root/pactus pactus/pactus pactus-daemon init
 
 This command creates your wallet and setup the working directory at `~/pactus`.
 
-  {{< /tab >}}
-  {{< tab >}}
+  {{< /os_tab >}}
+  {{< os_tab >}}
 
-```powershell
+```batch
 docker run -it --rm -v %USERPROFILE%\pactus:/root/pactus pactus/pactus pactus-daemon init
 ```
 
 This command creates your wallet and setup the working directory at `C:\Users\<USER_NAME>\pactus`.
 
-  {{< /tab >}}
-{{< /tabs >}}
+  {{< /os_tab >}}
+{{< /os_tabs >}}
 
 Here's an explanation of the Docker flags:
 
@@ -71,22 +71,22 @@ Here's an explanation of the Docker flags:
 
 Now you can start the node and sync with the network. Run the following command in the Terminal:
 
-{{< tabs items="Linux-mac,windows" >}}
-  {{< tab >}}
+{{< os_tabs items="unix,windows" >}}
+  {{< os_tab >}}
 
 ```bash
 docker run -it -d -v ~/pactus:/root/pactus -p 21888:21888 -p 21888:21888/udp -p 50051:50051 -p 8080:8080 --name pactus pactus/pactus pactus-daemon start --password <WALLET_PASSWORD>
 ```
 
-  {{< /tab >}}
-  {{< tab >}}
+  {{< /os_tab >}}
+  {{< os_tab >}}
 
-```powershell
+```batch
 docker run -it -d -v %USERPROFILE%\pactus:/root/pactus -p 21888:21888 -p 21888:21888/udp -p 50051:50051 -p 8080:8080 --name pactus pactus/pactus pactus-daemon start  --password {WALLET_PASSWORD}
 ```
 
-  {{< /tab >}}
-{{< /tabs >}}
+  {{< /os_tab >}}
+{{< /os_tabs >}}
 
 This command creates and runs a Docker container named "pactus".
 Here's an explanation of the Docker flags:
@@ -159,23 +159,23 @@ To enable IPv6 for Docker, follow the official documentation [here](https://docs
 You can use Pactus Docker to manage the wallet.
 For example, you can check the balance of your wallet as shown below:
 
-{{< tabs items="Linux-mac,windows" >}}
-  {{< tab >}}
+{{< os_tabs items="unix,windows" >}}
+  {{< os_tab >}}
 
 ``` bash
 docker run -it --rm -v ~/pactus:/root/pactus pactus/pactus pactus-wallet address all --balance --stake
 
 ```
 
-  {{< /tab >}}
-  {{< tab >}}
+  {{< /os_tab >}}
+  {{< os_tab >}}
 
-``` powershell
+```batch
 docker run -it --rm -v %USERPROFILE%\pactus:/root/pactus pactus-wallet address all --balance --stake
 ```
 
-  {{< /tab >}}
-{{< /tabs >}}
+  {{< /os_tab >}}
+{{< /os_tabs >}}
 
 ## Example docker compose
 

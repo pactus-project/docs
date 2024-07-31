@@ -16,8 +16,8 @@ reduce your `availability score`, preventing you from receiving rewards.
 
 Therefore, make sure to check that your system or server clock is fully synchronized and that NTP is enabled.
 
-{{< tabs items="Windows,Linux-Mac" >}}
-{{< tab >}}
+{{< os_tabs items="Windows,Linux-Mac" >}}
+{{< os_tab >}}
 
 1. Run `cmd` with run as administrator.
 2. Check NTP is enable
@@ -97,8 +97,8 @@ Source: pool.ntp.org
 Poll Interval: 10 (1024s)
 ```
 
-{{< /tab >}}
-{{< tab >}}
+{{< /os_tab >}}
+{{< os_tab >}}
 
 1. Run `terminal`.
 2. Check NTP status by `timedatectl status`
@@ -124,9 +124,9 @@ If `NTP service` is not active and `System clock synchronized` is no please foll
 - <a href="https://groups.google.com/g/public-ntp-discuss/c/VhXAirp-28c" rel="nofollow noindex noreferrer" target="_blank">
   How to enable NTP service by systemd-timesyncd</a>
 
-{{< /tab >}}
+{{< /os_tab >}}
 
-{{< /tabs >}}
+{{< /os_tabs >}}
 
 ## Port P2P is open in local machine or server
 

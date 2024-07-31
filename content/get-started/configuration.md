@@ -12,22 +12,22 @@ Each node can have different settings and configurations based on its needs and 
 
 The config file can find inside the working directory, typically located at:
 
-{{< tabs items="Linux-mac,windows" >}}
-  {{< tab >}}
+{{< os_tabs items="unix,windows" >}}
+  {{< os_tab >}}
 
 ```none
 ~/pactus/config.toml
 ```
 
-  {{< /tab >}}
-  {{< tab >}}
+  {{< /os_tab >}}
+  {{< os_tab >}}
 
 ```none
 C:\Users\<USER_NAME>\pactus\config.toml
 ```
 
-  {{< /tab >}}
-{{< /tabs >}}
+  {{< /os_tab >}}
+{{< /os_tabs >}}
 
 ## Editing Config File
 

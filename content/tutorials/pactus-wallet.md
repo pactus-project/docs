@@ -34,22 +34,22 @@ If you wish to select or specify a different wallet, use the `--path` option.
 
 To create a new wallet, run the following command:
 
-{{< tabs items="Linux-mac,windows" >}}
-  {{< tab >}}
+{{< os_tabs items="unix,windows" >}}
+  {{< os_tab >}}
 
 ```shell
 ./pactus-wallet --path <PATH-To-NEW-WALLET> create
 ```
 
-  {{< /tab >}}
-  {{< tab >}}
+  {{< /os_tab >}}
+  {{< os_tab >}}
 
 ```shell
 pactus-wallet.exe --path <PATH-To-NEW-WALLET> create
 ```
 
-  {{< /tab >}}
-{{< /tabs >}}
+  {{< /os_tab >}}
+{{< /os_tabs >}}
 
 Replace `<PATH-To-NEW-WALLET>` with the file path where you want to create the wallet.
 
@@ -57,22 +57,22 @@ Replace `<PATH-To-NEW-WALLET>` with the file path where you want to create the w
 
 If you lose your wallet or forget your password, you can recover it by running this command:
 
-{{< tabs items="Linux-mac,windows" >}}
-  {{< tab >}}
+{{< os_tabs items="unix,windows" >}}
+  {{< os_tab >}}
 
 ```shell
 ./pactus-wallet --path <PATH-To-NEW-WALLET> recover
 ```
 
-  {{< /tab >}}
-  {{< tab >}}
+  {{< /os_tab >}}
+  {{< os_tab >}}
 
 ```shell
 pactus-wallet.exe --path <PATH-To-NEW-WALLET> recover
 ```
 
-  {{< /tab >}}
-{{< /tabs >}}
+  {{< /os_tab >}}
+{{< /os_tabs >}}
 
 Replace `<PATH-To-NEW-WALLET>` with the file path where you want to restore the wallet.
 
@@ -80,22 +80,22 @@ Replace `<PATH-To-NEW-WALLET>` with the file path where you want to restore the 
 
 You can change the wallet password by running this command:
 
-{{< tabs items="Linux-mac,windows" >}}
-  {{< tab >}}
+{{< os_tabs items="unix,windows" >}}
+  {{< os_tab >}}
 
 ```shell
 ./pactus-wallet password
 ```
 
-  {{< /tab >}}
-  {{< tab >}}
+  {{< /os_tab >}}
+  {{< os_tab >}}
 
 ```shell
 pactus-wallet.exe password
 ```
 
-  {{< /tab >}}
-{{< /tabs >}}
+  {{< /os_tab >}}
+{{< /os_tabs >}}
 
 This command changes the password for the `default_wallet` if there is one, or sets a new password.
 
@@ -103,22 +103,22 @@ This command changes the password for the `default_wallet` if there is one, or s
 
 You can obtain the wallet seed by running this command:
 
-{{< tabs items="Linux-mac,windows" >}}
-  {{< tab >}}
+{{< os_tabs items="unix,windows" >}}
+  {{< os_tab >}}
 
 ```shell
 ./pactus-wallet seed
 ```
 
-  {{< /tab >}}
-  {{< tab >}}
+  {{< /os_tab >}}
+  {{< os_tab >}}
 
 ```shell
 pactus-wallet.exe seed
 ```
 
-  {{< /tab >}}
-{{< /tabs >}}
+  {{< /os_tab >}}
+{{< /os_tabs >}}
 
 The wallet seed is encrypted within your wallet, and
 you'll need to enter the wallet password to access it.
@@ -131,43 +131,43 @@ In this section, we'll cover address commands that help you manage your wallet a
 
 You can create a new address by running this command:
 
-{{< tabs items="Linux-mac,windows" >}}
-  {{< tab >}}
+{{< os_tabs items="unix,windows" >}}
+  {{< os_tab >}}
 
 ```shell
 ./pactus-wallet address new
 ```
 
-  {{< /tab >}}
-  {{< tab >}}
+  {{< /os_tab >}}
+  {{< os_tab >}}
 
 ```shell
 pactus-wallet.exe address new
 ```
 
-  {{< /tab >}}
-{{< /tabs >}}
+  {{< /os_tab >}}
+{{< /os_tabs >}}
 
 Based on [PIP-8](https://pips.pactus.org/PIPs/pip-8), an address string conducts its type and usage.
 By default, the above command creates an account address.
 If you want to create a validator address instead, you can use the `--type validator` option with the command like this:
 
-{{< tabs items="Linux-mac,windows" >}}
-  {{< tab >}}
+{{< os_tabs items="unix,windows" >}}
+  {{< os_tab >}}
 
 ```shell
 ./pactus-wallet address new --type validator
 ```
 
-  {{< /tab >}}
-  {{< tab >}}
+  {{< /os_tab >}}
+  {{< os_tab >}}
 
 ```shell
 pactus-wallet.exe address new --type validator
 ```
 
-  {{< /tab >}}
-{{< /tabs >}}
+  {{< /os_tab >}}
+{{< /os_tabs >}}
 
 You can also assign a label to your address to better organize your address book.
 
@@ -175,43 +175,43 @@ You can also assign a label to your address to better organize your address book
 
 To view the list of wallet addresses, use this command:
 
-{{< tabs items="Linux-mac,windows" >}}
-  {{< tab >}}
+{{< os_tabs items="unix,windows" >}}
+  {{< os_tab >}}
 
 ```shell
 ./pactus-wallet address all
 ```
 
-  {{< /tab >}}
-  {{< tab >}}
+  {{< /os_tab >}}
+  {{< os_tab >}}
 
 ```shell
 pactus-wallet.exe address all
 ```
 
-  {{< /tab >}}
-{{< /tabs >}}
+  {{< /os_tab >}}
+{{< /os_tabs >}}
 
 ### Get Public Key
 
 To obtain the public key for a specific address, run this command:
 
-{{< tabs items="Linux-mac,windows" >}}
-  {{< tab >}}
+{{< os_tabs items="unix,windows" >}}
+  {{< os_tab >}}
 
 ```shell
 ./pactus-wallet address pub <ADDRESS>
 ```
 
-  {{< /tab >}}
-  {{< tab >}}
+  {{< /os_tab >}}
+  {{< os_tab >}}
 
 ```shell
 pactus-wallet.exe address pub <ADDRESS>
 ```
 
-  {{< /tab >}}
-{{< /tabs >}}
+  {{< /os_tab >}}
+{{< /os_tabs >}}
 
 Replace `<ADDRESS>` with the address for which you want to retrieve its public key.
 
@@ -219,22 +219,22 @@ Replace `<ADDRESS>` with the address for which you want to retrieve its public k
 
 You can get the private key of your address by this command:
 
-{{< tabs items="Linux-mac,windows" >}}
-  {{< tab >}}
+{{< os_tabs items="unix,windows" >}}
+  {{< os_tab >}}
 
 ```shell
 ./pactus-wallet address priv <ADDRESS>
 ```
 
-  {{< /tab >}}
-  {{< tab >}}
+  {{< /os_tab >}}
+  {{< os_tab >}}
 
 ```shell
 pactus-wallet.exe address priv <ADDRESS>
 ```
 
-  {{< /tab >}}
-{{< /tabs >}}
+  {{< /os_tab >}}
+{{< /os_tabs >}}
 
 Replace `<ADDRESS>` with the address for which you want to retrieve its private key.
 Keep your private key secure. If someone gains access to your private key,
@@ -244,22 +244,22 @@ they will have full control over that address.
 
 You can get the balance of your address by this command:
 
-{{< tabs items="Linux-mac,windows" >}}
-  {{< tab >}}
+{{< os_tabs items="unix,windows" >}}
+  {{< os_tab >}}
 
 ```shell
 ./pactus-wallet address balance <ADDRESS>
 ```
 
-  {{< /tab >}}
-  {{< tab >}}
+  {{< /os_tab >}}
+  {{< os_tab >}}
 
 ```shell
 pactus-wallet.exe address balance <ADDRESS>
 ```
 
-  {{< /tab >}}
-{{< /tabs >}}
+  {{< /os_tab >}}
+{{< /os_tabs >}}
 
 Replace `<ADDRESS>` with the address for which you want to retrieve your balance.
 
@@ -277,22 +277,22 @@ Please note that once a transaction is broadcasted, it cannot be reversed.
 To create, sign, and broadcast a
 [Transfer transaction](/protocol/transaction/transfer/), use the following command:
 
-{{< tabs items="Linux-mac,windows" >}}
-  {{< tab >}}
+{{< os_tabs items="unix,windows" >}}
+  {{< os_tab >}}
 
 ```shell
 ./pactus-wallet tx transfer <FROM> <TO> <AMOUNT>
 ```
 
-  {{< /tab >}}
-  {{< tab >}}
+  {{< /os_tab >}}
+  {{< os_tab >}}
 
 ```shell
 pactus-wallet.exe tx transfer <FROM> <TO> <AMOUNT>
 ```
 
-  {{< /tab >}}
-{{< /tabs >}}
+  {{< /os_tab >}}
+{{< /os_tabs >}}
 
 In this command, `<FROM>` should be one of the addresses in your wallet as the sender address,
 and `<TO>` is the receiver address.
@@ -302,22 +302,22 @@ and `<TO>` is the receiver address.
 To create, sign, and broadcast a
 [Bond transaction](/protocol/transaction/bond/), use the following command:
 
-{{< tabs items="Linux-mac,windows" >}}
-  {{< tab >}}
+{{< os_tabs items="unix,windows" >}}
+  {{< os_tab >}}
 
 ```shell
 ./pactus-wallet tx bond <FROM> <TO> <AMOUNT>
 ```
 
-  {{< /tab >}}
-  {{< tab >}}
+  {{< /os_tab >}}
+  {{< os_tab >}}
 
 ```shell
 pactus-wallet.exe tx bond <FROM> <TO> <AMOUNT>
 ```
 
-  {{< /tab >}}
-{{< /tabs >}}
+  {{< /os_tab >}}
+{{< /os_tabs >}}
 
 In this command, `<FROM>` should be one of the addresses in your wallet as the sender address,
 and `<TO>` is the receiver validator address.
@@ -325,22 +325,22 @@ and `<TO>` is the receiver validator address.
 If the validator associated with this address does not exist yet,
 you need to provide the public key to create it:
 
-{{< tabs items="Linux-mac,windows" >}}
-  {{< tab >}}
+{{< os_tabs items="unix,windows" >}}
+  {{< os_tab >}}
 
 ```shell
 ./pactus-wallet tx bond --pub <PUBLIC_KEY> <FROM> <TO> <AMOUNT>
 ```
 
-  {{< /tab >}}
-  {{< tab >}}
+  {{< /os_tab >}}
+  {{< os_tab >}}
 
 ```shell
 pactus-wallet.exe tx bond --pub <PUBLIC_KEY> <FROM> <TO> <AMOUNT>
 ```
 
-  {{< /tab >}}
-{{< /tabs >}}
+  {{< /os_tab >}}
+{{< /os_tabs >}}
 
 Replace `<PUBLIC_KEY>` with the validator's public key,
 which is the public key of the `<TO>` address.
@@ -350,22 +350,22 @@ which is the public key of the `<TO>` address.
 To create, sign, and broadcast a
 [Unbond transaction](/protocol/transaction/unbond/), use the following command:
 
-{{< tabs items="Linux-mac,windows" >}}
-  {{< tab >}}
+{{< os_tabs items="unix,windows" >}}
+  {{< os_tab >}}
 
 ```shell
 ./pactus-wallet tx unbond <ADDRESS>
 ```
 
-  {{< /tab >}}
-  {{< tab >}}
+  {{< /os_tab >}}
+  {{< os_tab >}}
 
 ```shell
 pactus-wallet.exe tx unbond <ADDRESS>
 ```
 
-  {{< /tab >}}
-{{< /tabs >}}
+  {{< /os_tab >}}
+{{< /os_tabs >}}
 
 In this command, `<ADDRESS>` is the address of the validator that you want to unbond.
 
@@ -374,19 +374,19 @@ In this command, `<ADDRESS>` is the address of the validator that you want to un
 To create, sign, and broadcast a
 [Withdraw transaction](/protocol/transaction/withdraw/), use the following command:
 
-{{< tabs items="Linux-mac,windows" >}}
-  {{< tab >}}
+{{< os_tabs items="unix,windows" >}}
+  {{< os_tab >}}
 
 ```shell
 ./pactus-wallet tx withdraw <FROM> <TO> <AMOUNT>
 ```
 
-  {{< /tab >}}
-  {{< tab >}}
+  {{< /os_tab >}}
+  {{< os_tab >}}
 
 ```shell
 pactus-wallet.exe tx withdraw <FROM> <TO> <AMOUNT>
 ```
 
-  {{< /tab >}}
-{{< /tabs >}}
+  {{< /os_tab >}}
+{{< /os_tabs >}}
