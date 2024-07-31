@@ -27,24 +27,24 @@ Now you need to create a wallet and setup a working directory for your node.
 A working directory is a place where you save blockchain data and wallets.
 Open the Terminal and run the following command:
 
-{{< tabs items="Linux-mac,windows" >}}
-  {{< tab >}}
+{{< os_tabs items="unix,windows" >}}
+  {{< os_tab >}}
 
 ```bash
 ./pactus-daemon init
 ```
 
 This command creates your wallet and setup the working directory at `~/pactus`.
-  {{< /tab >}}
-  {{< tab >}}
+  {{< /os_tab >}}
+  {{< os_tab >}}
 
-```powershell
+```batch
 pactus-daemon.exe init
 ```
 
 This command creates your wallet and setup the working directory at `C:\Users\<USER_NAME>\pactus`.
-  {{< /tab >}}
-{{< /tabs >}}
+  {{< /os_tab >}}
+{{< /os_tabs >}}
 
 {{< callout type="info" >}}
 <b>Working director</b>
@@ -76,8 +76,8 @@ The config file contains parameters that can customize your node.
 If you ever need to restore your node, for instance on a new device,
 you can use the `--restore` option followed by your mnemonic:
 
-{{< tabs items="Linux-mac,windows" >}}
-  {{< tab >}}
+{{< os_tabs items="unix,windows" >}}
+  {{< os_tab >}}
 
 ```bash
 ./pactus-daemon init --restore "<your-mnemonic>"
@@ -86,38 +86,38 @@ you can use the `--restore` option followed by your mnemonic:
 Replace `<your-mnemonic>` with your previously noted mnemonic phrase.
 This command will restore your wallet in the `~/pactus` directory.
 
-  {{< /tab >}}
-  {{< tab >}}
+  {{< /os_tab >}}
+  {{< os_tab >}}
 
-```powershell
+```batch
 pactus-daemon.exe init --restore "<your-mnemonic>"
 ```
 
 Replace `<your-mnemonic>` with your previously noted mnemonic phrase.
 This command will restore your wallet in the `C:\Users\<USER_NAME>\pactus` directory.
-  {{< /tab >}}
-{{< /tabs >}}
+  {{< /os_tab >}}
+{{< /os_tabs >}}
 
 ## Running the Node
 
 Now you can start the node and sync with the network. Run the following command in the Terminal:
 
-{{< tabs items="Linux-mac,windows" >}}
-  {{< tab >}}
+{{< os_tabs items="unix,windows" >}}
+  {{< os_tab >}}
 
 ```bash
 ./pactus-daemon start
 ```
 
-  {{< /tab >}}
-  {{< tab >}}
+  {{< /os_tab >}}
+  {{< os_tab >}}
 
-```powershell
+```batch
 pactus-daemon.exe start
 ```
 
-  {{< /tab >}}
-{{< /tabs >}}
+  {{< /os_tab >}}
+{{< /os_tabs >}}
 
 {{< hextra/hero-button text="How to run Pactus with systemd linux?" link="/tutorials/linux-systemd/" >}}
 
