@@ -94,16 +94,27 @@ Each node in the Pactus blockchain can run up to 32 validators, and each validat
 1000 coins. Here, you can define how many validators you want to create for your node.
 Select the number of validators based on the amount of coins you want to stake.
 
-![Number of validators](/images/pactus-gui/number-of-validators.png)
+![Number of Validators](/images/pactus-gui/number-of-validators.png)
 
 If you want to stake more than 32,000 coins, you need to set up a new node.
 
-### Node Information
+### Node Type
+
+On this page, you to choose the mode in which your node will operate: **Pruned Mode** or **Full Mode**.
+
+![Node Type](/images/pactus-gui/node-type.png)
+
+Starting with version 1.4.0, Pactus supports Pruned Mode.
+In this mode, you don't need to download the entire blockchain;
+instead, you can download recent blocks from the last 10 days.
+This significantly speeds up the syncing process.
+
+### Summary
 
 The last page of the initialization process shows the node information, such as the working directory, validator address,
 and reward address. Review this information and click "Close" to complete the initialization process.
 
-![Node information](/images/pactus-gui/node-information.png)
+![Summary](/images/pactus-gui/summary.png)
 
 Upon closing the wizard dialog, your Pactus node will start running. You are now ready to use Pactus in GUI mode.
 
@@ -116,8 +127,7 @@ sending transactions.
 ### Syncing with the Network
 
 When the Pactus node starts running, it begins syncing with the network. This process may take some time,
-as your node needs to download and verify the entire blockchain history.
-Please be patient while your node syncs.
+as your node needs to download and verify the blockchain.
 
 ![Syncing progress](/images/pactus-gui/syncing-progress.png)
 

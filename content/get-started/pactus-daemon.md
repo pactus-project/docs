@@ -21,6 +21,8 @@ To get started, download and extract the Pactus CLI file from
 [here](https://pactus.org/download/#cli).
 Once you have downloaded and extracted the Pactus CLI file, you can proceed to the next step.
 
+![Pactus Daemon](/images/pactus-daemon/pactus-daemon.png)
+
 ## Initializing the Node
 
 Now you need to create a wallet and setup a working directory for your node.
@@ -97,6 +99,34 @@ Replace `<your-mnemonic>` with your previously noted mnemonic phrase.
 This command will restore your wallet in the `C:\Users\<USER_NAME>\pactus` directory.
   {{< /os_tab >}}
 {{< /os_tabs >}}
+
+## Importing data (Optional)
+
+To speed up the syncing process,
+you can import a snapshot of the blockchain from a centralized server.
+This will start your node in Pruned Mode:
+
+{{< os_tabs items="unix,windows" >}}
+  {{< os_tab >}}
+
+```bash
+./pactus-daemon import
+```
+
+  {{< /os_tab >}}
+  {{< os_tab >}}
+
+```batch
+pactus-daemon.exe import
+```
+
+  {{< /os_tab >}}
+{{< /os_tabs >}}
+
+Starting with version 1.4.0, Pactus supports Pruned Mode.
+In this mode, you don't need to download the entire blockchain;
+instead, you can download recent blocks from the last 10 days.
+This significantly speeds up the syncing process.
 
 ## Running the Node
 
