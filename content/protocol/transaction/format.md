@@ -51,10 +51,8 @@ The following are the supported transactions in the Pactus blockchain:
 
 ## Flags
 
-
 - **0x1** Indicates that the [public key is known](https://pips.pactus.org/PIPs/pip-4)
-and excluded from the transaction.
-
+  and excluded from the transaction.
 
 ## Transaction ID
 
