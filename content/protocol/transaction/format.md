@@ -4,7 +4,7 @@ weight: 1
 math: false
 ---
 
-Transactions in Pactus consist of the following fields:
+Transactions in the Pactus consist of the following fields:
 
 | Field        | Size     |
 | ------------ | -------- |
@@ -50,6 +50,7 @@ The following are the supported transactions in the Pactus blockchain:
 5. [Withdraw transaction](/protocol/transaction/withdraw)
 
 ## Flags
+
 - **0x1** Indicates that the [public key is known](https://pips.pactus.org/PIPs/pip-4)
 and excluded from the transaction.
 
