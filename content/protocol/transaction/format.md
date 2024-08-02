@@ -18,8 +18,7 @@ Transactions in Pactus consist of the following fields:
 | Signature    | 48 bytes |
 | Public Key   | 96 bytes |
 
-- **Flags** field is one byte, and if the first bit of the Flags is set to 1, it indicates that the
-  [public key is known](https://pips.pactus.org/PIPs/pip-4) and excluded from the transaction.
+- **Flags** A flag is a bitfield that indicates how to decode the transaction data.
 - **Version** is the version of the transaction format. Different versions may have different fields or
   a different layout, and the current transaction version is set to 1.
 - **Lock Time** specifies the block number at which the transaction can be unlocked.
@@ -49,6 +48,11 @@ The following are the supported transactions in the Pactus blockchain:
 3. [Sortition transaction](/protocol/transaction/sortition)
 4. [Unbond transaction](/protocol/transaction/unbond)
 5. [Withdraw transaction](/protocol/transaction/withdraw)
+
+## Flags
+
+- **0x1** Indicates that the [public key is known](https://pips.pactus.org/PIPs/pip-4) 
+and excluded from the transaction.
 
 ## Transaction ID
 
