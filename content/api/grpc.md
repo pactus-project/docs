@@ -14,7 +14,7 @@ Each PAC is equivalent to 1,000,000,000 or 10<sup>9</sup> NanoPACs.
 <div id="toc-container">
   <ul class="">
   <li> Transaction Service
-      <ul> 
+      <ul>
         <li>
           <a href="#pactus.Transaction.GetTransaction">
           <span class="rpc-badge"></span> GetTransaction</a>
@@ -46,7 +46,7 @@ Each PAC is equivalent to 1,000,000,000 or 10<sup>9</sup> NanoPACs.
         </ul>
     </li>
     <li> Blockchain Service
-      <ul> 
+      <ul>
         <li>
           <a href="#pactus.Blockchain.GetBlock">
           <span class="rpc-badge"></span> GetBlock</a>
@@ -94,7 +94,7 @@ Each PAC is equivalent to 1,000,000,000 or 10<sup>9</sup> NanoPACs.
         </ul>
     </li>
     <li> Network Service
-      <ul> 
+      <ul>
         <li>
           <a href="#pactus.Network.GetNetworkInfo">
           <span class="rpc-badge"></span> GetNetworkInfo</a>
@@ -106,7 +106,7 @@ Each PAC is equivalent to 1,000,000,000 or 10<sup>9</sup> NanoPACs.
         </ul>
     </li>
     <li> Utils Service
-      <ul> 
+      <ul>
         <li>
           <a href="#pactus.Utils.SignMessageWithPrivateKey">
           <span class="rpc-badge"></span> SignMessageWithPrivateKey</a>
@@ -118,7 +118,7 @@ Each PAC is equivalent to 1,000,000,000 or 10<sup>9</sup> NanoPACs.
         </ul>
     </li>
     <li> Wallet Service
-      <ul> 
+      <ul>
         <li>
           <a href="#pactus.Wallet.CreateWallet">
           <span class="rpc-badge"></span> CreateWallet</a>
@@ -3095,7 +3095,7 @@ public key.</p>
   <thead>
     <tr><td>.proto Type</td><td>Go</td><td>C++</td><td>Rust</td><td>Java</td><td>Python</td><td>C#</td></tr>
   </thead>
-  <tbody class="table-group-divider"> 
+  <tbody class="table-group-divider">
       <tr id="double">
         <td class="fw-bold">double</td>
         <td>float64</td>
@@ -3104,7 +3104,7 @@ public key.</p>
         <td>double</td>
         <td>float</td>
         <td>double</td>
-      </tr> 
+      </tr>
       <tr id="float">
         <td class="fw-bold">float</td>
         <td>float32</td>
@@ -3113,7 +3113,7 @@ public key.</p>
         <td>float</td>
         <td>float</td>
         <td>float</td>
-      </tr> 
+      </tr>
       <tr id="int32">
         <td class="fw-bold">int32</td>
         <td>int32</td>
@@ -3122,7 +3122,7 @@ public key.</p>
         <td>int</td>
         <td>int</td>
         <td>int</td>
-      </tr> 
+      </tr>
       <tr id="int64">
         <td class="fw-bold">int64</td>
         <td>int64</td>
@@ -3131,7 +3131,7 @@ public key.</p>
         <td>long</td>
         <td>int/long</td>
         <td>long</td>
-      </tr> 
+      </tr>
       <tr id="uint32">
         <td class="fw-bold">uint32</td>
         <td>uint32</td>
@@ -3140,7 +3140,7 @@ public key.</p>
         <td>int</td>
         <td>int/long</td>
         <td>uint</td>
-      </tr> 
+      </tr>
       <tr id="uint64">
         <td class="fw-bold">uint64</td>
         <td>uint64</td>
@@ -3149,7 +3149,7 @@ public key.</p>
         <td>long</td>
         <td>int/long</td>
         <td>ulong</td>
-      </tr> 
+      </tr>
       <tr id="sint32">
         <td class="fw-bold">sint32</td>
         <td>int32</td>
@@ -3167,7 +3167,7 @@ public key.</p>
         <td>long</td>
         <td>int/long</td>
         <td>long</td>
-      </tr> 
+      </tr>
       <tr id="fixed32">
         <td class="fw-bold">fixed32</td>
         <td>uint32</td>
@@ -3176,7 +3176,7 @@ public key.</p>
         <td>int</td>
         <td>int</td>
         <td>uint</td>
-      </tr> 
+      </tr>
       <tr id="fixed64">
         <td class="fw-bold">fixed64</td>
         <td>uint64</td>
@@ -3185,7 +3185,7 @@ public key.</p>
         <td>long</td>
         <td>int/long</td>
         <td>ulong</td>
-      </tr> 
+      </tr>
       <tr id="sfixed32">
         <td class="fw-bold">sfixed32</td>
         <td>int32</td>
@@ -3194,7 +3194,7 @@ public key.</p>
         <td>int</td>
         <td>int</td>
         <td>int</td>
-      </tr> 
+      </tr>
       <tr id="sfixed64">
         <td class="fw-bold">sfixed64</td>
         <td>int64</td>
@@ -3203,7 +3203,7 @@ public key.</p>
         <td>long</td>
         <td>int/long</td>
         <td>long</td>
-      </tr> 
+      </tr>
       <tr id="bool">
         <td class="fw-bold">bool</td>
         <td>bool</td>
@@ -3212,7 +3212,7 @@ public key.</p>
         <td>boolean</td>
         <td>boolean</td>
         <td>bool</td>
-      </tr> 
+      </tr>
       <tr id="string">
         <td class="fw-bold">string</td>
         <td>string</td>
@@ -3221,7 +3221,7 @@ public key.</p>
         <td>String</td>
         <td>str/unicode</td>
         <td>string</td>
-      </tr> 
+      </tr>
       <tr id="bytes">
         <td class="fw-bold">bytes</td>
         <td>[]byte</td>
@@ -3230,6 +3230,6 @@ public key.</p>
         <td>ByteString</td>
         <td>str</td>
         <td>ByteString</td>
-      </tr> 
+      </tr>
   </tbody>
 </table>

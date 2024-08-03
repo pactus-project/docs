@@ -15,7 +15,7 @@ Each PAC is equivalent to 1,000,000,000 or 10<sup>9</sup> NanoPACs.
 <div id="toc-container">
   <ul class="">
   <li> Transaction Service
-      <ul> 
+      <ul>
         <li>
           <a href="#pactus.transaction.get_transaction">
           <span class="rpc-badge"></span> pactus.transaction.get_transaction</a>
@@ -47,7 +47,7 @@ Each PAC is equivalent to 1,000,000,000 or 10<sup>9</sup> NanoPACs.
         </ul>
     </li>
     <li> Blockchain Service
-      <ul> 
+      <ul>
         <li>
           <a href="#pactus.blockchain.get_block">
           <span class="rpc-badge"></span> pactus.blockchain.get_block</a>
@@ -95,7 +95,7 @@ Each PAC is equivalent to 1,000,000,000 or 10<sup>9</sup> NanoPACs.
         </ul>
     </li>
     <li> Network Service
-      <ul> 
+      <ul>
         <li>
           <a href="#pactus.network.get_network_info">
           <span class="rpc-badge"></span> pactus.network.get_network_info</a>
@@ -107,7 +107,7 @@ Each PAC is equivalent to 1,000,000,000 or 10<sup>9</sup> NanoPACs.
         </ul>
     </li>
     <li> Utils Service
-      <ul> 
+      <ul>
         <li>
           <a href="#pactus.utils.sign_message_with_private_key">
           <span class="rpc-badge"></span> pactus.utils.sign_message_with_private_key</a>
@@ -119,7 +119,7 @@ Each PAC is equivalent to 1,000,000,000 or 10<sup>9</sup> NanoPACs.
         </ul>
     </li>
     <li> Wallet Service
-      <ul> 
+      <ul>
         <li>
           <a href="#pactus.wallet.create_wallet">
           <span class="rpc-badge"></span> pactus.wallet.create_wallet</a>
