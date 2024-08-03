@@ -3158,7 +3158,7 @@ public key.</p>
         <td>int</td>
         <td>int</td>
         <td>int</td>
-      </tr> 
+      </tr>
       <tr id="sint64">
         <td class="fw-bold">sint64</td>
         <td>int64</td>
