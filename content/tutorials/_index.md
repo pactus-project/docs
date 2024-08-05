@@ -14,4 +14,5 @@ next: /tutorials/pactus-wallet
   {{< card link="reduce-network" title="How to reduce the network usage?">}}
   {{< card link="pactus-metrics" title="How to run Pactus Metrics?">}}
   {{< card link="linux-systemd" title="How to run Pactus with systemd linux?">}}
+  {{< card link="linux-systemd" title="How to Prune Node?">}}
 {{< /cards >}}
