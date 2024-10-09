@@ -28,6 +28,10 @@ Each PAC is equivalent to 1,000,000,000 or 10<sup>9</sup> NanoPACs.
           <span class="rpc-badge"></span> BroadcastTransaction</a>
         </li>
         <li>
+          <a href="#pactus.Transaction.GetRawTransaction">
+          <span class="rpc-badge"></span> GetRawTransaction</a>
+        </li>
+        <li>
           <a href="#pactus.Transaction.GetRawTransferTransaction">
           <span class="rpc-badge"></span> GetRawTransferTransaction</a>
         </li>
@@ -194,10 +198,10 @@ parameters.</p>
     <td class="fw-bold">verbosity</td>
     <td> TransactionVerbosity</td>
     <td>
-    (Enum) The verbosity level for transaction details.
+    (Enum)The verbosity level for transaction details.
     <br>Available values:<ul>
-      <li>TRANSACTION_DATA = Request transaction data only.</li>
-      <li>TRANSACTION_INFO = Request detailed transaction information.</li>
+      <li>TRANSACTION_DATA = 0 (Request transaction data only.)</li>
+      <li>TRANSACTION_INFO = 1 (Request detailed transaction information.)</li>
       </ul>
     </td>
   </tr>
@@ -277,14 +281,14 @@ parameters.</p>
         <td class="fw-bold">transaction.payload_type</td>
         <td> PayloadType</td>
         <td>
-        (Enum) The type of transaction payload.
+        (Enum)The type of transaction payload.
         <br>Available values:<ul>
-          <li>UNKNOWN = Unknown payload type.</li>
-          <li>TRANSFER_PAYLOAD = Transfer payload type.</li>
-          <li>BOND_PAYLOAD = Bond payload type.</li>
-          <li>SORTITION_PAYLOAD = Sortition payload type.</li>
-          <li>UNBOND_PAYLOAD = Unbond payload type.</li>
-          <li>WITHDRAW_PAYLOAD = Withdraw payload type.</li>
+          <li>UNKNOWN = 0 (Unknown payload type.)</li>
+          <li>TRANSFER_PAYLOAD = 1 (Transfer payload type.)</li>
+          <li>BOND_PAYLOAD = 2 (Bond payload type.)</li>
+          <li>SORTITION_PAYLOAD = 3 (Sortition payload type.)</li>
+          <li>UNBOND_PAYLOAD = 4 (Unbond payload type.)</li>
+          <li>WITHDRAW_PAYLOAD = 5 (Withdraw payload type.)</li>
           </ul>
         </td>
       </tr>
@@ -292,7 +296,7 @@ parameters.</p>
         <td class="fw-bold">transaction.transfer</td>
         <td> PayloadTransfer</td>
         <td>
-        (OneOf) Transfer transaction payload.
+        (OneOf)Transfer transaction payload.
         </td>
       </tr>
          <tr>
@@ -320,7 +324,7 @@ parameters.</p>
         <td class="fw-bold">transaction.bond</td>
         <td> PayloadBond</td>
         <td>
-        (OneOf) Bond transaction payload.
+        (OneOf)Bond transaction payload.
         </td>
       </tr>
          <tr>
@@ -345,10 +349,17 @@ parameters.</p>
             </td>
           </tr>
           <tr>
+            <td class="fw-bold">transaction.bond.public_key</td>
+            <td> string</td>
+            <td>
+            The public key of the validator.
+            </td>
+          </tr>
+          <tr>
         <td class="fw-bold">transaction.sortition</td>
         <td> PayloadSortition</td>
         <td>
-        (OneOf) Sortition transaction payload.
+        (OneOf)Sortition transaction payload.
         </td>
       </tr>
          <tr>
@@ -369,7 +380,7 @@ parameters.</p>
         <td class="fw-bold">transaction.unbond</td>
         <td> PayloadUnbond</td>
         <td>
-        (OneOf) Unbond transaction payload.
+        (OneOf)Unbond transaction payload.
         </td>
       </tr>
          <tr>
@@ -383,21 +394,21 @@ parameters.</p>
         <td class="fw-bold">transaction.withdraw</td>
         <td> PayloadWithdraw</td>
         <td>
-        (OneOf) Withdraw transaction payload.
+        (OneOf)Withdraw transaction payload.
         </td>
       </tr>
          <tr>
-            <td class="fw-bold">transaction.withdraw.from</td>
+            <td class="fw-bold">transaction.withdraw.validator_address</td>
             <td> string</td>
             <td>
-            The address to withdraw from.
+            The address of the validator to withdraw from.
             </td>
           </tr>
           <tr>
-            <td class="fw-bold">transaction.withdraw.to</td>
+            <td class="fw-bold">transaction.withdraw.account_address</td>
             <td> string</td>
             <td>
-            The address to withdraw to.
+            The address of the account to withdraw to.
             </td>
           </tr>
           <tr>
@@ -454,14 +465,14 @@ and payload type.</p>
     <td class="fw-bold">payload_type</td>
     <td> PayloadType</td>
     <td>
-    (Enum) The type of transaction payload.
+    (Enum)The type of transaction payload.
     <br>Available values:<ul>
-      <li>UNKNOWN = Unknown payload type.</li>
-      <li>TRANSFER_PAYLOAD = Transfer payload type.</li>
-      <li>BOND_PAYLOAD = Bond payload type.</li>
-      <li>SORTITION_PAYLOAD = Sortition payload type.</li>
-      <li>UNBOND_PAYLOAD = Unbond payload type.</li>
-      <li>WITHDRAW_PAYLOAD = Withdraw payload type.</li>
+      <li>UNKNOWN = 0 (Unknown payload type.)</li>
+      <li>TRANSFER_PAYLOAD = 1 (Transfer payload type.)</li>
+      <li>BOND_PAYLOAD = 2 (Bond payload type.)</li>
+      <li>SORTITION_PAYLOAD = 3 (Sortition payload type.)</li>
+      <li>UNBOND_PAYLOAD = 4 (Unbond payload type.)</li>
+      <li>WITHDRAW_PAYLOAD = 5 (Withdraw payload type.)</li>
       </ul>
     </td>
   </tr>
@@ -535,9 +546,96 @@ and payload type.</p>
      </tbody>
 </table>
 
+### GetRawTransaction <span id="pactus.Transaction.GetRawTransaction" class="rpc-badge"></span>
+
+<p>GetRawTransaction retrieves raw details of transfer, bond, unbond or withdraw transaction.</p>
+
+<h4>GetRawTransactionRequest <span class="badge text-bg-info fs-6 align-top">Request</span></h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">lock_time</td>
+    <td> uint32</td>
+    <td>
+    The lock time for the transaction. If not set, defaults to the last block height.
+    </td>
+  </tr>
+  <tr>
+    <td class="fw-bold">memo</td>
+    <td> string</td>
+    <td>
+    A memo string for the transaction.
+    </td>
+  </tr>
+  <tr>
+    <td class="fw-bold">fee</td>
+    <td> int64</td>
+    <td>
+    The fee for the transaction in NanoPAC.
+    </td>
+  </tr>
+  <tr>
+    <td class="fw-bold">transfer</td>
+    <td> PayloadTransfer</td>
+    <td>
+    (OneOf)
+    </td>
+  </tr>
+  <tr>
+    <td class="fw-bold">bond</td>
+    <td> PayloadBond</td>
+    <td>
+    (OneOf)
+    </td>
+  </tr>
+  <tr>
+    <td class="fw-bold">unbond</td>
+    <td> PayloadUnbond</td>
+    <td>
+    (OneOf)
+    </td>
+  </tr>
+  <tr>
+    <td class="fw-bold">withdraw</td>
+    <td> PayloadWithdraw</td>
+    <td>
+    (OneOf)
+    </td>
+  </tr>
+  </tbody>
+</table>
+  <h4>GetRawTransactionResponse <span class="badge text-bg-warning fs-6 align-top">Response</span></h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">raw_transaction</td>
+    <td> string</td>
+    <td>
+    The raw transaction data.
+    </td>
+  </tr>
+     <tr>
+    <td class="fw-bold">id</td>
+    <td> string</td>
+    <td>
+    The unique ID of the transaction.
+    </td>
+  </tr>
+     </tbody>
+</table>
+
 ### GetRawTransferTransaction <span id="pactus.Transaction.GetRawTransferTransaction" class="rpc-badge"></span>
 
-<p>GetRawTransferTransaction retrieves raw details of a transfer transaction.</p>
+<p>Deprecated: GetRawTransferTransaction retrieves raw details of a transfer transaction.
+Use GetRawTransaction instead.</p>
 
 <h4>GetRawTransferTransactionRequest <span class="badge text-bg-info fs-6 align-top">Request</span></h4>
 
@@ -605,12 +703,20 @@ height.
     The raw transaction data.
     </td>
   </tr>
+     <tr>
+    <td class="fw-bold">id</td>
+    <td> string</td>
+    <td>
+    The unique ID of the transaction.
+    </td>
+  </tr>
      </tbody>
 </table>
 
 ### GetRawBondTransaction <span id="pactus.Transaction.GetRawBondTransaction" class="rpc-badge"></span>
 
-<p>GetRawBondTransaction retrieves raw details of a bond transaction.</p>
+<p>Deprecated: GetRawBondTransaction retrieves raw details of a bond transaction.
+Use GetRawTransaction instead.</p>
 
 <h4>GetRawBondTransactionRequest <span class="badge text-bg-info fs-6 align-top">Request</span></h4>
 
@@ -685,12 +791,20 @@ height.
     The raw transaction data.
     </td>
   </tr>
+     <tr>
+    <td class="fw-bold">id</td>
+    <td> string</td>
+    <td>
+    The unique ID of the transaction.
+    </td>
+  </tr>
      </tbody>
 </table>
 
 ### GetRawUnbondTransaction <span id="pactus.Transaction.GetRawUnbondTransaction" class="rpc-badge"></span>
 
-<p>GetRawUnbondTransaction retrieves raw details of an unbond transaction.</p>
+<p>Deprecated: GetRawUnbondTransaction retrieves raw details of an unbond transaction.
+Use GetRawTransaction instead.</p>
 
 <h4>GetRawUnbondTransactionRequest <span class="badge text-bg-info fs-6 align-top">Request</span></h4>
 
@@ -737,12 +851,20 @@ height.
     The raw transaction data.
     </td>
   </tr>
+     <tr>
+    <td class="fw-bold">id</td>
+    <td> string</td>
+    <td>
+    The unique ID of the transaction.
+    </td>
+  </tr>
      </tbody>
 </table>
 
 ### GetRawWithdrawTransaction <span id="pactus.Transaction.GetRawWithdrawTransaction" class="rpc-badge"></span>
 
-<p>GetRawWithdrawTransaction retrieves raw details of a withdraw transaction.</p>
+<p>Deprecated: GetRawWithdrawTransaction retrieves raw details of a withdraw transaction.
+Use GetRawTransaction instead.</p>
 
 <h4>GetRawWithdrawTransactionRequest <span class="badge text-bg-info fs-6 align-top">Request</span></h4>
 
@@ -810,6 +932,13 @@ height.
     The raw transaction data.
     </td>
   </tr>
+     <tr>
+    <td class="fw-bold">id</td>
+    <td> string</td>
+    <td>
+    The unique ID of the transaction.
+    </td>
+  </tr>
      </tbody>
 </table>
 
@@ -840,11 +969,11 @@ parameters.</p>
     <td class="fw-bold">verbosity</td>
     <td> BlockVerbosity</td>
     <td>
-    (Enum) The verbosity level for block information.
+    (Enum)The verbosity level for block information.
     <br>Available values:<ul>
-      <li>BLOCK_DATA = Request only block data.</li>
-      <li>BLOCK_INFO = Request block information and transaction IDs.</li>
-      <li>BLOCK_TRANSACTIONS = Request block information and detailed transaction data.</li>
+      <li>BLOCK_DATA = 0 (Request only block data.)</li>
+      <li>BLOCK_INFO = 1 (Request block information and transaction IDs.)</li>
+      <li>BLOCK_TRANSACTIONS = 2 (Request block information and detailed transaction data.)</li>
       </ul>
     </td>
   </tr>
@@ -1023,14 +1152,14 @@ BLOCK_TRANSACTIONS.
         <td class="fw-bold">txs[].payload_type</td>
         <td> PayloadType</td>
         <td>
-        (Enum) The type of transaction payload.
+        (Enum)The type of transaction payload.
         <br>Available values:<ul>
-          <li>UNKNOWN = Unknown payload type.</li>
-          <li>TRANSFER_PAYLOAD = Transfer payload type.</li>
-          <li>BOND_PAYLOAD = Bond payload type.</li>
-          <li>SORTITION_PAYLOAD = Sortition payload type.</li>
-          <li>UNBOND_PAYLOAD = Unbond payload type.</li>
-          <li>WITHDRAW_PAYLOAD = Withdraw payload type.</li>
+          <li>UNKNOWN = 0 (Unknown payload type.)</li>
+          <li>TRANSFER_PAYLOAD = 1 (Transfer payload type.)</li>
+          <li>BOND_PAYLOAD = 2 (Bond payload type.)</li>
+          <li>SORTITION_PAYLOAD = 3 (Sortition payload type.)</li>
+          <li>UNBOND_PAYLOAD = 4 (Unbond payload type.)</li>
+          <li>WITHDRAW_PAYLOAD = 5 (Withdraw payload type.)</li>
           </ul>
         </td>
       </tr>
@@ -1038,7 +1167,7 @@ BLOCK_TRANSACTIONS.
         <td class="fw-bold">txs[].transfer</td>
         <td> PayloadTransfer</td>
         <td>
-        (OneOf) Transfer transaction payload.
+        (OneOf)Transfer transaction payload.
         </td>
       </tr>
          <tr>
@@ -1066,7 +1195,7 @@ BLOCK_TRANSACTIONS.
         <td class="fw-bold">txs[].bond</td>
         <td> PayloadBond</td>
         <td>
-        (OneOf) Bond transaction payload.
+        (OneOf)Bond transaction payload.
         </td>
       </tr>
          <tr>
@@ -1091,10 +1220,17 @@ BLOCK_TRANSACTIONS.
             </td>
           </tr>
           <tr>
+            <td class="fw-bold">txs[].bond.public_key</td>
+            <td> string</td>
+            <td>
+            The public key of the validator.
+            </td>
+          </tr>
+          <tr>
         <td class="fw-bold">txs[].sortition</td>
         <td> PayloadSortition</td>
         <td>
-        (OneOf) Sortition transaction payload.
+        (OneOf)Sortition transaction payload.
         </td>
       </tr>
          <tr>
@@ -1115,7 +1251,7 @@ BLOCK_TRANSACTIONS.
         <td class="fw-bold">txs[].unbond</td>
         <td> PayloadUnbond</td>
         <td>
-        (OneOf) Unbond transaction payload.
+        (OneOf)Unbond transaction payload.
         </td>
       </tr>
          <tr>
@@ -1129,21 +1265,21 @@ BLOCK_TRANSACTIONS.
         <td class="fw-bold">txs[].withdraw</td>
         <td> PayloadWithdraw</td>
         <td>
-        (OneOf) Withdraw transaction payload.
+        (OneOf)Withdraw transaction payload.
         </td>
       </tr>
          <tr>
-            <td class="fw-bold">txs[].withdraw.from</td>
+            <td class="fw-bold">txs[].withdraw.validator_address</td>
             <td> string</td>
             <td>
-            The address to withdraw from.
+            The address of the validator to withdraw from.
             </td>
           </tr>
           <tr>
-            <td class="fw-bold">txs[].withdraw.to</td>
+            <td class="fw-bold">txs[].withdraw.account_address</td>
             <td> string</td>
             <td>
-            The address to withdraw to.
+            The address of the account to withdraw to.
             </td>
           </tr>
           <tr>
@@ -1402,7 +1538,7 @@ Message has no fields.
     <td class="fw-bold">last_block_time</td>
     <td> int64</td>
     <td>
-    The last block time as timestamp
+    Timestamp of the last block in Unix format
     </td>
   </tr>
      </tbody>
@@ -1423,6 +1559,41 @@ Message has no fields.
   </thead>
   <tbody class="table-group-divider">
   <tr>
+    <td class="fw-bold">proposal</td>
+    <td> Proposal</td>
+    <td>
+    The proposal of the consensus info.
+    </td>
+  </tr>
+     <tr>
+        <td class="fw-bold">proposal.height</td>
+        <td> uint32</td>
+        <td>
+        The height of the proposal.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">proposal.round</td>
+        <td> int32</td>
+        <td>
+        The round of the proposal.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">proposal.block_data</td>
+        <td> string</td>
+        <td>
+        The block data of the proposal.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">proposal.signature_data</td>
+        <td> string</td>
+        <td>
+        The signature data of the proposal.
+        </td>
+      </tr>
+         <tr>
     <td class="fw-bold">instances</td>
     <td>repeated ConsensusInfo</td>
     <td>
@@ -1469,12 +1640,12 @@ committee.
             <td class="fw-bold">instances[].votes[].type</td>
             <td> VoteType</td>
             <td>
-            (Enum) The type of the vote.
+            (Enum)The type of the vote.
             <br>Available values:<ul>
-              <li>VOTE_UNKNOWN = Unknown vote type.</li>
-              <li>VOTE_PREPARE = Prepare vote type.</li>
-              <li>VOTE_PRECOMMIT = Precommit vote type.</li>
-              <li>VOTE_CHANGE_PROPOSER = Change proposer vote type.</li>
+              <li>VOTE_UNKNOWN = 0 (Unknown vote type.)</li>
+              <li>VOTE_PREPARE = 1 (Prepare vote type.)</li>
+              <li>VOTE_PRECOMMIT = 2 (Precommit vote type.)</li>
+              <li>VOTE_CHANGE_PROPOSER = 3 (Change proposer vote type.)</li>
               </ul>
             </td>
           </tr>
@@ -1882,15 +2053,15 @@ address.</p>
     <td class="fw-bold">payload_type</td>
     <td> PayloadType</td>
     <td>
-    (Enum) The type of transactions to retrieve from the transaction pool. 0 means all
+    (Enum)The type of transactions to retrieve from the transaction pool. 0 means all
 types.
     <br>Available values:<ul>
-      <li>UNKNOWN = Unknown payload type.</li>
-      <li>TRANSFER_PAYLOAD = Transfer payload type.</li>
-      <li>BOND_PAYLOAD = Bond payload type.</li>
-      <li>SORTITION_PAYLOAD = Sortition payload type.</li>
-      <li>UNBOND_PAYLOAD = Unbond payload type.</li>
-      <li>WITHDRAW_PAYLOAD = Withdraw payload type.</li>
+      <li>UNKNOWN = 0 (Unknown payload type.)</li>
+      <li>TRANSFER_PAYLOAD = 1 (Transfer payload type.)</li>
+      <li>BOND_PAYLOAD = 2 (Bond payload type.)</li>
+      <li>SORTITION_PAYLOAD = 3 (Sortition payload type.)</li>
+      <li>UNBOND_PAYLOAD = 4 (Unbond payload type.)</li>
+      <li>WITHDRAW_PAYLOAD = 5 (Withdraw payload type.)</li>
       </ul>
     </td>
   </tr>
@@ -1956,14 +2127,14 @@ types.
         <td class="fw-bold">txs[].payload_type</td>
         <td> PayloadType</td>
         <td>
-        (Enum) The type of transaction payload.
+        (Enum)The type of transaction payload.
         <br>Available values:<ul>
-          <li>UNKNOWN = Unknown payload type.</li>
-          <li>TRANSFER_PAYLOAD = Transfer payload type.</li>
-          <li>BOND_PAYLOAD = Bond payload type.</li>
-          <li>SORTITION_PAYLOAD = Sortition payload type.</li>
-          <li>UNBOND_PAYLOAD = Unbond payload type.</li>
-          <li>WITHDRAW_PAYLOAD = Withdraw payload type.</li>
+          <li>UNKNOWN = 0 (Unknown payload type.)</li>
+          <li>TRANSFER_PAYLOAD = 1 (Transfer payload type.)</li>
+          <li>BOND_PAYLOAD = 2 (Bond payload type.)</li>
+          <li>SORTITION_PAYLOAD = 3 (Sortition payload type.)</li>
+          <li>UNBOND_PAYLOAD = 4 (Unbond payload type.)</li>
+          <li>WITHDRAW_PAYLOAD = 5 (Withdraw payload type.)</li>
           </ul>
         </td>
       </tr>
@@ -1971,7 +2142,7 @@ types.
         <td class="fw-bold">txs[].transfer</td>
         <td> PayloadTransfer</td>
         <td>
-        (OneOf) Transfer transaction payload.
+        (OneOf)Transfer transaction payload.
         </td>
       </tr>
          <tr>
@@ -1999,7 +2170,7 @@ types.
         <td class="fw-bold">txs[].bond</td>
         <td> PayloadBond</td>
         <td>
-        (OneOf) Bond transaction payload.
+        (OneOf)Bond transaction payload.
         </td>
       </tr>
          <tr>
@@ -2024,10 +2195,17 @@ types.
             </td>
           </tr>
           <tr>
+            <td class="fw-bold">txs[].bond.public_key</td>
+            <td> string</td>
+            <td>
+            The public key of the validator.
+            </td>
+          </tr>
+          <tr>
         <td class="fw-bold">txs[].sortition</td>
         <td> PayloadSortition</td>
         <td>
-        (OneOf) Sortition transaction payload.
+        (OneOf)Sortition transaction payload.
         </td>
       </tr>
          <tr>
@@ -2048,7 +2226,7 @@ types.
         <td class="fw-bold">txs[].unbond</td>
         <td> PayloadUnbond</td>
         <td>
-        (OneOf) Unbond transaction payload.
+        (OneOf)Unbond transaction payload.
         </td>
       </tr>
          <tr>
@@ -2062,21 +2240,21 @@ types.
         <td class="fw-bold">txs[].withdraw</td>
         <td> PayloadWithdraw</td>
         <td>
-        (OneOf) Withdraw transaction payload.
+        (OneOf)Withdraw transaction payload.
         </td>
       </tr>
          <tr>
-            <td class="fw-bold">txs[].withdraw.from</td>
+            <td class="fw-bold">txs[].withdraw.validator_address</td>
             <td> string</td>
             <td>
-            The address to withdraw from.
+            The address of the validator to withdraw from.
             </td>
           </tr>
           <tr>
-            <td class="fw-bold">txs[].withdraw.to</td>
+            <td class="fw-bold">txs[].withdraw.account_address</td>
             <td> string</td>
             <td>
-            The address to withdraw to.
+            The address of the account to withdraw to.
             </td>
           </tr>
           <tr>
@@ -2883,11 +3061,14 @@ public key.</p>
     <td class="fw-bold">address_type</td>
     <td> AddressType</td>
     <td>
-    (Enum) The type of address to generate.
+    (Enum)The type of address to generate.
     <br>Available values:<ul>
-      <li>ADDRESS_TYPE_TREASURY = </li>
-      <li>ADDRESS_TYPE_VALIDATOR = </li>
-      <li>ADDRESS_TYPE_BLS_ACCOUNT = </li>
+      <li>ADDRESS_TYPE_TREASURY = 0 (Treasury address type.
+Should not be used to generate new addresses.)</li>
+      <li>ADDRESS_TYPE_VALIDATOR = 1 (Validator address type.)</li>
+      <li>ADDRESS_TYPE_BLS_ACCOUNT = 2 (Account address type with BLS signature scheme.)</li>
+      <li>ADDRESS_TYPE_ED25519_ACCOUNT = 3 (Account address type with Ed25519 signature scheme.
+Note: Generating a new Ed25519 address requires the wallet password.)</li>
       </ul>
     </td>
   </tr>
@@ -2896,6 +3077,13 @@ public key.</p>
     <td> string</td>
     <td>
     A label for the new address.
+    </td>
+  </tr>
+  <tr>
+    <td class="fw-bold">password</td>
+    <td> string</td>
+    <td>
+    Password for the new address. It's required when address_type is ADDRESS_TYPE_ED25519_ACCOUNT.
     </td>
   </tr>
   </tbody>
