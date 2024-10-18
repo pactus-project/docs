@@ -3,7 +3,8 @@ title: JSON-RPC API Reference
 weight: 2
 ---
 
-Each node in the Pactus network can be configured to use the [JSON-RPC](https://www.jsonrpc.org/specification) protocol for communication.
+Each node in the Pactus network can be configured to use the [JSON-RPC](https://www.jsonrpc.org/specification)
+ protocol for communication.
 Here, you can find the list of all JSON-RPC methods and messages.
 
 All the amounts and values in JSON-RPC endpoints are in NanoPAC units,
@@ -3452,16 +3453,12 @@ Note: Generating a new Ed25519 address requires the wallet password.)</li>
   <tr>
     <td class="fw-bold">total_stake</td>
     <td> numeric</td>
-    <td>
-    
-    </td>
+    <td></td>
   </tr>
      <tr>
     <td class="fw-bold">wallet_name</td>
     <td> string</td>
-    <td>
-    
-    </td>
+    <td></td>
   </tr>
      </tbody>
 </table>
@@ -3488,7 +3485,7 @@ Note: Generating a new Ed25519 address requires the wallet password.)</li>
     <td class="fw-bold">address</td>
     <td> string</td>
     <td>
-    
+
     </td>
   </tr>
   </tbody>
@@ -3504,35 +3501,35 @@ Note: Generating a new Ed25519 address requires the wallet password.)</li>
     <td class="fw-bold">address</td>
     <td> string</td>
     <td>
-    
+
     </td>
   </tr>
      <tr>
     <td class="fw-bold">label</td>
     <td> string</td>
     <td>
-    
+
     </td>
   </tr>
      <tr>
     <td class="fw-bold">public_key</td>
     <td> string</td>
     <td>
-    
+
     </td>
   </tr>
      <tr>
     <td class="fw-bold">path</td>
     <td> string</td>
     <td>
-    
+
     </td>
   </tr>
      <tr>
     <td class="fw-bold">wallet_name</td>
     <td> string</td>
     <td>
-    
+
     </td>
   </tr>
      </tbody>
@@ -3567,14 +3564,14 @@ Note: Generating a new Ed25519 address requires the wallet password.)</li>
     <td class="fw-bold">address</td>
     <td> string</td>
     <td>
-    
+
     </td>
   </tr>
   <tr>
     <td class="fw-bold">label</td>
     <td> string</td>
     <td>
-    
+
     </td>
   </tr>
   </tbody>
@@ -3607,7 +3604,7 @@ Parameters has no fields.
     <td class="fw-bold">wallets</td>
     <td>repeated string</td>
     <td>
-    
+
     </td>
   </tr>
      </tbody>
@@ -3628,7 +3625,7 @@ Parameters has no fields.
     <td class="fw-bold">wallet_name</td>
     <td> string</td>
     <td>
-    
+
     </td>
   </tr>
   </tbody>
@@ -3644,42 +3641,42 @@ Parameters has no fields.
     <td class="fw-bold">wallet_name</td>
     <td> string</td>
     <td>
-    
+
     </td>
   </tr>
      <tr>
     <td class="fw-bold">version</td>
     <td> numeric</td>
     <td>
-    
+
     </td>
   </tr>
      <tr>
     <td class="fw-bold">network</td>
     <td> string</td>
     <td>
-    
+
     </td>
   </tr>
      <tr>
     <td class="fw-bold">encrypted</td>
     <td> boolean</td>
     <td>
-    
+
     </td>
   </tr>
      <tr>
     <td class="fw-bold">uuid</td>
     <td> string</td>
     <td>
-    
+
     </td>
   </tr>
      <tr>
     <td class="fw-bold">created_at</td>
     <td> numeric</td>
     <td>
-    
+
     </td>
   </tr>
      </tbody>
@@ -3700,7 +3697,7 @@ Parameters has no fields.
     <td class="fw-bold">wallet_name</td>
     <td> string</td>
     <td>
-    
+
     </td>
   </tr>
   </tbody>
@@ -3716,7 +3713,7 @@ Parameters has no fields.
     <td class="fw-bold">data</td>
     <td>repeated object</td>
     <td>
-    
+
     </td>
   </tr>
      <tr>
