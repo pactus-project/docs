@@ -8,14 +8,14 @@ weight: 10
 The blockchain ecosystem is continuously evolving, with new models and protocols emerging to address specific needs and challenges.
 One of these is [PIP-31](https://pips.pactus.org/PIPs/pip-31), the "Consumptional Fee Model," a unique approach to transaction fees
 within the Pactus blockchain network.
-Traditional fee models often impose fixed charges, potentially excluding lower-priority or low-fee transactions from timely processing. 
+Traditional fee models often impose fixed charges, potentially excluding lower-priority or low-fee transactions from timely processing.
 This can create barriers for users who prefer economical transactions over speed, particularly within decentralized environments where
 inclusion is a priority.
 
 This tutorial explores the foundation of the Consumptional Fee Model, designed to provide a balanced and flexible fee structure based on
 data consumption. This model allows users to benefit from a zero or low-fee option, albeit with trade-offs in transaction confirmation speed.
- The approach aims to incentivize efficient data usage while giving validators the flexibility to configure fees dynamically based on network
- demands and user transaction patterns.
+The approach aims to incentivize efficient data usage while giving validators the flexibility to configure fees dynamically based on network
+demands and user transaction patterns.
 
 ## Configuring the Consumptional Fee
 
