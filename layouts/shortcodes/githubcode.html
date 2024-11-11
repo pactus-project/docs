@@ -1,0 +1,31 @@
+{{ $id := .Get "id" | default (print "code-" (now.UnixNano)) }}
+
+<div class="github-code" id="{{ $id }}">
+    <pre><code id="code-{{ .Get "id" }}">Loading...</code></pre>
+</div>
+
+<script>
+    async function fetchCode(link, elementId, startLine, endLine) {
+      const rawUrl = link.replace("https://github.com/", "https://raw.githubusercontent.com/")
+                          .replace("/blob/", "/");
+      const response = await fetch(rawUrl);
+      
+      if (response.ok) {
+        const code = await response.text();
+        const lines = code.split("\n").slice(startLine - 1, endLine).join("\n");
+        document.getElementById(elementId).textContent = lines;
+        Prism.highlightElement(document.getElementById(elementId)); // Highlight after loading
+      } else {
+        document.getElementById(elementId).textContent = "Failed to load code.";
+      }
+    }
+  
+    document.addEventListener("DOMContentLoaded", function() {
+      fetchCode(
+        "{{ .Get "link" }}",
+        "code-{{ .Get "id" }}",
+        {{ .Get "startLine" }},
+        {{ .Get "endLine" }}
+      );
+    });
+  </script>
