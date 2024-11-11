@@ -46,7 +46,10 @@ By default, the consumptional fee is disabled in the [configuration](https://git
     unit_price = 0.0
 ```
 
-When the consumptional fee model is enabled, each signer can have 1–2 zero-fee transactions per day.
+{{< callout type="info" >}}
+When the consumptional fee model is enabled, each signer can have **1~2 zero-fee** transactions per day.
+{{< /callout >}}
+
 This configuration is recommended for enabling the consumptional fee, though you can adjust
 `daily_limit` and `unit_price` as needed.
 
