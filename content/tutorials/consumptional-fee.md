@@ -53,7 +53,7 @@ When the consumptional fee model is enabled, each signer can have **1~2 zero-fee
 This configuration is recommended for enabling the consumptional fee, though you can adjust
 `daily_limit` and `unit_price` as needed.
 
-- `daily_limit` = the maximum allowable data consumption per day (in bytes)
+- `daily_limit` = the daily limit is the number of bytes an account can send each day without paying a fee.
 - `unit_price` = the fee per byte of data
 
 ```toml
