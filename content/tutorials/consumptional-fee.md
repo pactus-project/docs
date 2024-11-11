@@ -6,7 +6,8 @@ weight: 10
 ## Preface
 
 The blockchain ecosystem is continuously evolving, with new models and protocols emerging to address specific needs and challenges.
-One of these is [PIP-31](https://pips.pactus.org/PIPs/pip-31), the "Consumptional Fee Model," a unique approach to transaction fees within the Pactus blockchain network.
+One of these is [PIP-31](https://pips.pactus.org/PIPs/pip-31), the "Consumptional Fee Model," a unique approach to transaction fees
+within the Pactus blockchain network.
 Traditional fee models often impose fixed charges, potentially excluding lower-priority or low-fee transactions from timely processing. 
 This can create barriers for users who prefer economical transactions over speed, particularly within decentralized environments where
 inclusion is a priority.
@@ -26,8 +27,9 @@ By default, the consumptional fee is disabled in the [configuration](https://git
    endLine="142"
 >}}
 
-When the consumptional fee model is enabled, each signer can have 1–2 zero-fee transactions per day. This configuration is recommended for
-enabling the consumptional fee, though you can adjust `daily_limit` and `unit_price` as needed.
+When the consumptional fee model is enabled, each signer can have 1–2 zero-fee transactions per day.
+This configuration is recommended for enabling the consumptional fee, though you can adjust
+`daily_limit` and `unit_price` as needed.
 
 - `daily_limit` = the maximum allowable data consumption per day (in bytes)
 - `unit_price` = the fee per byte of data
