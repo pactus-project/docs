@@ -15,4 +15,6 @@ next: /tutorials/pactus-wallet
   {{< card link="pactus-metrics" title="How to run Pactus Metrics?">}}
   {{< card link="linux-systemd" title="How to run Pactus with systemd linux?">}}
   {{< card link="linux-systemd" title="How to Prune Node?">}}
+  {{< card link="software-verification" title="How to Verify That Pactus Software Is Safe?">}}
+  {{< card link="consumptional-fee" title="How to Enable Consumptional Fee?">}}
 {{< /cards >}}
