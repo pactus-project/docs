@@ -31,7 +31,7 @@ Each validator sets its own preferences for accepting transactions, which means:
 3. If the fee is below the threshold, the validator ignores it but
    broadcasts the transaction to other validators, who may or may not accept it.
 
-This approach makes it impossible to guarantee that a transaction with will be accepted by the network.
+This approach makes it impossible to guarantee that a transaction will be accepted by the network.
 Users can monitor their transactions on the [Fee Tracker](https://pacviewer.com/fee) page in PacViewer.
 This page displays unconfirmed transactions in the pool and
 allows users to check whether their transaction is confirmed or not.
