@@ -67,7 +67,7 @@ Here is an example configuration for accepting zero-fee transactions:
 
   # `max_size` indicates the maximum number of unconfirmed transactions inside the pool.
   # Default is `1000`.
-  max_size = 5000
+  max_size = 2000
 
   # `tx_pool.fee` contains configuration to calculate the transaction fee.
   [tx_pool.fee]
