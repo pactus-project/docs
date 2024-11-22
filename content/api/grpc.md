@@ -3,7 +3,9 @@ title: GRPC API Reference
 weight: 1
 ---
 
-Each node in the Pactus network can be configured to use the [gRPC](https://grpc.io/) protocol for communication.
+Each node in the Pactus network
+can be configured to use the
+[gRPC](https://grpc.io/) protocol for communication.
 Here you can find the list of all gRPC methods and messages.
 
 All the amounts and values in gRPC endpoints are in NanoPAC units, which are atomic and the smallest unit in the Pactus blockchain.
@@ -3390,14 +3392,14 @@ Note: Generating a new Ed25519 address requires the wallet password.)</li>
     <td class="fw-bold">total_stake</td>
     <td> int64</td>
     <td>
-    
+
     </td>
   </tr>
      <tr>
     <td class="fw-bold">wallet_name</td>
     <td> string</td>
     <td>
-    
+
     </td>
   </tr>
      </tbody>
@@ -3425,7 +3427,7 @@ Note: Generating a new Ed25519 address requires the wallet password.)</li>
     <td class="fw-bold">address</td>
     <td> string</td>
     <td>
-    
+
     </td>
   </tr>
   </tbody>
@@ -3441,35 +3443,35 @@ Note: Generating a new Ed25519 address requires the wallet password.)</li>
     <td class="fw-bold">address</td>
     <td> string</td>
     <td>
-    
+
     </td>
   </tr>
      <tr>
     <td class="fw-bold">label</td>
     <td> string</td>
     <td>
-    
+
     </td>
   </tr>
      <tr>
     <td class="fw-bold">public_key</td>
     <td> string</td>
     <td>
-    
+
     </td>
   </tr>
      <tr>
     <td class="fw-bold">path</td>
     <td> string</td>
     <td>
-    
+
     </td>
   </tr>
      <tr>
     <td class="fw-bold">wallet_name</td>
     <td> string</td>
     <td>
-    
+
     </td>
   </tr>
      </tbody>
@@ -3504,14 +3506,14 @@ Note: Generating a new Ed25519 address requires the wallet password.)</li>
     <td class="fw-bold">address</td>
     <td> string</td>
     <td>
-    
+
     </td>
   </tr>
   <tr>
     <td class="fw-bold">label</td>
     <td> string</td>
     <td>
-    
+
     </td>
   </tr>
   </tbody>
@@ -3544,7 +3546,7 @@ Message has no fields.
     <td class="fw-bold">wallets</td>
     <td>repeated string</td>
     <td>
-    
+
     </td>
   </tr>
      </tbody>
@@ -3565,7 +3567,7 @@ Message has no fields.
     <td class="fw-bold">wallet_name</td>
     <td> string</td>
     <td>
-    
+
     </td>
   </tr>
   </tbody>
@@ -3581,42 +3583,42 @@ Message has no fields.
     <td class="fw-bold">wallet_name</td>
     <td> string</td>
     <td>
-    
+
     </td>
   </tr>
      <tr>
     <td class="fw-bold">version</td>
     <td> int64</td>
     <td>
-    
+
     </td>
   </tr>
      <tr>
     <td class="fw-bold">network</td>
     <td> string</td>
     <td>
-    
+
     </td>
   </tr>
      <tr>
     <td class="fw-bold">encrypted</td>
     <td> bool</td>
     <td>
-    
+
     </td>
   </tr>
      <tr>
     <td class="fw-bold">uuid</td>
     <td> string</td>
     <td>
-    
+
     </td>
   </tr>
      <tr>
     <td class="fw-bold">created_at</td>
     <td> int64</td>
     <td>
-    
+
     </td>
   </tr>
      </tbody>
@@ -3637,7 +3639,7 @@ Message has no fields.
     <td class="fw-bold">wallet_name</td>
     <td> string</td>
     <td>
-    
+
     </td>
   </tr>
   </tbody>
@@ -3653,7 +3655,7 @@ Message has no fields.
     <td class="fw-bold">data</td>
     <td>repeated AddressInfo</td>
     <td>
-    
+
     </td>
   </tr>
      <tr>
