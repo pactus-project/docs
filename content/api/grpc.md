@@ -3,7 +3,9 @@ title: GRPC API Reference
 weight: 1
 ---
 
-Each node in the Pactus network can be configured to use the [gRPC](https://grpc.io/) protocol for communication.
+Each node in the Pactus network
+can be configured to use the
+[gRPC](https://grpc.io/) protocol for communication.
 Here you can find the list of all gRPC methods and messages.
 
 All the amounts and values in gRPC endpoints are in NanoPAC units, which are atomic and the smallest unit in the Pactus blockchain.
@@ -26,10 +28,6 @@ Each PAC is equivalent to 1,000,000,000 or 10<sup>9</sup> NanoPACs.
         <li>
           <a href="#pactus.Transaction.BroadcastTransaction">
           <span class="rpc-badge"></span> BroadcastTransaction</a>
-        </li>
-        <li>
-          <a href="#pactus.Transaction.GetRawTransaction">
-          <span class="rpc-badge"></span> GetRawTransaction</a>
         </li>
         <li>
           <a href="#pactus.Transaction.GetRawTransferTransaction">
@@ -119,6 +117,14 @@ Each PAC is equivalent to 1,000,000,000 or 10<sup>9</sup> NanoPACs.
           <a href="#pactus.Utils.VerifyMessage">
           <span class="rpc-badge"></span> VerifyMessage</a>
         </li>
+        <li>
+          <a href="#pactus.Utils.BLSPublicKeyAggregation">
+          <span class="rpc-badge"></span> BLSPublicKeyAggregation</a>
+        </li>
+        <li>
+          <a href="#pactus.Utils.BLSSignatureAggregation">
+          <span class="rpc-badge"></span> BLSSignatureAggregation</a>
+        </li>
         </ul>
     </li>
     <li> Wallet Service
@@ -162,6 +168,30 @@ Each PAC is equivalent to 1,000,000,000 or 10<sup>9</sup> NanoPACs.
         <li>
           <a href="#pactus.Wallet.SignMessage">
           <span class="rpc-badge"></span> SignMessage</a>
+        </li>
+        <li>
+          <a href="#pactus.Wallet.GetTotalStake">
+          <span class="rpc-badge"></span> GetTotalStake</a>
+        </li>
+        <li>
+          <a href="#pactus.Wallet.GetAddressInfo">
+          <span class="rpc-badge"></span> GetAddressInfo</a>
+        </li>
+        <li>
+          <a href="#pactus.Wallet.SetAddressLabel">
+          <span class="rpc-badge"></span> SetAddressLabel</a>
+        </li>
+        <li>
+          <a href="#pactus.Wallet.ListWallet">
+          <span class="rpc-badge"></span> ListWallet</a>
+        </li>
+        <li>
+          <a href="#pactus.Wallet.GetWalletInfo">
+          <span class="rpc-badge"></span> GetWalletInfo</a>
+        </li>
+        <li>
+          <a href="#pactus.Wallet.ListAddress">
+          <span class="rpc-badge"></span> ListAddress</a>
         </li>
         </ul>
     </li>
@@ -546,96 +576,9 @@ and payload type.</p>
      </tbody>
 </table>
 
-### GetRawTransaction <span id="pactus.Transaction.GetRawTransaction" class="rpc-badge"></span>
-
-<p>GetRawTransaction retrieves raw details of transfer, bond, unbond or withdraw transaction.</p>
-
-<h4>GetRawTransactionRequest <span class="badge text-bg-info fs-6 align-top">Request</span></h4>
-
-<table class="table table-bordered table-responsive table-sm">
-  <thead>
-    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
-  </thead>
-  <tbody class="table-group-divider">
-  <tr>
-    <td class="fw-bold">lock_time</td>
-    <td> uint32</td>
-    <td>
-    The lock time for the transaction. If not set, defaults to the last block height.
-    </td>
-  </tr>
-  <tr>
-    <td class="fw-bold">memo</td>
-    <td> string</td>
-    <td>
-    A memo string for the transaction.
-    </td>
-  </tr>
-  <tr>
-    <td class="fw-bold">fee</td>
-    <td> int64</td>
-    <td>
-    The fee for the transaction in NanoPAC.
-    </td>
-  </tr>
-  <tr>
-    <td class="fw-bold">transfer</td>
-    <td> PayloadTransfer</td>
-    <td>
-    (OneOf)
-    </td>
-  </tr>
-  <tr>
-    <td class="fw-bold">bond</td>
-    <td> PayloadBond</td>
-    <td>
-    (OneOf)
-    </td>
-  </tr>
-  <tr>
-    <td class="fw-bold">unbond</td>
-    <td> PayloadUnbond</td>
-    <td>
-    (OneOf)
-    </td>
-  </tr>
-  <tr>
-    <td class="fw-bold">withdraw</td>
-    <td> PayloadWithdraw</td>
-    <td>
-    (OneOf)
-    </td>
-  </tr>
-  </tbody>
-</table>
-  <h4>GetRawTransactionResponse <span class="badge text-bg-warning fs-6 align-top">Response</span></h4>
-
-<table class="table table-bordered table-responsive table-sm">
-  <thead>
-    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
-  </thead>
-  <tbody class="table-group-divider">
-  <tr>
-    <td class="fw-bold">raw_transaction</td>
-    <td> string</td>
-    <td>
-    The raw transaction data.
-    </td>
-  </tr>
-     <tr>
-    <td class="fw-bold">id</td>
-    <td> string</td>
-    <td>
-    The unique ID of the transaction.
-    </td>
-  </tr>
-     </tbody>
-</table>
-
 ### GetRawTransferTransaction <span id="pactus.Transaction.GetRawTransferTransaction" class="rpc-badge"></span>
 
-<p>Deprecated: GetRawTransferTransaction retrieves raw details of a transfer transaction.
-Use GetRawTransaction instead.</p>
+<p>GetRawTransferTransaction retrieves raw details of a transfer transaction.</p>
 
 <h4>GetRawTransferTransactionRequest <span class="badge text-bg-info fs-6 align-top">Request</span></h4>
 
@@ -715,8 +658,7 @@ height.
 
 ### GetRawBondTransaction <span id="pactus.Transaction.GetRawBondTransaction" class="rpc-badge"></span>
 
-<p>Deprecated: GetRawBondTransaction retrieves raw details of a bond transaction.
-Use GetRawTransaction instead.</p>
+<p>GetRawBondTransaction retrieves raw details of a bond transaction.</p>
 
 <h4>GetRawBondTransactionRequest <span class="badge text-bg-info fs-6 align-top">Request</span></h4>
 
@@ -803,8 +745,7 @@ height.
 
 ### GetRawUnbondTransaction <span id="pactus.Transaction.GetRawUnbondTransaction" class="rpc-badge"></span>
 
-<p>Deprecated: GetRawUnbondTransaction retrieves raw details of an unbond transaction.
-Use GetRawTransaction instead.</p>
+<p>GetRawUnbondTransaction retrieves raw details of an unbond transaction.</p>
 
 <h4>GetRawUnbondTransactionRequest <span class="badge text-bg-info fs-6 align-top">Request</span></h4>
 
@@ -863,8 +804,7 @@ height.
 
 ### GetRawWithdrawTransaction <span id="pactus.Transaction.GetRawWithdrawTransaction" class="rpc-badge"></span>
 
-<p>Deprecated: GetRawWithdrawTransaction retrieves raw details of a withdraw transaction.
-Use GetRawTransaction instead.</p>
+<p>GetRawWithdrawTransaction retrieves raw details of a withdraw transaction.</p>
 
 <h4>GetRawWithdrawTransactionRequest <span class="badge text-bg-info fs-6 align-top">Request</span></h4>
 
@@ -1560,7 +1500,7 @@ Message has no fields.
   <tbody class="table-group-divider">
   <tr>
     <td class="fw-bold">proposal</td>
-    <td> Proposal</td>
+    <td> ProposalInfo</td>
     <td>
     The proposal of the consensus info.
     </td>
@@ -1587,10 +1527,10 @@ Message has no fields.
         </td>
       </tr>
          <tr>
-        <td class="fw-bold">proposal.signature_data</td>
+        <td class="fw-bold">proposal.signature</td>
         <td> string</td>
         <td>
-        The signature data of the proposal.
+        The signature of the proposal, signed by the proposer.
         </td>
       </tr>
          <tr>
@@ -2307,7 +2247,7 @@ types.
     <td class="fw-bold">only_connected</td>
     <td> bool</td>
     <td>
-    If true, only returns peers with connected status.
+    If true, returns only peers that are currently connected.
     </td>
   </tr>
   </tbody>
@@ -2324,20 +2264,6 @@ types.
     <td> string</td>
     <td>
     Name of the network.
-    </td>
-  </tr>
-     <tr>
-    <td class="fw-bold">total_sent_bytes</td>
-    <td> int64</td>
-    <td>
-    Total bytes sent across the network.
-    </td>
-  </tr>
-     <tr>
-    <td class="fw-bold">total_received_bytes</td>
-    <td> int64</td>
-    <td>
-    Total bytes received across the network.
     </td>
   </tr>
      <tr>
@@ -2358,7 +2284,7 @@ types.
         <td class="fw-bold">connected_peers[].status</td>
         <td> int32</td>
         <td>
-        Status of the peer.
+        Current status of the peer (e.g., connected, disconnected).
         </td>
       </tr>
          <tr>
@@ -2372,7 +2298,7 @@ types.
         <td class="fw-bold">connected_peers[].agent</td>
         <td> string</td>
         <td>
-        Agent information of the peer.
+        Version and agent details of the peer.
         </td>
       </tr>
          <tr>
@@ -2386,21 +2312,21 @@ types.
         <td class="fw-bold">connected_peers[].consensus_keys</td>
         <td>repeated string</td>
         <td>
-        Consensus keys used by the peer.
+        List of consensus keys used by the peer.
         </td>
       </tr>
          <tr>
         <td class="fw-bold">connected_peers[].consensus_addresses</td>
         <td>repeated string</td>
         <td>
-        Consensus addresses of the peer.
+        List of consensus addresses used by the peer.
         </td>
       </tr>
          <tr>
         <td class="fw-bold">connected_peers[].services</td>
         <td> uint32</td>
         <td>
-        Services provided by the peer.
+        Bitfield representing the services provided by the peer.
         </td>
       </tr>
          <tr>
@@ -2418,45 +2344,17 @@ types.
         </td>
       </tr>
          <tr>
-        <td class="fw-bold">connected_peers[].received_bundles</td>
-        <td> int32</td>
-        <td>
-        Number of received bundles.
-        </td>
-      </tr>
-         <tr>
-        <td class="fw-bold">connected_peers[].invalid_bundles</td>
-        <td> int32</td>
-        <td>
-        Number of invalid bundles received.
-        </td>
-      </tr>
-         <tr>
         <td class="fw-bold">connected_peers[].last_sent</td>
         <td> int64</td>
         <td>
-        Timestamp of the last sent bundle.
+        Time the last bundle sent to the peer (in epoch format).
         </td>
       </tr>
          <tr>
         <td class="fw-bold">connected_peers[].last_received</td>
         <td> int64</td>
         <td>
-        Timestamp of the last received bundle.
-        </td>
-      </tr>
-         <tr>
-        <td class="fw-bold">connected_peers[].sent_bytes</td>
-        <td> map&lt;int32, int64&gt;</td>
-        <td>
-        Bytes sent per message type.
-        </td>
-      </tr>
-         <tr>
-        <td class="fw-bold">connected_peers[].received_bytes</td>
-        <td> map&lt;int32, int64&gt;</td>
-        <td>
-        Bytes received per message type.
+        Time the last bundle received from the peer (in epoch format).
         </td>
       </tr>
          <tr>
@@ -2470,7 +2368,7 @@ types.
         <td class="fw-bold">connected_peers[].direction</td>
         <td> string</td>
         <td>
-        Direction of connection with the peer.
+        Connection direction (e.g., inbound, outbound).
         </td>
       </tr>
          <tr>
@@ -2495,20 +2393,132 @@ types.
         </td>
       </tr>
          <tr>
-    <td class="fw-bold">sent_bytes</td>
-    <td> map&lt;int32, int64&gt;</td>
+        <td class="fw-bold">connected_peers[].metric_info</td>
+        <td> MetricInfo</td>
+        <td>
+        Metrics related to peer activity.
+        </td>
+      </tr>
+         <tr>
+            <td class="fw-bold">connected_peers[].metric_info.TotalInvalid</td>
+            <td> CounterInfo</td>
+            <td>
+            Total number of invalid bundles.
+            </td>
+          </tr>
+          <tr>
+            <td class="fw-bold">connected_peers[].metric_info.TotalSent</td>
+            <td> CounterInfo</td>
+            <td>
+            Total number of bundles sent.
+            </td>
+          </tr>
+          <tr>
+            <td class="fw-bold">connected_peers[].metric_info.TotalReceived</td>
+            <td> CounterInfo</td>
+            <td>
+            Total number of bundles received.
+            </td>
+          </tr>
+          <tr>
+            <td class="fw-bold">connected_peers[].metric_info.MessageSent</td>
+            <td> map&lt;int32, CounterInfo&gt;</td>
+            <td>
+            Number of sent bundles categorized by message type.
+            </td>
+          </tr>
+          <tr>
+            <td class="fw-bold">connected_peers[].metric_info.MessageReceived</td>
+            <td> map&lt;int32, CounterInfo&gt;</td>
+            <td>
+            Number of received bundles categorized by message type.
+            </td>
+          </tr>
+          <tr>
+    <td class="fw-bold">metric_info</td>
+    <td> MetricInfo</td>
     <td>
-    Bytes sent per peer ID.
+    Metrics related to node activity.
     </td>
   </tr>
      <tr>
-    <td class="fw-bold">received_bytes</td>
-    <td> map&lt;int32, int64&gt;</td>
-    <td>
-    Bytes received per peer ID.
-    </td>
-  </tr>
-     </tbody>
+        <td class="fw-bold">metric_info.TotalInvalid</td>
+        <td> CounterInfo</td>
+        <td>
+        Total number of invalid bundles.
+        </td>
+      </tr>
+         <tr>
+            <td class="fw-bold">metric_info.TotalInvalid.Bytes</td>
+            <td> uint64</td>
+            <td>
+            Total number of bytes.
+            </td>
+          </tr>
+          <tr>
+            <td class="fw-bold">metric_info.TotalInvalid.Bundles</td>
+            <td> uint64</td>
+            <td>
+            Total number of bundles.
+            </td>
+          </tr>
+          <tr>
+        <td class="fw-bold">metric_info.TotalSent</td>
+        <td> CounterInfo</td>
+        <td>
+        Total number of bundles sent.
+        </td>
+      </tr>
+         <tr>
+            <td class="fw-bold">metric_info.TotalSent.Bytes</td>
+            <td> uint64</td>
+            <td>
+            Total number of bytes.
+            </td>
+          </tr>
+          <tr>
+            <td class="fw-bold">metric_info.TotalSent.Bundles</td>
+            <td> uint64</td>
+            <td>
+            Total number of bundles.
+            </td>
+          </tr>
+          <tr>
+        <td class="fw-bold">metric_info.TotalReceived</td>
+        <td> CounterInfo</td>
+        <td>
+        Total number of bundles received.
+        </td>
+      </tr>
+         <tr>
+            <td class="fw-bold">metric_info.TotalReceived.Bytes</td>
+            <td> uint64</td>
+            <td>
+            Total number of bytes.
+            </td>
+          </tr>
+          <tr>
+            <td class="fw-bold">metric_info.TotalReceived.Bundles</td>
+            <td> uint64</td>
+            <td>
+            Total number of bundles.
+            </td>
+          </tr>
+          <tr>
+        <td class="fw-bold">metric_info.MessageSent</td>
+        <td> map&lt;int32, CounterInfo&gt;</td>
+        <td>
+        Number of sent bundles categorized by message type.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">metric_info.MessageReceived</td>
+        <td> map&lt;int32, CounterInfo&gt;</td>
+        <td>
+        Number of received bundles categorized by message type.
+        </td>
+      </tr>
+         </tbody>
 </table>
 
 ### GetNodeInfo <span id="pactus.Network.GetNodeInfo" class="rpc-badge"></span>
@@ -2536,7 +2546,7 @@ Message has no fields.
     <td class="fw-bold">agent</td>
     <td> string</td>
     <td>
-    Agent information of the node.
+    Version and agent details of the node.
     </td>
   </tr>
      <tr>
@@ -2550,7 +2560,7 @@ Message has no fields.
     <td class="fw-bold">started_at</td>
     <td> uint64</td>
     <td>
-    Timestamp when the node started.
+    Time the node was started (in epoch format).
     </td>
   </tr>
      <tr>
@@ -2564,7 +2574,7 @@ Message has no fields.
     <td class="fw-bold">services</td>
     <td> int32</td>
     <td>
-    A bitfield indicating the services provided by the node.
+    Bitfield representing the services provided by the node.
     </td>
   </tr>
      <tr>
@@ -2592,7 +2602,7 @@ Message has no fields.
     <td class="fw-bold">clock_offset</td>
     <td> double</td>
     <td>
-    Clock offset of the node.
+    Offset between the node's clock and the network's clock (in seconds).
     </td>
   </tr>
      <tr>
@@ -2633,7 +2643,7 @@ signing and verification.</p>
 
 ### SignMessageWithPrivateKey <span id="pactus.Utils.SignMessageWithPrivateKey" class="rpc-badge"></span>
 
-<p>SignMessageWithPrivateKey sign message with provided private key.</p>
+<p>SignMessageWithPrivateKey signs message with provided private key.</p>
 
 <h4>SignMessageWithPrivateKeyRequest <span class="badge text-bg-info fs-6 align-top">Request</span></h4>
 
@@ -2677,7 +2687,7 @@ signing and verification.</p>
 
 ### VerifyMessage <span id="pactus.Utils.VerifyMessage" class="rpc-badge"></span>
 
-<p>VerifyMessage verify signature with public key and message</p>
+<p>VerifyMessage verifies signature with public key and message.</p>
 
 <h4>VerifyMessageRequest <span class="badge text-bg-info fs-6 align-top">Request</span></h4>
 
@@ -2721,6 +2731,80 @@ signing and verification.</p>
     <td> bool</td>
     <td>
     Indicates if the signature is valid (true) or not (false).
+    </td>
+  </tr>
+     </tbody>
+</table>
+
+### BLSPublicKeyAggregation <span id="pactus.Utils.BLSPublicKeyAggregation" class="rpc-badge"></span>
+
+<p>BLSPublicKeyAggregation aggregates bls public keys.</p>
+
+<h4>BLSPublicKeyAggregationRequest <span class="badge text-bg-info fs-6 align-top">Request</span></h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">public_keys</td>
+    <td>repeated string</td>
+    <td>
+    The public keys to aggregate.
+    </td>
+  </tr>
+  </tbody>
+</table>
+  <h4>BLSPublicKeyAggregationResponse <span class="badge text-bg-warning fs-6 align-top">Response</span></h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">public_key</td>
+    <td> string</td>
+    <td>
+    The aggregated public key.
+    </td>
+  </tr>
+     </tbody>
+</table>
+
+### BLSSignatureAggregation <span id="pactus.Utils.BLSSignatureAggregation" class="rpc-badge"></span>
+
+<p>BLSSignatureAggregation aggregates bls signatures.</p>
+
+<h4>BLSSignatureAggregationRequest <span class="badge text-bg-info fs-6 align-top">Request</span></h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">signatures</td>
+    <td>repeated string</td>
+    <td>
+    The signatures to aggregate.
+    </td>
+  </tr>
+  </tbody>
+</table>
+  <h4>BLSSignatureAggregationResponse <span class="badge text-bg-warning fs-6 align-top">Response</span></h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">signature</td>
+    <td> string</td>
+    <td>
+    The aggregated signature.
     </td>
   </tr>
      </tbody>
@@ -3275,6 +3359,334 @@ Note: Generating a new Ed25519 address requires the wallet password.)</li>
     </td>
   </tr>
      </tbody>
+</table>
+
+### GetTotalStake <span id="pactus.Wallet.GetTotalStake" class="rpc-badge"></span>
+
+<p>GetTotalStake return total stake of wallet.</p>
+
+<h4>GetTotalStakeRequest <span class="badge text-bg-info fs-6 align-top">Request</span></h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">wallet_name</td>
+    <td> string</td>
+    <td>
+    The name of the wallet.
+    </td>
+  </tr>
+  </tbody>
+</table>
+  <h4>GetTotalStakeResponse <span class="badge text-bg-warning fs-6 align-top">Response</span></h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">total_stake</td>
+    <td> int64</td>
+    <td>
+
+    </td>
+  </tr>
+     <tr>
+    <td class="fw-bold">wallet_name</td>
+    <td> string</td>
+    <td>
+
+    </td>
+  </tr>
+     </tbody>
+</table>
+
+### GetAddressInfo <span id="pactus.Wallet.GetAddressInfo" class="rpc-badge"></span>
+
+<p>GetAddressInfo return address information.</p>
+
+<h4>GetAddressInfoRequest <span class="badge text-bg-info fs-6 align-top">Request</span></h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">wallet_name</td>
+    <td> string</td>
+    <td>
+    The name of the wallet to generate a new address.
+    </td>
+  </tr>
+  <tr>
+    <td class="fw-bold">address</td>
+    <td> string</td>
+    <td>
+
+    </td>
+  </tr>
+  </tbody>
+</table>
+  <h4>GetAddressInfoResponse <span class="badge text-bg-warning fs-6 align-top">Response</span></h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">address</td>
+    <td> string</td>
+    <td>
+
+    </td>
+  </tr>
+     <tr>
+    <td class="fw-bold">label</td>
+    <td> string</td>
+    <td>
+
+    </td>
+  </tr>
+     <tr>
+    <td class="fw-bold">public_key</td>
+    <td> string</td>
+    <td>
+
+    </td>
+  </tr>
+     <tr>
+    <td class="fw-bold">path</td>
+    <td> string</td>
+    <td>
+
+    </td>
+  </tr>
+     <tr>
+    <td class="fw-bold">wallet_name</td>
+    <td> string</td>
+    <td>
+
+    </td>
+  </tr>
+     </tbody>
+</table>
+
+### SetAddressLabel <span id="pactus.Wallet.SetAddressLabel" class="rpc-badge"></span>
+
+<p>SetAddressLabel set label for given address.</p>
+
+<h4>SetLabelRequest <span class="badge text-bg-info fs-6 align-top">Request</span></h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">wallet_name</td>
+    <td> string</td>
+    <td>
+    The name of the wallet to generate a new address.
+    </td>
+  </tr>
+  <tr>
+    <td class="fw-bold">password</td>
+    <td> string</td>
+    <td>
+    The password for unlocking the wallet for signing.
+    </td>
+  </tr>
+  <tr>
+    <td class="fw-bold">address</td>
+    <td> string</td>
+    <td>
+
+    </td>
+  </tr>
+  <tr>
+    <td class="fw-bold">label</td>
+    <td> string</td>
+    <td>
+
+    </td>
+  </tr>
+  </tbody>
+</table>
+  <h4>SetLabelResponse <span class="badge text-bg-warning fs-6 align-top">Response</span></h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  </tbody>
+</table>
+
+### ListWallet <span id="pactus.Wallet.ListWallet" class="rpc-badge"></span>
+
+<p>ListWallet return list wallet name.</p>
+
+<h4>ListWalletRequest <span class="badge text-bg-info fs-6 align-top">Request</span></h4>
+
+Message has no fields.
+  <h4>ListWalletResponse <span class="badge text-bg-warning fs-6 align-top">Response</span></h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">wallets</td>
+    <td>repeated string</td>
+    <td>
+
+    </td>
+  </tr>
+     </tbody>
+</table>
+
+### GetWalletInfo <span id="pactus.Wallet.GetWalletInfo" class="rpc-badge"></span>
+
+<p>GetWalletInfo return wallet information.</p>
+
+<h4>GetWalletInfoRequest <span class="badge text-bg-info fs-6 align-top">Request</span></h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">wallet_name</td>
+    <td> string</td>
+    <td>
+
+    </td>
+  </tr>
+  </tbody>
+</table>
+  <h4>GetWalletInfoResponse <span class="badge text-bg-warning fs-6 align-top">Response</span></h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">wallet_name</td>
+    <td> string</td>
+    <td>
+
+    </td>
+  </tr>
+     <tr>
+    <td class="fw-bold">version</td>
+    <td> int64</td>
+    <td>
+
+    </td>
+  </tr>
+     <tr>
+    <td class="fw-bold">network</td>
+    <td> string</td>
+    <td>
+
+    </td>
+  </tr>
+     <tr>
+    <td class="fw-bold">encrypted</td>
+    <td> bool</td>
+    <td>
+
+    </td>
+  </tr>
+     <tr>
+    <td class="fw-bold">uuid</td>
+    <td> string</td>
+    <td>
+
+    </td>
+  </tr>
+     <tr>
+    <td class="fw-bold">created_at</td>
+    <td> int64</td>
+    <td>
+
+    </td>
+  </tr>
+     </tbody>
+</table>
+
+### ListAddress <span id="pactus.Wallet.ListAddress" class="rpc-badge"></span>
+
+<p>ListAddress return list address in wallet.</p>
+
+<h4>ListAddressRequest <span class="badge text-bg-info fs-6 align-top">Request</span></h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">wallet_name</td>
+    <td> string</td>
+    <td>
+
+    </td>
+  </tr>
+  </tbody>
+</table>
+  <h4>ListAddressResponse <span class="badge text-bg-warning fs-6 align-top">Response</span></h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">data</td>
+    <td>repeated AddressInfo</td>
+    <td>
+
+    </td>
+  </tr>
+     <tr>
+        <td class="fw-bold">data[].address</td>
+        <td> string</td>
+        <td>
+        The address string.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">data[].public_key</td>
+        <td> string</td>
+        <td>
+        The public key associated with the address.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">data[].label</td>
+        <td> string</td>
+        <td>
+        A label associated with the address.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">data[].path</td>
+        <td> string</td>
+        <td>
+        The Hierarchical Deterministic path of the address within the wallet.
+        </td>
+      </tr>
+         </tbody>
 </table>
 
 ## Scalar Value Types
