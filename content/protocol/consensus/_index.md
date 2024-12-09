@@ -6,4 +6,3 @@ next: /protocol/consensus/proof-of-stake
 ---
 
 {{< items >}}
-

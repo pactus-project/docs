@@ -6,4 +6,3 @@ next: /get-started/become-a-validator
 ---
 
 {{< items >}}
-
