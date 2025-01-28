@@ -3,9 +3,8 @@ title: JSON-RPC API Reference
 weight: 2
 ---
 
-Each node in the Pactus network can be configured
-to use the [JSON-RPC](https://www.jsonrpc.org/specification)
-protocol for communication.
+Each node in the Pactus network can be configured to use the
+[JSON-RPC](https://www.jsonrpc.org/specification) protocol for communication.
 Here, you can find the list of all JSON-RPC methods and messages.
 
 All the amounts and values in JSON-RPC endpoints are in NanoPAC units,
@@ -2684,6 +2683,35 @@ Parameters has no fields.
         Number of outbound connections.
         </td>
       </tr>
+         <tr>
+    <td class="fw-bold">zmq_publishers</td>
+    <td>repeated object</td>
+    <td>
+    List of active ZeroMQ publishers.
+    </td>
+  </tr>
+     <tr>
+        <td class="fw-bold">zmq_publishers[].topic</td>
+        <td> string</td>
+        <td>
+        The topic associated with the publisher.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">zmq_publishers[].address</td>
+        <td> string</td>
+        <td>
+        The address of the publisher.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">zmq_publishers[].hwm</td>
+        <td> numeric</td>
+        <td>
+        The high-water mark (HWM) for the publisher, indicating the
+maximum number of messages to queue before dropping older ones.
+        </td>
+      </tr>
          </tbody>
 </table>
 
@@ -2819,6 +2847,13 @@ signing and verification.</p>
     <td> string</td>
     <td>
     The aggregated public key.
+    </td>
+  </tr>
+     <tr>
+    <td class="fw-bold">address</td>
+    <td> string</td>
+    <td>
+    The aggregated public key account address.
     </td>
   </tr>
      </tbody>
