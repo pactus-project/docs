@@ -1,6 +1,6 @@
 ---
 title: How to run Pactus Metrics?
-weight: 7
+weight: 9
 ---
 
 ## Preface

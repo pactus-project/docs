@@ -1,6 +1,6 @@
 ---
 title: How to Send Zero-Fee Transactions?
-weight: 10
+weight: 12
 ---
 
 ## Preface

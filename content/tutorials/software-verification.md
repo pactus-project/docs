@@ -1,6 +1,6 @@
 ---
-title: How to Verify That Pactus Software Is Safe?
-weight: 9
+title: How to Verify Pactus Software Is Safe?
+weight: 11
 ---
 
 ## Preface

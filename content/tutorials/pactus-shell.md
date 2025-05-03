@@ -9,18 +9,44 @@ The resulting response is then displayed as a structured [JSON](https://www.json
 
 You can execute `pactus-shell` with the `-h` flag to display available commands for communicating with your node.
 
-```bash
+{{< os_tabs items="unix,windows" >}}
+  {{< os_tab >}}
+
+```shell
 ./pactus-shell -h
 ```
+
+  {{< /os_tab >}}
+  {{< os_tab >}}
+
+```shell
+pactus-shell.exe -h
+```
+
+  {{< /os_tab >}}
+{{< /os_tabs >}}
 
 ## Example
 
 Suppose you want to get the latest blockchain information.
 In that case, you can use the following command in the `pactus-shell`:
 
-```bash
+{{< os_tabs items="unix,windows" >}}
+  {{< os_tab >}}
+
+```shell
 ./pactus-shell blockchain get-blockchain-info
 ```
+
+  {{< /os_tab >}}
+  {{< os_tab >}}
+
+```shell
+pactus-shell.exe blockchain get-blockchain-info
+```
+
+  {{< /os_tab >}}
+{{< /os_tabs >}}
 
 ## Server address
 
@@ -29,13 +55,26 @@ Therefore, when you use `pactus-shell`, it automatically attempts to connect to 
 However, you can easily change the default address by using the `--server-addr` flag.
 For instance, if you want to connect to a remote server, you can execute:
 
-```bash
+{{< os_tabs items="unix,windows" >}}
+  {{< os_tab >}}
+
+```shell
 ./pactus-shell blockchain get-blockchain-info --server-addr example.com:50051
 ```
+
+  {{< /os_tab >}}
+  {{< os_tab >}}
+
+```shell
+pactus-shell.exe blockchain get-blockchain-info --server-addr example.com:50051
+```
+
+  {{< /os_tab >}}
+{{< /os_tabs >}}
 
 ## Security consideration
 
 When connecting to a remote node, it's important to think about security.
 You can make the gRPC communication more secure in some ways.
 For instance, [set a password](/tutorials/grpc-basic-auth/) for the gRPC service,
-or use [NGINX](https://www.nginx.com/blog/nginx-1-13-10-grpc/) to enable TLS/SSL for your node.
+and [secure connections](/tutorials/secure-connections).

@@ -71,6 +71,12 @@ params:
       dark: images/logo.png
     width: wide
 
+  highlight:
+    copy:
+      enable: true
+      # hover | always
+      display: always
+
   page:
     # full (100%), wide (90rem), normal (1280px)
     width: wide

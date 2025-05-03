@@ -1,6 +1,6 @@
 ---
 title: How to reduce the network usage?
-weight: 6
+weight: 8
 ---
 
 ## Preface

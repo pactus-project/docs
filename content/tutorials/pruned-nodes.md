@@ -1,6 +1,6 @@
 ---
 title: How to use Prune Node?
-weight: 3
+weight: 4
 ---
 
 ## Preface
@@ -13,10 +13,9 @@ whether using the command line or the graphical interface.
 
 In the context of blockchain, a "pruned node" refers to a type of node that retains
 only a certain portion of the blockchain history, rather than the entire ledger.
-This is achieved by deleting old transaction data while maintaining the most recent and relevant blocks,
-often referred to as the "head" of the blockchain. This selective data retention allows nodes to
-operate without the need for extensive storage, enabling more participants to run nodes and contribute
-to network security and decentralization.
+This is achieved by deleting old transaction data while maintaining the most recent and relevant blocks.
+This selective data retention allows nodes to operate without the need for extensive storage,
+enabling more participants to run nodes and contribute to network security and decentralization.
 
 ## Key Features of Pruned Nodes
 
@@ -52,34 +51,34 @@ to network security and decentralization.
 5. **User Empowerment**: Pruned nodes empower users by making it easier for them to participate actively in the Pactus
    ecosystem without needing significant technical expertise or substantial hardware investment.
 
-## How to Use a Pruned Node in Pactus?
+## Prune Your Full Node
 
-### Prune Your Full Node
+1. **Stop the Running Node**
+   Shut down your currently running Pactus full node completely.
 
-1. Stop your running full node with `CTRL+C`.
-2. Run the command
+2. **Open a Terminal or Command Prompt**
+   - On **macOS/Linux**: Open the **Terminal**.
+   - On **Windows**: Use **Command Prompt** or **PowerShell**.
 
-```cmd
+3. **Prune the Node Data**
+   Run the following command, replacing `<PATH-TO-WORKING-DIR>` with the actual path to your working directory:
+
+{{< os_tabs items="unix,windows" >}}
+  {{< os_tab >}}
+
+```bash
 ./pactus-daemon prune -w <PATH-TO-WORKING-DIR>
 ```
 
-3. Restart your pruned node with
+  {{< /os_tab >}}
+  {{< os_tab >}}
 
 ```cmd
-./pactus-daemon start -w <PATH-TO-WORKING-DIR>
+pactus-daemon.exe prune -w <PATH-TO-WORKING-DIR>
 ```
 
-### Initiate and Import New Pruned Node
+  {{< /os_tab >}}
+{{< /os_tabs >}}
 
-1. Download the Pactus CLI from [Pactus Downloads](https://pactus.org/download/).
-2. Open the Pactus directory (adapt the version as needed)
-
-```cmd
-cd pactus-cli_1.4.0
-```
-
-3. Import the pruned node with
-
-```cmd
-./pactus-daemon import -w <PATH-TO-WORKING-DIR>
-```
+4. **Restart the Node**
+   Start your Pactus node again to resume normal operation.
