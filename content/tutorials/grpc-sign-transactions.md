@@ -1,6 +1,6 @@
 ---
 title: How to Sign Transactions Using gRPC?
-weight: 4
+weight: 5
 ---
 
 ## Preface
@@ -134,4 +134,4 @@ Make sure you have set a strong password for the native wallet.
 Ensure that it is called on localhost for safety.
 You can make the gRPC communication more secure in some ways.
 For instance, [set a password](/tutorials/grpc-basic-auth/) for the gRPC service,
-or use [NGINX](https://www.nginx.com/blog/nginx-1-13-10-grpc/) to enable TLS/SSL for your node.
+and [secure connections](/tutorials/secure-connections).

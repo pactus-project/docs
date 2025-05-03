@@ -1,5 +1,5 @@
 ---
-title: GRPC API Reference
+title: gRPC API Reference
 weight: 1
 ---
 
