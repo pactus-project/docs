@@ -17,7 +17,7 @@ In this tutorial, we will explore how to secure communication with Pactus nodes.
 
 You can configure the Pactus node to enable any of the communication protocols you may need. By default,
 only the gRPC protocol is enabled and accessible locally.
-Let's take a look at the default [Pactus Configuration](/get-started/configuration.md):
+Let's take a look at the default [Pactus Configuration](/get-started/configuration):
 
 ```toml
 [grpc]
