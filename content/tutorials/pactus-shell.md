@@ -72,7 +72,6 @@ pactus-shell.exe blockchain get-blockchain-info --server-addr example.com:50051
   {{< /os_tab >}}
 {{< /os_tabs >}}
 
-
 ## Security consideration
 
 When connecting to a remote node, it's important to think about security.

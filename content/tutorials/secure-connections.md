@@ -8,13 +8,16 @@ weight: 7
 As the Pactus blockchain grows, there is an increasing need for individuals and merchants to
 communicate and interact with Pactus nodes.
 Pactus offers several communication protocols, including
-[gRPC](../api/grpc.md), [JSON-RPC](../api/json-rpc.md), and [HTTP](../api/http.md) APIs.
+[gRPC](../api/grpc), [JSON-RPC](../api/json-rpc), and [HTTP](../api/http) APIs.
 These protocols are part of the Pactus software, and users have control over enabling or disabling them.
 
 In this tutorial, we will explore how to secure communication with Pactus nodes.
+
 ## Overview of Secure Communication Setup
 
-You can configure the Pactus node to enable any of the communication protocols you may need. By default, only the gRPC protocol is enabled and accessible locally. Let's take a look at the default [Pactus Configuration](../get-started/configuration.md):
+You can configure the Pactus node to enable any of the communication protocols you may need. By default,
+only the gRPC protocol is enabled and accessible locally.
+Let's take a look at the default [Pactus Configuration](../get-started/configuration.md):
 
 ```toml
 [grpc]
@@ -60,8 +63,10 @@ These certificates are tied to specific domain names, not to IP addresses.
 Therefore, a stable domain name is required to properly configure and maintain a secure connection.
 
 There are many [domain name providers](https://www.google.com/search?q=Domain+Name+Provider) where you can purchase a domain.
-Once you've registered a domain, you need to connect it to your server by configuring an `A Record` in your domain's DNS settings.
-An `A Record` maps your domain name to the IPv4 address of your server, allowing visitors to reach your server using the domain.
+Once you've registered a domain,
+you need to connect it to your server by configuring an `A Record` in your domain's DNS settings.
+An `A Record` maps your domain name to the IPv4 address of your server,
+allowing visitors to reach your server using the domain.
 
 To verify that the `A Record` is correctly set, you can use the
 [dig](https://www.geeksforgeeks.org/dig-command-in-linux-with-examples/) command:
@@ -123,7 +128,6 @@ sudo pacman -S nginx
   {{< /os_tab >}}
 {{< /os_tabs >}}
 
-
 After installation, you can start and enable Nginx service with:
 
 ```bash
@@ -134,7 +138,9 @@ sudo systemctl start nginx
 ## Obtaining SSL Certificates with Certbot
 
 Now that we have set up the reverse proxy, it’s time to obtain an SSL certificate to enable HTTPS.
-We will use [Certbot](https://certbot.eff.org/), a free and widely used tool for automating the process of obtaining and renewing SSL certificates from [Let’s Encrypt](https://letsencrypt.org/).
+We will use [Certbot](https://certbot.eff.org/),
+a free and widely used tool for automating the process of obtaining and renewing SSL certificates from
+[Let’s Encrypt](https://letsencrypt.org/).
 
 ### Installing Certbot
 
@@ -152,10 +158,12 @@ sudo certbot --nginx -d your-domain.com
 ```
 
 Here’s what this command does:
+
 - `--nginx`: Tells Certbot to automatically configure Nginx with the obtained SSL certificate.
 - `-d your-domain.com`: Specifies the domain name you are obtaining the SSL certificate for.
 
 If the domain is properly configured and pointing to your server, Certbot will:
+
 1. Verify your domain ownership.
 2. Obtain the SSL certificate from Let’s Encrypt.
 3. Automatically configure Nginx to use HTTPS with the new certificate.
@@ -175,16 +183,16 @@ sudo nano /etc/nginx/conf.d/pactus.conf
 
 Paste the following content into the file:
 
-```nginx {linenos=table,linenostart=1,hl_lines=[3,6,7]}
+```nginx{linenos=table,linenostart=1,hl_lines=[3,6,7]}
 server {
     listen 443 ssl http2;
     server_name your-domain.com;
 
-    # SSL configuration (only used if certs exist)
+    # SSL configuration
     ssl_certificate     /etc/letsencrypt/live/your-domain.com/fullchain.pem;
     ssl_certificate_key /etc/letsencrypt/live/your-domain.com/privkey.pem;
-    include /etc/letsencrypt/options-ssl-nginx.conf;
-    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
+    include             /etc/letsencrypt/options-ssl-nginx.conf;
+    ssl_dhparam         /etc/letsencrypt/ssl-dhparams.pem;
 
     # gRPC service
     location /grpc {
@@ -224,11 +232,7 @@ This configuration sets up Nginx as a reverse proxy[^1] for three endpoints:
 
 It also includes the necessary SSL settings to enable HTTPS, which will be activated in the next step.
 
-
-
 ## References
 
 [^1]: Learn more about the Nginx proxy module [here](https://nginx.org/en/docs/http/ngx_http_proxy_module.html).
 [^2]: Nginx has native support for gRPC. Read more about it [here](https://blog.nginx.org/blog/nginx-1-13-10-grpc).
-
-
