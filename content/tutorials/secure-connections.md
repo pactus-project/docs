@@ -8,7 +8,7 @@ weight: 7
 As the Pactus blockchain grows, there is an increasing need for individuals and merchants to
 communicate and interact with Pactus nodes.
 Pactus offers several communication protocols, including
-[gRPC](../api/grpc), [JSON-RPC](../api/json-rpc), and [HTTP](../api/http) APIs.
+[gRPC](/api/grpc), [JSON-RPC](/api/json-rpc), and [HTTP](/api/http) APIs.
 These protocols are part of the Pactus software, and users have control over enabling or disabling them.
 
 In this tutorial, we will explore how to secure communication with Pactus nodes.
@@ -17,7 +17,7 @@ In this tutorial, we will explore how to secure communication with Pactus nodes.
 
 You can configure the Pactus node to enable any of the communication protocols you may need. By default,
 only the gRPC protocol is enabled and accessible locally.
-Let's take a look at the default [Pactus Configuration](../get-started/configuration.md):
+Let's take a look at the default [Pactus Configuration](/get-started/configuration.md):
 
 ```toml
 [grpc]
