@@ -43,9 +43,12 @@ The `enable` field determines whether the communication protocol is active.
 The `listen` field defines the address where the protocol is accessible, in the format `<ADDRESS>:<PORT>`.
 The port specifies which TCP port the protocol should use.
 Choose a free port that isn't already in use by another application.
-The address is typically an IP address. Special addresses like `127.0.0.1` or `localhost` are only accessible locally and are **not publicly accessible**.
+The address is typically an IP address.
+Special addresses like `127.0.0.1` or `localhost` are only accessible locally and are **not publicly accessible**.
 
-The `origins` field controls CORS (Cross-Origin Resource Sharing), specifying which web domains can access the API (e.g., "wallet.pactus.org"). Use `*` to allow all domains (not recommended for production).
+The `origins` field controls CORS (Cross-Origin Resource Sharing),
+specifying which web domains can access the API (e.g., "wallet.pactus.org").
+Use `*` to allow all domains (not recommended for production).
 
 ![Pactus Localhost Connection](/images/secure-connections/pactus-connection-localhost.png)
 
@@ -245,7 +248,8 @@ Before applying changes, always test your Nginx configuration:
 sudo nginx -t
 ```
 
-This command checks for syntax errors in your configuration files. If you see "syntax is ok" and "test is successful", you can safely restart Nginx:
+This command checks for syntax errors in your configuration files.
+If you see "syntax is ok" and "test is successful", you can safely restart Nginx:
 
 ```bash
 sudo systemctl restart nginx
