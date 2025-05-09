@@ -13,7 +13,7 @@
       "url": "https://github.com/pactus-project/pactus/blob/main/LICENSE"
     }
   },
-  "host": "bootstrap1.pactus.org:8080",
+  "host": "bootstrap1.pactus.org",
   "tags": [
     {
       "name": "Transaction"
@@ -31,7 +31,7 @@
       "name": "Wallet"
     }
   ],
-  "basePath": "",
+  "basePath": "/http/api",
   "schemes": [
     "https",
     "http"
