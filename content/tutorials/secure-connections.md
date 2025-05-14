@@ -126,7 +126,7 @@ you should be able to see the Nginx Welcoming message:
 
 ![Nginx Welcoming message](/images/secure-connections/nginx-welcoming-screen.png)
 
-## Obtaining SSL Certificates with Certbot
+## Obtaining SSL Certificates
 
 Now that we have set up the reverse proxy, it’s time to obtain an SSL certificate to enable HTTPS.
 We will use [Certbot](https://certbot.eff.org/),
