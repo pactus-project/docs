@@ -61,7 +61,7 @@ At each block, validators participate in a [sortition](/protocol/consensus/sorti
 by generating a random number between zero and the total staked coins.
 If the number is less than the validator's stake, they can enter the committee and replaces the oldest committee member.
 
-![Pactus Solid State Proof of Stake](/images/pactus-validator-pool.png)
+![Pactus Solid State Proof of Stake](/images/pactus-solid-state-proof-of-stake.png)
 
 The chance of entering the committee depends on the validator's stake and luck.
 But on average, one validator should enter the committee in each block.
