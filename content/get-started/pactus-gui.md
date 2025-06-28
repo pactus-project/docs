@@ -20,21 +20,6 @@ Before proceeding with the steps below, ensure that you have the following:
 Download the Pactus GUI installer or archived file from
 [here](https://pactus.org/download/#gui).
 
-### Code certificate issue
-
-Windows and macOS users may encounter a warning message stating that Pactus is an untrusted application.
-This is because Pactus does not have a
-[code signing certificate](https://en.wikipedia.org/wiki/Code_signing).
-
-![Code certificate issue](/images/pactus-gui/code-certificate-warning.png)
-
-A code certificate is a digital signature that verifies the identity and authenticity of the software publisher.
-However, obtaining a code certificate is complex and expensive process, and requires registering a company and
-passing Know Your Customer (KYC) checks.
-
-As Pactus is an open-source and community-based application, we don't have a code certificate yet.
-Therefore, you can safely ignore the warning message and proceed with installing Pactus.
-
 ## Installing
 
 To install Pactus GUI, simply follow the on-screen instructions provided by the installer.
