@@ -42,11 +42,10 @@ This command creates your wallet and setup the working directory at `C:\Users\<U
   {{< /os_tab >}}
 {{< /os_tabs >}}
 
-
 Here’s what the flags mean:
 
 - `--working-dir`: Specifies the directory where node data (e.g., blockchain data, configuration files) will be stored.
-- `--testnet `: Configures the node to connect to the Testnet instead of the Mainnet.
+- `--testnet`: Configures the node to connect to the Testnet instead of the Mainnet.
 
 After initializing the node, you can optionally import the latest blockchain data and
 run the Testnet in [pruned mode](https://docs.pactus.org/tutorials/pruned-nodes/).
@@ -58,12 +57,14 @@ This helps you sync faster and reduces storage usage:
 ```bash
 ./pactus-daemon import --working-dir=~/pactus/testnet
 ```
+
   {{< /os_tab >}}
   {{< os_tab >}}
 
 ```batch
 pactus-daemon.exe import --working-dir=%USERPROFILE%\pactus\testnet
 ```
+
   {{< /os_tab >}}
 {{< /os_tabs >}}
 
@@ -74,13 +75,16 @@ Now, start the node:
 
 ```bash
 ./pactus-daemon start --working-dir=~/pactus/testnet
+
 ```
+
   {{< /os_tab >}}
   {{< os_tab >}}
 
 ```batch
 pactus-daemon.exe start --working-dir=%USERPROFILE%\pactus\testnet
 ```
+
   {{< /os_tab >}}
 {{< /os_tabs >}}
 
@@ -97,12 +101,14 @@ Open a terminal (or command prompt on Windows) and start Pactus GUI with:
 ```bash
 ./pactus-gui -working-dir=~/pactus/testnet -testnet
 ```
+
   {{< /os_tab >}}
   {{< os_tab >}}
 
 ```batch
 pactus-gui.exe start -working-dir=%USERPROFILE%\pactus\testnet -testnet
 ```
+
   {{< /os_tab >}}
 {{< /os_tabs >}}
 
