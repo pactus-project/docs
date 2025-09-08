@@ -35,22 +35,6 @@ enabling more participants to run nodes and contribute to network security and d
    encourage more users to participate in staking and validating transactions, contributing to
    a more robust and decentralized network.
 
-## Benefits of Pruned Solid State Proof of Stake Nodes
-
-1. **Scalability**: As the Pactus network grows, the size of the blockchain can become cumbersome.
-   Pruned nodes help mitigate this issue, allowing Pactus to scale efficiently without overwhelming infrastructure.
-
-2. **Energy Efficiency**: Coupled with the inherent efficiencies of Solid State Proof Of Stake, pruned nodes further
-3. reduce the environmental impact of Pactus operations. With fewer resources required for storage and data processing,
-   the Pactus network can operate more sustainably.
-
-4. **Enhanced Decentralization**: The ability for more participants to run nodes increases the decentralization of the network.
-   A more decentralized network is generally more resilient to attacks and manipulation, which bolsters the integrity
-   of the blockchain.
-
-5. **User Empowerment**: Pruned nodes empower users by making it easier for them to participate actively in the Pactus
-   ecosystem without needing significant technical expertise or substantial hardware investment.
-
 ## Prune Your Full Node
 
 1. **Stop the Running Node**
