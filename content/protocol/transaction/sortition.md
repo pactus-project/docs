@@ -11,6 +11,8 @@ Sortition transactions are valid for 7 blocks, which is defined as "sortition in
 [consensus parameters](/protocol/consensus/parameters/).
 Sortition is free. This means there are no fees associated with the process of sortition transaction.
 
+The [Payload Type](/protocol/transaction/format/#payload-type) for Sortition is 3.
+
 ## Payload Structure
 
 The sortition transaction has a payload consists the following fields:

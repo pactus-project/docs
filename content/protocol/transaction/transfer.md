@@ -7,6 +7,8 @@ math: false
 Transfer transaction is used to transfer coins between the [accounts](/protocol/blockchain/account/).
 If the receiver account does not exist, it will be created.
 
+The [Payload Type](/protocol/transaction/format/#payload-type) for Transfer is 1.
+
 ## Payload Structure
 
 The transfer transaction has a payload consists the following fields:

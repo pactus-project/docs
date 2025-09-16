@@ -10,6 +10,8 @@ After 21 days, the stake can be withdrawn.
 This period is called the "unbond interval" and is defined in the [consensus parameter](/protocol/consensus/parameters/).
 Unbonding is free. This means there are no fees associated with the process of unbond transaction.
 
+The [Payload Type](/protocol/transaction/format/#payload-type) for Unbond is 4.
+
 ## Payload Structure
 
 The unbond transaction has a payload consists the following field:

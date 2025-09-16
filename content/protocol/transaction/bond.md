@@ -13,6 +13,8 @@ This is called the "bond interval" and is defined in the
 Validators within the committee cannot increase their stake.
 Therefore, bond transactions will be processed only when the validators are not in the committee.
 
+The [Payload Type](/protocol/transaction/format/#payload-type) for Bond is 2.
+
 ## Payload Structure
 
 The bond transaction has a payload consists the following fields:
