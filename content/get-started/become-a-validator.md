@@ -20,9 +20,9 @@ By staking their own coins, validators contribute to the network's security and 
 ## Validator Rewards
 
 When a validator successfully proposes a block that is accepted by the network,
-they receive a block reward in the form of one coin.
+they receive a block reward.
 This reward serves as an [incentive](/protocol/blockchain/incentive)
-for validators to continue supporting the network.
+for validators to continue supporting the network while ensuring the long-term sustainability of the Pactus ecosystem.
 
 ## Minimum requirement
 

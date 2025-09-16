@@ -15,8 +15,8 @@ Transactions in the Pactus consist of the following fields:
 | Memo         | Variant  |
 | Payload Type | 1 byte   |
 | Payload Data | Variant  |
-| Signature    | 48 bytes |
-| Public Key   | 96 bytes |
+| Signature    | Variant  |
+| Public Key   | Variant  |
 
 - **Flags** A flag is a bitfield that indicates how to decode the transaction data.
 - **Version** is the version of the transaction format. Different versions may have different fields or
@@ -48,11 +48,15 @@ The following are the supported transactions in the Pactus blockchain:
 3. [Sortition transaction](/protocol/transaction/sortition)
 4. [Unbond transaction](/protocol/transaction/unbond)
 5. [Withdraw transaction](/protocol/transaction/withdraw)
+6. [Batch Transfer transaction](/protocol/transaction/batch_transfer)
+
+Note: [Reward transactions](/protocol/transaction/reward) use the Batch Transfer payload type (6) but are handled specially by the protocol.
 
 ## Flags
 
-- **0x1** Indicates that the [public key is known](https://pips.pactus.org/PIPs/pip-4)
+- **0x01** Indicates that the [public key is known](https://pips.pactus.org/PIPs/pip-4)
   and excluded from the transaction.
+- **0x02** Indicates that the transaction is not signed yet.
 
 ## Transaction ID
 
