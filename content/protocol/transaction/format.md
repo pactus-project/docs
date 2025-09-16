@@ -50,8 +50,6 @@ The following are the supported transactions in the Pactus blockchain:
 5. [Withdraw transaction](/protocol/transaction/withdraw)
 6. [Batch Transfer transaction](/protocol/transaction/batch_transfer)
 
-Note: [Reward transactions](/protocol/transaction/reward) use the Batch Transfer payload type (6) but are handled specially by the protocol.
-
 ## Flags
 
 - **0x01** Indicates that the [public key is known](https://pips.pactus.org/PIPs/pip-4)
