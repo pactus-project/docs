@@ -1,7 +1,7 @@
 ---
 title: 🔌 API Reference
-weight: 5
-prev: /tutorials/linux-systemd
+weight: 4
+prev: /tutorials/
 next: /grpc
 ---
 
