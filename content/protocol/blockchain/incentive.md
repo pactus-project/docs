@@ -29,17 +29,24 @@ However, in a Proof-of-Stake blockchain, this mechanism can lead to wealth centr
 as early validators gain too much power based on their staked coins.
 
 To promote fairer block rewards, Pactus has introduced a simple and straightforward incentive model called the "Flat Reward."
-In this model, the block reward remains constant at one coin per block and does not change over time.
+In this model, the total block reward remains constant at one coin per block and does not change over time.
 
 ![Rewards in Bitcoin](/images/bitcoin-reward.png)
 
 ![Rewards in Pactus](/images/pactus-reward.png)
 
-### Coin Distribution
+### Reward Distribution
 
-In Pactus, the coin distribution is linear. This linear distribution is a direct result of the Flat Reward system.
-Unlike other blockchains that have a curved distribution, Pactus maintains a consistent coin distribution.
+In Pactus, the reward distribution is linear. This linear distribution is a direct result of the Flat Reward system.
+Unlike other blockchains that have a curved distribution, Pactus maintains a consistent reward distribution.
 
-![Coin distribution in Bitcoin](/images/bitcoin-coin-distribution.png)
+![Reward distribution in Bitcoin](/images/bitcoin-reward-distribution.png)
 
-![Coin distribution in Pactus](/images/pactus-coin-distribution.png)
+![Reward distribution in Pactus](/images/pactus-reward-distribution.png)
+
+## Split Reward
+
+Starting with protocol version 2, block rewards are split between validators and the Pactus Foundation:
+
+- **70%** to the validator (block proposer)
+- **30%** to the Pactus Foundation
