@@ -1,7 +1,7 @@
 ---
 title: 🔗 Blockchain
 weight: 3
-next: /protocol/blockchain/
+next: /protocol/consensus/
 ---
 
 {{< items >}}

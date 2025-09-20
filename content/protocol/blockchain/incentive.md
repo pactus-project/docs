@@ -14,7 +14,7 @@ maintain the security and integrity of the network.
 ## Flat Reward
 
 To better understand the incentive model in Pactus, let's compare it with the Bitcoin reward model.
-This comparison will help to understand how the incentive model works in Pactus.
+This comparison helps to understand how the incentive model works in Pactus.
 
 | Pactus                                 | Bitcoin                                      |
 | -------------------------------------- | -------------------------------------------- |
@@ -35,7 +35,7 @@ In this model, the total block reward remains constant at one coin per block and
 
 ![Rewards in Pactus](/images/pactus-reward.png)
 
-### Reward Distribution
+## Reward Distribution
 
 In Pactus, the reward distribution is linear. This linear distribution is a direct result of the Flat Reward system.
 Unlike other blockchains that have a curved distribution, Pactus maintains a consistent reward distribution.
@@ -44,9 +44,24 @@ Unlike other blockchains that have a curved distribution, Pactus maintains a con
 
 ![Reward distribution in Pactus](/images/pactus-reward-distribution.png)
 
-## Split Reward
+## Reward Transaction
 
-Starting with protocol version 2, block rewards are split between validators and the Pactus Foundation:
+The reward transaction is a special transaction type that serves as the first transaction in each block.
+The reward transaction is similar to the [coinbase transaction in Bitcoin](https://developer.bitcoin.org/reference/transactions.html#coinbase-input-the-input-of-the-first-transaction-in-a-block).
+It is the mechanism through which coins from the
+[Treasury account](/protocol/blockchain/account/#treasury-account)
+are distributed among validators as compensation for their role in maintaining network security.
 
-- **70%** to the validator (block proposer)
+### Legacy Reward Transaction
+
+In protocol version 1, the reward transactions used a simple
+[transfer](/protocol/transaction/transfer) where all block rewards went to the block proposer.
+
+### Split Reward Transaction
+
+Starting with protocol version 2, reward transactions use
+[batch transfer transactions](/protocol/transaction/batch_transfer)
+to distribute block rewards according to [PIP-43](https://pips.pactus.org/PIPs/pip-43):
+
+- **70%** to the block proposer
 - **30%** to the Pactus Foundation

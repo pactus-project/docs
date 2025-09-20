@@ -1,7 +1,7 @@
 ---
 title: 🪪 Transaction
 weight: 5
-prev: /protocol/transaction/
+prev: /protocol/consensus/
 ---
 
 {{< items >}}

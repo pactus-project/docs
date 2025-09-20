@@ -10,10 +10,10 @@ ensuring that validators behave in the same way and that the network operates co
 
 Here is the list of the consensus parameters:
 
-## Block Version
+## Protocol Version
 
 The version number of the blockchain protocol.
-The current block version is 2 after [PIP-43](https://pips.pactus.org/PIPs/pip-43).
+The current protocol version is 2 after [PIP-43](https://pips.pactus.org/PIPs/pip-43).
 
 ## Block Time
 

@@ -1,6 +1,6 @@
 ---
 title: Batch Transfer Transaction
-weight: 8
+weight: 7
 math: false
 ---
 
