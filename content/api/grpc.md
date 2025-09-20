@@ -17,8 +17,10 @@ Each PAC is equivalent to 1,000,000,000 or 10<sup>9</sup> NanoPACs.
 
 For seamless integration with Pactus, you can use these client libraries:
 
-- [pactus-grpc](https://pypi.org/project/pactus-grpc/) package for Python
-- [pactus-grpc](https://www.npmjs.com/package/pactus-grpc/) package for Javascript
+- <i class="fa-brands fa-js"></i>
+  [pactus-grpc](https://www.npmjs.com/package/pactus-grpc/) package for Javascript
+- <i class="fa-brands fa-python"></i>
+  [pactus-grpc](https://pypi.org/project/pactus-grpc/) package for Python
 
 ## gRPC Services
 
@@ -53,6 +55,10 @@ For seamless integration with Pactus, you can use these client libraries:
         <li>
           <a href="#pactus.Transaction.GetRawWithdrawTransaction">
           <span class="rpc-badge"></span> GetRawWithdrawTransaction</a>
+        </li>
+        <li>
+          <a href="#pactus.Transaction.GetRawBatchTransferTransaction">
+          <span class="rpc-badge"></span> GetRawBatchTransferTransaction</a>
         </li>
         <li>
           <a href="#pactus.Transaction.DecodeRawTransaction">
@@ -330,6 +336,7 @@ For seamless integration with Pactus, you can use these client libraries:
           <li>PAYLOAD_TYPE_SORTITION = 3 (Sortition payload type.)</li>
           <li>PAYLOAD_TYPE_UNBOND = 4 (Unbond payload type.)</li>
           <li>PAYLOAD_TYPE_WITHDRAW = 5 (Withdraw payload type.)</li>
+          <li>PAYLOAD_TYPE_BATCH_TRANSFER = 6 (Batch transfer payload type.)</li>
           </ul>
         </td>
       </tr>
@@ -460,6 +467,27 @@ For seamless integration with Pactus, you can use these client libraries:
             </td>
           </tr>
           <tr>
+        <td class="fw-bold">transaction.batch_transfer</td>
+        <td> PayloadBatchTransfer</td>
+        <td>
+        (OneOf)Batch Transfer transaction payload.
+        </td>
+      </tr>
+         <tr>
+            <td class="fw-bold">transaction.batch_transfer.sender</td>
+            <td> string</td>
+            <td>
+            The sender's address.
+            </td>
+          </tr>
+          <tr>
+            <td class="fw-bold">transaction.batch_transfer.recipients</td>
+            <td>repeated Recipient</td>
+            <td>
+            The recipients of list receiver with amount.
+            </td>
+          </tr>
+          <tr>
         <td class="fw-bold">transaction.memo</td>
         <td> string</td>
         <td>
@@ -513,6 +541,7 @@ For seamless integration with Pactus, you can use these client libraries:
       <li>PAYLOAD_TYPE_SORTITION = 3 (Sortition payload type.)</li>
       <li>PAYLOAD_TYPE_UNBOND = 4 (Unbond payload type.)</li>
       <li>PAYLOAD_TYPE_WITHDRAW = 5 (Withdraw payload type.)</li>
+      <li>PAYLOAD_TYPE_BATCH_TRANSFER = 6 (Batch transfer payload type.)</li>
       </ul>
     </td>
   </tr>
@@ -888,6 +917,78 @@ For seamless integration with Pactus, you can use these client libraries:
      </tbody>
 </table>
 
+#### GetRawBatchTransferTransaction <span id="pactus.Transaction.GetRawBatchTransferTransaction" class="rpc-badge"></span>
+
+<p>GetRawBatchTransferTransaction retrieves raw details of batch transfer transaction.</p>
+
+<h4>GetRawBatchTransferTransactionRequest <span class="badge text-bg-info fs-6 align-top">Request</span></h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">lock_time</td>
+    <td> uint32</td>
+    <td>
+    The lock time for the transaction. If not set, defaults to the last block height.
+    </td>
+  </tr>
+  <tr>
+    <td class="fw-bold">sender</td>
+    <td> string</td>
+    <td>
+    The sender's account address.
+    </td>
+  </tr>
+  <tr>
+    <td class="fw-bold">recipients</td>
+    <td>repeated Recipient</td>
+    <td>
+    The recipients list of receiver with amount, min 2 recipients.
+    </td>
+  </tr>
+  <tr>
+    <td class="fw-bold">fee</td>
+    <td> int64</td>
+    <td>
+    The transaction fee in NanoPAC. If not set, it is set to the estimated fee.
+    </td>
+  </tr>
+  <tr>
+    <td class="fw-bold">memo</td>
+    <td> string</td>
+    <td>
+    A memo string for the transaction.
+    </td>
+  </tr>
+  </tbody>
+</table>
+  <h4>GetRawTransactionResponse <span class="badge text-bg-warning fs-6 align-top">Response</span></h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">raw_transaction</td>
+    <td> string</td>
+    <td>
+    The raw transaction data in hexadecimal format.
+    </td>
+  </tr>
+     <tr>
+    <td class="fw-bold">id</td>
+    <td> string</td>
+    <td>
+    The unique ID of the transaction.
+    </td>
+  </tr>
+     </tbody>
+</table>
+
 #### DecodeRawTransaction <span id="pactus.Transaction.DecodeRawTransaction" class="rpc-badge"></span>
 
 <p>DecodeRawTransaction accepts raw transaction and returns decoded transaction.</p>
@@ -976,6 +1077,7 @@ For seamless integration with Pactus, you can use these client libraries:
           <li>PAYLOAD_TYPE_SORTITION = 3 (Sortition payload type.)</li>
           <li>PAYLOAD_TYPE_UNBOND = 4 (Unbond payload type.)</li>
           <li>PAYLOAD_TYPE_WITHDRAW = 5 (Withdraw payload type.)</li>
+          <li>PAYLOAD_TYPE_BATCH_TRANSFER = 6 (Batch transfer payload type.)</li>
           </ul>
         </td>
       </tr>
@@ -1103,6 +1205,27 @@ For seamless integration with Pactus, you can use these client libraries:
             <td> int64</td>
             <td>
             The withdrawal amount in NanoPAC.
+            </td>
+          </tr>
+          <tr>
+        <td class="fw-bold">transaction.batch_transfer</td>
+        <td> PayloadBatchTransfer</td>
+        <td>
+        (OneOf)Batch Transfer transaction payload.
+        </td>
+      </tr>
+         <tr>
+            <td class="fw-bold">transaction.batch_transfer.sender</td>
+            <td> string</td>
+            <td>
+            The sender's address.
+            </td>
+          </tr>
+          <tr>
+            <td class="fw-bold">transaction.batch_transfer.recipients</td>
+            <td>repeated Recipient</td>
+            <td>
+            The recipients of list receiver with amount.
             </td>
           </tr>
           <tr>
@@ -1346,6 +1469,7 @@ BLOCK_TRANSACTIONS.
           <li>PAYLOAD_TYPE_SORTITION = 3 (Sortition payload type.)</li>
           <li>PAYLOAD_TYPE_UNBOND = 4 (Unbond payload type.)</li>
           <li>PAYLOAD_TYPE_WITHDRAW = 5 (Withdraw payload type.)</li>
+          <li>PAYLOAD_TYPE_BATCH_TRANSFER = 6 (Batch transfer payload type.)</li>
           </ul>
         </td>
       </tr>
@@ -1473,6 +1597,27 @@ BLOCK_TRANSACTIONS.
             <td> int64</td>
             <td>
             The withdrawal amount in NanoPAC.
+            </td>
+          </tr>
+          <tr>
+        <td class="fw-bold">txs[].batch_transfer</td>
+        <td> PayloadBatchTransfer</td>
+        <td>
+        (OneOf)Batch Transfer transaction payload.
+        </td>
+      </tr>
+         <tr>
+            <td class="fw-bold">txs[].batch_transfer.sender</td>
+            <td> string</td>
+            <td>
+            The sender's address.
+            </td>
+          </tr>
+          <tr>
+            <td class="fw-bold">txs[].batch_transfer.recipients</td>
+            <td>repeated Recipient</td>
+            <td>
+            The recipients of list receiver with amount.
             </td>
           </tr>
           <tr>
@@ -1707,6 +1852,13 @@ Message has no fields.
         </td>
       </tr>
          <tr>
+        <td class="fw-bold">committee_validators[].protocol_version</td>
+        <td> int32</td>
+        <td>
+        The protocol version of the validator.
+        </td>
+      </tr>
+         <tr>
     <td class="fw-bold">is_pruned</td>
     <td> bool</td>
     <td>
@@ -1725,6 +1877,13 @@ Message has no fields.
     <td> int64</td>
     <td>
     Timestamp of the last block in Unix format
+    </td>
+  </tr>
+     <tr>
+    <td class="fw-bold">committee_protocol_versions</td>
+    <td> map&lt;int32, double&gt;</td>
+    <td>
+    Map of protocol versions and their percentages in the committee.
     </td>
   </tr>
      </tbody>
@@ -2050,6 +2209,13 @@ Message has no fields.
         The availability score of the validator.
         </td>
       </tr>
+         <tr>
+        <td class="fw-bold">validator.protocol_version</td>
+        <td> int32</td>
+        <td>
+        The protocol version of the validator.
+        </td>
+      </tr>
          </tbody>
 </table>
 
@@ -2157,6 +2323,13 @@ Message has no fields.
         The availability score of the validator.
         </td>
       </tr>
+         <tr>
+        <td class="fw-bold">validator.protocol_version</td>
+        <td> int32</td>
+        <td>
+        The protocol version of the validator.
+        </td>
+      </tr>
          </tbody>
 </table>
 
@@ -2244,6 +2417,7 @@ Message has no fields.
       <li>PAYLOAD_TYPE_SORTITION = 3 (Sortition payload type.)</li>
       <li>PAYLOAD_TYPE_UNBOND = 4 (Unbond payload type.)</li>
       <li>PAYLOAD_TYPE_WITHDRAW = 5 (Withdraw payload type.)</li>
+      <li>PAYLOAD_TYPE_BATCH_TRANSFER = 6 (Batch transfer payload type.)</li>
       </ul>
     </td>
   </tr>
@@ -2317,6 +2491,7 @@ Message has no fields.
           <li>PAYLOAD_TYPE_SORTITION = 3 (Sortition payload type.)</li>
           <li>PAYLOAD_TYPE_UNBOND = 4 (Unbond payload type.)</li>
           <li>PAYLOAD_TYPE_WITHDRAW = 5 (Withdraw payload type.)</li>
+          <li>PAYLOAD_TYPE_BATCH_TRANSFER = 6 (Batch transfer payload type.)</li>
           </ul>
         </td>
       </tr>
@@ -2444,6 +2619,27 @@ Message has no fields.
             <td> int64</td>
             <td>
             The withdrawal amount in NanoPAC.
+            </td>
+          </tr>
+          <tr>
+        <td class="fw-bold">txs[].batch_transfer</td>
+        <td> PayloadBatchTransfer</td>
+        <td>
+        (OneOf)Batch Transfer transaction payload.
+        </td>
+      </tr>
+         <tr>
+            <td class="fw-bold">txs[].batch_transfer.sender</td>
+            <td> string</td>
+            <td>
+            The sender's address.
+            </td>
+          </tr>
+          <tr>
+            <td class="fw-bold">txs[].batch_transfer.recipients</td>
+            <td>repeated Recipient</td>
+            <td>
+            The recipients of list receiver with amount.
             </td>
           </tr>
           <tr>
@@ -2589,14 +2785,14 @@ Message has no fields.
         <td class="fw-bold">connected_peers[].last_sent</td>
         <td> int64</td>
         <td>
-        Time the last bundle sent to the peer (in epoch format).
+        Unix timestamp of the last bundle sent to the peer (UTC).
         </td>
       </tr>
          <tr>
         <td class="fw-bold">connected_peers[].last_received</td>
         <td> int64</td>
         <td>
-        Time the last bundle received from the peer (in epoch format).
+        Unix timestamp of the last bundle received from the peer (UTC).
         </td>
       </tr>
          <tr>
@@ -2608,9 +2804,14 @@ Message has no fields.
       </tr>
          <tr>
         <td class="fw-bold">connected_peers[].direction</td>
-        <td> string</td>
+        <td> Direction</td>
         <td>
-        Connection direction (e.g., inbound, outbound).
+        (Enum)Connection direction (e.g., inbound, outbound).
+        <br>Available values:<ul>
+          <li>DIRECTION_UNKNOWN = 0 (Unknown direction (default value).)</li>
+          <li>DIRECTION_INBOUND = 1 (Inbound connection - peer connected to us.)</li>
+          <li>DIRECTION_OUTBOUND = 2 (Outbound connection - we connected to peer.)</li>
+          </ul>
         </td>
       </tr>
          <tr>
@@ -2677,6 +2878,13 @@ Message has no fields.
             </td>
           </tr>
           <tr>
+        <td class="fw-bold">connected_peers[].outbound_hello_sent</td>
+        <td> bool</td>
+        <td>
+        Whether the hello message was sent from the outbound connection.
+        </td>
+      </tr>
+         <tr>
     <td class="fw-bold">metric_info</td>
     <td> MetricInfo</td>
     <td>
@@ -2802,7 +3010,7 @@ Message has no fields.
     <td class="fw-bold">started_at</td>
     <td> uint64</td>
     <td>
-    Time the node was started (in epoch format).
+    Unix timestamp when the node was started (UTC).
     </td>
   </tr>
      <tr>
@@ -2904,7 +3112,14 @@ Message has no fields.
 maximum number of messages to queue before dropping older ones.
         </td>
       </tr>
-         </tbody>
+         <tr>
+    <td class="fw-bold">current_time</td>
+    <td> uint64</td>
+    <td>
+    Current Unix timestamp of the node (UTC).
+    </td>
+  </tr>
+     </tbody>
 </table>
 
 ### Utils Service
