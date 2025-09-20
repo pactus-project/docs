@@ -48,16 +48,20 @@ Unlike other blockchains that have a curved distribution, Pactus maintains a con
 
 The reward transaction is a special transaction type that serves as the first transaction in each block.
 The reward transaction is similar to the [coinbase transaction in Bitcoin](https://developer.bitcoin.org/reference/transactions.html#coinbase-input-the-input-of-the-first-transaction-in-a-block).
-It is the mechanism through which coins from the [Treasury account](/protocol/blockchain/account/#treasury-account) are distributed among validators as compensation for their role in maintaining network security.
+It is the mechanism through which coins from the
+[Treasury account](/protocol/blockchain/account/#treasury-account)
+are distributed among validators as compensation for their role in maintaining network security.
 
 ### Legacy Reward Transaction
 
-In protocol version 1, the reward transactions used a simple [transfer](/protocol/transaction/transfer) where all block rewards went to the block proposer.
+In protocol version 1, the reward transactions used a simple
+[transfer](/protocol/transaction/transfer) where all block rewards went to the block proposer.
 
 ### Split Reward Transaction
 
-Starting with protocol version 2, reward transactions use [batch transfer transactions](/protocol/transaction/batch_transfer) to distribute block rewards according to [PIP-43](https://pips.pactus.org/PIPs/pip-43):
+Starting with protocol version 2, reward transactions use
+[batch transfer transactions](/protocol/transaction/batch_transfer)
+to distribute block rewards according to [PIP-43](https://pips.pactus.org/PIPs/pip-43):
 
 - **70%** to the block proposer
 - **30%** to the Pactus Foundation
-
