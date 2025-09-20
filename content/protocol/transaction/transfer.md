@@ -1,6 +1,6 @@
 ---
 title: Transfer Transaction
-weight: 3
+weight: 2
 math: false
 ---
 

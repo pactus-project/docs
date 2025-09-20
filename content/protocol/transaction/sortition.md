@@ -1,6 +1,6 @@
 ---
 title: Sortition Transaction
-weight: 5
+weight: 4
 math: false
 ---
 

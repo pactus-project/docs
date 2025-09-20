@@ -27,7 +27,8 @@ The block header is 138 bytes long and consists the following fields:
 | Sortition Seed      | 48 bytes |
 | Proposer Address    | 21 bytes |
 
-- **Version** is used to track the software or protocol upgrade, and the current block version is set to 1.
+- **Version** is used to track the protocol upgrade, and the current
+  [protocol version](/protocol/consensus/parameters/#protocol-version) is set to 2.
 - **Timestamp** is the time of the block as the number of seconds since January 1, 1970 (Unix Epoch).
 - **Previous Block Hash** is the hash of the previous block in the blockchain.
 - **State Hash** is the [state hash](/protocol/blockchain/state-hash) of the blockchain at this block.
@@ -65,7 +66,8 @@ The block certificate consists the following fields:
 Each block in the Pactus blockchain contains a list of transactions.
 The maximum number of transactions in a block is determined by the
 [consensus parameters](/protocol/consensus/parameters), and currently set to 1000.
-The first transaction in each block is the [reward transaction](/protocol/transaction/transfer/#reward-transaction).
+The first transaction in each block is the [reward transaction](/protocol/blockchain/incentive/#reward-transaction),
+which distributes block rewards.
 Once a block is committed and added to the blockchain, all the transactions inside the block will be executed.
 This means that the state of the blockchain will be updated based on the transactions in the committed block.
 

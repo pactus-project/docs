@@ -1,6 +1,6 @@
 ---
 title: Withdraw Transaction
-weight: 7
+weight: 6
 math: false
 ---
 
