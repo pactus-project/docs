@@ -13,7 +13,7 @@ The [Payload Type](/protocol/transaction/format/#payload-type) for Withdraw is 5
 
 ## Payload Structure
 
-The withdraw transaction has a payload consists the following fields:
+The withdraw transaction has a payload that consists of the following fields:
 
 | Field            | Size     |
 | ---------------- | -------- |

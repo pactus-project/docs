@@ -8,7 +8,7 @@ which can send transactions on the blockchain.
 
 ## Account Structure
 
-The account structure is 12 bytes long and consists the following fields:
+The account structure is 12 bytes long and consists of the following fields:
 
 | Field   | Size    |
 | ------- | ------- |

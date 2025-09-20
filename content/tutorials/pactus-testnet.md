@@ -20,7 +20,7 @@ The Testnet uses the same software as the Mainnet, but it must be configured to 
 
 ### Running Testnet with Pactus Daemon (CLI)
 
-Pou can also use the [Pactus Daemon (CLI)](https://docs.pactus.org/get-started/pactus-daemon) to join the Testnet.
+You can also use the [Pactus Daemon (CLI)](https://docs.pactus.org/get-started/pactus-daemon) to join the Testnet.
 To join the Testnet, you need to explicitly specify the `--testnet` flag when initializing the node:
 
 {{< os_tabs items="unix,windows" >}}

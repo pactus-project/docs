@@ -11,7 +11,7 @@ The [Payload Type](/protocol/transaction/format/#payload-type) for Transfer is 1
 
 ## Payload Structure
 
-The transfer transaction has a payload consists the following fields:
+The transfer transaction has a payload that consists of the following fields:
 
 | Field            | Size     |
 | ---------------- | -------- |

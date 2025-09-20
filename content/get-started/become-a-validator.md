@@ -24,7 +24,7 @@ they receive a block reward.
 This reward serves as an [incentive](/protocol/blockchain/incentive)
 for validators to continue supporting the network while ensuring the long-term sustainability of the Pactus ecosystem.
 
-## Minimum requirement
+## Minimum requirements
 
 After thorough testing on multiple machines, we can conclude that
 the recommended minimum hardware requirements are as follows:
@@ -41,7 +41,7 @@ the recommended minimum hardware requirements are as follows:
 - CPU's: 1/2 physical core / 1vCPU
 - RAM: 1 GB Ram
 - Storage (SSD): 20 GB NVMe Drive
-- Network: stable internet connection with 1 TBps speed
+- Network: stable internet connection with 1 Gbps speed
 
 ## How to Run Pactus?
 

@@ -34,7 +34,7 @@ initialization process. This process consists of several steps:
 
 ### Wallet Mode
 
-On the first page, you will ask you how you want to create your wallet.
+On the first page, you will be asked how you want to create your wallet.
 Select the option to "Create a new wallet from scratch" and proceed to the next page.
 
 ![Initialize mode](/images/pactus-gui/wallet-mode.png)
@@ -85,7 +85,7 @@ If you want to stake more than 32,000 coins, you need to set up a new node.
 
 ### Node Type
 
-On this page, you to choose the mode in which your node will operate: **Pruned Mode** or **Full Mode**.
+On this page, you need to choose the mode in which your node will operate: **Pruned Mode** or **Full Mode**.
 
 ![Node Type](/images/pactus-gui/node-type.png)
 
@@ -107,7 +107,7 @@ Upon closing the wizard dialog, your Pactus node will start running. You are now
 
 After completing the initialization process, you are ready to run the Pactus node.
 Running a Pactus node allows you to synchronize with the network, enabling you to manage your wallet and
-sending transactions.
+send transactions.
 
 ### Syncing with the Network
 

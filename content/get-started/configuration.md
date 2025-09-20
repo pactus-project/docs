@@ -5,12 +5,12 @@ weight: 6
 
 ## Preface
 
-The Pactus node can configure using a [TOML](https://toml.io/en/) file,
+The Pactus node can be configured using a [TOML](https://toml.io/en/) file,
 which is a simple text format for configuration.
 This file is automatically created when the node initializes.
 Each node can have different settings and configurations based on its needs and requirements.
 
-The config file can find inside the working directory, typically located at:
+The config file can be found inside the working directory, typically located at:
 
 {{< os_tabs items="unix,windows" >}}
   {{< os_tab >}}
@@ -37,7 +37,7 @@ Online tools like [TOML Lint](https://www.toml-lint.com/) can help check the val
 
 ## Example Configuration
 
-Here is a example of Pactus config file.
+Here is an example of Pactus config file.
 
 <pre><code id="config-code" class="toml">Loading configuration...</code></pre>
 

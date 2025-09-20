@@ -10,7 +10,7 @@ The amount of stake held by validators determines their power in the consensus.
 
 ## Validator Structure
 
-The Validator structure is 120 bytes long and consists the following fields:
+The Validator structure is 120 bytes long and consists of the following fields:
 
 | Field               | Size     |
 | ------------------- | -------- |
