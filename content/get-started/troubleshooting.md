@@ -20,7 +20,7 @@ Therefore, make sure to check that your system or server clock is fully synchron
 {{< os_tab >}}
 
 1. Run `cmd` with run as administrator.
-2. Check NTP is enable
+2. Check if NTP is enabled
 
 ```shell
 w32tm /query /status
@@ -62,7 +62,7 @@ Source: Local CMOS Clock
 Poll Interval: 10 (1024s)
 ```
 
-If `Leap Indicator` is not synchronized, please following step 7.
+If `Leap Indicator` is not synchronized, please follow step 7.
 
 7. Set NTP pool `w32tm /config /manualpeerlist:pool.ntp.org /syncfromflags:manual /reliable:yes /update`
 
@@ -83,7 +83,7 @@ Sending resync command to local computer
 The command completed successfully.
 ```
 
-10. Now local computer currently synced with ntp pool.
+10. Now the local computer is currently synced with ntp pool.
 
 ```shell
 Leap Indicator: 0(no warning)
@@ -113,7 +113,7 @@ System clock synchronized: yes
           RTC in local TZ: no
 ```
 
-If `NTP service` is not active and `System clock synchronized` is no please following step 3.
+If `NTP service` is not active and `System clock synchronized` is no please follow step 3.
 
 3. Enable NTP using `ntpq`, `chrony` or `systemd-timesyncd`.
 

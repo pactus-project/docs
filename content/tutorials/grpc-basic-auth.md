@@ -51,7 +51,7 @@ This process results in a bcrypt-hashed password that can be used for basic auth
 
 ### Using Online tool
 
-To generate basic authentication credentials, you can use this online tool here.
+To generate basic authentication credentials, you can use this online tool.
 For additional security, you can save the web page locally and run it on an offline computer.
 
 {{<basic-auth>}}

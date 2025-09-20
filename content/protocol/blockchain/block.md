@@ -16,7 +16,7 @@ A committed block is immutable, and any modifications to the block will invalida
 The block header is a data structure in the Pactus blockchain that contains important information about
 the block.
 
-The block header is 138 bytes long and consists the following fields:
+The block header is 138 bytes long and consists of the following fields:
 
 | Field               | Size     |
 | ------------------- | -------- |
@@ -42,7 +42,7 @@ The block header is 138 bytes long and consists the following fields:
 A block certificate is a proof of commitment for the block in the Pactus blockchain.
 It is the result of the Pactus consensus algorithm and ensures that the block has been agreed upon by committee members.
 
-The block certificate consists the following fields:
+The block certificate consists of the following fields:
 
 | Field      | Size     |
 | ---------- | -------- |
@@ -56,7 +56,7 @@ The block certificate consists the following fields:
 - **Round** is the consensus round in which this certificate was issued.
   If a proposer fails to propose a block in one round, another validator takes over as the proposer,
   and the round number is increased.
-- **Committers** is the list of validator numbers in the committee for the current certificate..
+- **Committers** is the list of validator numbers in the committee for the current certificate.
 - **Absentees** is the list of validator numbers that are absent in the committee.
 - **Signature** is the signature for the certificate that ensures the majority of the committee members have validated and
   signed the proposed block.

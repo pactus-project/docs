@@ -15,7 +15,7 @@ The [Payload Type](/protocol/transaction/format/#payload-type) for Sortition is 
 
 ## Payload Structure
 
-The sortition transaction has a payload consists the following fields:
+The sortition transaction has a payload that consists of the following fields:
 
 | Field           | Size     |
 | --------------- | -------- |

@@ -14,7 +14,7 @@ The [Payload Type](/protocol/transaction/format/#payload-type) for Unbond is 4.
 
 ## Payload Structure
 
-The unbond transaction has a payload consists the following field:
+The unbond transaction has a payload that consists of the following field:
 
 | Field             | Size     |
 | ----------------- | -------- |

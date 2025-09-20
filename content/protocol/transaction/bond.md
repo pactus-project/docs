@@ -17,7 +17,7 @@ The [Payload Type](/protocol/transaction/format/#payload-type) for Bond is 2.
 
 ## Payload Structure
 
-The bond transaction has a payload consists the following fields:
+The bond transaction has a payload that consists of the following fields:
 
 | Field                 | Size     |
 | --------------------- | -------- |
@@ -29,5 +29,5 @@ The bond transaction has a payload consists the following fields:
 - **Sender address** is the address of the sender [account](/protocol/blockchain/account/).
 - **Receiver address** is the address of the receiver validator.
 - **Public key** is the validator's public key. If the validator does not exist yet,
-  the public key should be set, otherwise it should left empty.
+  the public key should be set, otherwise it should be left empty.
 - **Amount** is the amount of coins that should be staked or bonded.

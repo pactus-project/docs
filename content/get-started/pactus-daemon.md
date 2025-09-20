@@ -49,9 +49,9 @@ This command creates your wallet and setup the working directory at `C:\Users\<U
 {{< /os_tabs >}}
 
 {{< callout type="info" >}}
-<b>Working director</b>
+<b>Working directory</b>
 <br><br>
-By default the working directory that store the blockchain data stores in `~/pactus` in Unix-like systems.
+By default the working directory that stores the blockchain data is located at `~/pactus` in Unix-like systems.
 For Windows it stores in `C:\Users\<USER_NAME>\pactus`.
 <br><br>
 If you wish to select or specify a different path, use the `--working-dir` option.
@@ -175,8 +175,8 @@ Terminal multiplexers allow you to create and manage multiple terminal sessions 
 Two popular terminal multiplexer options are:
 
 1. **tmux**: [Tmux](https://github.com/tmux/tmux/wiki) is a terminal multiplexer that
-2. lets you create, manage, and detach terminal sessions.
-3. You can install tmux on Unix-like systems using your package manager (e.g., `apt`, `brew`, `yum`).
+   lets you create, manage, and detach terminal sessions.
+   You can install tmux on Unix-like systems using your package manager (e.g., `apt`, `brew`, `yum`).
 
    Here's how to use tmux to run Pactus in the background:
 
@@ -185,8 +185,8 @@ Two popular terminal multiplexer options are:
    - Detach from the tmux session: Press `Ctrl-b`, followed by `d`.
    - Reattach to the tmux session later to check the progress: `tmux attach-session`
 
-4. **screen**: [GNU Screen](https://www.gnu.org/software/screen/) is another terminal multiplexer that
-5. allows you to run terminal sessions in the background.
+2. **screen**: [GNU Screen](https://www.gnu.org/software/screen/) is another terminal multiplexer that
+   allows you to run terminal sessions in the background.
 
    Here's how to use screen to run Pactus in the background:
 

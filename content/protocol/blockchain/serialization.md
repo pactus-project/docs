@@ -20,9 +20,9 @@ The serialization format for different types of data is listed in the table belo
 | uint16                  | 2                | A 16 bits unsigned integer                       |
 | int16                   | 2                | A 16 bits signed integer                         |
 | uint32                  | 4                | A 32 bits unsigned integer                       |
-| int32                   | 4                | A 32 bits signed signed integer                  |
+| int32                   | 4                | A 32 bits signed integer                         |
 | uint64                  | 8                | A 64 bits unsigned integer                       |
-| int64                   | 8                | A 64 bits signed signed integer                  |
+| int64                   | 8                | A 64 bits signed integer                         |
 | [VarInt](#varint)       | Variable         | A compact representation of an unsigned integer. |
 | [VarByte](#varbyte)     | Variable         | A variable length bytes                          |
 | [VarString](#varstring) | Variable         | A variable length string                         |
@@ -65,7 +65,8 @@ Here is an example of a block header data that encoded using deterministic seria
 
 {{< hexdump "block_header"
 "011a873d62b69e39b4e06567b6ad3a58f61df4c3c05920a29043277af01264c9e1e7693068bbf7b5e010ca98da562965a1a3411a48fee70bd0dbbe11d9867fa9e13b3e005e99bbd54999c7cd6bb176b160962080ee130c455c88507bd51a878a0b85c656cfc1a542cbbe0105708389ca68269bda290119cba9960c6ad28aaaa140377f652bdea0551e3b"
->}}
+
+> }}
 
 ## CBOR Serialization
 
@@ -86,4 +87,5 @@ Here is an example of a vote message that encoded using [CBOR](https://cbor.me/?
 
 {{< hexdump "vote_data"
 "a60101021864030004582019ba0a47813c13b2459f4ce3851ca42da8299c4f17b226e8bad1a9859172ab960555015da8f5e196d6e961609ae41528c4ec7368975937065830b047d5c2c072299284355f5b5014b5bf77f1702bc08b36061ddba08e41bebf51ab0416d265973190d26cbb79144681e7"
->}}
+
+> }}

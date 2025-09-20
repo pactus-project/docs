@@ -63,4 +63,4 @@ This is set to 1,000,000,000,000 (NanoPAC), which is 1,000 PAC coins.
 ## Minimum Stake
 
 The minimum amount of coins that can be staked by a validator.
-This is set to 1,000,000,000 (NanoPAC), which is 1 PAC coins.
+This is set to 1,000,000,000 (NanoPAC), which is 1 PAC coin.
