@@ -256,5 +256,5 @@ This ensures that each round can begin with a new proposal.
 
 [^1]: In [Practical Byzantine Fault Tolerance](https://pmg.csail.mit.edu/papers/osdi99.pdf)
   these steps are: pre-prepare, prepare and commit
-[^2] The "message log" contains the messages that the validator has accepted for the current height.
+[^2]: The "message log" contains the messages that the validator has accepted for the current height.
 [^3]: [Random Oracles in Constantinople: Practical Asynchronous Byzantine Agreement Using Cryptography](https://link.springer.com/article/10.1007/s00145-005-0318-0)
