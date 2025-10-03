@@ -100,7 +100,7 @@ where:
 
 - $C$ is the quorum certificate for the precommit step.
 
-Validators can move to the next height and clear the message logs after receiving valid
+Validators can move to the next height and clear the message logs [^2] after receiving valid
 block-announce message, even if their timer has expired.
 
 The picture below shows the operation of the algorithm in the normal case. validator 1 is the
@@ -115,7 +115,7 @@ The change-proposer phase is triggered by timeouts that
 prevent validators from waiting indefinitely for the proposal to execute.
 
 If the timer of a validator expires in round $r$, the validator starts a change-proposer phase.
-The change-proposer phase is an Asynchronous Byzantine Binary Agreement (ABBA) [^2] that is biased toward zero (No).
+The change-proposer phase is an Asynchronous Byzantine Binary Agreement (ABBA) [^3] that is biased toward zero (No).
 It means that during this phase, even if they don't have the proposal, honest validators may decide to vote zero
 if they obtain a valid quorum Certificate for the prepare step.
 
@@ -256,4 +256,5 @@ This ensures that each round can begin with a new proposal.
 
 [^1]: In [Practical Byzantine Fault Tolerance](https://pmg.csail.mit.edu/papers/osdi99.pdf)
   these steps are: pre-prepare, prepare and commit
-[^2]: [Random Oracles in Constantinople: Practical Asynchronous Byzantine Agreement Using Cryptography](https://link.springer.com/article/10.1007/s00145-005-0318-0)
+[^2] The "message log" contains the messages that the validator has accepted for the current height.
+[^3]: [Random Oracles in Constantinople: Practical Asynchronous Byzantine Agreement Using Cryptography](https://link.springer.com/article/10.1007/s00145-005-0318-0)
