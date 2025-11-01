@@ -67,6 +67,34 @@ Here's an explanation of the Docker flags:
       If someone else gains access to your seed phrase, they can control your wallet and funds.
 {{< /callout >}}
 
+## Importing data (Optional)
+
+To speed up the syncing process,
+you can import a snapshot of the blockchain from a centralized server.
+This will start your node in Pruned Mode:
+
+{{< os_tabs items="unix,windows" >}}
+  {{< os_tab >}}
+
+```bash
+docker run -it --rm -v ~/pactus:/root/pactus pactus/pactus pactus-daemon import
+```
+
+  {{< /os_tab >}}
+  {{< os_tab >}}
+
+```batch
+docker run -it --rm -v %USERPROFILE%\pactus:/root/pactus pactus/pactus pactus-daemon import
+```
+
+  {{< /os_tab >}}
+{{< /os_tabs >}}
+
+Starting with version 1.4.0, Pactus supports [Pruned Mode](/tutorials/pruned-nodes/).
+In this mode, you don't need to download the entire blockchain;
+instead, you can download recent blocks from the last 10 days.
+This significantly speeds up the syncing process.
+
 ## Running the Node
 
 Now you can start the node and sync with the network. Run the following command in the Terminal:
