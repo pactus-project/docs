@@ -123,7 +123,7 @@ pactus-daemon.exe import
   {{< /os_tab >}}
 {{< /os_tabs >}}
 
-Starting with version 1.4.0, Pactus supports Pruned Mode.
+Starting with version 1.4.0, Pactus supports [Pruned Mode](/tutorials/pruned-nodes/).
 In this mode, you don't need to download the entire blockchain;
 instead, you can download recent blocks from the last 10 days.
 This significantly speeds up the syncing process.

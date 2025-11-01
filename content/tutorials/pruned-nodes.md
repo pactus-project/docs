@@ -37,6 +37,8 @@ enabling more participants to run nodes and contribute to network security and d
 
 ## Prune Your Full Node
 
+If you are running a Full Node and want to prune its data to operate in pruned mode, follow these steps:
+
 1. **Stop the Running Node**
    Shut down your currently running Pactus full node completely.
 
@@ -66,3 +68,6 @@ pactus-daemon.exe prune -w <PATH-TO-WORKING-DIR>
 
 4. **Restart the Node**
    Start your Pactus node again to resume normal operation.
+
+This process removes all blocks and transactions older than the last 10 days.
+It is especially useful for users with limited storage capacity.
