@@ -95,7 +95,6 @@ In this mode, you don't need to download the entire blockchain;
 instead, you can download recent blocks from the last 10 days.
 This significantly speeds up the syncing process.
 
-
 ## Running the Node
 
 Now you can start the node and sync with the network. Run the following command in the Terminal:
