@@ -125,6 +125,13 @@ pactus-wallet.exe seed
 The wallet seed is encrypted within your wallet, and
 you'll need to enter the wallet password to access it.
 
+{{< callout type="warning" >}}
+<b>Wallet seed is important</b>
+<br><br>
+Always keep a *paper backup* of your seed phrase in a safe and secure location.
+If someone gains access to your seed phrase, they can gain full control over your wallet and funds.
+{{< /callout >}}
+
 ## Address Commands
 
 In this section, we'll cover address commands that help you manage your wallet addresses.
@@ -181,18 +188,23 @@ To view the list of wallet addresses, use this command:
   {{< os_tab >}}
 
 ```shell
-./pactus-wallet address all
+./pactus-wallet address all --balance --stake
 ```
 
   {{< /os_tab >}}
   {{< os_tab >}}
 
 ```shell
-pactus-wallet.exe address all
+pactus-wallet.exe address all --balance --stake
 ```
 
   {{< /os_tab >}}
 {{< /os_tabs >}}
+
+- **`--balance`**: Displays the balance for each address.
+- **`--stake`**: Displays the stake for each address.
+
+Both flags are optional and can be used individually or together.
 
 ### Get Public Key
 
@@ -239,8 +251,11 @@ pactus-wallet.exe address priv <ADDRESS>
 {{< /os_tabs >}}
 
 Replace `<ADDRESS>` with the address for which you want to retrieve its private key.
+
+{{< callout type="warning" >}}
 Keep your private key secure. If someone gains access to your private key,
 they will have full control over that address.
+{{< /callout >}}
 
 ### Get Address Balance
 
