@@ -181,18 +181,23 @@ To view the list of wallet addresses, use this command:
   {{< os_tab >}}
 
 ```shell
-./pactus-wallet address all
+./pactus-wallet address all --balance --stake
 ```
 
   {{< /os_tab >}}
   {{< os_tab >}}
 
 ```shell
-pactus-wallet.exe address all
+pactus-wallet.exe address all --balance --stake
 ```
 
   {{< /os_tab >}}
 {{< /os_tabs >}}
+
+- **`--balance`**: Displays the balance for each address.
+- **`--stake`**: Displays the stake for each address.
+
+Both flags are optional and can be used individually or together.
 
 ### Get Public Key
 
