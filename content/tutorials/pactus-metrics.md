@@ -28,7 +28,7 @@ There are two parameters that you should enable for metrics: the first is `enabl
 and the second is enable `http`. After editing the `config.toml` you should restart your node.
 The metrics now can be accessed at `http://localhost:80/metrics/prometheus` (this url going to be use by prometheus).
 
-{{< callout type="warning" >}}
+{{< callout type="info" >}}
 
 if you are running Pactus with docker image, make sure to expose :80 port.
 

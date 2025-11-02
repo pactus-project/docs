@@ -48,10 +48,10 @@ in case your computer is lost, damaged, or stolen.
 ![Wallet seed](/images/pactus-gui/wallet-seed.png)
 
 {{< callout type="warning" >}}
- <b>Wallet seed is important</b>
-      <br><br>
-Keep your wallet seed phrase private and secure.
-If someone else gains access to your seed phrase, they can control your wallet and funds.
+<b>Wallet seed is important</b>
+<br><br>
+Always keep a *paper backup* of your seed phrase in a safe and secure location.
+If someone gains access to your seed phrase, they can gain full control over your wallet and funds.
 {{< /callout >}}
 
 ### Seed Confirmation

@@ -59,9 +59,9 @@ If you wish to select or specify a different path, use the `--working-dir` optio
 
 {{< callout type="warning" >}}
 <b>Wallet seed is important</b>
-      <br><br>
-      Keep your wallet seed phrase private and secure.
-      If someone else gains access to your seed phrase, they can control your wallet and funds.
+<br><br>
+Always keep a *paper backup* of your seed phrase in a safe and secure location.
+If someone gains access to your seed phrase, they can gain full control over your wallet and funds.
 {{< /callout >}}
 
 The working directory contains:
