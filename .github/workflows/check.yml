@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Clone repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
@@ -34,7 +34,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Check images
         run: python .github/workflows/check_images.py ./website
@@ -43,11 +43,11 @@ jobs:
     name: HTML proofer
     runs-on: ubuntu-latest
     env:
-      HUGO_VERSION: 0.130.0
+      HUGO_VERSION: 0.152.2
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup Hugo
         run: |
@@ -77,7 +77,7 @@ jobs:
 
       - name: Install html-proofer
         run: |
-          gem install html-proofer -v 4.3
+          gem install html-proofer
 
       ##
       ## Status code 429: https://http.dev/429

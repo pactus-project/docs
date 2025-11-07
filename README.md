@@ -9,7 +9,7 @@ To contribute, simply edit the relevant page or open a pull request.
 
 ## Running Locally
 
-To get started, install [Hugo](https://gohugo.io/installation/), first.
+To get started, install [Hugo](https://gohugo.io/installation/) first.
 Now, clone this repository and run it locally using the following commands:
 
 ```zsh
@@ -32,7 +32,7 @@ To lint Markdown files, you can use the `mdl` ([MarkdownLint](https://github.com
 This tool checks your Markdown files against a set of rules and provides feedback on any issues found.
 
 To install `mdl`, first you need to install [Ruby](https://www.ruby-lang.org/en/documentation/installation/).
-Once you ensure Ruby installed on your system, you can install `mdl` by running:
+Once you ensure Ruby is installed on your system, you can install `mdl` by running:
 
 ```sh
 gem install mdl
@@ -48,4 +48,4 @@ This command will check all documents in the `content` folder for any linting is
 
 ## Deployment
 
-Updating the main branch will automatically deploy this repository through [deploy](.github/workflows/deploy.yml) Github action.
+Updating the main branch will automatically deploy this repository through [deploy](.github/workflows/deploy.yml) GitHub action.

@@ -9,7 +9,6 @@
     quicklink.listen();
   });
 </script>
-{{ if .Params.math }}{{ partial "helpers/mathjax.html" . }}{{ end }}
 
 {{ $opts := dict "transpiler" "libsass" "targetPath" "css/style.css" }}
 {{ with resources.Get "sass/custom.scss" | toCSS $opts | minify | fingerprint }}
