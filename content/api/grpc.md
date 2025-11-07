@@ -123,6 +123,10 @@ For seamless integration with Pactus, you can use these client libraries:
           <a href="#pactus.Network.GetNodeInfo">
           <span class="rpc-badge"></span> GetNodeInfo</a>
         </li>
+        <li>
+          <a href="#pactus.Network.Ping">
+          <span class="rpc-badge"></span> Ping</a>
+        </li>
         </ul>
     </li>
     <li> Utils Service
@@ -483,7 +487,7 @@ For seamless integration with Pactus, you can use these client libraries:
             <td class="fw-bold">transaction.batch_transfer.recipients</td>
             <td>repeated Recipient</td>
             <td>
-            The recipients of list receiver with amount.
+            The list of recipients with their amounts.
             </td>
           </tr>
           <tr>
@@ -945,7 +949,7 @@ For seamless integration with Pactus, you can use these client libraries:
     <td class="fw-bold">recipients</td>
     <td>repeated Recipient</td>
     <td>
-    The recipients list of receiver with amount, min 2 recipients.
+    The list of recipients with their amounts. Minimum 2 recipients required.
     </td>
   </tr>
   <tr>
@@ -1224,7 +1228,7 @@ For seamless integration with Pactus, you can use these client libraries:
             <td class="fw-bold">transaction.batch_transfer.recipients</td>
             <td>repeated Recipient</td>
             <td>
-            The recipients of list receiver with amount.
+            The list of recipients with their amounts.
             </td>
           </tr>
           <tr>
@@ -1312,7 +1316,7 @@ For seamless integration with Pactus, you can use these client libraries:
     <td class="fw-bold">data</td>
     <td> string</td>
     <td>
-    Block data, available only if verbosity level is set to BLOCK_DATA.
+    Block data, available only if verbosity level is set to BLOCK_VERBOSITY_DATA.
     </td>
   </tr>
      <tr>
@@ -1411,7 +1415,7 @@ For seamless integration with Pactus, you can use these client libraries:
     <td>repeated TransactionInfo</td>
     <td>
     List of transactions in the block, available when verbosity level is set to
-BLOCK_TRANSACTIONS.
+BLOCK_VERBOSITY_TRANSACTIONS.
     </td>
   </tr>
      <tr>
@@ -1616,7 +1620,7 @@ BLOCK_TRANSACTIONS.
             <td class="fw-bold">txs[].batch_transfer.recipients</td>
             <td>repeated Recipient</td>
             <td>
-            The recipients of list receiver with amount.
+            The list of recipients with their amounts.
             </td>
           </tr>
           <tr>
@@ -1757,6 +1761,13 @@ Message has no fields.
     <td> int32</td>
     <td>
     The total number of validators in the blockchain.
+    </td>
+  </tr>
+     <tr>
+    <td class="fw-bold">active_validators</td>
+    <td> int32</td>
+    <td>
+    The number of active (not unbonded) validators in the blockchain.
     </td>
   </tr>
      <tr>
@@ -2638,7 +2649,7 @@ Message has no fields.
             <td class="fw-bold">txs[].batch_transfer.recipients</td>
             <td>repeated Recipient</td>
             <td>
-            The recipients of list receiver with amount.
+            The list of recipients with their amounts.
             </td>
           </tr>
           <tr>
@@ -3121,10 +3132,27 @@ maximum number of messages to queue before dropping older ones.
      </tbody>
 </table>
 
+#### Ping <span id="pactus.Network.Ping" class="rpc-badge"></span>
+
+<p>Ping provides a simple connectivity test and latency measurement.</p>
+
+<h4>PingRequest <span class="badge text-bg-info fs-6 align-top">Request</span></h4>
+
+Message has no fields.
+  <h4>PingResponse <span class="badge text-bg-warning fs-6 align-top">Response</span></h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  </tbody>
+</table>
+
 ### Utils Service
 
 <p>Utils service defines RPC methods for utility functions such as message
-signing, verification, and etc.</p>
+signing, verification, and other cryptographic operations.</p>
 
 #### SignMessageWithPrivateKey <span id="pactus.Utils.SignMessageWithPrivateKey" class="rpc-badge"></span>
 
@@ -4021,7 +4049,7 @@ Note: Generating a new Ed25519 address requires the wallet password.)</li>
 
 #### ListWallet <span id="pactus.Wallet.ListWallet" class="rpc-badge"></span>
 
-<p>ListWallet returns list of all available wallets.</p>
+<p>ListWallet returns a list of all available wallets.</p>
 
 <h4>ListWalletRequest <span class="badge text-bg-info fs-6 align-top">Request</span></h4>
 
@@ -4079,7 +4107,7 @@ Message has no fields.
   </tr>
      <tr>
     <td class="fw-bold">version</td>
-    <td> int64</td>
+    <td> int32</td>
     <td>
     The wallet format version.
     </td>
@@ -4110,6 +4138,13 @@ Message has no fields.
     <td> int64</td>
     <td>
     Unix timestamp of wallet creation.
+    </td>
+  </tr>
+     <tr>
+    <td class="fw-bold">default_fee</td>
+    <td> int64</td>
+    <td>
+    The default fee of the wallet.
     </td>
   </tr>
      </tbody>
@@ -4153,7 +4188,7 @@ Message has no fields.
     <td class="fw-bold">data</td>
     <td>repeated AddressInfo</td>
     <td>
-    ist of all addresses in the wallet with their details.
+    List of all addresses in the wallet with their details.
     </td>
   </tr>
      <tr>

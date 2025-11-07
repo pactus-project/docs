@@ -1,6 +1,5 @@
 ---
 title: Pactus Documentation
-layout: hextra-home
 cascade:
   type: docs
 next: get-started

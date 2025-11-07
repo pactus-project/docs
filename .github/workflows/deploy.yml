@@ -31,11 +31,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      HUGO_VERSION: 0.130.0
+      HUGO_VERSION: 0.152.2
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Install dependencies
         run: |
@@ -60,7 +60,7 @@ jobs:
         run: find "./public" -type f -name "*.png" -exec pngquant --verbose --force --ext .png {} \;
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           path: ./public
 
