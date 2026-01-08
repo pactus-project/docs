@@ -1,5 +1,5 @@
 ---
-title: How to Sign Transactions Using gRPC?
+title: Sign Transactions Using gRPC
 weight: 5
 ---
 

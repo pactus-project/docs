@@ -1,5 +1,5 @@
 ---
-title: How to Send Zero-Fee Transactions?
+title: Send Zero-Fee Transactions
 weight: 12
 ---
 

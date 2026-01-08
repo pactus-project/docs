@@ -1,5 +1,5 @@
 ---
-title: How to use Pactus Shell?
+title: Use Pactus Shell
 weight: 3
 ---
 

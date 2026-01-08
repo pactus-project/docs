@@ -1,5 +1,5 @@
 ---
-title: How to join Pactus Testnet?
+title: Join Pactus Testnet
 weight: 13
 ---
 

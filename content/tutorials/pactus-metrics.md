@@ -1,5 +1,5 @@
 ---
-title: How to run Pactus Metrics?
+title: Run Pactus Metrics
 weight: 9
 ---
 

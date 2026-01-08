@@ -1,5 +1,5 @@
 ---
-title: How to send transactions in Graphic Mode?
+title: Send Transactions in Graphic Mode
 weight: 1
 ---
 

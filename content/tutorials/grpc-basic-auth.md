@@ -1,5 +1,5 @@
 ---
-title: How to Secure gRPC Using Basic Authentication?
+title: Secure gRPC Using Basic Authentication
 weight: 6
 ---
 
@@ -67,7 +67,7 @@ For additional security, you can save the web page locally and run it on an offl
   </button>
   <br>
   <br>
-  <p id="output"></p>
+  <div id="output" class="hextra-code-block"></div>
 </form>
 
 ## Enable Basic Auth in the Config

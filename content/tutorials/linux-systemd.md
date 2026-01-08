@@ -1,5 +1,5 @@
 ---
-title: How to Run Pactus with systemd on Linux?
+title: Run Pactus with systemd on Linux
 weight: 10
 ---
 
