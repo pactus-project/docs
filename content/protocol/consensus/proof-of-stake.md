@@ -1,5 +1,5 @@
 ---
-title: Solid State Proof of Stake
+title: Solid-State Proof of Stake
 weight: 1
 ---
 

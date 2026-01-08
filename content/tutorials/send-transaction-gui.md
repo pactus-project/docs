@@ -28,8 +28,8 @@ click on the "Send" button to sign and broadcast the transaction to the Pactus b
 
 ![Transfer Transaction Dialog](/images/transfer-transaction-dialog.png)
 
-When sending or receiving a transaction from either exchange or another person that's not you,
-it is important to use a memo to ensure the transaction is attributed to the intended recipient.
+Some exchanges and third-party services require a memo/tag to credit deposits correctly.
+If the recipient provides a memo, include it to ensure the transaction is attributed properly.
 
 ## Sending a Bond Transaction
 

@@ -1,5 +1,5 @@
 ---
-title: Protocol
+title: Consensus Protocol
 weight: 2
 math: true
 ---

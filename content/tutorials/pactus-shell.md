@@ -4,8 +4,8 @@ weight: 3
 ---
 
 Pactus Shell is a command-line tool designed for interacting with the Pactus blockchain.
-This tool receives the commands from the terminal and send them to the node using gRPC.
-The resulting response is then displayed as a structured [JSON](https://www.json.org) format.
+This tool receives commands from the terminal and sends them to the node using gRPC.
+The resulting response is then displayed in a structured [JSON](https://www.json.org) format.
 
 You can execute `pactus-shell` with the `-h` flag to display available commands for communicating with your node.
 

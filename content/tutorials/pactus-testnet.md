@@ -13,7 +13,7 @@ It also helps the development team test and improve Pactus more effectively.
 
 This document provides a step-by-step guide on how to join the Pactus testnet.
 
-## Setup node
+## Set up the node
 
 To set up a Testnet node, first [download](https://pactus.org/download/) the latest version of Pactus.
 The Testnet uses the same software as the Mainnet, but it must be configured to connect to the Testnet.
@@ -30,7 +30,7 @@ To join the Testnet, you need to explicitly specify the `--testnet` flag when in
 ./pactus-daemon init --working-dir=~/pactus/testnet --testnet
 ```
 
-This command creates your wallet and setup the working directory at `~/pactus/testnet`.
+This command creates your wallet and sets up the working directory at `~/pactus/testnet`.
   {{< /os_tab >}}
   {{< os_tab >}}
 
@@ -38,7 +38,7 @@ This command creates your wallet and setup the working directory at `~/pactus/te
 pactus-daemon.exe init --working-dir=%USERPROFILE%\pactus\testnet --testnet
 ```
 
-This command creates your wallet and setup the working directory at `C:\Users\<USER_NAME>\pactus\testnet`.
+This command creates your wallet and sets up the working directory at `C:\Users\<USER_NAME>\pactus\testnet`.
   {{< /os_tab >}}
 {{< /os_tabs >}}
 

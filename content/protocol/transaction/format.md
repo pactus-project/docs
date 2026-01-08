@@ -1,5 +1,5 @@
 ---
-title: Format
+title: Transaction Format
 weight: 1
 math: false
 ---
