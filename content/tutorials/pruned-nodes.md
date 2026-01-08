@@ -1,5 +1,5 @@
 ---
-title: Use Pruned Nodes
+title: Prune Your Pactus Node
 weight: 4
 ---
 
@@ -69,5 +69,8 @@ pactus-daemon.exe prune -w <PATH-TO-WORKING-DIR>
 4. **Restart the Node**
    Start your Pactus node again to resume normal operation.
 
-This process removes all blocks and transactions older than the last 10 days.
-It is especially useful for users with limited storage capacity.
+This process removes all blocks and transactions older than your configured `store.retention_days`
+(default: 10 days). You can adjust it in your node
+[config](/get-started/configuration/) if you want to keep more
+or less history.
+Pruning is especially useful for users with limited storage capacity.
