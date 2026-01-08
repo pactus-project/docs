@@ -940,45 +940,6 @@
         ]
       }
     },
-    "/pactus/wallet/get_address_history": {
-      "get": {
-        "summary": "GetAddressHistory retrieves the transaction history of an address.",
-        "operationId": "Wallet_GetAddressHistory",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/pactusGetAddressHistoryResponse"
-            }
-          },
-          "default": {
-            "description": "An unexpected error response.",
-            "schema": {
-              "$ref": "#/definitions/rpcStatus"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "walletName",
-            "description": "The name of the wallet containing the address.",
-            "in": "query",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "address",
-            "description": "The address to retrieve history for.",
-            "in": "query",
-            "required": false,
-            "type": "string"
-          }
-        ],
-        "tags": [
-          "Wallet"
-        ]
-      }
-    },
     "/pactus/wallet/get_address_info": {
       "get": {
         "summary": "GetAddressInfo returns detailed information about a specific address.",
@@ -1144,7 +1105,7 @@
     },
     "/pactus/wallet/get_validator_address": {
       "get": {
-        "summary": "GetValidatorAddress retrieves the validator address associated with a public key.",
+        "summary": "GetValidatorAddress retrieves the validator address associated with a public key.\nDeprecated: Will move into utils.",
         "operationId": "Wallet_GetValidatorAddress",
         "responses": {
           "200": {
@@ -1206,15 +1167,47 @@
         ]
       }
     },
-    "/pactus/wallet/list_address": {
+    "/pactus/wallet/is_wallet_loaded": {
       "get": {
-        "summary": "ListAddress returns all addresses in the specified wallet.",
-        "operationId": "Wallet_ListAddress",
+        "summary": "IsWalletLoaded checks whether the specified wallet is currently loaded.",
+        "operationId": "Wallet_IsWalletLoaded",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/pactusListAddressResponse"
+              "$ref": "#/definitions/pactusIsWalletLoadedResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "walletName",
+            "description": "Name of the wallet to check.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Wallet"
+        ]
+      }
+    },
+    "/pactus/wallet/list_addresses": {
+      "get": {
+        "summary": "ListAddresses returns all addresses in the specified wallet.",
+        "operationId": "Wallet_ListAddresses",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/pactusListAddressesResponse"
             }
           },
           "default": {
@@ -1231,6 +1224,23 @@
             "in": "query",
             "required": false,
             "type": "string"
+          },
+          {
+            "name": "addressTypes",
+            "description": "Filter addresses by their types. If empty, all address types are included.\n\n - ADDRESS_TYPE_TREASURY: Treasury address type.\nShould not be used to generate new addresses.\n - ADDRESS_TYPE_VALIDATOR: Validator address type used for validator nodes.\n - ADDRESS_TYPE_BLS_ACCOUNT: Account address type with BLS signature scheme.\n - ADDRESS_TYPE_ED25519_ACCOUNT: Account address type with Ed25519 signature scheme.\nNote: Generating a new Ed25519 address requires the wallet password.",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "ADDRESS_TYPE_TREASURY",
+                "ADDRESS_TYPE_VALIDATOR",
+                "ADDRESS_TYPE_BLS_ACCOUNT",
+                "ADDRESS_TYPE_ED25519_ACCOUNT"
+              ]
+            },
+            "collectionFormat": "multi"
           }
         ],
         "tags": [
@@ -1238,15 +1248,15 @@
         ]
       }
     },
-    "/pactus/wallet/list_wallet": {
+    "/pactus/wallet/list_transactions": {
       "get": {
-        "summary": "ListWallet returns a list of all available wallets.",
-        "operationId": "Wallet_ListWallet",
+        "summary": "ListTransactions returns a list of transactions for a wallet,\noptionally filtered by a specific address, with pagination support.",
+        "operationId": "Wallet_ListTransactions",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/pactusListWalletResponse"
+              "$ref": "#/definitions/pactusListTransactionsResponse"
             }
           },
           "default": {
@@ -1256,6 +1266,83 @@
             }
           }
         },
+        "parameters": [
+          {
+            "name": "walletName",
+            "description": "The name of the wallet to query transactions for.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "address",
+            "description": "Optional: The address to filter transactions.\nIf empty or set to \"*\", transactions for all addresses in the wallet are included.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "direction",
+            "description": "Filter transactions by direction relative to the wallet.\nDefaults to any direction if not set.\n\n - TX_DIRECTION_ANY: include both incoming and outgoing transactions.\n - TX_DIRECTION_INCOMING: Include only incoming transactions where the wallet receives funds.\n - TX_DIRECTION_OUTGOING: Include only outgoing transactions where the wallet sends funds.",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "TX_DIRECTION_ANY",
+              "TX_DIRECTION_INCOMING",
+              "TX_DIRECTION_OUTGOING"
+            ],
+            "default": "TX_DIRECTION_ANY"
+          },
+          {
+            "name": "count",
+            "description": "Optional: The maximum number of transactions to return.\nDefaults to 10 if not set.",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "skip",
+            "description": "Optional: The number of transactions to skip (for pagination).\nDefaults to 0 if not set.",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "tags": [
+          "Wallet"
+        ]
+      }
+    },
+    "/pactus/wallet/list_wallets": {
+      "get": {
+        "summary": "ListWallets returns a list of all available wallets.\nIf `include_unloaded` is set, it returns both loaded and unloaded wallets.",
+        "operationId": "Wallet_ListWallets",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/pactusListWalletsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "includeUnloaded",
+            "description": "Whether to include wallets that exist on disk but are not currently loaded.",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          }
+        ],
         "tags": [
           "Wallet"
         ]
@@ -1513,6 +1600,52 @@
           {
             "name": "walletName",
             "description": "The name of the wallet to unload.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Wallet"
+        ]
+      }
+    },
+    "/pactus/wallet/update_password": {
+      "get": {
+        "summary": "UpdatePassword updates the password of an existing wallet.",
+        "operationId": "Wallet_UpdatePassword",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/pactusUpdatePasswordResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "walletName",
+            "description": "The name of the wallet whose password will be updated.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "oldPassword",
+            "description": "The current wallet password.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "newPassword",
+            "description": "The new wallet password.",
             "in": "query",
             "required": false,
             "type": "string"
@@ -1785,6 +1918,10 @@
     "pactusCreateWalletResponse": {
       "type": "object",
       "properties": {
+        "walletName": {
+          "type": "string",
+          "description": "The name for the new wallet."
+        },
         "mnemonic": {
           "type": "string",
           "description": "The mnemonic (seed phrase) for wallet recovery."
@@ -1832,20 +1969,6 @@
       },
       "description": "Response message contains account information."
     },
-    "pactusGetAddressHistoryResponse": {
-      "type": "object",
-      "properties": {
-        "historyInfo": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "$ref": "#/definitions/pactusHistoryInfo"
-          },
-          "description": "List of all historical transactions associated with the address."
-        }
-      },
-      "description": "Response message contains address transaction history."
-    },
     "pactusGetAddressInfoResponse": {
       "type": "object",
       "properties": {
@@ -1853,21 +1976,9 @@
           "type": "string",
           "description": "The name of the wallet containing the address."
         },
-        "address": {
-          "type": "string",
-          "description": "The queried address."
-        },
-        "label": {
-          "type": "string",
-          "description": "The address label."
-        },
-        "publicKey": {
-          "type": "string",
-          "description": "The public key of the address."
-        },
-        "path": {
-          "type": "string",
-          "description": "The Hierarchical Deterministic (HD) path of the address."
+        "addressInfo": {
+          "$ref": "#/definitions/pactusAddressInfo",
+          "description": "Detailed information about the address."
         }
       },
       "description": "Response message contains address details."
@@ -2414,7 +2525,7 @@
       "properties": {
         "walletName": {
           "type": "string",
-          "description": "The name of the wallet to query."
+          "description": "The name of the wallet."
         },
         "version": {
           "type": "integer",
@@ -2442,39 +2553,33 @@
           "type": "string",
           "format": "int64",
           "description": "The default fee of the wallet."
+        },
+        "driver": {
+          "type": "string",
+          "description": "The storage driver used by the wallet (e.g., SQLite, Legacy JSON )."
+        },
+        "path": {
+          "type": "string",
+          "description": "Path to the wallet file or storage location."
         }
       },
       "description": "Response message contains wallet details."
     },
-    "pactusHistoryInfo": {
+    "pactusIsWalletLoadedResponse": {
       "type": "object",
       "properties": {
-        "transactionId": {
+        "walletName": {
           "type": "string",
-          "description": "The transaction ID in hexadecimal format."
+          "description": "Name of the wallet."
         },
-        "time": {
-          "type": "integer",
-          "format": "int64",
-          "description": "Unix timestamp of when the transaction was confirmed."
-        },
-        "payloadType": {
-          "type": "string",
-          "description": "The type of transaction payload."
-        },
-        "description": {
-          "type": "string",
-          "description": "Human-readable description of the transaction."
-        },
-        "amount": {
-          "type": "string",
-          "format": "int64",
-          "description": "The transaction amount in NanoPAC."
+        "loaded": {
+          "type": "boolean",
+          "description": "True if the wallet is currently loaded."
         }
       },
-      "description": "HistoryInfo contains transaction history details for an address."
+      "description": "Response message indicating wallet load status."
     },
-    "pactusListAddressResponse": {
+    "pactusListAddressesResponse": {
       "type": "object",
       "properties": {
         "walletName": {
@@ -2492,7 +2597,25 @@
       },
       "description": "Response message contains wallet addresses."
     },
-    "pactusListWalletResponse": {
+    "pactusListTransactionsResponse": {
+      "type": "object",
+      "properties": {
+        "walletName": {
+          "type": "string",
+          "description": "The name of the wallet queried."
+        },
+        "txs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/pactusTransactionInfo"
+          },
+          "description": "List of transactions for the wallet, filtered by the specified address if provided."
+        }
+      },
+      "description": "Response message containing a list of transactions."
+    },
+    "pactusListWalletsResponse": {
       "type": "object",
       "properties": {
         "wallets": {
@@ -2840,7 +2963,21 @@
     },
     "pactusSetAddressLabelResponse": {
       "type": "object",
-      "description": "Response message for address label update."
+      "properties": {
+        "walletName": {
+          "type": "string",
+          "description": "The name of the wallet where the address label was updated."
+        },
+        "address": {
+          "type": "string",
+          "description": "The address where the label was updated."
+        },
+        "label": {
+          "type": "string",
+          "description": "The new label for the address."
+        }
+      },
+      "description": "Response message for updated address label."
     },
     "pactusSignMessageResponse": {
       "type": "object",
@@ -2983,6 +3120,20 @@
         "signature": {
           "type": "string",
           "description": "The signature for the transaction."
+        },
+        "blockHeight": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The block height containing the transaction.\nA value of zero means the transaction is unconfirmed and may still in the transaction pool."
+        },
+        "confirmed": {
+          "type": "boolean",
+          "description": "Indicates whether the transaction is confirmed."
+        },
+        "confirmations": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The number of blocks that have been added to the chain after this transaction was included in a block.\nA value of zero means the transaction is unconfirmed and may still in the transaction pool."
         }
       },
       "description": "Information about a transaction."
@@ -2996,6 +3147,16 @@
       "default": "TRANSACTION_VERBOSITY_DATA",
       "description": "Enumeration for verbosity levels when requesting transaction details.\n\n - TRANSACTION_VERBOSITY_DATA: Request transaction data only.\n - TRANSACTION_VERBOSITY_INFO: Request detailed transaction information."
     },
+    "pactusTxDirection": {
+      "type": "string",
+      "enum": [
+        "TX_DIRECTION_ANY",
+        "TX_DIRECTION_INCOMING",
+        "TX_DIRECTION_OUTGOING"
+      ],
+      "default": "TX_DIRECTION_ANY",
+      "description": "TxDirection indicates the direction of a transaction relative to the wallet.\n\n - TX_DIRECTION_ANY: include both incoming and outgoing transactions.\n - TX_DIRECTION_INCOMING: Include only incoming transactions where the wallet receives funds.\n - TX_DIRECTION_OUTGOING: Include only outgoing transactions where the wallet sends funds."
+    },
     "pactusUnloadWalletResponse": {
       "type": "object",
       "properties": {
@@ -3005,6 +3166,16 @@
         }
       },
       "description": "Response message confirming wallet unloading."
+    },
+    "pactusUpdatePasswordResponse": {
+      "type": "object",
+      "properties": {
+        "walletName": {
+          "type": "string",
+          "description": "The name of the wallet whose password was updated."
+        }
+      },
+      "description": "Response message confirming wallet password update."
     },
     "pactusValidatorInfo": {
       "type": "object",

@@ -168,32 +168,32 @@ For seamless integration with Pactus, you can use these client libraries:
           <span class="rpc-badge"></span> UnloadWallet</a>
         </li>
         <li>
+          <a href="#pactus.Wallet.ListWallets">
+          <span class="rpc-badge"></span> ListWallets</a>
+        </li>
+        <li>
+          <a href="#pactus.Wallet.GetWalletInfo">
+          <span class="rpc-badge"></span> GetWalletInfo</a>
+        </li>
+        <li>
+          <a href="#pactus.Wallet.IsWalletLoaded">
+          <span class="rpc-badge"></span> IsWalletLoaded</a>
+        </li>
+        <li>
+          <a href="#pactus.Wallet.UpdatePassword">
+          <span class="rpc-badge"></span> UpdatePassword</a>
+        </li>
+        <li>
           <a href="#pactus.Wallet.GetTotalBalance">
           <span class="rpc-badge"></span> GetTotalBalance</a>
         </li>
         <li>
-          <a href="#pactus.Wallet.SignRawTransaction">
-          <span class="rpc-badge"></span> SignRawTransaction</a>
+          <a href="#pactus.Wallet.GetTotalStake">
+          <span class="rpc-badge"></span> GetTotalStake</a>
         </li>
         <li>
           <a href="#pactus.Wallet.GetValidatorAddress">
           <span class="rpc-badge"></span> GetValidatorAddress</a>
-        </li>
-        <li>
-          <a href="#pactus.Wallet.GetNewAddress">
-          <span class="rpc-badge"></span> GetNewAddress</a>
-        </li>
-        <li>
-          <a href="#pactus.Wallet.GetAddressHistory">
-          <span class="rpc-badge"></span> GetAddressHistory</a>
-        </li>
-        <li>
-          <a href="#pactus.Wallet.SignMessage">
-          <span class="rpc-badge"></span> SignMessage</a>
-        </li>
-        <li>
-          <a href="#pactus.Wallet.GetTotalStake">
-          <span class="rpc-badge"></span> GetTotalStake</a>
         </li>
         <li>
           <a href="#pactus.Wallet.GetAddressInfo">
@@ -204,16 +204,24 @@ For seamless integration with Pactus, you can use these client libraries:
           <span class="rpc-badge"></span> SetAddressLabel</a>
         </li>
         <li>
-          <a href="#pactus.Wallet.ListWallet">
-          <span class="rpc-badge"></span> ListWallet</a>
+          <a href="#pactus.Wallet.GetNewAddress">
+          <span class="rpc-badge"></span> GetNewAddress</a>
         </li>
         <li>
-          <a href="#pactus.Wallet.GetWalletInfo">
-          <span class="rpc-badge"></span> GetWalletInfo</a>
+          <a href="#pactus.Wallet.ListAddresses">
+          <span class="rpc-badge"></span> ListAddresses</a>
         </li>
         <li>
-          <a href="#pactus.Wallet.ListAddress">
-          <span class="rpc-badge"></span> ListAddress</a>
+          <a href="#pactus.Wallet.SignMessage">
+          <span class="rpc-badge"></span> SignMessage</a>
+        </li>
+        <li>
+          <a href="#pactus.Wallet.SignRawTransaction">
+          <span class="rpc-badge"></span> SignRawTransaction</a>
+        </li>
+        <li>
+          <a href="#pactus.Wallet.ListTransactions">
+          <span class="rpc-badge"></span> ListTransactions</a>
         </li>
         </ul>
     </li>
@@ -509,6 +517,29 @@ For seamless integration with Pactus, you can use these client libraries:
         <td> string</td>
         <td>
         The signature for the transaction.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">transaction.block_height</td>
+        <td> uint32</td>
+        <td>
+        The block height containing the transaction.
+A value of zero means the transaction is unconfirmed and may still in the transaction pool.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">transaction.confirmed</td>
+        <td> bool</td>
+        <td>
+        Indicates whether the transaction is confirmed.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">transaction.confirmations</td>
+        <td> int32</td>
+        <td>
+        The number of blocks that have been added to the chain after this transaction was included in a block.
+A value of zero means the transaction is unconfirmed and may still in the transaction pool.
         </td>
       </tr>
          </tbody>
@@ -1252,6 +1283,29 @@ For seamless integration with Pactus, you can use these client libraries:
         The signature for the transaction.
         </td>
       </tr>
+         <tr>
+        <td class="fw-bold">transaction.block_height</td>
+        <td> uint32</td>
+        <td>
+        The block height containing the transaction.
+A value of zero means the transaction is unconfirmed and may still in the transaction pool.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">transaction.confirmed</td>
+        <td> bool</td>
+        <td>
+        Indicates whether the transaction is confirmed.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">transaction.confirmations</td>
+        <td> int32</td>
+        <td>
+        The number of blocks that have been added to the chain after this transaction was included in a block.
+A value of zero means the transaction is unconfirmed and may still in the transaction pool.
+        </td>
+      </tr>
          </tbody>
 </table>
 
@@ -1642,6 +1696,29 @@ BLOCK_VERBOSITY_TRANSACTIONS.
         <td> string</td>
         <td>
         The signature for the transaction.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">txs[].block_height</td>
+        <td> uint32</td>
+        <td>
+        The block height containing the transaction.
+A value of zero means the transaction is unconfirmed and may still in the transaction pool.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">txs[].confirmed</td>
+        <td> bool</td>
+        <td>
+        Indicates whether the transaction is confirmed.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">txs[].confirmations</td>
+        <td> int32</td>
+        <td>
+        The number of blocks that have been added to the chain after this transaction was included in a block.
+A value of zero means the transaction is unconfirmed and may still in the transaction pool.
         </td>
       </tr>
          </tbody>
@@ -2673,6 +2750,29 @@ Message has no fields.
         The signature for the transaction.
         </td>
       </tr>
+         <tr>
+        <td class="fw-bold">txs[].block_height</td>
+        <td> uint32</td>
+        <td>
+        The block height containing the transaction.
+A value of zero means the transaction is unconfirmed and may still in the transaction pool.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">txs[].confirmed</td>
+        <td> bool</td>
+        <td>
+        Indicates whether the transaction is confirmed.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">txs[].confirmations</td>
+        <td> int32</td>
+        <td>
+        The number of blocks that have been added to the chain after this transaction was included in a block.
+A value of zero means the transaction is unconfirmed and may still in the transaction pool.
+        </td>
+      </tr>
          </tbody>
 </table>
 
@@ -3369,6 +3469,13 @@ signing, verification, and other cryptographic operations.</p>
   </thead>
   <tbody class="table-group-divider">
   <tr>
+    <td class="fw-bold">wallet_name</td>
+    <td> string</td>
+    <td>
+    The name for the new wallet.
+    </td>
+  </tr>
+     <tr>
     <td class="fw-bold">mnemonic</td>
     <td> string</td>
     <td>
@@ -3503,6 +3610,232 @@ signing, verification, and other cryptographic operations.</p>
      </tbody>
 </table>
 
+#### ListWallets <span id="pactus.Wallet.ListWallets" class="rpc-badge"></span>
+
+<p>ListWallets returns a list of all available wallets.
+If `include_unloaded` is set, it returns both loaded and unloaded wallets.</p>
+
+<h4>ListWalletsRequest <span class="badge text-bg-info fs-6 align-top">Request</span></h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">include_unloaded</td>
+    <td> bool</td>
+    <td>
+    Whether to include wallets that exist on disk but are not currently loaded.
+    </td>
+  </tr>
+  </tbody>
+</table>
+  <h4>ListWalletsResponse <span class="badge text-bg-warning fs-6 align-top">Response</span></h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">wallets</td>
+    <td>repeated string</td>
+    <td>
+    Array of wallet names.
+    </td>
+  </tr>
+     </tbody>
+</table>
+
+#### GetWalletInfo <span id="pactus.Wallet.GetWalletInfo" class="rpc-badge"></span>
+
+<p>GetWalletInfo returns detailed information about a specific wallet.</p>
+
+<h4>GetWalletInfoRequest <span class="badge text-bg-info fs-6 align-top">Request</span></h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">wallet_name</td>
+    <td> string</td>
+    <td>
+    The name of the wallet to query.
+    </td>
+  </tr>
+  </tbody>
+</table>
+  <h4>GetWalletInfoResponse <span class="badge text-bg-warning fs-6 align-top">Response</span></h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">wallet_name</td>
+    <td> string</td>
+    <td>
+    The name of the wallet.
+    </td>
+  </tr>
+     <tr>
+    <td class="fw-bold">version</td>
+    <td> int32</td>
+    <td>
+    The wallet format version.
+    </td>
+  </tr>
+     <tr>
+    <td class="fw-bold">network</td>
+    <td> string</td>
+    <td>
+    The network the wallet is connected to (e.g., mainnet, testnet).
+    </td>
+  </tr>
+     <tr>
+    <td class="fw-bold">encrypted</td>
+    <td> bool</td>
+    <td>
+    Indicates if the wallet is encrypted.
+    </td>
+  </tr>
+     <tr>
+    <td class="fw-bold">uuid</td>
+    <td> string</td>
+    <td>
+    A unique identifier of the wallet.
+    </td>
+  </tr>
+     <tr>
+    <td class="fw-bold">created_at</td>
+    <td> int64</td>
+    <td>
+    Unix timestamp of wallet creation.
+    </td>
+  </tr>
+     <tr>
+    <td class="fw-bold">default_fee</td>
+    <td> int64</td>
+    <td>
+    The default fee of the wallet.
+    </td>
+  </tr>
+     <tr>
+    <td class="fw-bold">driver</td>
+    <td> string</td>
+    <td>
+    The storage driver used by the wallet (e.g., SQLite, Legacy JSON ).
+    </td>
+  </tr>
+     <tr>
+    <td class="fw-bold">path</td>
+    <td> string</td>
+    <td>
+    Path to the wallet file or storage location.
+    </td>
+  </tr>
+     </tbody>
+</table>
+
+#### IsWalletLoaded <span id="pactus.Wallet.IsWalletLoaded" class="rpc-badge"></span>
+
+<p>IsWalletLoaded checks whether the specified wallet is currently loaded.</p>
+
+<h4>IsWalletLoadedRequest <span class="badge text-bg-info fs-6 align-top">Request</span></h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">wallet_name</td>
+    <td> string</td>
+    <td>
+    Name of the wallet to check.
+    </td>
+  </tr>
+  </tbody>
+</table>
+  <h4>IsWalletLoadedResponse <span class="badge text-bg-warning fs-6 align-top">Response</span></h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">wallet_name</td>
+    <td> string</td>
+    <td>
+    Name of the wallet.
+    </td>
+  </tr>
+     <tr>
+    <td class="fw-bold">loaded</td>
+    <td> bool</td>
+    <td>
+    True if the wallet is currently loaded.
+    </td>
+  </tr>
+     </tbody>
+</table>
+
+#### UpdatePassword <span id="pactus.Wallet.UpdatePassword" class="rpc-badge"></span>
+
+<p>UpdatePassword updates the password of an existing wallet.</p>
+
+<h4>UpdatePasswordRequest <span class="badge text-bg-info fs-6 align-top">Request</span></h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">wallet_name</td>
+    <td> string</td>
+    <td>
+    The name of the wallet whose password will be updated.
+    </td>
+  </tr>
+  <tr>
+    <td class="fw-bold">old_password</td>
+    <td> string</td>
+    <td>
+    The current wallet password.
+    </td>
+  </tr>
+  <tr>
+    <td class="fw-bold">new_password</td>
+    <td> string</td>
+    <td>
+    The new wallet password.
+    </td>
+  </tr>
+  </tbody>
+</table>
+  <h4>UpdatePasswordResponse <span class="badge text-bg-warning fs-6 align-top">Response</span></h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">wallet_name</td>
+    <td> string</td>
+    <td>
+    The name of the wallet whose password was updated.
+    </td>
+  </tr>
+     </tbody>
+</table>
+
 #### GetTotalBalance <span id="pactus.Wallet.GetTotalBalance" class="rpc-badge"></span>
 
 <p>GetTotalBalance returns the total available balance of the wallet.</p>
@@ -3547,11 +3880,11 @@ signing, verification, and other cryptographic operations.</p>
      </tbody>
 </table>
 
-#### SignRawTransaction <span id="pactus.Wallet.SignRawTransaction" class="rpc-badge"></span>
+#### GetTotalStake <span id="pactus.Wallet.GetTotalStake" class="rpc-badge"></span>
 
-<p>SignRawTransaction signs a raw transaction for a specified wallet.</p>
+<p>GetTotalStake returns the total stake amount in the wallet.</p>
 
-<h4>SignRawTransactionRequest <span class="badge text-bg-info fs-6 align-top">Request</span></h4>
+<h4>GetTotalStakeRequest <span class="badge text-bg-info fs-6 align-top">Request</span></h4>
 
 <table class="table table-bordered table-responsive table-sm">
   <thead>
@@ -3562,26 +3895,12 @@ signing, verification, and other cryptographic operations.</p>
     <td class="fw-bold">wallet_name</td>
     <td> string</td>
     <td>
-    The name of the wallet used for signing.
-    </td>
-  </tr>
-  <tr>
-    <td class="fw-bold">raw_transaction</td>
-    <td> string</td>
-    <td>
-    The raw transaction data to be signed.
-    </td>
-  </tr>
-  <tr>
-    <td class="fw-bold">password</td>
-    <td> string</td>
-    <td>
-    Wallet password required for signing.
+    The name of the wallet to get the total stake.
     </td>
   </tr>
   </tbody>
 </table>
-  <h4>SignRawTransactionResponse <span class="badge text-bg-warning fs-6 align-top">Response</span></h4>
+  <h4>GetTotalStakeResponse <span class="badge text-bg-warning fs-6 align-top">Response</span></h4>
 
 <table class="table table-bordered table-responsive table-sm">
   <thead>
@@ -3589,17 +3908,17 @@ signing, verification, and other cryptographic operations.</p>
   </thead>
   <tbody class="table-group-divider">
   <tr>
-    <td class="fw-bold">transaction_id</td>
+    <td class="fw-bold">wallet_name</td>
     <td> string</td>
     <td>
-    The ID of the signed transaction.
+    The name of the queried wallet.
     </td>
   </tr>
      <tr>
-    <td class="fw-bold">signed_raw_transaction</td>
-    <td> string</td>
+    <td class="fw-bold">total_stake</td>
+    <td> int64</td>
     <td>
-    The signed raw transaction data.
+    The total stake amount in NanoPAC.
     </td>
   </tr>
      </tbody>
@@ -3607,7 +3926,8 @@ signing, verification, and other cryptographic operations.</p>
 
 #### GetValidatorAddress <span id="pactus.Wallet.GetValidatorAddress" class="rpc-badge"></span>
 
-<p>GetValidatorAddress retrieves the validator address associated with a public key.</p>
+<p>GetValidatorAddress retrieves the validator address associated with a public key.
+Deprecated: Will move into utils.</p>
 
 <h4>GetValidatorAddressRequest <span class="badge text-bg-info fs-6 align-top">Request</span></h4>
 
@@ -3637,6 +3957,157 @@ signing, verification, and other cryptographic operations.</p>
     <td> string</td>
     <td>
     The validator address associated with the public key.
+    </td>
+  </tr>
+     </tbody>
+</table>
+
+#### GetAddressInfo <span id="pactus.Wallet.GetAddressInfo" class="rpc-badge"></span>
+
+<p>GetAddressInfo returns detailed information about a specific address.</p>
+
+<h4>GetAddressInfoRequest <span class="badge text-bg-info fs-6 align-top">Request</span></h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">wallet_name</td>
+    <td> string</td>
+    <td>
+    The name of the wallet containing the address.
+    </td>
+  </tr>
+  <tr>
+    <td class="fw-bold">address</td>
+    <td> string</td>
+    <td>
+    The address to query.
+    </td>
+  </tr>
+  </tbody>
+</table>
+  <h4>GetAddressInfoResponse <span class="badge text-bg-warning fs-6 align-top">Response</span></h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">wallet_name</td>
+    <td> string</td>
+    <td>
+    The name of the wallet containing the address.
+    </td>
+  </tr>
+     <tr>
+    <td class="fw-bold">address_info</td>
+    <td> AddressInfo</td>
+    <td>
+    Detailed information about the address.
+    </td>
+  </tr>
+     <tr>
+        <td class="fw-bold">address_info.address</td>
+        <td> string</td>
+        <td>
+        The address string.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">address_info.public_key</td>
+        <td> string</td>
+        <td>
+        The public key associated with the address.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">address_info.label</td>
+        <td> string</td>
+        <td>
+        A human-readable label associated with the address.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">address_info.path</td>
+        <td> string</td>
+        <td>
+        The Hierarchical Deterministic (HD) path of the address within the wallet.
+        </td>
+      </tr>
+         </tbody>
+</table>
+
+#### SetAddressLabel <span id="pactus.Wallet.SetAddressLabel" class="rpc-badge"></span>
+
+<p>SetAddressLabel sets or updates the label for a given address.</p>
+
+<h4>SetAddressLabelRequest <span class="badge text-bg-info fs-6 align-top">Request</span></h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">wallet_name</td>
+    <td> string</td>
+    <td>
+    The name of the wallet containing the address.
+    </td>
+  </tr>
+  <tr>
+    <td class="fw-bold">password</td>
+    <td> string</td>
+    <td>
+    Wallet password required for modification.
+    </td>
+  </tr>
+  <tr>
+    <td class="fw-bold">address</td>
+    <td> string</td>
+    <td>
+    The address to label.
+    </td>
+  </tr>
+  <tr>
+    <td class="fw-bold">label</td>
+    <td> string</td>
+    <td>
+    The new label for the address.
+    </td>
+  </tr>
+  </tbody>
+</table>
+  <h4>SetAddressLabelResponse <span class="badge text-bg-warning fs-6 align-top">Response</span></h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">wallet_name</td>
+    <td> string</td>
+    <td>
+    The name of the wallet where the address label was updated.
+    </td>
+  </tr>
+     <tr>
+    <td class="fw-bold">address</td>
+    <td> string</td>
+    <td>
+    The address where the label was updated.
+    </td>
+  </tr>
+     <tr>
+    <td class="fw-bold">label</td>
+    <td> string</td>
+    <td>
+    The new label for the address.
     </td>
   </tr>
      </tbody>
@@ -3743,11 +4214,11 @@ Note: Generating a new Ed25519 address requires the wallet password.)</li>
          </tbody>
 </table>
 
-#### GetAddressHistory <span id="pactus.Wallet.GetAddressHistory" class="rpc-badge"></span>
+#### ListAddresses <span id="pactus.Wallet.ListAddresses" class="rpc-badge"></span>
 
-<p>GetAddressHistory retrieves the transaction history of an address.</p>
+<p>ListAddresses returns all addresses in the specified wallet.</p>
 
-<h4>GetAddressHistoryRequest <span class="badge text-bg-info fs-6 align-top">Request</span></h4>
+<h4>ListAddressesRequest <span class="badge text-bg-info fs-6 align-top">Request</span></h4>
 
 <table class="table table-bordered table-responsive table-sm">
   <thead>
@@ -3758,19 +4229,27 @@ Note: Generating a new Ed25519 address requires the wallet password.)</li>
     <td class="fw-bold">wallet_name</td>
     <td> string</td>
     <td>
-    The name of the wallet containing the address.
+    The name of the queried wallet.
     </td>
   </tr>
   <tr>
-    <td class="fw-bold">address</td>
-    <td> string</td>
+    <td class="fw-bold">address_types</td>
+    <td>repeated AddressType</td>
     <td>
-    The address to retrieve history for.
+    (Enum)Filter addresses by their types. If empty, all address types are included.
+    <br>Available values:<ul>
+      <li>ADDRESS_TYPE_TREASURY = 0 (Treasury address type.
+Should not be used to generate new addresses.)</li>
+      <li>ADDRESS_TYPE_VALIDATOR = 1 (Validator address type used for validator nodes.)</li>
+      <li>ADDRESS_TYPE_BLS_ACCOUNT = 2 (Account address type with BLS signature scheme.)</li>
+      <li>ADDRESS_TYPE_ED25519_ACCOUNT = 3 (Account address type with Ed25519 signature scheme.
+Note: Generating a new Ed25519 address requires the wallet password.)</li>
+      </ul>
     </td>
   </tr>
   </tbody>
 </table>
-  <h4>GetAddressHistoryResponse <span class="badge text-bg-warning fs-6 align-top">Response</span></h4>
+  <h4>ListAddressesResponse <span class="badge text-bg-warning fs-6 align-top">Response</span></h4>
 
 <table class="table table-bordered table-responsive table-sm">
   <thead>
@@ -3778,45 +4257,45 @@ Note: Generating a new Ed25519 address requires the wallet password.)</li>
   </thead>
   <tbody class="table-group-divider">
   <tr>
-    <td class="fw-bold">history_info</td>
-    <td>repeated HistoryInfo</td>
+    <td class="fw-bold">wallet_name</td>
+    <td> string</td>
     <td>
-    List of all historical transactions associated with the address.
+    The name of the queried wallet.
     </td>
   </tr>
      <tr>
-        <td class="fw-bold">history_info[].transaction_id</td>
+    <td class="fw-bold">data</td>
+    <td>repeated AddressInfo</td>
+    <td>
+    List of all addresses in the wallet with their details.
+    </td>
+  </tr>
+     <tr>
+        <td class="fw-bold">data[].address</td>
         <td> string</td>
         <td>
-        The transaction ID in hexadecimal format.
+        The address string.
         </td>
       </tr>
          <tr>
-        <td class="fw-bold">history_info[].time</td>
-        <td> uint32</td>
-        <td>
-        Unix timestamp of when the transaction was confirmed.
-        </td>
-      </tr>
-         <tr>
-        <td class="fw-bold">history_info[].payload_type</td>
+        <td class="fw-bold">data[].public_key</td>
         <td> string</td>
         <td>
-        The type of transaction payload.
+        The public key associated with the address.
         </td>
       </tr>
          <tr>
-        <td class="fw-bold">history_info[].description</td>
+        <td class="fw-bold">data[].label</td>
         <td> string</td>
         <td>
-        Human-readable description of the transaction.
+        A human-readable label associated with the address.
         </td>
       </tr>
          <tr>
-        <td class="fw-bold">history_info[].amount</td>
-        <td> int64</td>
+        <td class="fw-bold">data[].path</td>
+        <td> string</td>
         <td>
-        The transaction amount in NanoPAC.
+        The Hierarchical Deterministic (HD) path of the address within the wallet.
         </td>
       </tr>
          </tbody>
@@ -3880,27 +4359,11 @@ Note: Generating a new Ed25519 address requires the wallet password.)</li>
      </tbody>
 </table>
 
-#### GetTotalStake <span id="pactus.Wallet.GetTotalStake" class="rpc-badge"></span>
+#### SignRawTransaction <span id="pactus.Wallet.SignRawTransaction" class="rpc-badge"></span>
 
-<p>GetTotalStake returns the total stake amount in the wallet.</p>
+<p>SignRawTransaction signs a raw transaction for a specified wallet.</p>
 
-<h4>GetTotalStakeRequest <span class="badge text-bg-info fs-6 align-top">Request</span></h4>
-
-<table class="table table-bordered table-responsive table-sm">
-  <thead>
-    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
-  </thead>
-  <tbody class="table-group-divider">
-  <tr>
-    <td class="fw-bold">wallet_name</td>
-    <td> string</td>
-    <td>
-    The name of the wallet to get the total stake.
-    </td>
-  </tr>
-  </tbody>
-</table>
-  <h4>GetTotalStakeResponse <span class="badge text-bg-warning fs-6 align-top">Response</span></h4>
+<h4>SignRawTransactionRequest <span class="badge text-bg-info fs-6 align-top">Request</span></h4>
 
 <table class="table table-bordered table-responsive table-sm">
   <thead>
@@ -3911,266 +4374,108 @@ Note: Generating a new Ed25519 address requires the wallet password.)</li>
     <td class="fw-bold">wallet_name</td>
     <td> string</td>
     <td>
-    The name of the queried wallet.
-    </td>
-  </tr>
-     <tr>
-    <td class="fw-bold">total_stake</td>
-    <td> int64</td>
-    <td>
-    The total stake amount in NanoPAC.
-    </td>
-  </tr>
-     </tbody>
-</table>
-
-#### GetAddressInfo <span id="pactus.Wallet.GetAddressInfo" class="rpc-badge"></span>
-
-<p>GetAddressInfo returns detailed information about a specific address.</p>
-
-<h4>GetAddressInfoRequest <span class="badge text-bg-info fs-6 align-top">Request</span></h4>
-
-<table class="table table-bordered table-responsive table-sm">
-  <thead>
-    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
-  </thead>
-  <tbody class="table-group-divider">
-  <tr>
-    <td class="fw-bold">wallet_name</td>
-    <td> string</td>
-    <td>
-    The name of the wallet containing the address.
+    The name of the wallet used for signing.
     </td>
   </tr>
   <tr>
-    <td class="fw-bold">address</td>
+    <td class="fw-bold">raw_transaction</td>
     <td> string</td>
     <td>
-    The address to query.
-    </td>
-  </tr>
-  </tbody>
-</table>
-  <h4>GetAddressInfoResponse <span class="badge text-bg-warning fs-6 align-top">Response</span></h4>
-
-<table class="table table-bordered table-responsive table-sm">
-  <thead>
-    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
-  </thead>
-  <tbody class="table-group-divider">
-  <tr>
-    <td class="fw-bold">wallet_name</td>
-    <td> string</td>
-    <td>
-    The name of the wallet containing the address.
-    </td>
-  </tr>
-     <tr>
-    <td class="fw-bold">address</td>
-    <td> string</td>
-    <td>
-    The queried address.
-    </td>
-  </tr>
-     <tr>
-    <td class="fw-bold">label</td>
-    <td> string</td>
-    <td>
-    The address label.
-    </td>
-  </tr>
-     <tr>
-    <td class="fw-bold">public_key</td>
-    <td> string</td>
-    <td>
-    The public key of the address.
-    </td>
-  </tr>
-     <tr>
-    <td class="fw-bold">path</td>
-    <td> string</td>
-    <td>
-    The Hierarchical Deterministic (HD) path of the address.
-    </td>
-  </tr>
-     </tbody>
-</table>
-
-#### SetAddressLabel <span id="pactus.Wallet.SetAddressLabel" class="rpc-badge"></span>
-
-<p>SetAddressLabel sets or updates the label for a given address.</p>
-
-<h4>SetAddressLabelRequest <span class="badge text-bg-info fs-6 align-top">Request</span></h4>
-
-<table class="table table-bordered table-responsive table-sm">
-  <thead>
-    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
-  </thead>
-  <tbody class="table-group-divider">
-  <tr>
-    <td class="fw-bold">wallet_name</td>
-    <td> string</td>
-    <td>
-    The name of the wallet containing the address.
+    The raw transaction data to be signed.
     </td>
   </tr>
   <tr>
     <td class="fw-bold">password</td>
     <td> string</td>
     <td>
-    Wallet password required for modification.
+    Wallet password required for signing.
+    </td>
+  </tr>
+  </tbody>
+</table>
+  <h4>SignRawTransactionResponse <span class="badge text-bg-warning fs-6 align-top">Response</span></h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">transaction_id</td>
+    <td> string</td>
+    <td>
+    The ID of the signed transaction.
+    </td>
+  </tr>
+     <tr>
+    <td class="fw-bold">signed_raw_transaction</td>
+    <td> string</td>
+    <td>
+    The signed raw transaction data.
+    </td>
+  </tr>
+     </tbody>
+</table>
+
+#### ListTransactions <span id="pactus.Wallet.ListTransactions" class="rpc-badge"></span>
+
+<p>ListTransactions returns a list of transactions for a wallet,
+optionally filtered by a specific address, with pagination support.</p>
+
+<h4>ListTransactionsRequest <span class="badge text-bg-info fs-6 align-top">Request</span></h4>
+
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">wallet_name</td>
+    <td> string</td>
+    <td>
+    The name of the wallet to query transactions for.
     </td>
   </tr>
   <tr>
     <td class="fw-bold">address</td>
     <td> string</td>
     <td>
-    The address to label.
+    Optional: The address to filter transactions.
+If empty or set to "*", transactions for all addresses in the wallet are included.
     </td>
   </tr>
   <tr>
-    <td class="fw-bold">label</td>
-    <td> string</td>
+    <td class="fw-bold">direction</td>
+    <td> TxDirection</td>
     <td>
-    The new label for the address.
+    (Enum)Filter transactions by direction relative to the wallet.
+Defaults to any direction if not set.
+    <br>Available values:<ul>
+      <li>TX_DIRECTION_ANY = 0 (include both incoming and outgoing transactions.)</li>
+      <li>TX_DIRECTION_INCOMING = 1 (Include only incoming transactions where the wallet receives funds.)</li>
+      <li>TX_DIRECTION_OUTGOING = 2 (Include only outgoing transactions where the wallet sends funds.)</li>
+      </ul>
     </td>
   </tr>
-  </tbody>
-</table>
-  <h4>SetAddressLabelResponse <span class="badge text-bg-warning fs-6 align-top">Response</span></h4>
-
-<table class="table table-bordered table-responsive table-sm">
-  <thead>
-    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
-  </thead>
-  <tbody class="table-group-divider">
-  </tbody>
-</table>
-
-#### ListWallet <span id="pactus.Wallet.ListWallet" class="rpc-badge"></span>
-
-<p>ListWallet returns a list of all available wallets.</p>
-
-<h4>ListWalletRequest <span class="badge text-bg-info fs-6 align-top">Request</span></h4>
-
-Message has no fields.
-  <h4>ListWalletResponse <span class="badge text-bg-warning fs-6 align-top">Response</span></h4>
-
-<table class="table table-bordered table-responsive table-sm">
-  <thead>
-    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
-  </thead>
-  <tbody class="table-group-divider">
   <tr>
-    <td class="fw-bold">wallets</td>
-    <td>repeated string</td>
-    <td>
-    Array of wallet names.
-    </td>
-  </tr>
-     </tbody>
-</table>
-
-#### GetWalletInfo <span id="pactus.Wallet.GetWalletInfo" class="rpc-badge"></span>
-
-<p>GetWalletInfo returns detailed information about a specific wallet.</p>
-
-<h4>GetWalletInfoRequest <span class="badge text-bg-info fs-6 align-top">Request</span></h4>
-
-<table class="table table-bordered table-responsive table-sm">
-  <thead>
-    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
-  </thead>
-  <tbody class="table-group-divider">
-  <tr>
-    <td class="fw-bold">wallet_name</td>
-    <td> string</td>
-    <td>
-    The name of the wallet to query.
-    </td>
-  </tr>
-  </tbody>
-</table>
-  <h4>GetWalletInfoResponse <span class="badge text-bg-warning fs-6 align-top">Response</span></h4>
-
-<table class="table table-bordered table-responsive table-sm">
-  <thead>
-    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
-  </thead>
-  <tbody class="table-group-divider">
-  <tr>
-    <td class="fw-bold">wallet_name</td>
-    <td> string</td>
-    <td>
-    The name of the wallet to query.
-    </td>
-  </tr>
-     <tr>
-    <td class="fw-bold">version</td>
+    <td class="fw-bold">count</td>
     <td> int32</td>
     <td>
-    The wallet format version.
+    Optional: The maximum number of transactions to return.
+Defaults to 10 if not set.
     </td>
   </tr>
-     <tr>
-    <td class="fw-bold">network</td>
-    <td> string</td>
-    <td>
-    The network the wallet is connected to (e.g., mainnet, testnet).
-    </td>
-  </tr>
-     <tr>
-    <td class="fw-bold">encrypted</td>
-    <td> bool</td>
-    <td>
-    Indicates if the wallet is encrypted.
-    </td>
-  </tr>
-     <tr>
-    <td class="fw-bold">uuid</td>
-    <td> string</td>
-    <td>
-    A unique identifier of the wallet.
-    </td>
-  </tr>
-     <tr>
-    <td class="fw-bold">created_at</td>
-    <td> int64</td>
-    <td>
-    Unix timestamp of wallet creation.
-    </td>
-  </tr>
-     <tr>
-    <td class="fw-bold">default_fee</td>
-    <td> int64</td>
-    <td>
-    The default fee of the wallet.
-    </td>
-  </tr>
-     </tbody>
-</table>
-
-#### ListAddress <span id="pactus.Wallet.ListAddress" class="rpc-badge"></span>
-
-<p>ListAddress returns all addresses in the specified wallet.</p>
-
-<h4>ListAddressRequest <span class="badge text-bg-info fs-6 align-top">Request</span></h4>
-
-<table class="table table-bordered table-responsive table-sm">
-  <thead>
-    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
-  </thead>
-  <tbody class="table-group-divider">
   <tr>
-    <td class="fw-bold">wallet_name</td>
-    <td> string</td>
+    <td class="fw-bold">skip</td>
+    <td> int32</td>
     <td>
-    The name of the queried wallet.
+    Optional: The number of transactions to skip (for pagination).
+Defaults to 0 if not set.
     </td>
   </tr>
   </tbody>
 </table>
-  <h4>ListAddressResponse <span class="badge text-bg-warning fs-6 align-top">Response</span></h4>
+  <h4>ListTransactionsResponse <span class="badge text-bg-warning fs-6 align-top">Response</span></h4>
 
 <table class="table table-bordered table-responsive table-sm">
   <thead>
@@ -4181,42 +4486,263 @@ Message has no fields.
     <td class="fw-bold">wallet_name</td>
     <td> string</td>
     <td>
-    The name of the queried wallet.
+    The name of the wallet queried.
     </td>
   </tr>
      <tr>
-    <td class="fw-bold">data</td>
-    <td>repeated AddressInfo</td>
+    <td class="fw-bold">txs</td>
+    <td>repeated TransactionInfo</td>
     <td>
-    List of all addresses in the wallet with their details.
+    List of transactions for the wallet, filtered by the specified address if provided.
     </td>
   </tr>
      <tr>
-        <td class="fw-bold">data[].address</td>
+        <td class="fw-bold">txs[].id</td>
         <td> string</td>
         <td>
-        The address string.
+        The unique ID of the transaction.
         </td>
       </tr>
          <tr>
-        <td class="fw-bold">data[].public_key</td>
+        <td class="fw-bold">txs[].data</td>
         <td> string</td>
         <td>
-        The public key associated with the address.
+        The raw transaction data in hexadecimal format.
         </td>
       </tr>
          <tr>
-        <td class="fw-bold">data[].label</td>
-        <td> string</td>
+        <td class="fw-bold">txs[].version</td>
+        <td> int32</td>
         <td>
-        A human-readable label associated with the address.
+        The version of the transaction.
         </td>
       </tr>
          <tr>
-        <td class="fw-bold">data[].path</td>
+        <td class="fw-bold">txs[].lock_time</td>
+        <td> uint32</td>
+        <td>
+        The lock time for the transaction.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">txs[].value</td>
+        <td> int64</td>
+        <td>
+        The value of the transaction in NanoPAC.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">txs[].fee</td>
+        <td> int64</td>
+        <td>
+        The fee for the transaction in NanoPAC.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">txs[].payload_type</td>
+        <td> PayloadType</td>
+        <td>
+        (Enum)The type of transaction payload.
+        <br>Available values:<ul>
+          <li>PAYLOAD_TYPE_UNSPECIFIED = 0 (Unspecified payload type.)</li>
+          <li>PAYLOAD_TYPE_TRANSFER = 1 (Transfer payload type.)</li>
+          <li>PAYLOAD_TYPE_BOND = 2 (Bond payload type.)</li>
+          <li>PAYLOAD_TYPE_SORTITION = 3 (Sortition payload type.)</li>
+          <li>PAYLOAD_TYPE_UNBOND = 4 (Unbond payload type.)</li>
+          <li>PAYLOAD_TYPE_WITHDRAW = 5 (Withdraw payload type.)</li>
+          <li>PAYLOAD_TYPE_BATCH_TRANSFER = 6 (Batch transfer payload type.)</li>
+          </ul>
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">txs[].transfer</td>
+        <td> PayloadTransfer</td>
+        <td>
+        (OneOf)Transfer transaction payload.
+        </td>
+      </tr>
+         <tr>
+            <td class="fw-bold">txs[].transfer.sender</td>
+            <td> string</td>
+            <td>
+            The sender's address.
+            </td>
+          </tr>
+          <tr>
+            <td class="fw-bold">txs[].transfer.receiver</td>
+            <td> string</td>
+            <td>
+            The receiver's address.
+            </td>
+          </tr>
+          <tr>
+            <td class="fw-bold">txs[].transfer.amount</td>
+            <td> int64</td>
+            <td>
+            The amount to be transferred in NanoPAC.
+            </td>
+          </tr>
+          <tr>
+        <td class="fw-bold">txs[].bond</td>
+        <td> PayloadBond</td>
+        <td>
+        (OneOf)Bond transaction payload.
+        </td>
+      </tr>
+         <tr>
+            <td class="fw-bold">txs[].bond.sender</td>
+            <td> string</td>
+            <td>
+            The sender's address.
+            </td>
+          </tr>
+          <tr>
+            <td class="fw-bold">txs[].bond.receiver</td>
+            <td> string</td>
+            <td>
+            The receiver's address.
+            </td>
+          </tr>
+          <tr>
+            <td class="fw-bold">txs[].bond.stake</td>
+            <td> int64</td>
+            <td>
+            The stake amount in NanoPAC.
+            </td>
+          </tr>
+          <tr>
+            <td class="fw-bold">txs[].bond.public_key</td>
+            <td> string</td>
+            <td>
+            The public key of the validator.
+            </td>
+          </tr>
+          <tr>
+        <td class="fw-bold">txs[].sortition</td>
+        <td> PayloadSortition</td>
+        <td>
+        (OneOf)Sortition transaction payload.
+        </td>
+      </tr>
+         <tr>
+            <td class="fw-bold">txs[].sortition.address</td>
+            <td> string</td>
+            <td>
+            The validator address associated with the sortition proof.
+            </td>
+          </tr>
+          <tr>
+            <td class="fw-bold">txs[].sortition.proof</td>
+            <td> string</td>
+            <td>
+            The proof for the sortition.
+            </td>
+          </tr>
+          <tr>
+        <td class="fw-bold">txs[].unbond</td>
+        <td> PayloadUnbond</td>
+        <td>
+        (OneOf)Unbond transaction payload.
+        </td>
+      </tr>
+         <tr>
+            <td class="fw-bold">txs[].unbond.validator</td>
+            <td> string</td>
+            <td>
+            The address of the validator to unbond from.
+            </td>
+          </tr>
+          <tr>
+        <td class="fw-bold">txs[].withdraw</td>
+        <td> PayloadWithdraw</td>
+        <td>
+        (OneOf)Withdraw transaction payload.
+        </td>
+      </tr>
+         <tr>
+            <td class="fw-bold">txs[].withdraw.validator_address</td>
+            <td> string</td>
+            <td>
+            The address of the validator to withdraw from.
+            </td>
+          </tr>
+          <tr>
+            <td class="fw-bold">txs[].withdraw.account_address</td>
+            <td> string</td>
+            <td>
+            The address of the account to withdraw to.
+            </td>
+          </tr>
+          <tr>
+            <td class="fw-bold">txs[].withdraw.amount</td>
+            <td> int64</td>
+            <td>
+            The withdrawal amount in NanoPAC.
+            </td>
+          </tr>
+          <tr>
+        <td class="fw-bold">txs[].batch_transfer</td>
+        <td> PayloadBatchTransfer</td>
+        <td>
+        (OneOf)Batch Transfer transaction payload.
+        </td>
+      </tr>
+         <tr>
+            <td class="fw-bold">txs[].batch_transfer.sender</td>
+            <td> string</td>
+            <td>
+            The sender's address.
+            </td>
+          </tr>
+          <tr>
+            <td class="fw-bold">txs[].batch_transfer.recipients</td>
+            <td>repeated Recipient</td>
+            <td>
+            The list of recipients with their amounts.
+            </td>
+          </tr>
+          <tr>
+        <td class="fw-bold">txs[].memo</td>
         <td> string</td>
         <td>
-        The Hierarchical Deterministic (HD) path of the address within the wallet.
+        A memo string for the transaction.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">txs[].public_key</td>
+        <td> string</td>
+        <td>
+        The public key associated with the transaction.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">txs[].signature</td>
+        <td> string</td>
+        <td>
+        The signature for the transaction.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">txs[].block_height</td>
+        <td> uint32</td>
+        <td>
+        The block height containing the transaction.
+A value of zero means the transaction is unconfirmed and may still in the transaction pool.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">txs[].confirmed</td>
+        <td> bool</td>
+        <td>
+        Indicates whether the transaction is confirmed.
+        </td>
+      </tr>
+         <tr>
+        <td class="fw-bold">txs[].confirmations</td>
+        <td> int32</td>
+        <td>
+        The number of blocks that have been added to the chain after this transaction was included in a block.
+A value of zero means the transaction is unconfirmed and may still in the transaction pool.
         </td>
       </tr>
          </tbody>
