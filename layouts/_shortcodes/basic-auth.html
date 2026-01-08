@@ -5,17 +5,28 @@
   var bcrypt = dcodeIO.bcrypt;
 
   function generateHtpasswd(event) {
+    function printOutput(message) {
+      document.getElementById("output").innerHTML = "<pre>" + message + "</pre>";
+    }
+
     event.preventDefault(); // Prevent the form from submitting
     var username = document.getElementById("username").value;
     var password = document.getElementById("password").value;
+
+    // if password is empty, show an error message
+    if (password === "") {
+      printOutput("Password is required");
+      return;
+    }
+
     // Ensure that bcrypt is properly loaded
     if (typeof bcrypt !== 'undefined') {
       var salt = bcrypt.genSaltSync(10);
       var hash = bcrypt.hashSync(password, salt);
       var htpasswd = username + ":" + hash;
-      document.getElementById("output").innerHTML = "<pre>" + htpasswd + "</pre>";
+      printOutput(htpasswd);
     } else {
-      console.error("bcrypt library is not loaded.");
+      printOutput("bcrypt library is not loaded.");
     }
   }
 </script>

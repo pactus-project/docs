@@ -1,5 +1,5 @@
 ---
-title: How to Run Pactus with systemd on Linux?
+title: Run Pactus with systemd on Linux
 weight: 10
 ---
 
@@ -21,7 +21,7 @@ Before setting up Pactus to run with systemd, ensure you have the following:
 
 To create a systemd service for Pactus, follow these steps:
 
-1. **Initialize the Pactus Node**: Before running the service, initialize the Pactus node by this command:
+1. **Initialize the Pactus Node**: Before running the service, initialize the Pactus node with this command:
 
   ```shell
   pactus-daemon init

@@ -1,5 +1,5 @@
 ---
-title: How to use Pactus Wallet?
+title: Use Pactus Wallet
 weight: 2
 ---
 

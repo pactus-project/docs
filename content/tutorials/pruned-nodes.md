@@ -1,5 +1,5 @@
 ---
-title: How to use Prune Node?
+title: Use Pruned Nodes
 weight: 4
 ---
 

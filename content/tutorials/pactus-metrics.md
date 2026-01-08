@@ -1,5 +1,5 @@
 ---
-title: How to run Pactus Metrics?
+title: Run Pactus Metrics
 weight: 9
 ---
 
@@ -17,20 +17,20 @@ Before proceeding with the steps below, ensure that you have the following:
 
 ## Configure Pactus Node for Metrics
 
-To Configure the Pactus Node for Metrics, navigate to the Pactus directory; by default, it’s located at the following path.
+To configure the Pactus node for metrics, navigate to the Pactus directory. By default, it’s located at:
 
 ```text
 /home/YourUsername/pactus
 ```
 
 There’s a file named `config.toml` that contains all the configurations for your node.
-There are two parameters that you should enable for metrics: the first is `enable_metrics`,
-and the second is enable `http`. After editing the `config.toml` you should restart your node.
-The metrics now can be accessed at `http://localhost:80/metrics/prometheus` (this url going to be use by prometheus).
+Enable two parameters for metrics: `enable_metrics` and `http.enable`.
+After editing `config.toml`, restart your node.
+Metrics are available at `http://localhost:80/metrics/prometheus` (this URL will be used by Prometheus).
 
 {{< callout type="info" >}}
 
-if you are running Pactus with docker image, make sure to expose :80 port.
+If you are running Pactus with the Docker image, make sure to expose port 80.
 
 {{< /callout >}}
 
@@ -70,9 +70,8 @@ volumes: prom_data
 ```
 
 You can change the default username and password of Grafana by modifying the values of `GF_SECURITY_ADMIN_USER` and `GF_SECURITY_ADMIN_PASSWORD`.
-Now, save the file. Then, in the current directory (meaning you are inside the `prometheus-grafana` directory),
-create another directory named `grafana`. Then, go to the directory. So now you're in the path `/prometheus-grafana/grafana/`.
-In the current directory, create a file named `datasource.yml` and paste the code below there.
+Save the file. From the same `prometheus-grafana` directory, create a `grafana` directory and enter it (`/prometheus-grafana/grafana/`).
+In that directory, create a file named `datasource.yml` and paste the code below.
 
 ```yaml
 apiVersion: 1
@@ -86,10 +85,9 @@ datasources:
     editable: true
 ```
 
-Then save the file and exit.
-Now, we should go up one directory level from the current directory and navigate to the `/prometheus-grafana` directory.
-In the current directory, which is `/prometheus-grafana`, create another directory named `prometheus`,
-then go into the directory.In the prometheus directory create a file named `prometheus.yml` and paste below code there.
+Save the file and exit.
+Go up one directory level back to `/prometheus-grafana`.
+Create a `prometheus` directory, enter it, and create a file named `prometheus.yml` with the content below.
 
 ```yaml
 global:
@@ -119,10 +117,10 @@ Then save the file and exit.
 
 {{< callout type="info" >}}
 
-Tip: In the last section of the code, you will see the targets section where I've written 127.0.0.1.
-You can change it based on your localhost IP or your website domain.
-Please be aware that your target should match with your node http port.
-The default http port of pactus node is 80.
+Tip: In the last section of the code, you will see the targets section where 127.0.0.1 is set.
+You can change it based on your localhost IP or your domain.
+Please ensure that your target matches your node's HTTP port.
+The default HTTP port of a Pactus node is 80.
 
 {{< /callout >}}
 

@@ -1,5 +1,5 @@
 ---
-title: 📔 Protocol
+title: 📚 Protocol
 weight: 2
 prev: /get-started/
 next: /tutorials/

@@ -1,5 +1,5 @@
 ---
-title: How to Secure Connections?
+title: Secure Connections
 weight: 7
 ---
 
