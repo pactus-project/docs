@@ -298,14 +298,14 @@ To create, sign, and broadcast a
   {{< os_tab >}}
 
 ```shell
-./pactus-wallet tx transfer <FROM> <TO> <AMOUNT>
+./pactus-wallet send transfer <FROM> <TO> <AMOUNT>
 ```
 
   {{< /os_tab >}}
   {{< os_tab >}}
 
 ```shell
-pactus-wallet.exe tx transfer <FROM> <TO> <AMOUNT>
+pactus-wallet.exe send transfer <FROM> <TO> <AMOUNT>
 ```
 
   {{< /os_tab >}}
@@ -323,14 +323,14 @@ To create, sign, and broadcast a
   {{< os_tab >}}
 
 ```shell
-./pactus-wallet tx bond <FROM> <TO> <AMOUNT>
+./pactus-wallet send bond <FROM> <TO> <AMOUNT>
 ```
 
   {{< /os_tab >}}
   {{< os_tab >}}
 
 ```shell
-pactus-wallet.exe tx bond <FROM> <TO> <AMOUNT>
+pactus-wallet.exe send bond <FROM> <TO> <AMOUNT>
 ```
 
   {{< /os_tab >}}
@@ -346,14 +346,14 @@ you need to provide the public key to create it:
   {{< os_tab >}}
 
 ```shell
-./pactus-wallet tx bond --pub <PUBLIC_KEY> <FROM> <TO> <AMOUNT>
+./pactus-wallet send bond --pub <PUBLIC_KEY> <FROM> <TO> <AMOUNT>
 ```
 
   {{< /os_tab >}}
   {{< os_tab >}}
 
 ```shell
-pactus-wallet.exe tx bond --pub <PUBLIC_KEY> <FROM> <TO> <AMOUNT>
+pactus-wallet.exe send bond --pub <PUBLIC_KEY> <FROM> <TO> <AMOUNT>
 ```
 
   {{< /os_tab >}}
@@ -371,14 +371,14 @@ To create, sign, and broadcast a
   {{< os_tab >}}
 
 ```shell
-./pactus-wallet tx unbond <ADDRESS>
+./pactus-wallet send unbond <ADDRESS>
 ```
 
   {{< /os_tab >}}
   {{< os_tab >}}
 
 ```shell
-pactus-wallet.exe tx unbond <ADDRESS>
+pactus-wallet.exe send unbond <ADDRESS>
 ```
 
   {{< /os_tab >}}
@@ -395,14 +395,14 @@ To create, sign, and broadcast a
   {{< os_tab >}}
 
 ```shell
-./pactus-wallet tx withdraw <FROM> <TO> <AMOUNT>
+./pactus-wallet send withdraw <FROM> <TO> <AMOUNT>
 ```
 
   {{< /os_tab >}}
   {{< os_tab >}}
 
 ```shell
-pactus-wallet.exe tx withdraw <FROM> <TO> <AMOUNT>
+pactus-wallet.exe send withdraw <FROM> <TO> <AMOUNT>
 ```
 
   {{< /os_tab >}}
