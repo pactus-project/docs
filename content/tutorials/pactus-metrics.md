@@ -1,6 +1,6 @@
 ---
 title: Run Pactus Metrics
-weight: 9
+weight: 10
 ---
 
 ## Preface

@@ -1,6 +1,6 @@
 ---
 title: Pactus Integration Guide
-weight: 13
+weight: 14
 ---
 
 ## Preface

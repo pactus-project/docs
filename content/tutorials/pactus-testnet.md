@@ -1,6 +1,6 @@
 ---
 title: Join Pactus Testnet
-weight: 14
+weight: 15
 ---
 
 ## Preface
