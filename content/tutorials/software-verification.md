@@ -1,6 +1,6 @@
 ---
 title: Verify Pactus Software Is Safe
-weight: 11
+weight: 12
 ---
 
 ## Preface
