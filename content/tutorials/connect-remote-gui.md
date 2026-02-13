@@ -43,7 +43,7 @@ information you send or receive may be observed by a man-in-the-middle attacker.
 One simple way to secure the gRPC connection is to wrap it over the `https` protocol.
 This is known as [gRPC-Web](https://grpc.io/docs/platforms/web/).
 
-You can follow the [Secure Connections](./secure-connections.md) tutorial to set up your server to
+You can follow the [Secure Connections](/tutorials/secure-connections) tutorial to set up your server to
 wrap the gRPC connection over the `https` protocol. We have explained how to secure the connection there.
 This approach requires a domain name and NGINX installed on your server.
 
