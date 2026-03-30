@@ -81,3 +81,10 @@ If you do enable it, make sure you set a strong password for your wallet.
 If you set up your domain using Cloudflare, this is most likely because the Cloudflare gRPC service is disabled.
 You can check their [documentation](https://developers.cloudflare.com/network/grpc-connections/#enable-grpc)
 to enable the gRPC service.
+
+### Wallet tab is empty
+
+If the **Wallet** tab (for example **Default Wallet**) looks empty,
+the wallet service on the remote node you connected to is probably still disabled.
+Enable it in that node's configuration file as described in [Enabling Wallet Service](#enabling-wallet-service),
+then restart the node so the change takes effect.
