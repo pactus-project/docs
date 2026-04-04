@@ -84,6 +84,10 @@ For seamless integration with Pactus, you can use these client libraries:
           <span class="rpc-badge"></span>GetBlockchainInfo</a>
         </li>
         <li>
+          <a href="#pactus.Blockchain.GetCommitteeInfo">
+          <span class="rpc-badge"></span>GetCommitteeInfo</a>
+        </li>
+        <li>
           <a href="#pactus.Blockchain.GetConsensusInfo">
           <span class="rpc-badge"></span>GetConsensusInfo</a>
         </li>
@@ -118,6 +122,10 @@ For seamless integration with Pactus, you can use these client libraries:
         <li>
           <a href="#pactus.Network.GetNetworkInfo">
           <span class="rpc-badge"></span>GetNetworkInfo</a>
+        </li>
+        <li>
+          <a href="#pactus.Network.ListPeers">
+          <span class="rpc-badge"></span>ListPeers</a>
         </li>
         <li>
           <a href="#pactus.Network.GetNodeInfo">
@@ -218,6 +226,18 @@ For seamless integration with Pactus, you can use these client libraries:
         <li>
           <a href="#pactus.Wallet.ListTransactions">
           <span class="rpc-badge"></span>ListTransactions</a>
+        </li>
+        <li>
+          <a href="#pactus.Wallet.SetDefaultFee">
+          <span class="rpc-badge"></span>SetDefaultFee</a>
+        </li>
+        <li>
+          <a href="#pactus.Wallet.GetMnemonic">
+          <span class="rpc-badge"></span>GetMnemonic</a>
+        </li>
+        <li>
+          <a href="#pactus.Wallet.GetPrivateKey">
+          <span class="rpc-badge"></span>GetPrivateKey</a>
         </li>
       </ul>
     </li>
@@ -1765,6 +1785,13 @@ Request Message has no fields.
     </td>
   </tr>
    <tr>
+    <td class="fw-bold">last_block_time</td>
+    <td> int64</td>
+    <td>
+  The timestamp of the last block in Unix format.
+    </td>
+  </tr>
+   <tr>
     <td class="fw-bold">total_accounts</td>
     <td> int32</td>
     <td>
@@ -1789,7 +1816,7 @@ Request Message has no fields.
     <td class="fw-bold">total_power</td>
     <td> int64</td>
     <td>
-  The total power of the blockchain.
+  The total power of the blockchain that is the sum of all validators' stakes, in NanoPAC.
     </td>
   </tr>
    <tr>
@@ -1797,90 +1824,6 @@ Request Message has no fields.
     <td> int64</td>
     <td>
   The power of the committee.
-    </td>
-  </tr>
-   <tr>
-    <td class="fw-bold">committee_validators</td>
-    <td>repeated ValidatorInfo</td>
-    <td>
-  List of committee validators.
-    </td>
-  </tr>
-   <tr>
-    <td class="fw-bold">committee_validators[].hash</td>
-    <td> string</td>
-    <td>
-  The hash of the validator.
-    </td>
-  </tr>
-   <tr>
-    <td class="fw-bold">committee_validators[].data</td>
-    <td> string</td>
-    <td>
-  The serialized data of the validator.
-    </td>
-  </tr>
-   <tr>
-    <td class="fw-bold">committee_validators[].public_key</td>
-    <td> string</td>
-    <td>
-  The public key of the validator.
-    </td>
-  </tr>
-   <tr>
-    <td class="fw-bold">committee_validators[].number</td>
-    <td> int32</td>
-    <td>
-  The unique number assigned to the validator.
-    </td>
-  </tr>
-   <tr>
-    <td class="fw-bold">committee_validators[].stake</td>
-    <td> int64</td>
-    <td>
-  The stake of the validator in NanoPAC.
-    </td>
-  </tr>
-   <tr>
-    <td class="fw-bold">committee_validators[].last_bonding_height</td>
-    <td> uint32</td>
-    <td>
-  The height at which the validator last bonded.
-    </td>
-  </tr>
-   <tr>
-    <td class="fw-bold">committee_validators[].last_sortition_height</td>
-    <td> uint32</td>
-    <td>
-  The height at which the validator last participated in sortition.
-    </td>
-  </tr>
-   <tr>
-    <td class="fw-bold">committee_validators[].unbonding_height</td>
-    <td> uint32</td>
-    <td>
-  The height at which the validator will unbond.
-    </td>
-  </tr>
-   <tr>
-    <td class="fw-bold">committee_validators[].address</td>
-    <td> string</td>
-    <td>
-  The address of the validator.
-    </td>
-  </tr>
-   <tr>
-    <td class="fw-bold">committee_validators[].availability_score</td>
-    <td> double</td>
-    <td>
-  The availability score of the validator.
-    </td>
-  </tr>
-   <tr>
-    <td class="fw-bold">committee_validators[].protocol_version</td>
-    <td> int32</td>
-    <td>
-  The protocol version of the validator.
     </td>
   </tr>
    <tr>
@@ -1898,14 +1841,171 @@ Request Message has no fields.
     </td>
   </tr>
    <tr>
-    <td class="fw-bold">last_block_time</td>
-    <td> int64</td>
+    <td class="fw-bold">in_committee</td>
+    <td> bool</td>
     <td>
-  Timestamp of the last block in Unix format
+  Indicates whether this node participates in consensus: true if at least one
+of its running validators is a member of the current committee.
     </td>
   </tr>
    <tr>
-    <td class="fw-bold">committee_protocol_versions</td>
+    <td class="fw-bold">committee_size</td>
+    <td> int32</td>
+    <td>
+  The number of validators in the current committee.
+    </td>
+  </tr>
+   </tbody>
+</table>
+
+#### GetCommitteeInfo <span id="pactus.Blockchain.GetCommitteeInfo" class="rpc-badge"></span>
+
+<p>GetCommitteeInfo retrieves information about the current committee.</p>
+
+<h4>GetCommitteeInfoRequest <span class="badge text-bg-info fs-6 align-top">Request</span></h4>
+Request Message has no fields.
+
+<h4>GetCommitteeInfoResponse <span class="badge text-bg-warning fs-6 align-top">Response</span></h4>
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">committee_size</td>
+    <td> int32</td>
+    <td>
+  The number of validators in the committee.
+    </td>
+  </tr>
+   <tr>
+    <td class="fw-bold">committee_power</td>
+    <td> int64</td>
+    <td>
+  The power of the committee.
+    </td>
+  </tr>
+   <tr>
+    <td class="fw-bold">total_power</td>
+    <td> int64</td>
+    <td>
+  The total power of the blockchain that is the sum of all validators' stakes, in NanoPAC.
+    </td>
+  </tr>
+   <tr>
+    <td class="fw-bold">validators</td>
+    <td>repeated ValidatorInfo</td>
+    <td>
+  List of committee validators.
+    </td>
+  </tr>
+   <tr>
+    <td class="fw-bold">validators[].hash</td>
+    <td> string</td>
+    <td>
+  The hash of the validator.
+    </td>
+  </tr>
+   <tr>
+    <td class="fw-bold">validators[].data</td>
+    <td> string</td>
+    <td>
+  The serialized data of the validator.
+    </td>
+  </tr>
+   <tr>
+    <td class="fw-bold">validators[].public_key</td>
+    <td> string</td>
+    <td>
+  The public key of the validator.
+    </td>
+  </tr>
+   <tr>
+    <td class="fw-bold">validators[].number</td>
+    <td> int32</td>
+    <td>
+  The unique number assigned to the validator.
+    </td>
+  </tr>
+   <tr>
+    <td class="fw-bold">validators[].stake</td>
+    <td> int64</td>
+    <td>
+  The stake of the validator in NanoPAC.
+    </td>
+  </tr>
+   <tr>
+    <td class="fw-bold">validators[].last_bonding_height</td>
+    <td> uint32</td>
+    <td>
+  The height at which the validator last bonded.
+    </td>
+  </tr>
+   <tr>
+    <td class="fw-bold">validators[].last_sortition_height</td>
+    <td> uint32</td>
+    <td>
+  The height at which the validator last participated in sortition.
+    </td>
+  </tr>
+   <tr>
+    <td class="fw-bold">validators[].unbonding_height</td>
+    <td> uint32</td>
+    <td>
+  The height at which the validator will unbond.
+    </td>
+  </tr>
+   <tr>
+    <td class="fw-bold">validators[].address</td>
+    <td> string</td>
+    <td>
+  The address of the validator.
+    </td>
+  </tr>
+   <tr>
+    <td class="fw-bold">validators[].availability_score</td>
+    <td> double</td>
+    <td>
+  The availability score of the validator.
+    </td>
+  </tr>
+   <tr>
+    <td class="fw-bold">validators[].protocol_version</td>
+    <td> int32</td>
+    <td>
+  The protocol version of the validator.
+    </td>
+  </tr>
+   <tr>
+    <td class="fw-bold">validators[].is_delegated</td>
+    <td> bool</td>
+    <td>
+  Whether the validator is delegated.
+    </td>
+  </tr>
+   <tr>
+    <td class="fw-bold">validators[].delegate_owner</td>
+    <td> string</td>
+    <td>
+  The address of the stake owner of the validator.
+    </td>
+  </tr>
+   <tr>
+    <td class="fw-bold">validators[].delegate_share</td>
+    <td> int64</td>
+    <td>
+  The share of the stake owner of the validator.
+    </td>
+  </tr>
+   <tr>
+    <td class="fw-bold">validators[].delegate_expiry</td>
+    <td> uint32</td>
+    <td>
+  The expiry of the stake owner of the validator.
+    </td>
+  </tr>
+   <tr>
+    <td class="fw-bold">protocol_versions</td>
     <td> map&lt;int32, double&gt;</td>
     <td>
   Map of protocol versions and their percentages in the committee.
@@ -2232,6 +2332,34 @@ Request Message has no fields.
   The protocol version of the validator.
     </td>
   </tr>
+   <tr>
+    <td class="fw-bold">validator.is_delegated</td>
+    <td> bool</td>
+    <td>
+  Whether the validator is delegated.
+    </td>
+  </tr>
+   <tr>
+    <td class="fw-bold">validator.delegate_owner</td>
+    <td> string</td>
+    <td>
+  The address of the stake owner of the validator.
+    </td>
+  </tr>
+   <tr>
+    <td class="fw-bold">validator.delegate_share</td>
+    <td> int64</td>
+    <td>
+  The share of the stake owner of the validator.
+    </td>
+  </tr>
+   <tr>
+    <td class="fw-bold">validator.delegate_expiry</td>
+    <td> uint32</td>
+    <td>
+  The expiry of the stake owner of the validator.
+    </td>
+  </tr>
    </tbody>
 </table>
 
@@ -2343,6 +2471,34 @@ Request Message has no fields.
     <td> int32</td>
     <td>
   The protocol version of the validator.
+    </td>
+  </tr>
+   <tr>
+    <td class="fw-bold">validator.is_delegated</td>
+    <td> bool</td>
+    <td>
+  Whether the validator is delegated.
+    </td>
+  </tr>
+   <tr>
+    <td class="fw-bold">validator.delegate_owner</td>
+    <td> string</td>
+    <td>
+  The address of the stake owner of the validator.
+    </td>
+  </tr>
+   <tr>
+    <td class="fw-bold">validator.delegate_share</td>
+    <td> int64</td>
+    <td>
+  The share of the stake owner of the validator.
+    </td>
+  </tr>
+   <tr>
+    <td class="fw-bold">validator.delegate_expiry</td>
+    <td> uint32</td>
+    <td>
+  The expiry of the stake owner of the validator.
     </td>
   </tr>
    </tbody>
@@ -2695,20 +2851,7 @@ A value of zero means the transaction is unconfirmed and may still in the transa
 <p>GetNetworkInfo retrieves information about the overall network.</p>
 
 <h4>GetNetworkInfoRequest <span class="badge text-bg-info fs-6 align-top">Request</span></h4>
-<table class="table table-bordered table-responsive table-sm">
-  <thead>
-    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
-  </thead>
-  <tbody class="table-group-divider">
-  <tr>
-    <td class="fw-bold">only_connected</td>
-    <td> bool</td>
-    <td>
-  If true, returns only peers that are currently connected.
-    </td>
-  </tr>
-  </tbody>
-</table>
+Request Message has no fields.
 
 <h4>GetNetworkInfoResponse <span class="badge text-bg-warning fs-6 align-top">Response</span></h4>
 <table class="table table-bordered table-responsive table-sm">
@@ -2720,7 +2863,7 @@ A value of zero means the transaction is unconfirmed and may still in the transa
     <td class="fw-bold">network_name</td>
     <td> string</td>
     <td>
-  Name of the network.
+  Name of the P2P network.
     </td>
   </tr>
    <tr>
@@ -2728,174 +2871,6 @@ A value of zero means the transaction is unconfirmed and may still in the transa
     <td> uint32</td>
     <td>
   Number of connected peers.
-    </td>
-  </tr>
-   <tr>
-    <td class="fw-bold">connected_peers</td>
-    <td>repeated PeerInfo</td>
-    <td>
-  List of connected peers.
-    </td>
-  </tr>
-   <tr>
-    <td class="fw-bold">connected_peers[].status</td>
-    <td> int32</td>
-    <td>
-  Current status of the peer (e.g., connected, disconnected).
-    </td>
-  </tr>
-   <tr>
-    <td class="fw-bold">connected_peers[].moniker</td>
-    <td> string</td>
-    <td>
-  Moniker or Human-Readable name of the peer.
-    </td>
-  </tr>
-   <tr>
-    <td class="fw-bold">connected_peers[].agent</td>
-    <td> string</td>
-    <td>
-  Version and agent details of the peer.
-    </td>
-  </tr>
-   <tr>
-    <td class="fw-bold">connected_peers[].peer_id</td>
-    <td> string</td>
-    <td>
-  Peer ID of the peer in P2P network.
-    </td>
-  </tr>
-   <tr>
-    <td class="fw-bold">connected_peers[].consensus_keys</td>
-    <td>repeated string</td>
-    <td>
-  List of consensus keys used by the peer.
-    </td>
-  </tr>
-   <tr>
-    <td class="fw-bold">connected_peers[].consensus_addresses</td>
-    <td>repeated string</td>
-    <td>
-  List of consensus addresses used by the peer.
-    </td>
-  </tr>
-   <tr>
-    <td class="fw-bold">connected_peers[].services</td>
-    <td> uint32</td>
-    <td>
-  Bitfield representing the services provided by the peer.
-    </td>
-  </tr>
-   <tr>
-    <td class="fw-bold">connected_peers[].last_block_hash</td>
-    <td> string</td>
-    <td>
-  Hash of the last block the peer knows.
-    </td>
-  </tr>
-   <tr>
-    <td class="fw-bold">connected_peers[].height</td>
-    <td> uint32</td>
-    <td>
-  Blockchain height of the peer.
-    </td>
-  </tr>
-   <tr>
-    <td class="fw-bold">connected_peers[].last_sent</td>
-    <td> int64</td>
-    <td>
-  Unix timestamp of the last bundle sent to the peer (UTC).
-    </td>
-  </tr>
-   <tr>
-    <td class="fw-bold">connected_peers[].last_received</td>
-    <td> int64</td>
-    <td>
-  Unix timestamp of the last bundle received from the peer (UTC).
-    </td>
-  </tr>
-   <tr>
-    <td class="fw-bold">connected_peers[].address</td>
-    <td> string</td>
-    <td>
-  Network address of the peer.
-    </td>
-  </tr>
-   <tr>
-    <td class="fw-bold">connected_peers[].direction</td>
-    <td> Direction</td>
-    <td>
-  (Enum)Connection direction (e.g., inbound, outbound).
-      <br>Available values:<ul>
-      <li>DIRECTION_UNKNOWN = 0 (Unknown direction (default value).)</li>
-      <li>DIRECTION_INBOUND = 1 (Inbound connection - peer connected to us.)</li>
-      <li>DIRECTION_OUTBOUND = 2 (Outbound connection - we connected to peer.)</li>
-      </ul>
-    </td>
-  </tr>
-   <tr>
-    <td class="fw-bold">connected_peers[].protocols</td>
-    <td>repeated string</td>
-    <td>
-  List of protocols supported by the peer.
-    </td>
-  </tr>
-   <tr>
-    <td class="fw-bold">connected_peers[].total_sessions</td>
-    <td> int32</td>
-    <td>
-  Total download sessions with the peer.
-    </td>
-  </tr>
-   <tr>
-    <td class="fw-bold">connected_peers[].completed_sessions</td>
-    <td> int32</td>
-    <td>
-  Completed download sessions with the peer.
-    </td>
-  </tr>
-   <tr>
-    <td class="fw-bold">connected_peers[].metric_info</td>
-    <td> MetricInfo</td>
-    <td>
-  Metrics related to peer activity.
-    </td>
-  </tr>
-   <tr>
-    <td class="fw-bold">connected_peers[].metric_info.total_invalid</td>
-    <td> CounterInfo</td>
-    <td>
-  Total number of invalid bundles.
-    </td>
-  </tr><tr>
-    <td class="fw-bold">connected_peers[].metric_info.total_sent</td>
-    <td> CounterInfo</td>
-    <td>
-  Total number of bundles sent.
-    </td>
-  </tr><tr>
-    <td class="fw-bold">connected_peers[].metric_info.total_received</td>
-    <td> CounterInfo</td>
-    <td>
-  Total number of bundles received.
-    </td>
-  </tr><tr>
-    <td class="fw-bold">connected_peers[].metric_info.message_sent</td>
-    <td> map&lt;int32, CounterInfo&gt;</td>
-    <td>
-  Number of sent bundles categorized by message type.
-    </td>
-  </tr><tr>
-    <td class="fw-bold">connected_peers[].metric_info.message_received</td>
-    <td> map&lt;int32, CounterInfo&gt;</td>
-    <td>
-  Number of received bundles categorized by message type.
-    </td>
-  </tr><tr>
-    <td class="fw-bold">connected_peers[].outbound_hello_sent</td>
-    <td> bool</td>
-    <td>
-  Whether the hello message was sent from the outbound connection.
     </td>
   </tr>
    <tr>
@@ -2974,6 +2949,203 @@ A value of zero means the transaction is unconfirmed and may still in the transa
     <td> map&lt;int32, CounterInfo&gt;</td>
     <td>
   Number of received bundles categorized by message type.
+    </td>
+  </tr>
+   </tbody>
+</table>
+
+#### ListPeers <span id="pactus.Network.ListPeers" class="rpc-badge"></span>
+
+<p>ListPeers lists all peers in the network.</p>
+
+<h4>ListPeersRequest <span class="badge text-bg-info fs-6 align-top">Request</span></h4>
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">include_disconnected</td>
+    <td> bool</td>
+    <td>
+  If true, includes disconnected peers (default: connected peers only).
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<h4>ListPeersResponse <span class="badge text-bg-warning fs-6 align-top">Response</span></h4>
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">peers</td>
+    <td>repeated PeerInfo</td>
+    <td>
+  List of peers.
+    </td>
+  </tr>
+   <tr>
+    <td class="fw-bold">peers[].status</td>
+    <td> int32</td>
+    <td>
+  Current status of the peer (e.g., connected, disconnected).
+    </td>
+  </tr>
+   <tr>
+    <td class="fw-bold">peers[].moniker</td>
+    <td> string</td>
+    <td>
+  Moniker or Human-Readable name of the peer.
+    </td>
+  </tr>
+   <tr>
+    <td class="fw-bold">peers[].agent</td>
+    <td> string</td>
+    <td>
+  Version and agent details of the peer.
+    </td>
+  </tr>
+   <tr>
+    <td class="fw-bold">peers[].peer_id</td>
+    <td> string</td>
+    <td>
+  Peer ID of the peer in P2P network.
+    </td>
+  </tr>
+   <tr>
+    <td class="fw-bold">peers[].consensus_keys</td>
+    <td>repeated string</td>
+    <td>
+  List of consensus keys used by the peer.
+    </td>
+  </tr>
+   <tr>
+    <td class="fw-bold">peers[].consensus_addresses</td>
+    <td>repeated string</td>
+    <td>
+  List of consensus addresses used by the peer.
+    </td>
+  </tr>
+   <tr>
+    <td class="fw-bold">peers[].services</td>
+    <td> uint32</td>
+    <td>
+  Bitfield representing the services provided by the peer.
+    </td>
+  </tr>
+   <tr>
+    <td class="fw-bold">peers[].last_block_hash</td>
+    <td> string</td>
+    <td>
+  Hash of the last block the peer knows.
+    </td>
+  </tr>
+   <tr>
+    <td class="fw-bold">peers[].height</td>
+    <td> uint32</td>
+    <td>
+  Blockchain height of the peer.
+    </td>
+  </tr>
+   <tr>
+    <td class="fw-bold">peers[].last_sent</td>
+    <td> int64</td>
+    <td>
+  Unix timestamp of the last bundle sent to the peer (UTC).
+    </td>
+  </tr>
+   <tr>
+    <td class="fw-bold">peers[].last_received</td>
+    <td> int64</td>
+    <td>
+  Unix timestamp of the last bundle received from the peer (UTC).
+    </td>
+  </tr>
+   <tr>
+    <td class="fw-bold">peers[].address</td>
+    <td> string</td>
+    <td>
+  Network address of the peer.
+    </td>
+  </tr>
+   <tr>
+    <td class="fw-bold">peers[].direction</td>
+    <td> Direction</td>
+    <td>
+  (Enum)Connection direction (e.g., inbound, outbound).
+      <br>Available values:<ul>
+      <li>DIRECTION_UNKNOWN = 0 (Unknown direction (default value).)</li>
+      <li>DIRECTION_INBOUND = 1 (Inbound connection - peer connected to us.)</li>
+      <li>DIRECTION_OUTBOUND = 2 (Outbound connection - we connected to peer.)</li>
+      </ul>
+    </td>
+  </tr>
+   <tr>
+    <td class="fw-bold">peers[].protocols</td>
+    <td>repeated string</td>
+    <td>
+  List of protocols supported by the peer.
+    </td>
+  </tr>
+   <tr>
+    <td class="fw-bold">peers[].total_sessions</td>
+    <td> int32</td>
+    <td>
+  Total download sessions with the peer.
+    </td>
+  </tr>
+   <tr>
+    <td class="fw-bold">peers[].completed_sessions</td>
+    <td> int32</td>
+    <td>
+  Completed download sessions with the peer.
+    </td>
+  </tr>
+   <tr>
+    <td class="fw-bold">peers[].metric_info</td>
+    <td> MetricInfo</td>
+    <td>
+  Metrics related to peer activity.
+    </td>
+  </tr>
+   <tr>
+    <td class="fw-bold">peers[].metric_info.total_invalid</td>
+    <td> CounterInfo</td>
+    <td>
+  Total number of invalid bundles.
+    </td>
+  </tr><tr>
+    <td class="fw-bold">peers[].metric_info.total_sent</td>
+    <td> CounterInfo</td>
+    <td>
+  Total number of bundles sent.
+    </td>
+  </tr><tr>
+    <td class="fw-bold">peers[].metric_info.total_received</td>
+    <td> CounterInfo</td>
+    <td>
+  Total number of bundles received.
+    </td>
+  </tr><tr>
+    <td class="fw-bold">peers[].metric_info.message_sent</td>
+    <td> map&lt;int32, CounterInfo&gt;</td>
+    <td>
+  Number of sent bundles categorized by message type.
+    </td>
+  </tr><tr>
+    <td class="fw-bold">peers[].metric_info.message_received</td>
+    <td> map&lt;int32, CounterInfo&gt;</td>
+    <td>
+  Number of received bundles categorized by message type.
+    </td>
+  </tr><tr>
+    <td class="fw-bold">peers[].outbound_hello_sent</td>
+    <td> bool</td>
+    <td>
+  Whether the hello message was sent from the outbound connection.
     </td>
   </tr>
    </tbody>
@@ -3124,6 +3296,13 @@ maximum number of messages to queue before dropping older ones.
     <td> uint64</td>
     <td>
   Current Unix timestamp of the node (UTC).
+    </td>
+  </tr>
+   <tr>
+    <td class="fw-bold">network_name</td>
+    <td> string</td>
+    <td>
+  Name of the P2P network.
     </td>
   </tr>
    </tbody>
@@ -3823,35 +4002,35 @@ Deprecated: Will move into utils.</p>
     </td>
   </tr>
    <tr>
-    <td class="fw-bold">address_info</td>
+    <td class="fw-bold">addr</td>
     <td> AddressInfo</td>
     <td>
   Detailed information about the address.
     </td>
   </tr>
    <tr>
-    <td class="fw-bold">address_info.address</td>
+    <td class="fw-bold">addr.address</td>
     <td> string</td>
     <td>
   The address string.
     </td>
   </tr>
    <tr>
-    <td class="fw-bold">address_info.public_key</td>
+    <td class="fw-bold">addr.public_key</td>
     <td> string</td>
     <td>
   The public key associated with the address.
     </td>
   </tr>
    <tr>
-    <td class="fw-bold">address_info.label</td>
+    <td class="fw-bold">addr.label</td>
     <td> string</td>
     <td>
   A human-readable label associated with the address.
     </td>
   </tr>
    <tr>
-    <td class="fw-bold">address_info.path</td>
+    <td class="fw-bold">addr.path</td>
     <td> string</td>
     <td>
   The Hierarchical Deterministic (HD) path of the address within the wallet.
@@ -3994,35 +4173,35 @@ Note: Generating a new Ed25519 address requires the wallet password.)</li>
     </td>
   </tr>
    <tr>
-    <td class="fw-bold">address_info</td>
+    <td class="fw-bold">addr</td>
     <td> AddressInfo</td>
     <td>
   Detailed information about the new address.
     </td>
   </tr>
    <tr>
-    <td class="fw-bold">address_info.address</td>
+    <td class="fw-bold">addr.address</td>
     <td> string</td>
     <td>
   The address string.
     </td>
   </tr>
    <tr>
-    <td class="fw-bold">address_info.public_key</td>
+    <td class="fw-bold">addr.public_key</td>
     <td> string</td>
     <td>
   The public key associated with the address.
     </td>
   </tr>
    <tr>
-    <td class="fw-bold">address_info.label</td>
+    <td class="fw-bold">addr.label</td>
     <td> string</td>
     <td>
   A human-readable label associated with the address.
     </td>
   </tr>
    <tr>
-    <td class="fw-bold">address_info.path</td>
+    <td class="fw-bold">addr.path</td>
     <td> string</td>
     <td>
   The Hierarchical Deterministic (HD) path of the address within the wallet.
@@ -4080,35 +4259,35 @@ Note: Generating a new Ed25519 address requires the wallet password.)</li>
     </td>
   </tr>
    <tr>
-    <td class="fw-bold">data</td>
+    <td class="fw-bold">addrs</td>
     <td>repeated AddressInfo</td>
     <td>
   List of all addresses in the wallet with their details.
     </td>
   </tr>
    <tr>
-    <td class="fw-bold">data[].address</td>
+    <td class="fw-bold">addrs[].address</td>
     <td> string</td>
     <td>
   The address string.
     </td>
   </tr>
    <tr>
-    <td class="fw-bold">data[].public_key</td>
+    <td class="fw-bold">addrs[].public_key</td>
     <td> string</td>
     <td>
   The public key associated with the address.
     </td>
   </tr>
    <tr>
-    <td class="fw-bold">data[].label</td>
+    <td class="fw-bold">addrs[].label</td>
     <td> string</td>
     <td>
   A human-readable label associated with the address.
     </td>
   </tr>
    <tr>
-    <td class="fw-bold">data[].path</td>
+    <td class="fw-bold">addrs[].path</td>
     <td> string</td>
     <td>
   The Hierarchical Deterministic (HD) path of the address within the wallet.
@@ -4304,51 +4483,89 @@ Defaults to 0 if not set.
   </tr>
    <tr>
     <td class="fw-bold">txs</td>
-    <td>repeated TransactionInfo</td>
+    <td>repeated WalletTransactionInfo</td>
     <td>
   List of transactions for the wallet, filtered by the specified address if provided.
     </td>
   </tr>
    <tr>
-    <td class="fw-bold">txs[].id</td>
+    <td class="fw-bold">txs[].no</td>
+    <td> int64</td>
+    <td>
+  A sequence number for the transaction in the wallet.
+    </td>
+  </tr>
+   <tr>
+    <td class="fw-bold">txs[].tx_id</td>
     <td> string</td>
     <td>
   The unique ID of the transaction.
     </td>
   </tr>
    <tr>
-    <td class="fw-bold">txs[].data</td>
+    <td class="fw-bold">txs[].sender</td>
     <td> string</td>
     <td>
-  The raw transaction data in hexadecimal format.
+  The sender's address.
     </td>
   </tr>
    <tr>
-    <td class="fw-bold">txs[].version</td>
-    <td> int32</td>
+    <td class="fw-bold">txs[].receiver</td>
+    <td> string</td>
     <td>
-  The version of the transaction.
+  The receiver's address.
     </td>
   </tr>
    <tr>
-    <td class="fw-bold">txs[].lock_time</td>
-    <td> uint32</td>
+    <td class="fw-bold">txs[].direction</td>
+    <td> TxDirection</td>
     <td>
-  The lock time for the transaction.
+  (Enum)The direction of the transaction relative to the wallet.
+      <br>Available values:<ul>
+      <li>TX_DIRECTION_ANY = 0 (include both incoming and outgoing transactions.)</li>
+      <li>TX_DIRECTION_INCOMING = 1 (Include only incoming transactions where the wallet receives funds.)</li>
+      <li>TX_DIRECTION_OUTGOING = 2 (Include only outgoing transactions where the wallet sends funds.)</li>
+      </ul>
     </td>
   </tr>
    <tr>
-    <td class="fw-bold">txs[].value</td>
+    <td class="fw-bold">txs[].amount</td>
     <td> int64</td>
     <td>
-  The value of the transaction in NanoPAC.
+  The amount involved in the transaction in NanoPAC.
     </td>
   </tr>
    <tr>
     <td class="fw-bold">txs[].fee</td>
     <td> int64</td>
     <td>
-  The fee for the transaction in NanoPAC.
+  The transaction fee in NanoPAC.
+    </td>
+  </tr>
+   <tr>
+    <td class="fw-bold">txs[].memo</td>
+    <td> string</td>
+    <td>
+  A memo string for the transaction.
+    </td>
+  </tr>
+   <tr>
+    <td class="fw-bold">txs[].status</td>
+    <td> TransactionStatus</td>
+    <td>
+  (Enum)The current status of the transaction.
+      <br>Available values:<ul>
+      <li>TRANSACTION_STATUS_PENDING = 0 (Pending status for transactions in the mempool.)</li>
+      <li>TRANSACTION_STATUS_CONFIRMED = 1 (Confirmed status for transactions included in a block.)</li>
+      <li>TRANSACTION_STATUS_FAILED = -1 (Failed status for transactions that were not successful.)</li>
+      </ul>
+    </td>
+  </tr>
+   <tr>
+    <td class="fw-bold">txs[].block_height</td>
+    <td> uint32</td>
+    <td>
+  The block height containing the transaction.
     </td>
   </tr>
    <tr>
@@ -4368,179 +4585,167 @@ Defaults to 0 if not set.
     </td>
   </tr>
    <tr>
-    <td class="fw-bold">txs[].transfer</td>
-    <td> PayloadTransfer</td>
+    <td class="fw-bold">txs[].data</td>
+    <td> bytes</td>
     <td>
-  (OneOf)Transfer transaction payload.
+  The raw transaction data.
     </td>
   </tr>
    <tr>
-    <td class="fw-bold">txs[].transfer.sender</td>
+    <td class="fw-bold">txs[].comment</td>
     <td> string</td>
     <td>
-  The sender's address.
+  A comment associated with the transaction in the wallet.
     </td>
-  </tr><tr>
-    <td class="fw-bold">txs[].transfer.receiver</td>
-    <td> string</td>
-    <td>
-  The receiver's address.
-    </td>
-  </tr><tr>
-    <td class="fw-bold">txs[].transfer.amount</td>
+  </tr>
+   <tr>
+    <td class="fw-bold">txs[].created_at</td>
     <td> int64</td>
     <td>
-  The amount to be transferred in NanoPAC.
-    </td>
-  </tr><tr>
-    <td class="fw-bold">txs[].bond</td>
-    <td> PayloadBond</td>
-    <td>
-  (OneOf)Bond transaction payload.
+  Unix timestamp of when the transaction was created.
     </td>
   </tr>
    <tr>
-    <td class="fw-bold">txs[].bond.sender</td>
-    <td> string</td>
-    <td>
-  The sender's address.
-    </td>
-  </tr><tr>
-    <td class="fw-bold">txs[].bond.receiver</td>
-    <td> string</td>
-    <td>
-  The receiver's address.
-    </td>
-  </tr><tr>
-    <td class="fw-bold">txs[].bond.stake</td>
+    <td class="fw-bold">txs[].updated_at</td>
     <td> int64</td>
     <td>
-  The stake amount in NanoPAC.
-    </td>
-  </tr><tr>
-    <td class="fw-bold">txs[].bond.public_key</td>
-    <td> string</td>
-    <td>
-  The public key of the validator.
-    </td>
-  </tr><tr>
-    <td class="fw-bold">txs[].sortition</td>
-    <td> PayloadSortition</td>
-    <td>
-  (OneOf)Sortition transaction payload.
+  Unix timestamp of when the transaction was last updated.
     </td>
   </tr>
-   <tr>
-    <td class="fw-bold">txs[].sortition.address</td>
+   </tbody>
+</table>
+
+#### SetDefaultFee <span id="pactus.Wallet.SetDefaultFee" class="rpc-badge"></span>
+
+<p>SetDefaultFee sets the default fee for the wallet.</p>
+
+<h4>SetDefaultFeeRequest <span class="badge text-bg-info fs-6 align-top">Request</span></h4>
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">wallet_name</td>
     <td> string</td>
     <td>
-  The validator address associated with the sortition proof.
-    </td>
-  </tr><tr>
-    <td class="fw-bold">txs[].sortition.proof</td>
-    <td> string</td>
-    <td>
-  The proof for the sortition.
-    </td>
-  </tr><tr>
-    <td class="fw-bold">txs[].unbond</td>
-    <td> PayloadUnbond</td>
-    <td>
-  (OneOf)Unbond transaction payload.
+  The name of the wallet to set the default fee.
     </td>
   </tr>
-   <tr>
-    <td class="fw-bold">txs[].unbond.validator</td>
-    <td> string</td>
-    <td>
-  The address of the validator to unbond from.
-    </td>
-  </tr><tr>
-    <td class="fw-bold">txs[].withdraw</td>
-    <td> PayloadWithdraw</td>
-    <td>
-  (OneOf)Withdraw transaction payload.
-    </td>
-  </tr>
-   <tr>
-    <td class="fw-bold">txs[].withdraw.validator_address</td>
-    <td> string</td>
-    <td>
-  The address of the validator to withdraw from.
-    </td>
-  </tr><tr>
-    <td class="fw-bold">txs[].withdraw.account_address</td>
-    <td> string</td>
-    <td>
-  The address of the account to withdraw to.
-    </td>
-  </tr><tr>
-    <td class="fw-bold">txs[].withdraw.amount</td>
+  <tr>
+    <td class="fw-bold">amount</td>
     <td> int64</td>
     <td>
-  The withdrawal amount in NanoPAC.
-    </td>
-  </tr><tr>
-    <td class="fw-bold">txs[].batch_transfer</td>
-    <td> PayloadBatchTransfer</td>
-    <td>
-  (OneOf)Batch Transfer transaction payload.
+  The default fee amount in NanoPAC.
     </td>
   </tr>
-   <tr>
-    <td class="fw-bold">txs[].batch_transfer.sender</td>
+  </tbody>
+</table>
+
+<h4>SetDefaultFeeResponse <span class="badge text-bg-warning fs-6 align-top">Response</span></h4>
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">wallet_name</td>
     <td> string</td>
     <td>
-  The sender's address.
+  The name of the wallet where the default fee was updated.
     </td>
-  </tr><tr>
-    <td class="fw-bold">txs[].batch_transfer.recipients</td>
-    <td>repeated Recipient</td>
-    <td>
-  The list of recipients with their amounts.
-    </td>
-  </tr><tr>
-    <td class="fw-bold">txs[].memo</td>
+  </tr>
+   </tbody>
+</table>
+
+#### GetMnemonic <span id="pactus.Wallet.GetMnemonic" class="rpc-badge"></span>
+
+<p>GetMnemonic returns the mnemonic (seed phrase) for the wallet.</p>
+
+<h4>GetMnemonicRequest <span class="badge text-bg-info fs-6 align-top">Request</span></h4>
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">wallet_name</td>
     <td> string</td>
     <td>
-  A memo string for the transaction.
+  The name of the wallet to get the mnemonic.
     </td>
   </tr>
-   <tr>
-    <td class="fw-bold">txs[].public_key</td>
+  <tr>
+    <td class="fw-bold">password</td>
     <td> string</td>
     <td>
-  The public key associated with the transaction.
+  Wallet password.
     </td>
   </tr>
-   <tr>
-    <td class="fw-bold">txs[].signature</td>
+  </tbody>
+</table>
+
+<h4>GetMnemonicResponse <span class="badge text-bg-warning fs-6 align-top">Response</span></h4>
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">mnemonic</td>
     <td> string</td>
     <td>
-  The signature for the transaction.
+  The mnemonic (seed phrase).
     </td>
   </tr>
-   <tr>
-    <td class="fw-bold">txs[].block_height</td>
-    <td> uint32</td>
+   </tbody>
+</table>
+
+#### GetPrivateKey <span id="pactus.Wallet.GetPrivateKey" class="rpc-badge"></span>
+
+<p>GetPrivateKey returns the private key for a given address.</p>
+
+<h4>GetPrivateKeyRequest <span class="badge text-bg-info fs-6 align-top">Request</span></h4>
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">wallet_name</td>
+    <td> string</td>
     <td>
-  The block height containing the transaction.
-A value of zero means the transaction is unconfirmed and may still in the transaction pool.
+  The name of the wallet containing the address.
     </td>
   </tr>
-   <tr>
-    <td class="fw-bold">txs[].confirmed</td>
-    <td> bool</td>
+  <tr>
+    <td class="fw-bold">password</td>
+    <td> string</td>
     <td>
-  Indicates whether the transaction is confirmed.
+  Wallet password.
     </td>
   </tr>
-   <tr>
-    <td class="fw-bold">txs[].confirmations</td>
-    <td> int32</td>
+  <tr>
+    <td class="fw-bold">address</td>
+    <td> string</td>
     <td>
-  The number of blocks that have been added to the chain after this transaction was included in a block.
-A value of zero means the transaction is unconfirmed and may still in the transaction pool.
+  The address to get the private key.
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<h4>GetPrivateKeyResponse <span class="badge text-bg-warning fs-6 align-top">Response</span></h4>
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">private_key</td>
+    <td> string</td>
+    <td>
+  The private key in hexadecimal format.
     </td>
   </tr>
    </tbody>
