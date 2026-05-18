@@ -407,3 +407,19 @@ pactus-wallet.exe send withdraw <FROM> <TO> <AMOUNT>
 
   {{< /os_tab >}}
 {{< /os_tabs >}}
+
+## FAQ
+
+### Database is locked (SQLITE_BUSY) Error
+
+This error happens when the wallet database is opened by more than one process at the same time.
+By default, Pactus node starts the wallet in locked mode, which prevents external tools
+(like pactus-wallet) from accessing the wallet.
+This avoids conflicts, but it can cause this error if another tool tries to connect.
+
+To allow external access, change this [config](../get-started/configuration.md) and restart the node:
+
+```toml
+[wallet]
+  lock_mode = false
+```
