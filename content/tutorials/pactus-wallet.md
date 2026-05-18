@@ -408,7 +408,6 @@ pactus-wallet.exe send withdraw <FROM> <TO> <AMOUNT>
   {{< /os_tab >}}
 {{< /os_tabs >}}
 
-
 ## FAQ
 
 ### Database is locked (SQLITE_BUSY) Error
