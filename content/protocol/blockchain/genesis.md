@@ -20,14 +20,14 @@ the blockchain is now secured by regular validators who have staked coins to par
 
 The four bootstrap validators that initiated the Pactus blockchain are:
 
-- **Bootstrap 1**: [pc1p378jgjtlse3ae528p7zashmlmnwtu4dres9vtw](https://pacviewer.com/address/pc1p378jgjtlse3ae528p7zashmlmnwtu4dres9vtw)
-- **Bootstrap 2**: [pc1plq8uyn6en0gj4k8qnh96tnzqjv4cgu49dxtly7](https://pacviewer.com/address/pc1plq8uyn6en0gj4k8qnh96tnzqjv4cgu49dxtly7)
-- **Bootstrap 3**: [pc1pm93ykyvcm6kxewn958kvevkxgkr86j0t6n0aa4](https://pacviewer.com/address/pc1pm93ykyvcm6kxewn958kvevkxgkr86j0t6n0aa4)
-- **Bootstrap 4**: [pc1pp3xtmjhzhg36xv6ln9824ugy5n6nnqdzugzu3j](https://pacviewer.com/address/pc1pp3xtmjhzhg36xv6ln9824ugy5n6nnqdzugzu3j)
+- **Bootstrap 1**: [pc1p378jgjtlse3ae528p7zashmlmnwtu4dres9vtw](https://pactusscan.com/address/pc1p378jgjtlse3ae528p7zashmlmnwtu4dres9vtw)
+- **Bootstrap 2**: [pc1plq8uyn6en0gj4k8qnh96tnzqjv4cgu49dxtly7](https://pactusscan.com/address/pc1plq8uyn6en0gj4k8qnh96tnzqjv4cgu49dxtly7)
+- **Bootstrap 3**: [pc1pm93ykyvcm6kxewn958kvevkxgkr86j0t6n0aa4](https://pactusscan.com/address/pc1pm93ykyvcm6kxewn958kvevkxgkr86j0t6n0aa4)
+- **Bootstrap 4**: [pc1pp3xtmjhzhg36xv6ln9824ugy5n6nnqdzugzu3j](https://pactusscan.com/address/pc1pp3xtmjhzhg36xv6ln9824ugy5n6nnqdzugzu3j)
 
 ## Genesis Block
 
-The [genesis block](https://pacviewer.com/block/1) is
+The [genesis block](https://pactusscan.com/block/1) is
 the first [block](/protocol/blockchain/block/) in the Pactus blockchain,
 and it was created by the bootstrap validators.
 This block marked the beginning of the blockchain and serves as the foundation for subsequent blocks.
