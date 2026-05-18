@@ -417,7 +417,7 @@ By default, Pactus node starts the wallet in locked mode, which prevents externa
 (like pactus-wallet) from accessing the wallet.
 This avoids conflicts, but it can cause this error if another tool tries to connect.
 
-To allow external access, change this [config](../get-started/configuration) and restart the node:
+To allow external access, change this [config](/get-started/configuration) and restart the node:
 
 ```toml
 [wallet]
