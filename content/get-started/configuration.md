@@ -33,7 +33,8 @@ C:\Users\<USER_NAME>\pactus\config.toml
 
 Modifying the TOML file is straightforward, but because TOML is sensitive to spaces,
 it's important to ensure the file is formatted correctly.
-Online tools like [TOML Lint](https://www.toml-lint.com/) can help check the validity of the config file.
+Online tools like
+[TOML Validator](https://codebeautify.org/toml-validator/) can help check the validity of the config file.
 
 ## Example Configuration
 
