@@ -74,6 +74,7 @@ params:
       enable: true
       # hover | always
       display: always
+      noBorderRadius: true
 
   page:
     # full (100%), wide (90rem), normal (1280px)
@@ -116,4 +117,3 @@ params:
       # date | lastmod | publishDate | title | weight
       sortBy: date
       sortOrder: desc # or "asc"
-

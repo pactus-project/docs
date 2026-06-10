@@ -65,6 +65,13 @@ input[type="password"]:focus {
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+
 .hextra-scrollbar ul  {
   overflow-x:auto;
+}
+
+/* Remove radius from code blocks */
+.hextra-code-block pre,
+.hextra-code-block code {
+  border-radius: 0 !important;
 }

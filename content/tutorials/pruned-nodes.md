@@ -1,5 +1,5 @@
 ---
-title: Prune Your Pactus Node
+title: Running a Pruned Node
 weight: 4
 ---
 
@@ -39,15 +39,21 @@ enabling more participants to run nodes and contribute to network security and d
 
 If you are running a Full Node and want to prune its data to operate in pruned mode, follow these steps:
 
-1. **Stop the Running Node**
-   Shut down your currently running Pactus full node completely.
+{{% steps %}}
 
-2. **Open a Terminal or Command Prompt**
+#### Step 1
+
+Stop your node if it's running.
+
+#### Step 2
+
+Open a Terminal or Command Prompt:
    - On **macOS/Linux**: Open the **Terminal**.
    - On **Windows**: Use **Command Prompt** or **PowerShell**.
 
-3. **Prune the Node Data**
-   Run the following command, replacing `<PATH-TO-WORKING-DIR>` with the actual path to your working directory:
+#### Step 3
+
+Run the following command, replacing `<PATH-TO-WORKING-DIR>` with the actual path to your working directory:
 
 {{< os_tabs items="unix,windows" >}}
   {{< os_tab >}}
@@ -66,11 +72,88 @@ pactus-daemon.exe prune -w <PATH-TO-WORKING-DIR>
   {{< /os_tab >}}
 {{< /os_tabs >}}
 
-4. **Restart the Node**
-   Start your Pactus node again to resume normal operation.
+#### Step 4
+
+Start your Pactus node again to resume normal operation.
+
+{{% /steps %}}
 
 This process removes all blocks and transactions older than your configured `store.retention_days`
 (default: 10 days). You can adjust it in your node
 [config](/get-started/configuration/) if you want to keep more
 or less history.
 Pruning is especially useful for users with limited storage capacity.
+
+## Importing a Blockchain Snapshot (Pruned Mode)
+
+To get your node up and running quickly, you can import a recent pruned snapshot of the blockchain.
+This is much faster than syncing from the genesis block.
+
+{{< callout type="warning" >}}
+   Before importing, make sure your node is **completely stopped**.
+   Importing while the node is running can corrupt your data.
+{{< /callout >}}
+
+### Option 1: Automatic Import (Recommended)
+
+The `import` command automates the process.
+
+{{% steps %}}
+
+#### Step 1
+
+Stop your node if it's running.
+
+#### Step 2
+
+Run the import command:
+{{< os_tabs items="unix,windows" >}}
+{{< os_tab >}}
+
+```shell
+./pactus-daemon import --working-dir=<PATH-TO-WORKING-DIR>
+```
+
+{{< /os_tab >}}
+{{< os_tab >}}
+
+```shell
+./pactus-daemon.exe import --working-dir=<PATH-TO-WORKING-DIR>
+```
+
+{{< /os_tab >}}
+{{< /os_tabs >}}
+
+*(Replace `<PATH-TO-WORKING-DIR>` with your node's working directory).*
+
+The daemon will automatically download and import the latest official snapshot from https://snapshot.pactus.org/.
+
+#### Step 3
+
+Start your node normally after the import finishes.
+
+{{% /steps %}}
+
+### Option 2: Manual Import
+
+Use this method if you want to choose a specific snapshot or download it manually.
+
+{{% steps %}}
+
+#### Step 1
+
+Stop your node if it's running.
+
+#### Step 2
+
+Download a snapshot from https://snapshot.pactus.org/. Each snapshot shows its creation date, file size, and a SHA256 checksum for verification.
+
+#### Step 3
+
+Extract the archive directly into your node's working directory. The extracted contents should go into the `data` folder inside the working directory (e.g., `~/pactus/data/`).
+
+#### Step 4
+
+Start your node normally. It will resume operation from the imported state.
+
+{{% /steps %}}
