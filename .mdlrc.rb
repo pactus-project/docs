@@ -4,7 +4,7 @@
 all
 
 # Line length
-rule 'MD013', :line_length => 124, :ignore_code_blocks => false, :tables => false
+rule 'MD013', :line_length => 160, :ignore_code_blocks => false, :tables => false, :treat_links_as_single_words => true
 
 # Trailing punctuation in header
 rule 'MD026', :punctuation => '.,;:'
@@ -23,3 +23,6 @@ exclude_rule 'MD033'
 
 # First line in file should be a top level header
 exclude_rule 'MD041'
+
+exclude_rule 'MD024'
+exclude_rule 'MD029'

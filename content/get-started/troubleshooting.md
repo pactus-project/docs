@@ -20,6 +20,7 @@ Therefore, make sure to check that your system or server clock is fully synchron
 {{< os_tab >}}
 
 1. Run `cmd` with run as administrator.
+
 2. Check if NTP is enabled
 
 ```shell

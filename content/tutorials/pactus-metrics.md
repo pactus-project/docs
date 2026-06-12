@@ -136,7 +136,9 @@ Congratulations! Grafana and Prometheus are now up and accessible at ports `3000
 
 ## Import Pactus Metrics to Grafana Dashboard
 
-As Pactus uses `libp2p` for its peer-to-peer network, we should import `libp2p` metrics that you can find [here](https://github.com/libp2p/go-libp2p/tree/master/dashboards).
+As Pactus uses `libp2p` for its peer-to-peer network,
+we should import `libp2p` metrics that you can find
+[here](https://github.com/libp2p/go-libp2p/tree/master/dashboards).
 Download one of the metrics config and then Import it into `Grafana Dashboard`.
 
 Congratulations! You did it. Now, you can perform the same operations for other configurations.

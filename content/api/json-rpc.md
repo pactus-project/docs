@@ -113,6 +113,10 @@ curl --location 'http://localhost:8545/' \
           <a href="#pactus.transaction.decode_raw_transaction">
           <span class="rpc-badge"></span>pactus.transaction.decode_raw_transaction</a>
         </li>
+        <li>
+          <a href="#pactus.transaction.check_transaction">
+          <span class="rpc-badge"></span>pactus.transaction.check_transaction</a>
+        </li>
       </ul>
     </li>
     <li> Blockchain Service
@@ -472,6 +476,34 @@ curl --location 'http://localhost:8545/' \
   The public key of the validator.
     </td>
   </tr><tr>
+    <td class="fw-bold">transaction.bond.is_delegated</td>
+    <td> boolean</td>
+    <td>
+  Indicates whether the bond transaction is a delegation.
+    </td>
+  </tr><tr>
+    <td class="fw-bold">transaction.bond.delegate_owner</td>
+    <td> string</td>
+    <td>
+  The address of the delegate owner.
+Optional, but required when registering a new validator with delegation.;
+    </td>
+  </tr><tr>
+    <td class="fw-bold">transaction.bond.delegate_share</td>
+    <td> numeric</td>
+    <td>
+  The share percentage for the delegate owner.
+Optional, but required when registering a new validator with delegation.;
+Must be between 0 and 0.7 PAC in nano PAC.
+    </td>
+  </tr><tr>
+    <td class="fw-bold">transaction.bond.delegate_expiry</td>
+    <td> numeric</td>
+    <td>
+  The expiry height for the delegate relationship.
+Optional, but required when registering a new validator with delegation.;
+    </td>
+  </tr><tr>
     <td class="fw-bold">transaction.sortition</td>
     <td> object (PayloadSortition)</td>
     <td>
@@ -502,6 +534,13 @@ curl --location 'http://localhost:8545/' \
     <td> string</td>
     <td>
   The address of the validator to unbond from.
+    </td>
+  </tr><tr>
+    <td class="fw-bold">transaction.unbond.delegate_owner</td>
+    <td> string</td>
+    <td>
+  The address of the delegate owner.
+Optional, but required when the validator is a delegated validator.;
     </td>
   </tr><tr>
     <td class="fw-bold">transaction.withdraw</td>
@@ -813,7 +852,8 @@ A value of zero means the transaction is unconfirmed and may still in the transa
     <td class="fw-bold">public_key</td>
     <td> string</td>
     <td>
-  The public key of the validator. Optional, but required when registering a new validator.
+  The public key of the validator.
+Optional, but required when registering a new validator.;
     </td>
   </tr>
   <tr>
@@ -828,6 +868,31 @@ A value of zero means the transaction is unconfirmed and may still in the transa
     <td> string</td>
     <td>
   A memo string for the transaction.
+    </td>
+  </tr>
+  <tr>
+    <td class="fw-bold">delegate_owner</td>
+    <td> string</td>
+    <td>
+  The address of the delegate owner.
+Optional, but required when registering a new validator with delegation.;
+    </td>
+  </tr>
+  <tr>
+    <td class="fw-bold">delegate_share</td>
+    <td> numeric</td>
+    <td>
+  The share percentage for the delegate owner.
+Optional, but required when registering a new validator with delegation.;
+Must be between 0 and 0.7 PAC in nano PAC.
+    </td>
+  </tr>
+  <tr>
+    <td class="fw-bold">delegate_expiry</td>
+    <td> numeric</td>
+    <td>
+  The expiry height for the delegate relationship.
+Optional, but required when registering a new validator with delegation.;
     </td>
   </tr>
   </tbody>
@@ -884,6 +949,14 @@ A value of zero means the transaction is unconfirmed and may still in the transa
     <td> string</td>
     <td>
   A memo string for the transaction.
+    </td>
+  </tr>
+  <tr>
+    <td class="fw-bold">delegate_owner</td>
+    <td> string</td>
+    <td>
+  The address of the delegate owner.
+Optional, but required when the validator is a delegated validator.;
     </td>
   </tr>
   </tbody>
@@ -1205,6 +1278,34 @@ A value of zero means the transaction is unconfirmed and may still in the transa
   The public key of the validator.
     </td>
   </tr><tr>
+    <td class="fw-bold">transaction.bond.is_delegated</td>
+    <td> boolean</td>
+    <td>
+  Indicates whether the bond transaction is a delegation.
+    </td>
+  </tr><tr>
+    <td class="fw-bold">transaction.bond.delegate_owner</td>
+    <td> string</td>
+    <td>
+  The address of the delegate owner.
+Optional, but required when registering a new validator with delegation.;
+    </td>
+  </tr><tr>
+    <td class="fw-bold">transaction.bond.delegate_share</td>
+    <td> numeric</td>
+    <td>
+  The share percentage for the delegate owner.
+Optional, but required when registering a new validator with delegation.;
+Must be between 0 and 0.7 PAC in nano PAC.
+    </td>
+  </tr><tr>
+    <td class="fw-bold">transaction.bond.delegate_expiry</td>
+    <td> numeric</td>
+    <td>
+  The expiry height for the delegate relationship.
+Optional, but required when registering a new validator with delegation.;
+    </td>
+  </tr><tr>
     <td class="fw-bold">transaction.sortition</td>
     <td> object (PayloadSortition)</td>
     <td>
@@ -1235,6 +1336,13 @@ A value of zero means the transaction is unconfirmed and may still in the transa
     <td> string</td>
     <td>
   The address of the validator to unbond from.
+    </td>
+  </tr><tr>
+    <td class="fw-bold">transaction.unbond.delegate_owner</td>
+    <td> string</td>
+    <td>
+  The address of the delegate owner.
+Optional, but required when the validator is a delegated validator.;
     </td>
   </tr><tr>
     <td class="fw-bold">transaction.withdraw</td>
@@ -1322,6 +1430,49 @@ A value of zero means the transaction is unconfirmed and may still in the transa
     <td>
   The number of blocks that have been added to the chain after this transaction was included in a block.
 A value of zero means the transaction is unconfirmed and may still in the transaction pool.
+    </td>
+  </tr>
+   </tbody>
+</table>
+
+#### pactus.transaction.check_transaction <span id="pactus.transaction.check_transaction" class="rpc-badge"></span>
+
+<p>CheckTransaction checks if the transaction is valid and can be included in the blockchain.</p>
+
+<h4>Parameters</h4>
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+    <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tr>
+    <td class="fw-bold">raw_transaction</td>
+    <td> string</td>
+    <td>
+  The raw transaction data to be checked.
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<h4>Result</h4>
+<table class="table table-bordered table-responsive table-sm">
+  <thead>
+  <tr><td>Field</td><td>Type</td><td>Description</td></tr>
+  </thead>
+  <tbody class="table-group-divider"><tr>
+    <td class="fw-bold">is_valid</td>
+    <td> boolean</td>
+    <td>
+  Indicates whether the transaction is valid.
+    </td>
+  </tr>
+   <tr>
+    <td class="fw-bold">error_message</td>
+    <td> string</td>
+    <td>
+  An error message if the transaction is invalid.
+Empty if the transaction is valid.
     </td>
   </tr>
    </tbody>
@@ -1603,6 +1754,34 @@ BLOCK_VERBOSITY_TRANSACTIONS.
   The public key of the validator.
     </td>
   </tr><tr>
+    <td class="fw-bold">txs[].bond.is_delegated</td>
+    <td> boolean</td>
+    <td>
+  Indicates whether the bond transaction is a delegation.
+    </td>
+  </tr><tr>
+    <td class="fw-bold">txs[].bond.delegate_owner</td>
+    <td> string</td>
+    <td>
+  The address of the delegate owner.
+Optional, but required when registering a new validator with delegation.;
+    </td>
+  </tr><tr>
+    <td class="fw-bold">txs[].bond.delegate_share</td>
+    <td> numeric</td>
+    <td>
+  The share percentage for the delegate owner.
+Optional, but required when registering a new validator with delegation.;
+Must be between 0 and 0.7 PAC in nano PAC.
+    </td>
+  </tr><tr>
+    <td class="fw-bold">txs[].bond.delegate_expiry</td>
+    <td> numeric</td>
+    <td>
+  The expiry height for the delegate relationship.
+Optional, but required when registering a new validator with delegation.;
+    </td>
+  </tr><tr>
     <td class="fw-bold">txs[].sortition</td>
     <td> object (PayloadSortition)</td>
     <td>
@@ -1633,6 +1812,13 @@ BLOCK_VERBOSITY_TRANSACTIONS.
     <td> string</td>
     <td>
   The address of the validator to unbond from.
+    </td>
+  </tr><tr>
+    <td class="fw-bold">txs[].unbond.delegate_owner</td>
+    <td> string</td>
+    <td>
+  The address of the delegate owner.
+Optional, but required when the validator is a delegated validator.;
     </td>
   </tr><tr>
     <td class="fw-bold">txs[].withdraw</td>
@@ -1890,6 +2076,13 @@ of its running validators is a member of the current committee.
     <td> numeric</td>
     <td>
   The number of validators in the current committee.
+    </td>
+  </tr>
+   <tr>
+    <td class="fw-bold">average_score</td>
+    <td> numeric</td>
+    <td>
+  Average availability score of validators with stake, in percentage (0-100).
     </td>
   </tr>
    </tbody>
@@ -2749,6 +2942,34 @@ Parameters has no fields.
   The public key of the validator.
     </td>
   </tr><tr>
+    <td class="fw-bold">txs[].bond.is_delegated</td>
+    <td> boolean</td>
+    <td>
+  Indicates whether the bond transaction is a delegation.
+    </td>
+  </tr><tr>
+    <td class="fw-bold">txs[].bond.delegate_owner</td>
+    <td> string</td>
+    <td>
+  The address of the delegate owner.
+Optional, but required when registering a new validator with delegation.;
+    </td>
+  </tr><tr>
+    <td class="fw-bold">txs[].bond.delegate_share</td>
+    <td> numeric</td>
+    <td>
+  The share percentage for the delegate owner.
+Optional, but required when registering a new validator with delegation.;
+Must be between 0 and 0.7 PAC in nano PAC.
+    </td>
+  </tr><tr>
+    <td class="fw-bold">txs[].bond.delegate_expiry</td>
+    <td> numeric</td>
+    <td>
+  The expiry height for the delegate relationship.
+Optional, but required when registering a new validator with delegation.;
+    </td>
+  </tr><tr>
     <td class="fw-bold">txs[].sortition</td>
     <td> object (PayloadSortition)</td>
     <td>
@@ -2779,6 +3000,13 @@ Parameters has no fields.
     <td> string</td>
     <td>
   The address of the validator to unbond from.
+    </td>
+  </tr><tr>
+    <td class="fw-bold">txs[].unbond.delegate_owner</td>
+    <td> string</td>
+    <td>
+  The address of the delegate owner.
+Optional, but required when the validator is a delegated validator.;
     </td>
   </tr><tr>
     <td class="fw-bold">txs[].withdraw</td>
@@ -2984,7 +3212,7 @@ Parameters has no fields.
 
 #### pactus.network.list_peers <span id="pactus.network.list_peers" class="rpc-badge"></span>
 
-<p>ListPeers lists all peers in the network.</p>
+<p>ListPeers lists all connected peers to this node.</p>
 
 <h4>Parameters</h4>
 <table class="table table-bordered table-responsive table-sm">
@@ -4047,6 +4275,35 @@ Deprecated: Will move into utils.</p>
   The Hierarchical Deterministic (HD) path of the address within the wallet.
     </td>
   </tr>
+   <tr>
+    <td class="fw-bold">addr.address_type</td>
+    <td> numeric</td>
+    <td>
+  (Enum)The type of the address.
+      <br>Available values:<ul>
+      <li>ADDRESS_TYPE_TREASURY = 0 (Treasury address type.
+Should NOT be used to generate new addresses.)</li>
+      <li>ADDRESS_TYPE_VALIDATOR = 1 (Validator address type used for validator nodes.)</li>
+      <li>ADDRESS_TYPE_BLS_ACCOUNT = 2 (Account address type with BLS signature scheme.)</li>
+      <li>ADDRESS_TYPE_ED25519_ACCOUNT = 3 (Account address type with Ed25519 signature scheme.)</li>
+      <li>ADDRESS_TYPE_SECP_ACCOUNT = 4 (Account address type with SECP256K1 signature scheme.)</li>
+      </ul>
+    </td>
+  </tr>
+   <tr>
+    <td class="fw-bold">addr.balance</td>
+    <td> numeric</td>
+    <td>
+  The account balance in NanoPAC. For validator addresses, this field is zero.
+    </td>
+  </tr>
+   <tr>
+    <td class="fw-bold">addr.stake</td>
+    <td> numeric</td>
+    <td>
+  The validator stake in NanoPAC. For non-validator addresses, this field is zero.
+    </td>
+  </tr>
    </tbody>
 </table>
 
@@ -4144,11 +4401,11 @@ Deprecated: Will move into utils.</p>
   (Enum)The type of address to generate.
       <br>Available values:<ul>
       <li>ADDRESS_TYPE_TREASURY = 0 (Treasury address type.
-Should not be used to generate new addresses.)</li>
+Should NOT be used to generate new addresses.)</li>
       <li>ADDRESS_TYPE_VALIDATOR = 1 (Validator address type used for validator nodes.)</li>
       <li>ADDRESS_TYPE_BLS_ACCOUNT = 2 (Account address type with BLS signature scheme.)</li>
-      <li>ADDRESS_TYPE_ED25519_ACCOUNT = 3 (Account address type with Ed25519 signature scheme.
-Note: Generating a new Ed25519 address requires the wallet password.)</li>
+      <li>ADDRESS_TYPE_ED25519_ACCOUNT = 3 (Account address type with Ed25519 signature scheme.)</li>
+      <li>ADDRESS_TYPE_SECP_ACCOUNT = 4 (Account address type with SECP256K1 signature scheme.)</li>
       </ul>
     </td>
   </tr>
@@ -4216,6 +4473,35 @@ Note: Generating a new Ed25519 address requires the wallet password.)</li>
   The Hierarchical Deterministic (HD) path of the address within the wallet.
     </td>
   </tr>
+   <tr>
+    <td class="fw-bold">addr.address_type</td>
+    <td> numeric</td>
+    <td>
+  (Enum)The type of the address.
+      <br>Available values:<ul>
+      <li>ADDRESS_TYPE_TREASURY = 0 (Treasury address type.
+Should NOT be used to generate new addresses.)</li>
+      <li>ADDRESS_TYPE_VALIDATOR = 1 (Validator address type used for validator nodes.)</li>
+      <li>ADDRESS_TYPE_BLS_ACCOUNT = 2 (Account address type with BLS signature scheme.)</li>
+      <li>ADDRESS_TYPE_ED25519_ACCOUNT = 3 (Account address type with Ed25519 signature scheme.)</li>
+      <li>ADDRESS_TYPE_SECP_ACCOUNT = 4 (Account address type with SECP256K1 signature scheme.)</li>
+      </ul>
+    </td>
+  </tr>
+   <tr>
+    <td class="fw-bold">addr.balance</td>
+    <td> numeric</td>
+    <td>
+  The account balance in NanoPAC. For validator addresses, this field is zero.
+    </td>
+  </tr>
+   <tr>
+    <td class="fw-bold">addr.stake</td>
+    <td> numeric</td>
+    <td>
+  The validator stake in NanoPAC. For non-validator addresses, this field is zero.
+    </td>
+  </tr>
    </tbody>
 </table>
 
@@ -4243,12 +4529,26 @@ Note: Generating a new Ed25519 address requires the wallet password.)</li>
   (Enum)Filter addresses by their types. If empty, all address types are included.
       <br>Available values:<ul>
       <li>ADDRESS_TYPE_TREASURY = 0 (Treasury address type.
-Should not be used to generate new addresses.)</li>
+Should NOT be used to generate new addresses.)</li>
       <li>ADDRESS_TYPE_VALIDATOR = 1 (Validator address type used for validator nodes.)</li>
       <li>ADDRESS_TYPE_BLS_ACCOUNT = 2 (Account address type with BLS signature scheme.)</li>
-      <li>ADDRESS_TYPE_ED25519_ACCOUNT = 3 (Account address type with Ed25519 signature scheme.
-Note: Generating a new Ed25519 address requires the wallet password.)</li>
+      <li>ADDRESS_TYPE_ED25519_ACCOUNT = 3 (Account address type with Ed25519 signature scheme.)</li>
+      <li>ADDRESS_TYPE_SECP_ACCOUNT = 4 (Account address type with SECP256K1 signature scheme.)</li>
       </ul>
+    </td>
+  </tr>
+  <tr>
+    <td class="fw-bold">include_balance</td>
+    <td> boolean</td>
+    <td>
+  Includes the balance of each address.
+    </td>
+  </tr>
+  <tr>
+    <td class="fw-bold">include_stake</td>
+    <td> boolean</td>
+    <td>
+  Includes the stake of each address.
     </td>
   </tr>
   </tbody>
@@ -4299,6 +4599,35 @@ Note: Generating a new Ed25519 address requires the wallet password.)</li>
     <td> string</td>
     <td>
   The Hierarchical Deterministic (HD) path of the address within the wallet.
+    </td>
+  </tr>
+   <tr>
+    <td class="fw-bold">addrs[].address_type</td>
+    <td> numeric</td>
+    <td>
+  (Enum)The type of the address.
+      <br>Available values:<ul>
+      <li>ADDRESS_TYPE_TREASURY = 0 (Treasury address type.
+Should NOT be used to generate new addresses.)</li>
+      <li>ADDRESS_TYPE_VALIDATOR = 1 (Validator address type used for validator nodes.)</li>
+      <li>ADDRESS_TYPE_BLS_ACCOUNT = 2 (Account address type with BLS signature scheme.)</li>
+      <li>ADDRESS_TYPE_ED25519_ACCOUNT = 3 (Account address type with Ed25519 signature scheme.)</li>
+      <li>ADDRESS_TYPE_SECP_ACCOUNT = 4 (Account address type with SECP256K1 signature scheme.)</li>
+      </ul>
+    </td>
+  </tr>
+   <tr>
+    <td class="fw-bold">addrs[].balance</td>
+    <td> numeric</td>
+    <td>
+  The account balance in NanoPAC. For validator addresses, this field is zero.
+    </td>
+  </tr>
+   <tr>
+    <td class="fw-bold">addrs[].stake</td>
+    <td> numeric</td>
+    <td>
+  The validator stake in NanoPAC. For non-validator addresses, this field is zero.
     </td>
   </tr>
    </tbody>
