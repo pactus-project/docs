@@ -41,17 +41,17 @@ If you are running a Full Node and want to prune its data to operate in pruned m
 
 {{% steps %}}
 
-#### Step 1
+### Step 1
 
 Stop your node if it's running.
 
-#### Step 2
+### Step 2
 
 Open a Terminal or Command Prompt:
    - On **macOS/Linux**: Open the **Terminal**.
    - On **Windows**: Use **Command Prompt** or **PowerShell**.
 
-#### Step 3
+### Step 3
 
 Run the following command, replacing `<PATH-TO-WORKING-DIR>` with the actual path to your working directory:
 
@@ -72,7 +72,7 @@ pactus-daemon.exe prune -w <PATH-TO-WORKING-DIR>
   {{< /os_tab >}}
 {{< /os_tabs >}}
 
-#### Step 4
+### Step 4
 
 Start your Pactus node again to resume normal operation.
 
@@ -146,7 +146,8 @@ Stop your node if it's running.
 
 #### Step 2
 
-Download a snapshot from https://snapshot.pactus.org/. Each snapshot shows its creation date, file size, and a SHA256 checksum for verification.
+Download a snapshot from [https://snapshot.pactus.org](https://snapshot.pactus.org).
+Each snapshot shows its creation date, file size, and a SHA256 checksum for verification.
 
 #### Step 3
 
