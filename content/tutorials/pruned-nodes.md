@@ -41,17 +41,18 @@ If you are running a Full Node and want to prune its data to operate in pruned m
 
 {{% steps %}}
 
-### Step 1
+### Stop the Node
 
 Stop your node if it's running.
 
-### Step 2
+### Open a Terminal
 
 Open a Terminal or Command Prompt:
-   - On **macOS/Linux**: Open the **Terminal**.
-   - On **Windows**: Use **Command Prompt** or **PowerShell**.
 
-### Step 3
+- On **macOS/Linux**: Open the **Terminal**.
+- On **Windows**: Use **Command Prompt** or **PowerShell**.
+
+### Run the Prune Command
 
 Run the following command, replacing `<PATH-TO-WORKING-DIR>` with the actual path to your working directory:
 
@@ -72,7 +73,7 @@ pactus-daemon.exe prune -w <PATH-TO-WORKING-DIR>
   {{< /os_tab >}}
 {{< /os_tabs >}}
 
-### Step 4
+### Restart the Node
 
 Start your Pactus node again to resume normal operation.
 
@@ -100,11 +101,11 @@ The `import` command automates the process.
 
 {{% steps %}}
 
-#### Step 1
+#### Stop the Node
 
 Stop your node if it's running.
 
-#### Step 2
+#### Import the Latest Snapshot
 
 Run the import command:
 {{< os_tabs items="unix,windows" >}}
@@ -126,9 +127,10 @@ Run the import command:
 
 *(Replace `<PATH-TO-WORKING-DIR>` with your node's working directory).*
 
-The daemon will automatically download and import the latest official snapshot from https://snapshot.pactus.org/.
+The daemon will automatically download and import
+the latest official snapshot from [https://snapshot.pactus.org](https://snapshot.pactus.org).
 
-#### Step 3
+#### Restart the Node
 
 Start your node normally after the import finishes.
 
@@ -140,20 +142,21 @@ Use this method if you want to choose a specific snapshot or download it manuall
 
 {{% steps %}}
 
-#### Step 1
+#### Stop the Node
 
 Stop your node if it's running.
 
-#### Step 2
+#### Download a Snapshot
 
 Download a snapshot from [https://snapshot.pactus.org](https://snapshot.pactus.org).
 Each snapshot shows its creation date, file size, and a SHA256 checksum for verification.
 
-#### Step 3
+#### Extract the Snapshot
 
-Extract the archive directly into your node's working directory. The extracted contents should go into the `data` folder inside the working directory (e.g., `~/pactus/data/`).
+Extract the archive directly into your node's working directory.
+The extracted contents should go into the `data` folder inside the working directory (e.g., `~/pactus/data/`).
 
-#### Step 4
+#### Restart the Node
 
 Start your node normally. It will resume operation from the imported state.
 

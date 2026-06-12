@@ -47,8 +47,9 @@ Unlike other blockchains that have a curved distribution, Pactus maintains a con
 ## Reward Transaction
 
 The reward transaction is a special transaction type that serves as the first transaction in each block.
-The reward transaction is similar to the [coinbase transaction in Bitcoin](https://developer.bitcoin.org/reference/transactions.html#coinbase-input-the-input-of-the-first-transaction-in-a-block).
-It is the mechanism through which coins from the
+The reward transaction is similar to the
+[coinbase transaction in Bitcoin](https://developer.bitcoin.org/reference/transactions.html#coinbase-input-the-input-of-the-first-transaction-in-a-block)
+. It is the mechanism through which coins from the
 [Treasury account](/protocol/blockchain/account/#treasury-account)
 are distributed among validators as compensation for their role in maintaining network security.
 
