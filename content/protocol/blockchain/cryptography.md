@@ -19,6 +19,7 @@ Pactus supports several signature schemes for different purposes.
 
 [BLS](https://datatracker.ietf.org/doc/draft-irtf-cfrg-bls-signature/) (Boneh–Lynn–Shacham) is the primary signature scheme
 used by validators and BLS-based accounts.
+BLS public keys are 96 bytes and use the G2 subgroup of the BLS12-381 curve.
 BLS is a threshold signature scheme with two notable properties:
 
 #### Signature Aggregation
@@ -35,14 +36,14 @@ Each message has exactly one valid signature.
 
 [Ed25519](https://www.rfc-editor.org/rfc/rfc8032.txt) is supported for account addresses
 (see [PIP-52](https://pips.pactus.org/PIPs/pip-52)).
-Ed25519 provides strong security, compact keys, and fast performance.
+Ed25519 provides strong security with compact 32-byte public keys and fast performance.
 Ed25519 account addresses start with `pc1r...`.
 
 ### secp256k1 Signatures
 
 [secp256k1](https://www.secg.org/sec2-v2.pdf) (ECDSA) is supported for account addresses
 (see [PIP-53](https://pips.pactus.org/PIPs/pip-53)).
-This is the same curve used by Bitcoin, enabling compatibility with existing wallet tools.
+This is the same curve used by Bitcoin, with 33-byte compressed public keys, enabling compatibility with existing wallet tools.
 secp256k1 account addresses start with `pc1y...`.
 
 ## Address Types
