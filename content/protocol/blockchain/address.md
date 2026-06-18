@@ -26,11 +26,34 @@ The resulting byte array is then converted into a bech32m[^first] string.
 
 ## Address Type
 
-The address type specifies the type of the address and its defined as below:
+The address type specifies the type of the address and its defined as below
+(see [PIP-8](https://pips.pactus.org/PIPs/pip-8)):
 
 - 0: Treasury address
 - 1: Validator address
-- 2: Account address
+- 2: BLS Account address
+- 3: Ed25519 Account address
+- 4: secp256k1 Account address
+
+## Address Derivation
+
+An address is derived from the compressed public key as follows:
+
+```text
+hash_256 = Blake2b_256(compressed_public_key)     // 32 bytes
+hash_160 = RIPEMD160(hash_256)                    // 20 bytes
+raw_addr = [address_type] + hash_160              // 21 bytes
+address  = Bech32m("pc", address_type, hash_160)
+```
+
+The address type is chosen based on how the address will be used:
+
+| **Public Key**                 | **Address Type** | **Prefix** |
+| ------------------------------ | ---------------- | ---------- |
+| BLS (G2, 96 bytes) → validator | `1`              | `pc1p...`  |
+| BLS (G2, 96 bytes) → account   | `2`              | `pc1z...`  |
+| Ed25519 (32 bytes)             | `3`              | `pc1r...`  |
+| secp256k1 (33 bytes)           | `4`              | `pc1y...`  |
 
 ## Treasury Address
 
