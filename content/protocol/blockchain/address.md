@@ -30,7 +30,9 @@ The address type specifies the type of the address and its defined as below:
 
 - 0: Treasury address
 - 1: Validator address
-- 2: Account address
+- 2: BLS Account address
+- 3: Ed25519 Account address
+- 4: secp256k1 Account address
 
 ## Treasury Address
 
