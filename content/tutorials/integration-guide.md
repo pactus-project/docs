@@ -3,8 +3,6 @@ title: Pactus Integration Guide
 weight: 14
 ---
 
-## Preface
-
 This guide is intended for developers and infrastructure teams who want to connect
 their applications directly to the Pactus network, including wallets, exchanges,
 analytics platforms, staking services, and custom backend systems.

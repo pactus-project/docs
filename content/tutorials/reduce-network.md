@@ -3,8 +3,6 @@ title: Reduce Network Usage
 weight: 9
 ---
 
-## Preface
-
 Pactus is designed for low traffic usage.
 However, some users still face bandwidth limitations imposed by their Internet Service Providers (ISPs).
 This guide will explore effective ways to reduce network usage for a Pactus node.

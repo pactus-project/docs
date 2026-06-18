@@ -3,8 +3,6 @@ title: Secure gRPC Using Basic Authentication
 weight: 6
 ---
 
-## Preface
-
 The Pactus Blockchain offers a gRPC interface, enabling users to interact with the blockchain
 and its native wallet. To enhance the security of gRPC APIs, we have implemented a Basic Authentication
 mechanism based on [bcrypt](https://en.wikipedia.org/wiki/Bcrypt) password hashing.
@@ -77,12 +75,12 @@ To enable Basic Authentication in your Pactus Blockchain configuration, follow t
 1. Open the [configuration](https://docs.pactus.org/get-started/configuration/) file in your Pactus directory.
 2. Insert the generated user with the hashed password into the `basic_auth` field in the `grpc` section:
 
-```toml
-[grpc]
-enable = true
-enable_wallet = false
-listen = "127.0.0.1:50051"
-basic_auth = "user:$2a$10$nl6VKEzSENIK5dmzoADgKeTFtCusQxeVCZiXkRzzbyfG.bLpHtrda"
-```
+   ```toml
+   [grpc]
+   enable = true
+   enable_wallet = false
+   listen = "127.0.0.1:50051"
+   basic_auth = "user:$2a$10$nl6VKEzSENIK5dmzoADgKeTFtCusQxeVCZiXkRzzbyfG.bLpHtrda"
+   ```
 
 3. Restart or run the node to apply this configuration.

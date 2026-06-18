@@ -13,7 +13,8 @@ they are self-elected through a randomization algorithm based on their stake and
 
 ## What Roles do Validators Play?
 
-Validators can run Pactus Core software on their personal computers or remote servers to process transactions, create blocks,
+Validators can run Pactus Core software on their personal computers or
+remote servers to process transactions, create blocks,
 and uphold network security and decentralization.
 By staking their own coins, validators contribute to the network's security and are rewarded for their efforts.
 

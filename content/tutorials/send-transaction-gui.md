@@ -3,8 +3,6 @@ title: Send Transactions in Graphic Mode
 weight: 1
 ---
 
-## Preface
-
 The Pactus Blockchain offers a Graphical User Interface (GUI) that comes with a built-in wallet to create,
 sign and broadcast transactions.
 This tutorial aims to guide you step-by-step on how to use the GUI application to send transactions to the Pactus blockchain.

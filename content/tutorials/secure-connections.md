@@ -3,8 +3,6 @@ title: Secure Connections
 weight: 7
 ---
 
-## Preface
-
 As the Pactus blockchain grows, the need for individuals and merchants to
 communicate and interact with Pactus nodes is increasing.
 Pactus provides several communication protocols,

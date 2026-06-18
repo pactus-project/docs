@@ -3,8 +3,6 @@ title: Pactus Node Configuration
 weight: 6
 ---
 
-## Preface
-
 The Pactus node can be configured using a [TOML](https://toml.io/en/) file,
 which is a simple text format for configuration.
 This file is automatically created when the node initializes.

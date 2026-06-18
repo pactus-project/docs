@@ -3,8 +3,6 @@ title: Send Zero-Fee Transactions
 weight: 13
 ---
 
-## Preface
-
 Pactus supports zero-fee transactions starting from
 [Version 1.6.0 (Mumbai)](https://pactus.org/2024/11/14/pactus-1.6.0-mumbai-released/).
 However, for security reasons, there are restrictions on zero-fee transactions:

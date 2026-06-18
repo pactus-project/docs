@@ -3,8 +3,6 @@ title: Verify Pactus Software Is Safe
 weight: 12
 ---
 
-## Preface
-
 When downloading Pactus software, it's important to verify that the binaries are authentic and
 haven't been tampered with.
 By verifying the signatures of the files, you ensure that the software you're installing is secure.
