@@ -1,5 +1,5 @@
 ---
-title: Run Pactus with systemd on Linux
+title: Run Pactus as a Systemd Service
 weight: 11
 ---
 
@@ -19,92 +19,53 @@ Before setting up Pactus to run with systemd, ensure you have the following:
 
 ## Creating a systemd Service
 
-To create a systemd service for Pactus, follow these steps:
+After initializing your Pactus node with `pactus-daemon init`, you can set up
+a systemd service to run it in the background.
 
-1. **Initialize the Pactus Node**: Before running the service, initialize the Pactus node with this command:
+1. **Create a Service File**: Open a terminal and
+   create a new service file in the `/etc/systemd/system/` directory with superuser permissions:
 
-  ```shell
-  pactus-daemon init
-  ```
+   ```shell
+   sudo nano /etc/systemd/system/pactus.service
+   ```
 
-2. **Create a Service File**: Open a terminal and
-  create a new service file in the `/etc/systemd/system/` directory with superuser permissions:
+2. **Add the Following Content** to the service file, replacing `<USER_NAME>` with your actual Linux username:
 
-  ```shell
-  sudo nano /etc/systemd/system/pactus.service
-  ```
+   ```ini
+   [Unit]
+   Description=Pactus Daemon Service
+   After=network.target
 
-3. **Add the Following Content** to the service file, replacing `<USER_NAME>` with your actual username:
+   [Service]
+   Type=simple
+   User=<USER_NAME>
+   ExecStart=/home/<USER_NAME>/pactus-cli/pactus-daemon start -w /home/<USER_NAME>/pactus
+   Restart=on-failure
+   RestartSec=10
 
-  ```ini
-  [Unit]
-  Description=Pactus Daemon Service
-  After=network.target
+   [Install]
+   WantedBy=multi-user.target
+   ```
 
-  [Service]
-  Type=simple
-  User=<USER_NAME>
-  ExecStart=/home/<USER_NAME>/pactus-cli/pactus-daemon start -w /home/<USER_NAME>/pactus
-  Restart=on-failure
-  RestartSec=10
-
-  [Install]
-  WantedBy=multi-user.target
-  ```
-
-4. **Reload Systemd Configuration**: After creating or modifying the service file,
+3. **Reload Systemd Configuration**: After creating or modifying the service file,
    reload the systemd to recognize the new service:
 
-  ```shell
-  sudo systemctl daemon-reload
-  ```
+   ```shell
+   sudo systemctl daemon-reload
+   ```
 
-5. **Start and Enable the Service**: Start the service immediately and enable it to start on boot:
+4. **Start and Enable the Service**: Start the service immediately and enable it to start on boot:
 
-  ```shell
-  sudo systemctl start pactus
-  sudo systemctl enable pactus
-  ```
+   ```shell
+   sudo systemctl start pactus
+   sudo systemctl enable pactus
+   ```
 
-6. **Check Service Status**: Check the status of your service to ensure it is running correctly:
+5. **Check Service Status**: Check the status of your service to ensure it is running correctly:
 
-  ```shell
-  sudo systemctl status pactus
-  ```
-
-## Managing the Service
-
-Use these commands to manage the Pactus service with systemd:
-
-- **Start the Service**:
-
-  ```shell
-  sudo systemctl start pactus
-  ```
-
-- **Stop the Service**:
-
-  ```shell
-  sudo systemctl stop pactus
-  ```
-
-- **Restart the Service**:
-
-  ```shell
-  sudo systemctl restart pactus
-  ```
-
-- **Enable the Service to Start on Boot**:
-
-  ```shell
-  sudo systemctl enable pactus
-  ```
-
-- **Disable the Service from Starting on Boot**:
-
-  ```shell
-  sudo systemctl disable pactus
-  ```
+   ```shell
+   sudo systemctl status pactus
+   ```
 
 ## Checking Logs
 
