@@ -3,8 +3,6 @@ title: Run Pactus in Command Line Mode
 weight: 3
 ---
 
-## Preface
-
 Pactus can be run in different modes, including the command-line interface (CLI) and the graphical user interface (GUI).
 This tutorial will guide you through the steps to run Pactus in CLI mode, suitable for advanced users.
 

@@ -3,8 +3,6 @@ title: Running a Pruned Node
 weight: 4
 ---
 
-## Preface
-
 The Pactus Blockchain supports pruned nodes to help users manage storage efficiently by retaining only
 the most recent and relevant data. This tutorial will guide you step-by-step on how to prune your node,
 whether using the command line or the graphical interface.

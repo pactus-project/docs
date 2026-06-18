@@ -3,8 +3,6 @@ title: Run Pactus Metrics
 weight: 10
 ---
 
-## Preface
-
 Pactus can be run with metrics, providing you with the ability to monitor your node.
 This tutorial will guide you through the steps to run Pactus with metrics, suitable for advanced users.
 

@@ -3,8 +3,6 @@ title: Run Pactus using Docker
 weight: 4
 ---
 
-## Preface
-
 Docker is a tool that simplifies the process of creating, deploying, and running applications using containers.
 With containers, developers can bundle all the necessary parts of an application, including libraries and dependencies,
 and deploy them as a single package.

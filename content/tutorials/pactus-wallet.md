@@ -3,8 +3,6 @@ title: Use Pactus Wallet
 weight: 2
 ---
 
-## Preface
-
 The Pactus Blockchain provides a wallet application that allows users to interact with the Pactus blockchain
 without the need to run a node.
 This is ideal for users who do not wish to operate a node but still want to create a personal wallet to manage their funds.

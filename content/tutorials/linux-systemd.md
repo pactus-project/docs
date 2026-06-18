@@ -3,8 +3,6 @@ title: Run Pactus as a Systemd Service
 weight: 11
 ---
 
-## Preface
-
 [Systemd](https://en.wikipedia.org/wiki/Systemd) is a system and service manager for Linux that
 helps manage how programs start up, run, and shut down.
 It also handles system processes, logging, and basic service monitoring.

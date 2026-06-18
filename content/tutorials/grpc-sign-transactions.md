@@ -3,8 +3,6 @@ title: Sign Transactions Using gRPC
 weight: 5
 ---
 
-## Preface
-
 The Pactus Blockchain provides a gRPC interface that allows users to interact with the blockchain and native wallet.
 This is ideal for merchants and users who want to create, sign, and broadcast transactions using their local node.
 This tutorial will guide you step-by-step on how to use gRPC to sign transactions.

@@ -3,8 +3,6 @@ title: Join Pactus Testnet
 weight: 15
 ---
 
-## Preface
-
 The Pactus testnet is a public testing environment that replicates the
 functionality of the mainnet but uses test coins with no real-world value.
 Running a node on the testnet allows you to experiment safely, test applications,
