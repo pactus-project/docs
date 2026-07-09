@@ -70,7 +70,7 @@ In this case, your connection from your computer to your node is fully encrypted
 
 ## Enabling Wallet Service
 
-By default, the wallet service on your node is disabled. You can enable it in the 
+By default, the wallet service on your node is disabled. You can enable it in the
 [config](/get-started/configuration/) file;
 However, if your connection is insecure, we do not recommend it.
 If you do enable it, make sure you set a strong password for your wallet.
