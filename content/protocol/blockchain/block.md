@@ -28,7 +28,7 @@ The block header is 138 bytes long and consists of the following fields:
 | Proposer Address    | 21 bytes |
 
 - **Version** is used to track the protocol upgrade, and the current
-  [protocol version](/protocol/consensus/parameters/#protocol-version) is set to 2.
+  [protocol version](/protocol/consensus/parameters/#protocol-version) is set to 4.
 - **Timestamp** is the time of the block as the number of seconds since January 1, 1970 (Unix Epoch).
 - **Previous Block Hash** is the hash of the previous block in the blockchain.
 - **State Hash** is the [state hash](/protocol/blockchain/state-hash) of the blockchain at this block.

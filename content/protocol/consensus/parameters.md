@@ -13,7 +13,7 @@ Here is the list of the consensus parameters:
 ## Protocol Version
 
 The version number of the blockchain protocol.
-The current protocol version is 2 after [PIP-43](https://pips.pactus.org/PIPs/pip-43).
+The current protocol version is 4 after [PIP-55](https://pips.pactus.org/PIPs/pip-55).
 
 ## Block Time
 
@@ -27,8 +27,10 @@ This is set to 51 validators.
 
 ## Block Reward
 
-The fixed reward amount given to the validator who successfully creates and proposes a new block.
-This is set to 1,000,000,000 NanoPAC, which is equivalent to one PAC coin.
+The total block reward minted for each new block.
+It follows the halving schedule defined by [PIP-55](https://pips.pactus.org/PIPs/pip-55),
+starting at 1,000,000,000 NanoPAC (one PAC coin) and halving at blocks 8,000,000, 24,000,000, and 56,000,000,
+with a floor of 125,000,000 NanoPAC (0.125 PAC coin).
 
 ## Time-to-Live Interval
 
