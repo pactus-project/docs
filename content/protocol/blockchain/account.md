@@ -25,4 +25,4 @@ The Treasury account is a special account in the Pactus blockchain that holds 21
 The treasury address is defined as: `000000000000000000000000000000000000000000`.
 The [address type](/protocol/blockchain/address/#address-type) is 0, and therefore,
 it doesn't have any key pair associated with it.
-Every time a block is created, one coin from the Treasury account transfers to the proposer account as a block reward.
+Every time a block is created, a block reward is paid from the Treasury account.
